@@ -1,5 +1,5 @@
 <div class="card" style="width: 18rem;">
-  <img src="vistas/assets/img/team-3.jpg" class="card-img-top" alt="...">
+  <img style="width: 10rem;" src="vistas/assets/img/team-3.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title"><?php echo $_SESSION['nombre']; ?></h5>
     <p class="card-text"><?php echo $_SESSION['perfil']; ?></p>
