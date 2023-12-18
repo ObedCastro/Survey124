@@ -15,6 +15,10 @@
   <link href="vistas/assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="vistas/assets/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
+
+ <!-- DATATABLES -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
@@ -36,7 +40,9 @@
 
                 
             if(isset($_GET["ruta"])){
-                if($_GET["ruta"] == "inicio" || $_GET["ruta"] == "dispositivos"){
+                if($_GET["ruta"] == "inicio" || 
+                   $_GET["ruta"] == "dispositivos" ||
+                   $_GET["ruta"] == "salir"){
                     include "modulos/".$_GET["ruta"].".php";
                 }
             }
@@ -50,7 +56,8 @@
 
 ?>
 
-
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 
 
 <script src="vistas/assets/js/core/popper.min.js"></script>
@@ -60,6 +67,8 @@
   <script src="vistas/assets/js/plugins/chartjs.min.js"></script>
 
   <script>
+    new DataTable('#datatable');
+
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
     new Chart(ctx, {
