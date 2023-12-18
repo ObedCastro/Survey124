@@ -2,9 +2,9 @@
 
 class ControladorDispositivos{
 
-    static public function ctrMostrarDispositivos(){
+    static public function ctrMostrarDispositivos($item, $valor){
         $tabla = "dispositivos";
-        $datos = ModeloDispositivos::mdlMostrarDispositivos($tabla);
+        $datos = ModeloDispositivos::mdlMostrarDispositivos($tabla, $item, $valor);
 
         return $datos;
     }
