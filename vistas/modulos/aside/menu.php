@@ -1,9 +1,8 @@
 <ul class="navbar-nav">
         <li class="nav-item">
           <?php
-          $menu = $_GET["ruta"];
 
-          if($menu != "inicio"){echo '<a class="nav-link" href="inicio">';}else{echo '<a class="nav-link active" href="inicio">';}
+          if($_GET["ruta"] != "inicio"){echo '<a class="nav-link" href="inicio">';}else{echo '<a class="nav-link active" href="inicio">';}
           
           ?>
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -26,7 +25,7 @@
         </li>
         <li class="nav-item">
           <?php
-            if($menu != "dispositivos"){echo '<a class="nav-link" href="dispositivos">';}else{echo '<a class="nav-link active" href="dispositivos">';}
+            if($_GET["ruta"] != "dispositivos"){echo '<a class="nav-link" href="dispositivos">';}else{echo '<a class="nav-link active" href="dispositivos">';}
           ?>
           
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
