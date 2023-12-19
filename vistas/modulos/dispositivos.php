@@ -111,4 +111,8 @@
   </div>
 </div>
 
+<?php
+  include "vistas/modulos/dispositivos/verDetalleDispositivo.php";
+?>
+
 <script src="vistas/js/gestorDispositivos.js"></script>
