@@ -29,6 +29,9 @@
   <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
   <script src="vistas/assets/js/plugins/chartjs.min.js"></script>
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.all.min.js"></script>
+
   <link rel="stylesheet" href="vistas/css/gestorDispositivos.css">
 </head>
 <body class="g-sidenav-show  bg-gray-100">
@@ -73,6 +76,8 @@
   <script src="vistas/assets/js/plugins/smooth-scrollbar.min.js"></script>
 
   <script src="vistas/assets/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
+
+  
     
 </body>
 </html>
