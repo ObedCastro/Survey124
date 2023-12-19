@@ -5,18 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Survey124</title>
 
-<!--     Fonts and icons     -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Fonts and icons -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+
   <!-- Nucleo Icons -->
   <link href="vistas/assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="vistas/assets/css/nucleo-svg.css" rel="stylesheet" />
+
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  
   <link href="vistas/assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="vistas/assets/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
 
- <!-- DATATABLES -->
+  <!-- DATATABLES -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
 
   <!-- Nepcha Analytics (nepcha.com) -->
@@ -64,14 +67,12 @@
 
 
 
-<script src="vistas/assets/js/core/popper.min.js"></script>
+  <script src="vistas/assets/js/core/popper.min.js"></script>
   <script src="vistas/assets/js/core/bootstrap.min.js"></script>
   <script src="vistas/assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="vistas/assets/js/plugins/smooth-scrollbar.min.js"></script>
 
   <script src="vistas/assets/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-
     
 </body>
 </html>
