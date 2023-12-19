@@ -26,6 +26,30 @@ class ModeloDispositivos{
         $stmt->close();
     }
 
+    //REGISTRAR NUEVO PRODUCTO
+    static public function mdlRegistrarDispositivo($tabla, $datos){
+        $sql = "INSERT INTO $tabla(tipodispositivo, marcadispositivo, modelodispositivo, imeidispositivo, seriedispositivo, telefonodispositivo, responsabledispositivo) VALUES (:tipodispositivo, :marcadispositivo, :modelodispositivo, :imeidispositivo, :seriedispositivo, :telefonodispositivo, :responsabledispositivo)";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":tipodispositivo", $datos["tipo"], PDO::PARAM_STR);
+        $stmt->bindParam(":marcadispositivo", $datos["marca"], PDO::PARAM_STR);
+        $stmt->bindParam(":modelodispositivo", $datos["modelo"], PDO::PARAM_STR);
+        $stmt->bindParam(":imeidispositivo", $datos["imei"], PDO::PARAM_STR);
+        $stmt->bindParam(":seriedispositivo", $datos["serie"], PDO::PARAM_STR);
+        $stmt->bindParam(":telefonodispositivo", $datos["telefono"], PDO::PARAM_STR);
+        $stmt->bindParam(":responsabledispositivo", $datos["sede"], PDO::PARAM_STR);
+
+        if($stmt->execute()){
+            return "ok";
+        } else{
+            return "Error";
+        }
+
+        $stmt->close();
+        $stmt = null;
+    }
+
+    
+
     
 
 }
