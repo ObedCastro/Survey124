@@ -72,6 +72,7 @@
                 <option value="Galaxy A34">Galaxy A34</option>
                 <option value="Galaxy A33">Galaxy A33</option>
                 <option value="Tab S9">Tab S9</option>
+                <option value="640 G9">640 G9</option>
               </select>
             </div>
           </div>
