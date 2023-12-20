@@ -30,6 +30,7 @@ class ControladorDispositivos{
                     echo '<script>
                         Swal.fire({
                             type: "success",
+                            icon: "success",
                             title: "El dispositivo se registró correctamente.",
                             showConfirmButton: true,
                             confirmButtonText: "Cerrar"                            
