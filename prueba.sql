@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-12-2023 a las 23:18:41
+-- Tiempo de generación: 20-12-2023 a las 06:09:36
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -44,6 +44,19 @@ CREATE TABLE `administradores` (
 INSERT INTO `administradores` (`id`, `nombre`, `email`, `foto`, `password`, `perfil`, `fecha`) VALUES
 (1, 'Obed Castro', 'admin@gmail.com', '', 'admin', 'superadministrador', '2023-12-14 16:14:17'),
 (2, 'Usuario prueba', 'prueba@gmail.com', '', 'prueba', 'editor', '2023-12-14 16:14:17');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `consultores`
+--
+
+CREATE TABLE `consultores` (
+  `idconsultor` int(11) NOT NULL,
+  `nombreconsultor` varchar(50) NOT NULL,
+  `sedeconsultor` varchar(20) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -89,6 +102,7 @@ CREATE TABLE `dispositivos` (
   `imeidispositivo` varchar(15) NOT NULL,
   `seriedispositivo` varchar(20) NOT NULL,
   `telefonodispositivo` varchar(11) NOT NULL,
+  `accesorios` text NOT NULL,
   `responsabledispositivo` varchar(50) NOT NULL,
   `sededispositivo` tinyint(4) NOT NULL,
   `estadodispositivo` int(11) NOT NULL,
@@ -100,15 +114,16 @@ CREATE TABLE `dispositivos` (
 -- Volcado de datos para la tabla `dispositivos`
 --
 
-INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositivo`, `modelodispositivo`, `imeidispositivo`, `seriedispositivo`, `telefonodispositivo`, `responsabledispositivo`, `sededispositivo`, `estadodispositivo`, `fecharegistro`, `fechamodificacion`) VALUES
-(1, 'Telefono', 'Samsung', 'Galaxy A33', '923723784756473', 'SD9F879DF79DF', '50378454378', 'Obed Alberto Castro Orellana', 0, 1, '2023-12-18', '2023-12-18 15:28:13'),
-(2, 'Telefono', 'Samsung', 'Galaxy A34', '849384837483748', 'IH98KH98798BB', '50375869444', 'Obed Alberto Castro Orellana', 0, 1, '2023-12-18', '2023-12-18 20:14:20'),
-(3, 'Telefono', 'Samsung', 'Galaxy A34', '9879879987', 'kj987iuhiu', '987987987', '1', 0, 1, '0000-00-00', '2023-12-19 20:17:57'),
-(4, 'Tablet', 'Samsung', 'Tab S9', '129812738728732', 'KJHSDF987SD9FSD', '50376453676', 'Obed Alberto Castro Orellana', 0, 1, '0000-00-00', '2023-12-19 20:17:40'),
-(5, 'Tablet', 'Samsung', 'Tab S9', '198276354612736', 'HJ34KHJ34KJ3', '50367584938', '1', 0, 0, '0000-00-00', '2023-12-19 20:11:43'),
-(6, 'Telefono', 'Samsung', 'Galaxy A33', '123427182737281', 'KH123KH23K2HK', '50376253527', '2', 0, 0, '0000-00-00', '2023-12-19 20:13:34'),
-(7, 'Tablet', 'Samsung', 'Tab S9', '197827838297192', 'LKN3LKN2L3N2', '50478327827', '1', 0, 0, '0000-00-00', '2023-12-19 20:15:01'),
-(8, 'Telefono', 'Samsung', 'Galaxy A34', '098574837465746', 'KJ34JL3K434LJ', '50364345654', '1', 0, 0, '0000-00-00', '2023-12-19 21:38:18');
+INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositivo`, `modelodispositivo`, `imeidispositivo`, `seriedispositivo`, `telefonodispositivo`, `accesorios`, `responsabledispositivo`, `sededispositivo`, `estadodispositivo`, `fecharegistro`, `fechamodificacion`) VALUES
+(1, 'Telefono', 'Samsung', 'Galaxy A33', '923723784756473', 'SD9F879DF79DF', '50378454378', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', 'Obed Alberto Castro Orellana', 0, 1, '2023-12-18', '2023-12-20 04:11:55'),
+(2, 'Telefono', 'Samsung', 'Galaxy A34', '849384837483748', 'IH98KH98798BB', '50375869444', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', 'Obed Alberto Castro Orellana', 0, 1, '2023-12-18', '2023-12-20 04:33:34'),
+(3, 'Telefono', 'Samsung', 'Galaxy A34', '9879879987', 'kj987iuhiu', '987987987', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 0, 1, '0000-00-00', '2023-12-20 04:33:38'),
+(4, 'Tablet', 'Samsung', 'Tab S9', '129812738728732', 'KJHSDF987SD9FSD', '50376453676', '{\"Cubo\":\"0\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', 'Obed Alberto Castro Orellana', 0, 1, '0000-00-00', '2023-12-20 04:34:19'),
+(5, 'Tablet', 'Samsung', 'Tab S9', '198276354612736', 'HJ34KHJ34KJ3', '50367584938', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 0, 0, '0000-00-00', '2023-12-20 04:48:37'),
+(6, 'Telefono', 'Samsung', 'Galaxy A33', '123427182737281', 'KH123KH23K2HK', '50376253527', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2', 0, 0, '0000-00-00', '2023-12-20 04:33:43'),
+(7, 'Tablet', 'Samsung', 'Tab S9', '197827838297192', 'LKN3LKN2L3N2', '50478327827', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 0, 0, '0000-00-00', '2023-12-20 04:47:10'),
+(8, 'Telefono', 'Samsung', 'Galaxy A34', '098574837465746', 'KJ34JL3K434LJ', '50364345654', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 0, 0, '0000-00-00', '2023-12-20 04:33:47'),
+(9, 'Laptop', 'HP', '640 G9', '', 'LKH45L4545', '', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"0\"}', '1', 0, 0, '0000-00-00', '2023-12-20 04:58:31');
 
 -- --------------------------------------------------------
 
@@ -141,6 +156,12 @@ ALTER TABLE `administradores`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `consultores`
+--
+ALTER TABLE `consultores`
+  ADD PRIMARY KEY (`idconsultor`);
+
+--
 -- Indices de la tabla `datos`
 --
 ALTER TABLE `datos`
@@ -169,6 +190,12 @@ ALTER TABLE `administradores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `consultores`
+--
+ALTER TABLE `consultores`
+  MODIFY `idconsultor` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `datos`
 --
 ALTER TABLE `datos`
@@ -178,7 +205,7 @@ ALTER TABLE `datos`
 -- AUTO_INCREMENT de la tabla `dispositivos`
 --
 ALTER TABLE `dispositivos`
-  MODIFY `iddispositivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `iddispositivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `sede`
