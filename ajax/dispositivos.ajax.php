@@ -14,13 +14,10 @@ class AjaxDispositivos{
         echo json_encode($respuesta);
     }
 
-
-
-    
 }
 
 
-
+//Comprobando si se ha recibido el valor id, pasarlo en la variable y ejecutar el metodo
 if(isset($_POST["idDispositivo"])){
     $mostrar = new AjaxDispositivos();
     $mostrar->idDispositivo = $_POST["idDispositivo"];
