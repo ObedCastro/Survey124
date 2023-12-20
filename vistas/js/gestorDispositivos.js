@@ -30,21 +30,24 @@ $(".tablaDispositivos").on("click", ".btnMostrarDispositivos", function(){
             $("#mostrarSerieDispositivo").text(respuesta.seriedispositivo);
             $("#mostrarTelefonoDispositivo").text(respuesta.telefonodispositivo);
             $("#mostrarResponsableDispositivo").text(respuesta.responsabledispositivo);
-            $("#mostrarFechaRegistro").text(respuesta.fecharegistro);
-            $("#mostrarFechaEdicion").text(respuesta.fechamodificacion);
+            $("#fechaRegistro").text(respuesta.fecharegistro);
+            $("#FechaModificacion").text(respuesta.fechamodificacion);
             
             const datos = JSON.parse(respuesta.accesorios);
-            if(datos.Cubo == "1"){$("#checkCubo").attr('checked',true);}else{$("#checkCubo").attr('checked',false);}
-            if(datos.Cable == "1"){$("#checkCable").attr('checked',true);}else{$("#checkCable").attr('checked',false);}
-            if(datos.Lapiz == "1"){$("#checkLapiz").attr('checked',true);}else{$("#checkLapiz").attr('checked',false);}
-            if(datos.Powerbank == "1"){$("#checkPowerbank").attr('checked',true);}else{$("#checkPowerbank").attr('checked',false);}
-            if(datos.Funda == "1"){$("#checkFunda").attr('checked',true);}else{$("#checkFunda").attr('checked',false);}
-            if(datos.Cargador == "1"){$("#checkCargadorLaptop").attr('checked',true);}else{$("#checkCargadorLaptop").attr('checked',false);}
-            if(datos.Maletin == "1"){$("#checkMaletin").attr('checked',true);}else{$("#checkMaletin").attr('checked',false);}
-            if(datos.Mouse == "1"){$("#checkMouse").attr('checked',true);}else{$("#checkMouse").attr('checked',false);}
+            if(datos.Cubo == "1"){$("#checkCubo").parent().show();}else{$("#checkCubo").parent().hide();}
+            if(datos.Cable == "1"){$("#checkCable").parent().show();}else{$("#checkCable").parent().hide();}
+            if(datos.Lapiz == "1"){$("#checkLapiz").parent().show();}else{$("#checkLapiz").parent().hide();}
+            if(datos.Powerbank == "1"){$("#checkPowerbank").parent().show();}else{$("#checkPowerbank").parent().hide();}
+            if(datos.Funda == "1"){$("#checkFunda").parent().show();}else{$("#checkFunda").parent().hide();}
+            if(datos.Cargador == "1"){$("#checkCargadorLaptop").parent().show();}else{$("#checkCargadorLaptop").parent().hide();}
+            if(datos.Maletin == "1"){$("#checkMaletin").parent().show();}else{$("#checkMaletin").parent().hide();}
+            if(datos.Mouse == "1"){$("#checkMouse").parent().show();}else{$("#checkMouse").parent().hide();}
         }
     })
-})
+});
+
+
+
 
 
 //Traducir datatable
