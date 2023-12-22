@@ -14,6 +14,16 @@ class AjaxDispositivos{
         echo json_encode($respuesta);
     }
 
+    public $idEditarDispositivo;
+    public function ajaxEditarDispositivo(){
+        $item = "iddispositivo";
+        $valor = $this->idEditarDispositivo;
+
+        $respuesta = ControladorDispositivos::ctrMostrarDispositivos($item, $valor);
+        echo json_encode($respuesta);
+
+    }
+
 }
 
 
@@ -23,4 +33,11 @@ if(isset($_POST["idDispositivo"])){
     $mostrar->idDispositivo = $_POST["idDispositivo"];
     $mostrar->ajaxMostrarDispositivo();
 
+}
+
+//PARA EDITAR LA INFORMACIÓN DEL DISPOSITIVO
+if(isset($_POST["idEditarDispositivo"])){
+    $editar = new AjaxDispositivos();
+    $editar->idEditarDispositivo = $_POST["idEditarDispositivo"];
+    $editar->ajaxEditarDispositivo();
 }

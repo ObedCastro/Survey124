@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-12-2023 a las 22:21:51
+-- Tiempo de generación: 22-12-2023 a las 23:12:27
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -106,6 +106,7 @@ CREATE TABLE `dispositivos` (
   `responsabledispositivo` varchar(50) NOT NULL,
   `sededispositivo` tinyint(4) NOT NULL,
   `estadodispositivo` int(11) NOT NULL,
+  `comentariodispositivo` text NOT NULL,
   `fecharegistro` date NOT NULL,
   `fechamodificacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -114,18 +115,19 @@ CREATE TABLE `dispositivos` (
 -- Volcado de datos para la tabla `dispositivos`
 --
 
-INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositivo`, `modelodispositivo`, `imeidispositivo`, `seriedispositivo`, `telefonodispositivo`, `accesorios`, `responsabledispositivo`, `sededispositivo`, `estadodispositivo`, `fecharegistro`, `fechamodificacion`) VALUES
-(1, 'Telefono', 'Samsung', 'Galaxy A33', '923723784756473', 'SD9F879DF79DF', '50378454378', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', 'Obed Alberto Castro Orellana', 0, 1, '2023-12-18', '2023-12-20 04:11:55'),
-(2, 'Telefono', 'Samsung', 'Galaxy A34', '849384837483748', 'IH98KH98798BB', '50375869444', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', 'Obed Alberto Castro Orellana', 0, 1, '2023-12-18', '2023-12-20 04:33:34'),
-(3, 'Telefono', 'Samsung', 'Galaxy A34', '9879879987', 'kj987iuhiu', '987987987', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 0, 1, '0000-00-00', '2023-12-20 04:33:38'),
-(4, 'Tablet', 'Samsung', 'Tab S9', '129812738728732', 'KJHSDF987SD9FSD', '50376453676', '{\"Cubo\":\"0\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', 'Obed Alberto Castro Orellana', 0, 1, '0000-00-00', '2023-12-20 04:34:19'),
-(5, 'Tablet', 'Samsung', 'Tab S9', '198276354612736', 'HJ34KHJ34KJ3', '50367584938', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Lapiz\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 0, 0, '0000-00-00', '2023-12-20 17:22:04'),
-(6, 'Telefono', 'Samsung', 'Galaxy A33', '123427182737281', 'KH123KH23K2HK', '50376253527', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2', 0, 0, '0000-00-00', '2023-12-20 04:33:43'),
-(7, 'Tablet', 'Samsung', 'Tab S9', '197827838297192', 'LKN3LKN2L3N2', '50478327827', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 0, 0, '0000-00-00', '2023-12-20 04:47:10'),
-(8, 'Telefono', 'Samsung', 'Galaxy A34', '098574837465746', 'KJ34JL3K434LJ', '50364345654', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 0, 0, '0000-00-00', '2023-12-20 04:33:47'),
-(9, 'Laptop', 'HP', '640 G9', '', 'LKH45L4545', '', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"0\"}', '1', 0, 0, '0000-00-00', '2023-12-20 04:58:31'),
-(10, 'Telefono', 'Samsung', 'Galaxy A33', '999999999999999', 'AAAAAA111111', '50367544321', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0...', '1', 0, 0, '0000-00-00', '2023-12-20 15:45:41'),
-(12, 'Tablet', 'Samsung', 'Tab S9', '324523535353523', 'SHD4535SGG', '50376854543', '', '1', 0, 0, '0000-00-00', '2023-12-20 20:04:16');
+INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositivo`, `modelodispositivo`, `imeidispositivo`, `seriedispositivo`, `telefonodispositivo`, `accesorios`, `responsabledispositivo`, `sededispositivo`, `estadodispositivo`, `comentariodispositivo`, `fecharegistro`, `fechamodificacion`) VALUES
+(1, 'Laptop', 'HP', '640 G9', '', '77777777777', '', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', 'Obed Alberto Castro Orellana', 2, 1, '', '2023-12-18', '2023-12-22 14:54:29'),
+(2, 'Telefono', 'Samsung', 'Galaxy A34', '849384837483748', 'IH98KH98798BB', '50375869444', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', 'Obed Alberto Castro Orellana', 2, 1, '', '2023-12-18', '2023-12-22 20:39:08'),
+(3, 'Telefono', 'Samsung', 'Galaxy A34', '9879879987', 'kj987iuhiu', '987987987', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 2, 1, '', '0000-00-00', '2023-12-21 21:58:59'),
+(4, 'Tablet', 'Samsung', 'Tab S9', '129812738728732', 'KJHSDF987SD9FSD', '50376453676', '{\"Cubo\":\"0\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', 'Obed Alberto Castro Orellana', 1, 1, '', '0000-00-00', '2023-12-21 22:14:37'),
+(5, 'Tablet', 'Samsung', 'Tab S9', '198276354612736', 'HJ34KHJ34KJ3', '50367584938', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Lapiz\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 3, 2, '', '0000-00-00', '2023-12-22 21:09:09'),
+(6, 'Telefono', 'Samsung', 'Galaxy A33', '123427182737281', 'KH123KH23K2HK', '50376253527', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2', 3, 3, '', '0000-00-00', '2023-12-22 21:39:48'),
+(7, 'Tablet', 'Samsung', 'Tab S9', '197827838297192', 'LKN3LKN2L3N2', '50478327827', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 1, 0, '', '0000-00-00', '2023-12-21 22:14:48'),
+(8, 'Telefono', 'Samsung', 'Galaxy A34', '098574837465746', 'KJ34JL3K434LJ', '50364345654', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 1, 0, '', '0000-00-00', '2023-12-21 22:14:51'),
+(9, 'Laptop', 'HP', '640 G9', '', 'LKH45L4545', '', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"0\"}', '1', 2, 0, 'Este fue autorizado por el Ingeniero Diego.', '0000-00-00', '2023-12-22 21:50:25'),
+(10, 'Telefono', 'Samsung', 'Galaxy A33', '999999999999999', 'AAAAAA111111', '50367544321', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0...', '1', 2, 2, '', '0000-00-00', '2023-12-22 21:09:02'),
+(12, 'Tablet', 'Samsung', 'Tab S9', '324523535353523', 'SHD4535SGG', '50376854543', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 2, 2, '', '0000-00-00', '2023-12-22 21:08:59'),
+(15, 'Telefono', 'HP', '640 G9', '', 'LLLLLLL00000', '', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"1\"}', '3', 1, 2, 'Este es un comentario modificado por el jefe Miguel', '0000-00-00', '2023-12-22 21:58:24');
 
 -- --------------------------------------------------------
 
@@ -207,7 +209,7 @@ ALTER TABLE `datos`
 -- AUTO_INCREMENT de la tabla `dispositivos`
 --
 ALTER TABLE `dispositivos`
-  MODIFY `iddispositivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `iddispositivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `sede`

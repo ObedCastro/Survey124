@@ -17,27 +17,41 @@ class TablaDispositivos{
             
             for($i=0; $i<count($dispositivos); $i++){
 
-                $tipoDispositivo = "<div class='d-flex justify-content-evenly'><div><button ideDispositivo='".$dispositivos[$i]['iddispositivo']."' type='button' class='btn btn-success btn-circle btnEditarDispositivo mb-0' data-bs-toggle='modal' data-bs-target='#modalDispositivos'><i class='fa fa-address-card-o' aria-hidden='true'></i></button></div><div class='d-flex flex-column justify-content-center'><h6 class='mb-0 text-sm'>".$dispositivos[$i]['tipodispositivo']."</h6><p class='text-xs text-secondary mb-0'>john@creative-tim.com</p></div></div>";
-                $marcaDispositivo = "<p class='text-xs font-weight-bold mb-0'>".$dispositivos[$i]['marcadispositivo']."</p><p class='text-xs text-secondary mb-0'>Organization</p>";
+                $tipoDispositivo = "<div class='d-flex justify-content-evenly'><div><button ideDispositivo='".$dispositivos[$i]['iddispositivo']."' type='button' class='btn btn-success btn-circle mb-0'><i class='fa fa-address-card-o' aria-hidden='true'></i></button></div><div class='d-flex flex-column justify-content-center'><h6 class='mb-0 text-sm'>".$dispositivos[$i]['tipodispositivo']."</h6></div></div>";
+                $marcaDispositivo = "<p class='text-xs font-weight-bold mb-0'>".$dispositivos[$i]['marcadispositivo']."</p>";
                 
-                $tdispositivo = $dispositivos[$i]['tipodispositivo'];
-                if($tdispositivo == "Telefono"){
-                    $colorElemento = "bg-gradient-success";
-                } else if($tdispositivo == "Tablet"){
-                    $colorElemento = "bg-gradient-warning";
-                } else if($tdispositivo == "Laptop"){
-                    $colorElemento = "bg-gradient-danger";
+                //Comprobar el estado del dispositivo
+                $edispositivo = $dispositivos[$i]['estadodispositivo'];
+                if($edispositivo == "1"){
+                    $colorElemento = "bg-light text-dark";
+                    $textoMostrar = "Disponible";
+                } else if($edispositivo == "2"){
+                    $colorElemento = "alert-success";
+                    $textoMostrar = "Asignado";
+                } else if($edispositivo == "3"){
+                    $colorElemento = "alert-danger";
+                    $textoMostrar = "Dañado";
                 }
 
-                $modeloDispositivo = "<span class='badge badge-sm ".$colorElemento."'>".$dispositivos[$i]['modelodispositivo']."</span>";
+                $modeloDispositivo = "<span class='text-secondary text-xs'>".$dispositivos[$i]['modelodispositivo']."</span>";
+
+                if($dispositivos[$i]['imeidispositivo']){
+                    $imeiDispositivo = "<span class='text-secondary text-xs font-weight-bold'>".$dispositivos[$i]['imeidispositivo']."</span>";
+                } else{
+                    $imeiDispositivo = "<span class='text-secondary text-xs font-weight-bold'>".$dispositivos[$i]['seriedispositivo']."</span>";
+                }
+                
                 $telefonoDispositivo = "<span class='text-secondary text-xs font-weight-bold'>".$dispositivos[$i]['telefonodispositivo']."</span>";
+
+                $estadodispositivo = "<span class='badge badge-sm ".$colorElemento."'>".$textoMostrar."</span>";
+
                 $resposableDispositivo = "<span class='text-secondary text-xs font-weight-bold'>".$dispositivos[$i]['responsabledispositivo']."</span>";
                 $acciones = "<ul class='navbar-nav justify-content-end'>".
                                 "<li class='nav-item dropdown pe-2 d-flex align-items-center'>".
                                     "<div class='nav-link text-body p-0'>".
                                     "<button idDispositivo='".$dispositivos[$i]['iddispositivo']."' type='button' class='btn btn-default btn-circle btnMostrarDispositivos mb-0' data-bs-toggle='modal' data-bs-target='#modalVerDetalleDispositivo'><i class='fa fa-eye'></i></button>".
-                                    "<button idDispositivo='".$dispositivos[$i]['iddispositivo']."' type='button' class='btn btn-secondary btn-circle mb-0'><i class='fa fa-list'></i></button>".
-                                    "<button idDispositivo='".$dispositivos[$i]['iddispositivo']."' type='button' class='btn btn-warning btn-circle mb-0'><i class='fa fa-trash'></i></button>".
+                                    "<button idEditarDispositivo='".$dispositivos[$i]['iddispositivo']."' type='button' class='btn btn-secondary btn-circle btnEditarDispositivo mb-0' data-bs-toggle='modal' data-bs-target='#modalEditarDispositivos'><i class='fa fa-pencil'></i></button>".
+                                    "<button idEliminarDispositivo='".$dispositivos[$i]['iddispositivo']."' type='button' class='btn btn-warning btn-circle mb-0'><i class='fa fa-trash'></i></button>".
                                     "</div>".
                                 "</li>".
                             "</ul>";        
@@ -46,7 +60,9 @@ class TablaDispositivos{
                             "'.$tipoDispositivo.'",
                             "'.$marcaDispositivo.'",
                             "'.$modeloDispositivo.'",
+                            "'.$imeiDispositivo.'",
                             "'.$telefonoDispositivo.'",
+                            "'.$estadodispositivo.'",
                             "'.$resposableDispositivo.'",
                             "'.$acciones.'"
                 ],';
