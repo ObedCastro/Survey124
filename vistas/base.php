@@ -67,6 +67,7 @@
             if(isset($_GET["ruta"])){
                 if($_GET["ruta"] == "inicio" || 
                    $_GET["ruta"] == "dispositivos" ||
+                   $_GET["ruta"] == "consultores" ||
                    $_GET["ruta"] == "salir"){
                     include "modulos/".$_GET["ruta"].".php";
                 }
