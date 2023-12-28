@@ -1,6 +1,6 @@
 <?php
 
-class ControladorConsultores{
+class ControladorConsultores{ 
 
     static public function ctrMostrarConsultores($item, $valor){
         $tabla = "consultores";
@@ -49,7 +49,56 @@ class ControladorConsultores{
                       </script>';
             }
         } else {
-            echo '<script> console.log("Error, no se ha colocado la informacion requerida"); </script>';
+            
+        }
+    }
+
+
+    //MODIFICAR CONSULTOR  
+    static public function ctrModificarConsultor(){
+        if(isset($_POST["idEditarConsultor"])){
+            if(isset($_POST["editarNombreConsultor"]) || isset($_POST["editarSedeConsultor"])){
+                $id = $_POST["idEditarConsultor"];
+                $tabla = "consultores";
+                $datos = array(
+                    "nombre"=>$_POST["editarNombreConsultor"],
+                    "dui"=>$_POST["editarDuiConsultor"],
+                    "contacto"=>$_POST["editarContactoConsultor"],
+                    "cargo"=>$_POST["editarCargoConsultor"],
+                    "sede"=>$_POST["editarSedeConsultor"]
+                );
+
+                $respuesta = ModeloConsultores::mdlModificarConsultor($id, $tabla, $datos);
+
+                if($respuesta == "ok"){
+                    echo '<script>
+                        Swal.fire({
+                            type: "success",
+                            icon: "success",
+                            title: "Información modificada",
+                            text: "La información del consultor fue actualizada correctamente",
+                            showConfirmButton: true,
+                            confirmButtonText: "Cerrar"                            
+                        }).then(function(result){
+                            window.location = "consultores";
+                        })
+                      </script>';
+                        
+                } else{
+                    echo '<script>
+                            Swal.fire({
+                                type: "error",
+                                icon: "error",
+                                title: "Error, no fue posible modificar esta información",
+                                showConfirmButton: true,
+                                confirmButtonText: "Cerrar"
+                                
+                            })
+                        </script>';
+                }
+            } else{
+                
+            }
         }
     }
 

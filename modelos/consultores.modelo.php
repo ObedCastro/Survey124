@@ -47,4 +47,25 @@ class ModeloConsultores{
         $stmt = null;
     }
 
+    //MODIFICAR INFORMACIÓN DE CONSULTOR
+    static public function mdlModificarConsultor($id, $tabla, $datos){
+        $sql = "UPDATE $tabla SET nombreconsultor = :nombreconsultor, duiconsultor = :duiconsultor, cargoconsultor = :cargoconsultor, contactoconsultor = :contactoconsultor, sedeconsultor = :sedeconsultor WHERE idconsultor = :idconsultor";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":nombreconsultor", $datos["nombre"], PDO::PARAM_STR);
+        $stmt->bindParam(":duiconsultor", $datos["dui"], PDO::PARAM_STR);
+        $stmt->bindParam(":cargoconsultor", $datos["cargo"], PDO::PARAM_STR);
+        $stmt->bindParam(":contactoconsultor", $datos["contacto"], PDO::PARAM_STR);
+        $stmt->bindParam(":sedeconsultor", $datos["sede"], PDO::PARAM_STR);
+        $stmt->bindParam(":idconsultor", $id, PDO::PARAM_INT);
+
+        if($stmt->execute()){
+            return "ok";
+        } else{
+            return "Error";
+        }
+
+        $stmt->close();
+        $stmt = null;
+    }
+
 }

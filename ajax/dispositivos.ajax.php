@@ -21,8 +21,18 @@ class AjaxDispositivos{
 
         $respuesta = ControladorDispositivos::ctrMostrarDispositivos($item, $valor);
         echo json_encode($respuesta);
-
     }
+
+    public $idEliminarDispositivo;
+    public function eliminarDispositivo(){
+        $item = "iddispositivo";
+        $valor = $this->idEliminarDispositivo;
+
+        $respuesta = ControladorDispositivos::ctrEliminarDispositivo($item, $valor);
+        echo json_encode($respuesta);
+    }
+
+    
 
 }
 
@@ -41,3 +51,11 @@ if(isset($_POST["idEditarDispositivo"])){
     $editar->idEditarDispositivo = $_POST["idEditarDispositivo"];
     $editar->ajaxEditarDispositivo();
 }
+
+//PARA ELIMINAR DISPOSITIVO
+if(isset($_POST["idEliminarDispositivo"])){
+    $editar = new AjaxDispositivos();
+    $editar->idEliminarDispositivo = $_POST["idEliminarDispositivo"];
+    $editar->eliminarDispositivo();
+}
+

@@ -24,7 +24,19 @@ class ControladorDispositivos{
                     "sede"=>$_POST["sedeDispositivo"]
                 );
 
-                $respuesta = ModeloDispositivos::mdlRegistrarDispositivo("dispositivos", $datos);
+                $accesorios = array(
+                    "Cubo"=>"0",
+                    "Cable"=>"0",
+                    "Funda"=>"0",
+                    "Lapiz"=>"0",
+                    "Powerbank"=>"0",
+                    "Maletin"=>"0",
+                    "Cargador"=>"0",
+                    "Mouse"=>"0",
+                    "Mousepad"=>"0"
+                );
+
+                $respuesta = ModeloDispositivos::mdlRegistrarDispositivo("dispositivos", $datos, $accesorios);
 
                 if($respuesta == "ok"){
                     echo '<script>
@@ -105,12 +117,72 @@ class ControladorDispositivos{
                 })
                 </script>';
 
-                return;
+                //return;
             }
 
         } else{
             
         }
+    }
+
+    //ASIGNAR DISPOSITIVO
+    static public function ctrAsignarDispositivo(){
+        $tabla = "dispositivos";
+
+        if(isset($_POST["idDispositivoAsignar"]) && isset($_POST["responsableDispositivo"])){
+            $id = $_POST["idDispositivoAsignar"];
+            $res = $_POST["responsableDispositivo"];
+
+            $datos = array(
+                "Cubo"=>$_POST["checkCubo"] == "on" ? "1" : "0",
+                "Cable"=>$_POST["checkCable"] == "on" ? "1" : "0",
+                "Funda"=>$_POST["checkFunda"] == "on" ? "1" : "0",
+                "Lapiz"=>$_POST["checkLapiz"] == "on" ? "1" : "0",
+                "Powerbank"=>$_POST["checkPowerbank"] == "on" ? "1" : "0",
+                "Maletin"=>$_POST["checkMaletin"] == "on" ? "1" : "0",
+                "Cargador"=>$_POST["checkCargador"] == "on" ? "1" : "0",
+                "Mouse"=>$_POST["checkMouse"] == "on" ? "1" : "0",
+                "Mousepad"=>$_POST["checkMousepad"] == "on" ? "1" : "0"
+            );
+
+            $respuesta = ModeloDispositivos::mdlAsignarDispositivo($tabla, $id, $res, $datos);
+
+            if($respuesta == "ok"){
+                echo '<script>
+                    Swal.fire({
+                        type: "success",
+                        icon: "success",
+                        title: "El dispositivo se registró correctamente.",
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar"                            
+                    }).then(function(result){
+                        window.location = "dispositivos";
+                    })
+                    </script>';
+            } else{
+                echo '<script>
+                Swal.fire({
+                    type: "error",
+                    icon: "error",
+                    title: "Error, no se ha podido registrar el dispositivo. Intente nuevamente",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar"
+                    
+                })
+                </script>';
+            }
+        } else{
+
+        }
+        
+    }
+
+    //ELIMINAR DISPOSITIVO
+    static public function ctrEliminarDispositivo($item, $valor){
+        $tabla = "dispositivos";
+
+        $respuesta = ModeloDispositivos::mdlEliminarDispositivos($tabla, $item, $valor);
+
     }
 
 }
