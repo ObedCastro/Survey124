@@ -13,7 +13,7 @@
 
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive px-4">
-                <table id="datatable" class="table align-items-center mb-0 tablaDispositivos">
+                <table id="datatable" class="table align-items-center mb-0 tablaDispositivos display" style="width:100%">
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dispositivo</th>
@@ -238,7 +238,25 @@
 
 
 
+<!-- MODAL DE CONFIRMACIÓN PARA ELIMINAR DISPOSITIVO -->
 
+<div class="modal fade" id="modalEliminarDispositivo" tabindex="-1" aria-labelledby="modalEliminarDispositivoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalEliminarDispositivoLabel">Eliminar dispositivo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Está seguro que desea eliminar este dispositivo?
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button id="btnEliminarDis" type="button" class="btn btn-primary" data-bs-dismiss="modal">Sí, eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -249,6 +267,9 @@
 
 <?php
   include "vistas/modulos/dispositivos/verDetalleDispositivo.php";
+
+  include "vistas/modulos/dispositivos/asignar.php";
 ?>
+
 
 <script src="vistas/js/gestorDispositivos.js"></script>

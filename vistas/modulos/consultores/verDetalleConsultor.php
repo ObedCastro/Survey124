@@ -18,37 +18,12 @@
                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                       <div class="d-flex flex-column">
                         <h6 class="mb-3 text-sm">DETALLES</h6>
-                        <span class="mb-2 text-xs">Tipo de consultor: <span id="mostrarTipoConsultor" class="text-dark font-weight-bold ms-sm-2"></span></span>
-                        <span class="mb-2 text-xs">Marca: <span id="mostrarMarcaConsultor" class="text-dark ms-sm-2 font-weight-bold"></span></span>
-                        <span class="mb-2 text-xs">Modelo: <span id="mostrarModeloConsultor" class="text-dark ms-sm-2 font-weight-bold"></span></span>
-                        <span class="mb-2 text-xs">IMEI: <span id="mostrarImeiConsultor" class="text-dark ms-sm-2 font-weight-bold"></span></span>
-                        <span class="mb-2 text-xs">Serie: <span id="mostrarSerieConsultor" class="text-dark ms-sm-2 font-weight-bold"></span></span>
-                        <span class="mb-2 text-xs">Teléfono: <span id="mostrarTelefonoConsultor" class="text-dark ms-sm-2 font-weight-bold"></span></span>
-                        <span class="mb-2 text-xs">Responsable: <span id="mostrarResponsableConsultor" class="text-dark ms-sm-2 font-weight-bold"></span></span>
-                      </div>
-                    </li>
-
-                    <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                      <div class="d-flex flex-column">
-                        <span class="mb-2 text-xs">Fecha de registro: <span id="fechaRegistro" class="text-dark font-weight-bold ms-sm-2"></span></span>
-                        <span class="mb-2 text-xs">Fecha de última modificación <span id="FechaModificacion" class="text-dark ms-sm-2 font-weight-bold"></span></span>
-                      </div>
-                    </li>
-                  </div>
-
-                  <div class="col-md-6">
-                    <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                      <div class="d-flex flex-column">
-                        <h6 class="mb-3 text-sm">Accesorios</h6>
-                        <span class="mb-2 text-xs"><i class="fa fa-check"></i> Cubo de carga <span id="checkCubo" class="text-dark font-weight-bold ms-sm-2"></span></span>
-                        <span class="mb-2 text-xs"><i class="fa fa-check"></i> Cable de cargador <span id="checkCable" class="text-dark ms-sm-2 font-weight-bold"></span></span>
-                        <span class="mb-2 text-xs"><i class="fa fa-check"></i> Lápiz óptico <span id="checkLapiz" class="text-dark ms-sm-2 font-weight-bold"></span></span>
-                        <span class="mb-2 text-xs"><i class="fa fa-check"></i> Funda <span id="checkFunda" class="text-dark ms-sm-2 font-weight-bold"></span></span>
-                        <span class="mb-2 text-xs"><i class="fa fa-check"></i> Powerbank <span id="checkPowerbank"   class="text-dark ms-sm-2 font-weight-bold"></span></span>
-                        <span class="mb-2 text-xs"><i class="fa fa-check"></i> Cargador <span id="checkCargadorLaptop" class="text-dark ms-sm-2 font-weight-bold"></span></span>
-                        <span class="mb-2 text-xs"><i class="fa fa-check"></i> Maletín <span id="checkMaletin" class="text-dark ms-sm-2 font-weight-bold"></span></span>
-                        <span class="mb-2 text-xs"><i class="fa fa-check"></i> Mouse <span id="checkMouse" class="text-dark ms-sm-2 font-weight-bold"></span></span>
-                        <span class="mb-2 text-xs"><i class="fa fa-check"></i> Mousepad <span id="checkMousepad" class="text-dark ms-sm-2 font-weight-bold"></span></span>
+                        <span class="mb-2 text-xs">Nombre de consultor: <span id="mostrarNombreConsultor" class="text-dark font-weight-bold ms-sm-2"></span></span>
+                        <span class="mb-2 text-xs">Dui: <span id="mostrarDuiConsultor" class="text-dark ms-sm-2 font-weight-bold"></span></span>
+                        <span class="mb-2 text-xs">Cargo: <span id="mostrarCargoConsultor" class="text-dark ms-sm-2 font-weight-bold"></span></span>
+                        <span class="mb-2 text-xs">Contacto: <span id="mostrarContactoConsultor" class="text-dark ms-sm-2 font-weight-bold"></span></span>
+                        <span class="mb-2 text-xs">Sede: <span id="mostrarSedeConsultor" class="text-dark ms-sm-2 font-weight-bold"></span></span>
+                        <span class="mb-2 text-xs">Fecha: <span id="mostrarFechaConsultor" class="text-dark ms-sm-2 font-weight-bold"></span></span>
                       </div>
                     </li>
                   </div>

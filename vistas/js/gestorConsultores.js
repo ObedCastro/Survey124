@@ -1,4 +1,42 @@
 
+//PARA MOSTRAR LA INFORMACIÓN DE UN CONSULTOR
+$(".tablaConsultores").on("click", ".btnMostrarConsultor", function(){
+    var idConsultor = $(this).attr("idConsultor");
+
+    var idBuscado = new FormData();
+    idBuscado.append("idConsultor", idConsultor);
+
+    
+})
+
+
+//PARA MODIFICAR LA INFORMACIÓN DE CONSULTOR
+$(".tablaConsultores").on("click", ".btnEditarConsultor", function(){
+    var idEditarConsultor = $(this).attr("idEditarConsultor");
+
+    var datos = new FormData();
+    datos.append("idEditarConsultor", idEditarConsultor);
+
+    $.ajax({
+        url: "ajax/consultores.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta){
+            $("#editarNombreConsultor").val(respuesta.nombreconsultor);
+            $("#editarDuiConsultor").val(respuesta.duiconsultor);
+            $("#editarCargoConsultor").val(respuesta.cargoconsultor);
+            $("#editarContactoConsultor").val(respuesta.contactoconsultor);
+            $("#editarSedeConsultor").val(respuesta.sedeconsultor);
+            $("#idEditarConsultor").val(respuesta.idconsultor);
+        }
+    })
+});
+
+
 //Traducir datatable
 $('#datatableConsultores').DataTable({
     "ajax": "ajax/tablaConsultores.ajax.php",
@@ -26,3 +64,5 @@ $('#datatableConsultores').DataTable({
         }
     }
 }); 
+
+

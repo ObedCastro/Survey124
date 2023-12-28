@@ -3,6 +3,16 @@
     justify-content: space-evenly;
 }
 
+.btn-circle {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+    margin-right: 2px;
+}
+
+
 .btn-circle.btn-xl {
     width: 70px;
     height: 70px;
@@ -13,12 +23,3 @@
     
 }
 
-.btn-circle {
-    width: 20px;
-    height: 20px;
-    border-radius: 15px;
-    text-align: center;
-    font-size: 12px;
-    line-height: 1.42857;
-    margin-right: 2px;
-}
