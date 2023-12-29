@@ -5,23 +5,23 @@ require_once "conexion.php";
 class ModeloDispositivos{
 
     static public function mdlMostrarDispositivos($tabla, $item, $valor){
-        
+
         if($item != null){
             //$sql1 = "SELECT dispositivos.* AND sedes.nombresede as ubicacion WHERE dispositivos.sededispositivo = sedes.sede";
             $sql = "SELECT * FROM $tabla WHERE $item = :$item";
             $stmt = Conexion::conectar()->prepare($sql);
             $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
             $stmt->execute();
-            
+
             return $stmt->fetch();
-            
+
         } else{
             $sql = "SELECT * FROM $tabla ORDER BY iddispositivo DESC";
             $stmt = Conexion::conectar()->prepare($sql);
             $stmt->execute();
-            
+
             return $stmt->fetchAll();
-    
+
         }
 
         $stmt->close();
@@ -81,20 +81,20 @@ class ModeloDispositivos{
 
 
     // ASIGNAR UN DISPOSITIVO
-    /*static public function mdlAsignarDispositivo($tabla, $id, $res, $datos){
+    static public function mdlAsignarDispositivo($tabla, $id, $res, $accesorios){
         $estado = "2";
         $sql = "UPDATE $tabla SET responsabledispositivo = :responsabledispositivo, estadodispositivo = $estado, accesorios = :accesorios WHERE iddispositivo = :$id";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(":responsabledispositivo", $res, PDO::PARAM_STR);
-        $stmt->bindParam(":accesorios", $datos, PDO::PARAM_STR);
+        $stmt->bindParam(":accesorios", $accesorios, PDO::PARAM_STR);
         $stmt->bindParam(":".$id, $id, PDO::PARAM_INT);
 
         if($stmt->execute()){
             return "ok";
         } else{
-            return "Error";
+            return "error";
         }
-    }*/
+    }
 
     //ELIMINAR DISPOSITIVO
     static public function mdlEliminarDispositivos($tabla, $item, $valor){
@@ -108,7 +108,7 @@ class ModeloDispositivos{
             return "Error";
         }
     }
-    
+
 
 
 }

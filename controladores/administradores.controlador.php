@@ -13,7 +13,7 @@ class ControladorAdministradores{
                 $valor = $_POST['ingEmail'];
 
                 $respuesta = ModeloAdministradores::mdlIngresarAdministradores($tabla, $item, $valor);
-                
+
                 if($respuesta["email"] == $_POST["ingEmail"] && $respuesta["password"] == $_POST["ingPassword"]){
                     $_SESSION["validarSesion"] = "ok";
                     $_SESSION["id"] = $respuesta["id"];
@@ -40,10 +40,17 @@ class ControladorAdministradores{
     }
 
     static public function ctrMostrarAdministradores(){
-        $tabla = "datos";
+        $tabla = "administradores";
         $datos = ModeloAdministradores::mdlMostrarAdministradores($tabla);
 
         return $datos;
+    }
+
+    static public function ctrNuevoAdmin($nombre, $email){
+      $tabla = "administradores";
+      $datos = ModeloAdministradores::mdlNuevoAdmin($tabla, $nombre, $email);
+
+      return $datos;
     }
 
 }

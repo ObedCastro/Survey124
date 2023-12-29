@@ -32,7 +32,37 @@ class AjaxDispositivos{
         echo json_encode($respuesta);
     }
 
-    
+    public function ajaxAsignarDispositivo(){
+
+      if(isset($_POST["idDispositivoAsignar"]) && isset($_POST["responsableDispositivo"])){
+        $id = $_POST["idDispositivoAsignar"];
+        $res = $_POST["responsableDispositivo"];
+
+        $datos = array(
+            "Cubo"=>isset($_POST["checkCubo"]) == "on" ? "1" : "0",
+            "Cable"=>isset($_POST["checkCable"]) == "on" ? "1" : "0",
+            "Funda"=>isset($_POST["checkFunda"]) == "on" ? "1" : "0",
+            "Lapiz"=>isset($_POST["checkLapiz"]) == "on" ? "1" : "0",
+            "Powerbank"=>isset($_POST["checkPowerbank"]) == "on" ? "1" : "0",
+            "Maletin"=>isset($_POST["checkMaletin"]) == "on" ? "1" : "0",
+            "Cargador"=>isset($_POST["checkCargador"]) == "on" ? "1" : "0",
+            "Mouse"=>isset($_POST["checkMouse"]) == "on" ? "1" : "0",
+            "Mousepad"=>isset($_POST["checkMousepad"]) == "on" ? "1" : "0"
+        );
+
+        $accesorios = json_encode($datos);
+
+        $respuesta = ControladorDispositivos::ctrAsignarDispositivo($id, $res, $accesorios);
+        
+        if($respuesta == "ok"){
+          echo json_encode(array("mensaje" => "Asignación realizada con éxito"));
+        }else{
+          echo json_encode(array("mensaje" => "Imposible asignar dispositivo"));
+        }
+
+      }
+
+    }
 
 }
 
@@ -59,3 +89,8 @@ if(isset($_POST["idEliminarDispositivo"])){
     $editar->eliminarDispositivo();
 }
 
+//PARA ASIGNAR DISPOSITIVO
+if(!isset($_POST["asignar"])){
+  $asignar = new AjaxDispositivos();
+  $asignar->ajaxAsignarDispositivo();
+}

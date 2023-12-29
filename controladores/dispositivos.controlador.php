@@ -45,7 +45,7 @@ class ControladorDispositivos{
                             icon: "success",
                             title: "El dispositivo se registró correctamente.",
                             showConfirmButton: true,
-                            confirmButtonText: "Cerrar"                            
+                            confirmButtonText: "Cerrar"
                         }).then(function(result){
                             window.location = "dispositivos";
                         })
@@ -60,7 +60,7 @@ class ControladorDispositivos{
                     title: "Error, no se ha podido registrar el dispositivo. Intente nuevamente",
                     showConfirmButton: true,
                     confirmButtonText: "Cerrar"
-                    
+
                 })
                 </script>';
 
@@ -68,12 +68,12 @@ class ControladorDispositivos{
             }
 
         } else{
-            
+
         }
     }
 
-    
-    //MODIFICAR DISPOSITIVO 
+
+    //MODIFICAR DISPOSITIVO
     static public function ctrModificarDispositivo(){
         if(isset($_POST["editarTipoDispositivo"])){
             if($_POST["editarTipoDispositivo"] == "Telefono" || $_POST["editarTipoDispositivo"] == "Tablet" || $_POST["editarTipoDispositivo"] == "Laptop"){
@@ -98,7 +98,7 @@ class ControladorDispositivos{
                             icon: "success",
                             title: "La información del dispositivo se modificó correctamente.",
                             showConfirmButton: true,
-                            confirmButtonText: "Cerrar"                            
+                            confirmButtonText: "Cerrar"
                         }).then(function(result){
                             window.location = "dispositivos";
                         })
@@ -113,7 +113,7 @@ class ControladorDispositivos{
                     title: "Error, no se ha podido registrar el dispositivo. Intente nuevamente",
                     showConfirmButton: true,
                     confirmButtonText: "Cerrar"
-                    
+
                 })
                 </script>';
 
@@ -121,46 +121,23 @@ class ControladorDispositivos{
             }
 
         } else{
-            
+
         }
     }
 
     //ASIGNAR DISPOSITIVO
-    /*static public function ctrAsignarDispositivo(){
-        $tabla = "dispositivos";
+    static public function ctrAsignarDispositivo($id, $res, $accesorios){
+       $tabla = "dispositivos";
 
-        if(isset($_POST["idDispositivoAsignar"]) && isset($_POST["responsableDispositivo"])){
-            $id = $_POST["idDispositivoAsignar"];
-            $res = $_POST["responsableDispositivo"];
+       $respuesta = ModeloDispositivos::mdlAsignarDispositivo($tabla, $id, $res, $accesorios);
 
-            $datos = array(
-                "Cubo"=>isset($_POST["checkCubo"]) == "on" ? "1" : "0",
-                "Cable"=>isset($_POST["checkCable"]) == "on" ? "1" : "0",
-                "Funda"=>isset($_POST["checkFunda"]) == "on" ? "1" : "0",
-                "Lapiz"=>isset($_POST["checkLapiz"]) == "on" ? "1" : "0",
-                "Powerbank"=>isset($_POST["checkPowerbank"]) == "on" ? "1" : "0",
-                "Maletin"=>isset($_POST["checkMaletin"]) == "on" ? "1" : "0",
-                "Cargador"=>isset($_POST["checkCargador"]) == "on" ? "1" : "0",
-                "Mouse"=>isset($_POST["checkMouse"]) == "on" ? "1" : "0",
-                "Mousepad"=>isset($_POST["checkMousepad"]) == "on" ? "1" : "0"
-            );
+       /*$item = "iddispositivo";
+       $infodispositivo = ModeloDispositivos::mdlMostrarDispositivos($tabla, $item, $id);
+       $infoconsultor = ModeloConsultores::mdlMostrarConsultores("consultores", "idconsultor", $res);
+*/
+       return $respuesta;
 
-            $accesorios = json_encode($datos);
-            $respuesta = ModeloDispositivos::mdlAsignarDispositivo($tabla, $id, $res, $accesorios);
-            
-            $item = "iddispositivo";
-            $infodispositivo = ModeloDispositivos::mdlMostrarDispositivos($tabla, $item, $id);
-            $infoconsultor = ModeloConsultores::mdlMostrarConsultores("consultores", "idconsultor", $_POST["responsableDispositivo"]);
-
-            
-
-            
-
-        } else{
-
-        }
-        
-    }*/
+   }
 
     //ELIMINAR DISPOSITIVO
     static public function ctrEliminarDispositivo($item, $valor){

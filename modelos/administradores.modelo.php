@@ -25,4 +25,17 @@ class ModeloAdministradores{
         return $stmt->fetchAll();
     }
 
+    static public function mdlNuevoAdmin($tabla, $nombre, $email){
+      $sql = "INSERT INTO $tabla (nombre, email) values (:nombre, :email)";
+      $stmt = Conexion::conectar()->prepare($sql);
+      $stmt->bindParam(":nombre", $nombre, PDO::PARAM_STR);
+      $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+
+      if($stmt->execute()){
+        return array("mensaje" => "Datos recibidos correctamente");
+      }else{
+        return array("error" => "No ha sido posible guardar la información");
+      }
+    }
+
 }
