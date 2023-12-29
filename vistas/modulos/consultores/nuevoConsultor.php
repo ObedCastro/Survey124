@@ -6,7 +6,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="" method="post" class="needs-validation">        
+        <form action="" method="post" class="needs-validation">
 
           <div class="mb-3 row">
             <div class="col-md-6">
@@ -48,14 +48,14 @@
                 <div class="col-md-3">
                     <label for="fechaRegistroConsultor" class="form-label">Fecha</label>
                     <?php
-                        date_default_timezone_set('America/El_Salvador'); 
-                        $fechahoy = date("Y-m-d"); 
+                        date_default_timezone_set('America/El_Salvador');
+                        $fechahoy = date("Y-m-d");
                         echo '<input type="text" class="form-control" placeholder="Ingrese el teléfono" value="'.$fechahoy.'" id="fechaRegistroConsultor" name="fechaRegistroConsultor" readonly>';
                     ?>
                     <div class="valid-feedback"></div>
                 </div>
           </div>
-            
+
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -64,8 +64,8 @@
         </form>
 
         <?php
-          $registrarConsultor = new ControladorConsultores();
-          $registrarConsultor->ctrRegistrarConsultor();
+        /*  $registrarConsultor = new ControladorConsultores();
+          $registrarConsultor->ctrRegistrarConsultor();*/
         ?>
 
       </div>

@@ -84,7 +84,7 @@
               <div class="valid-feedback"></div>
             </div>
           </div>
-        
+
 
           <div class="mb-3 row">
             <div class="col-md-3">
@@ -150,7 +150,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        
+
       <form action="" method="post" class="needs-validation">
           <div class="mb-3 row">
             <div class="col-md-4">
@@ -183,7 +183,7 @@
               <div class="valid-feedback"></div>
             </div>
           </div>
-        
+
 
           <div class="mb-3 row">
             <div class="col-md-3">
@@ -224,7 +224,7 @@
             <button type="submit" class="btn btn-primary">Guardar</button>
           </div>
         </form>
-      
+
 
       <?php
           $modificarDispositivo = new ControladorDispositivos();

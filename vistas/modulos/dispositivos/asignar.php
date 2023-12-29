@@ -115,7 +115,7 @@
       </form>
     
       <?php
-        $asignarDispositivo = new ControladorDispositivos();
+        $asignarDispositivo = new ControladorAsignaciones();
         $asignarDispositivo->ctrAsignarDispositivo();
       ?>
       
