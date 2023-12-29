@@ -1,13 +1,13 @@
 <?php
 
-class ControladorConsultores{ 
+class ControladorConsultores{
 
     static public function ctrMostrarConsultores($item, $valor){
         $tabla = "consultores";
         $datos = ModeloConsultores::mdlMostrarConsultores($tabla, $item, $valor);
 
         return $datos;
-    } 
+    }
 
     //REGISTRAR NUEVO CONSULTOR
     static public function ctrRegistrarConsultor(){
@@ -31,7 +31,7 @@ class ControladorConsultores{
                             icon: "success",
                             title: "El consultor se registró correctamente.",
                             showConfirmButton: true,
-                            confirmButtonText: "Cerrar"                            
+                            confirmButtonText: "Cerrar"
                         }).then(function(result){
                             window.location = "consultores";
                         })
@@ -44,17 +44,17 @@ class ControladorConsultores{
                             title: "Error, no se ha podido registrar el dispositivo. Intente nuevamente",
                             showConfirmButton: true,
                             confirmButtonText: "Cerrar"
-                            
+
                         })
                       </script>';
             }
         } else {
-            
+          echo '<script>alert("Ejecutando");</script>' ;
         }
     }
 
 
-    //MODIFICAR CONSULTOR  
+    //MODIFICAR CONSULTOR
     static public function ctrModificarConsultor(){
         if(isset($_POST["idEditarConsultor"])){
             if(isset($_POST["editarNombreConsultor"]) || isset($_POST["editarSedeConsultor"])){
@@ -78,12 +78,12 @@ class ControladorConsultores{
                             title: "Información modificada",
                             text: "La información del consultor fue actualizada correctamente",
                             showConfirmButton: true,
-                            confirmButtonText: "Cerrar"                            
+                            confirmButtonText: "Cerrar"
                         }).then(function(result){
                             window.location = "consultores";
                         })
                       </script>';
-                        
+
                 } else{
                     echo '<script>
                             Swal.fire({
@@ -92,12 +92,12 @@ class ControladorConsultores{
                                 title: "Error, no fue posible modificar esta información",
                                 showConfirmButton: true,
                                 confirmButtonText: "Cerrar"
-                                
+
                             })
                         </script>';
                 }
             } else{
-                
+
             }
         }
     }

@@ -81,12 +81,12 @@ class ModeloDispositivos{
 
 
     // ASIGNAR UN DISPOSITIVO
-    static public function mdlAsignarDispositivo($tabla, $id, $res, $datos){
+    /*static public function mdlAsignarDispositivo($tabla, $id, $res, $datos){
         $estado = "2";
         $sql = "UPDATE $tabla SET responsabledispositivo = :responsabledispositivo, estadodispositivo = $estado, accesorios = :accesorios WHERE iddispositivo = :$id";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(":responsabledispositivo", $res, PDO::PARAM_STR);
-        $stmt->bindParam(":accesorios", json_encode($datos), PDO::PARAM_STR);
+        $stmt->bindParam(":accesorios", $datos, PDO::PARAM_STR);
         $stmt->bindParam(":".$id, $id, PDO::PARAM_INT);
 
         if($stmt->execute()){
@@ -94,7 +94,7 @@ class ModeloDispositivos{
         } else{
             return "Error";
         }
-    }
+    }*/
 
     //ELIMINAR DISPOSITIVO
     static public function mdlEliminarDispositivos($tabla, $item, $valor){
