@@ -3,7 +3,7 @@
           <?php
 
           if($_GET["ruta"] != "inicio"){echo '<a class="nav-link" href="inicio">';}else{echo '<a class="nav-link active" href="inicio">';}
-          
+
           ?>
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -27,7 +27,7 @@
           <?php
             if($_GET["ruta"] != "dispositivos"){echo '<a class="nav-link" href="dispositivos">';}else{echo '<a class="nav-link active" href="dispositivos">';}
           ?>
-          
+
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -69,7 +69,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="asignaciones">
+          <a class="nav-link  " href="administradores">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>box-3d-50</title>
@@ -86,7 +86,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Asignaciones</span>
+            <span class="nav-link-text ms-1">Administradores</span>
           </a>
         </li>
         <li class="nav-item">

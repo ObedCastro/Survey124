@@ -4,13 +4,13 @@
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
 
-      <form action="" method="post" id="formularioAsignacion">
+      <form method="POST" id="formularioAsignacion">
 
         <div class="modal-header">
             <h1 class="modal-title fs-5" id="modalAsignarDispositivoLabel">Asignar dispositivo</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        
+
         <div class="modal-body">
 
             <div class="mb-3 row">
@@ -30,8 +30,8 @@
                             <span class="mb-2 text-xs">Registrado en: <span class="text-dark ms-sm-2 font-weight-bold detalleAsignarFecha"></span></span>
                             <span class="mb-2 text-xs">Más información: <span class="text-dark ms-sm-2 font-weight-bold detalleAsignarComentario"></span></span>
                             <?php
-                                date_default_timezone_set('America/El_Salvador'); 
-                                $fechahoy = date("d-m-Y"); 
+                                date_default_timezone_set('America/El_Salvador');
+                                $fechahoy = date("d-m-Y");
                                 echo '<span class="mb-2 text-xs">Fecha de asignación: <span class="text-dark ms-sm-2 font-weight-bold">'.$fechahoy.'</span></span>';
                             ?>
                         </div>
@@ -44,12 +44,12 @@
                     <label for="selectConsultores" class="form-label">Consultor responsable</label>
                     <select class="form-control choices-single form-select" id="selectConsultores" name="responsableDispositivo">
                         <option></option>
-            
+
                         <?php
                             $item = null;
                             $valor = null;
                             $consultores = ControladorConsultores::ctrMostrarConsultores($item, $valor);
-            
+
                             foreach ($consultores as $consultor) {
                                 echo '<option value="'.$consultor["idconsultor"].'">'.$consultor["nombreconsultor"].'</option>';
                             }
@@ -58,7 +58,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            
+
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="checkCubo" id="checkCubo">
                                 <label class="form-check-label" for="checkCubo">Cubo de carga</label>
@@ -103,25 +103,33 @@
 
                 </div>
 
-            </div>          
+            </div>
 
         </div>
 
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Asignar</button>
+            <input type="submit" class="btn btn-primary btnNuevaAsignacion" name="asignar" value="Asignar">
         </div>
 
       </form>
-    
+
       <?php
-        $asignarDispositivo = new ControladorAsignaciones();
-        $asignarDispositivo->ctrAsignarDispositivo();
+        /*$asignarDispositivo = new ControladorAsignaciones();
+        $asignarDispositivo->ctrAsignarDispositivo();*/
       ?>
-      
+
     </div>
   </div>
 </div>
 
 
 
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+  //Asignar dispositivo
+
+  })
+</script>

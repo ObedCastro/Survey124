@@ -1,3 +1,84 @@
+$(document).ready(function(){
+    //Traducir datatable
+    var table = $('#datatable').DataTable({
+      "ajax": "ajax/tablaDispositivos.ajax.php",
+      "deferRender": true,
+      "retrieve": true,
+      "processing": true,
+      language: {
+          "decimal": "",
+          "emptyTable": "No hay información",
+          "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+          "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+          "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+          "infoPostFix": "",
+          "thousands": ",",
+          "lengthMenu": "Mostrar _MENU_ Entradas",
+          "loadingRecords": "Cargando...",
+          "processing": "Procesando...",
+          "search": "Buscar:",
+          "zeroRecords": "Sin resultados encontrados",
+          "paginate": {
+              "first": "Primero",
+              "last": "Ultimo",
+              "next": "Siguiente",
+              "previous": "Anterior"
+          }
+      },
+      dom: 'Bfrtip',
+          buttons: [
+              {
+                  extend: 'pdfHtml5',
+                  download: 'open'
+              },
+              {
+                  extend: 'excelHtml5',
+                  autoFilter: true,
+                  sheetName: 'Exported data'
+              }
+          ]
+      });
+
+    //__________________________________________________________________________________________
+
+    //Creamos una fila en el head de la tabla y lo clonamos para cada columna
+    $('#datatable thead tr').clone(true).appendTo( '#datatable thead' );
+    $('#datatable thead tr:eq(1) th').each( function (i) {
+        $(this).html( '<input style="width: 100%;" type="text" placeholder="Search..." />' );
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        });
+    });
+
+
+$("#formularioAsignacion").on("click", ".btnNuevaAsignacion", function(event){
+    //$("#formularioAsignacion" ).on( "submit", function( event ) {
+      event.preventDefault();
+      let datosAsignar = $("#formularioAsignacion").serialize();
+
+      $.ajax({
+        url: 'ajax/dispositivos.ajax.php',
+        method: "POST",
+        dataType: "json",
+        data: datosAsignar,
+        success: function(respuesta){
+          table.ajax.reload();
+          $("#modalAsignarDispositivo").modal('hide');
+        },
+        error: function(error){
+          console.log("Erroraso: "+error);
+        }
+      });
+    });
+
+});
+
+
 
 
 //Mostrar información de un solo dispositivo
@@ -38,12 +119,12 @@ $(".tablaDispositivos").on("click", ".btnMostrarDispositivos", function(){
                 if(datos.Maletin == "1"){$("#checkMaletin").parent().show();}else{$("#checkMaletin").parent().hide();}
                 if(datos.Mouse == "1"){$("#checkMouse").parent().show();}else{$("#checkMouse").parent().hide();}
                 if(datos.Mousepad == "1"){$("#checkMousepad").parent().show();}else{$("#checkMousepad").parent().hide();}
-                
+
             } else{
                 console.log("Sin datos");
             }
 
-            
+
 
         }
     })
@@ -79,6 +160,7 @@ $(".tablaDispositivos").on("click", ".btnEditarDispositivo", function(){
     })
 });
 
+//__________________________________________________________________________________________
 //Mostrar información antes de asignar un dispositivo
 $(".tablaDispositivos").on("click", ".btnAsignarDispositivo", function(){
     var idDispositivo = $(this).attr("idDispositivo")
@@ -113,7 +195,7 @@ $(".tablaDispositivos").on("click", ".btnAsignarDispositivo", function(){
             }else{
                 $("#modalAsignarDispositivo .detalleAsignarTelefono").parent().hide();
             }
-            
+
             $("#modalAsignarDispositivo .detalleAsignarSerie").text(respuesta['seriedispositivo']);
             $("#modalAsignarDispositivo .detalleAsignarSede").text(respuesta['sededispositivo']);
             $("#modalAsignarDispositivo .detalleAsignarFecha").text(respuesta['fecharegistro']);
@@ -122,6 +204,8 @@ $(".tablaDispositivos").on("click", ".btnAsignarDispositivo", function(){
     })
 })
 
+
+//__________________________________________________________________________________________
 //Eliminar dispositivo
 $(".tablaDispositivos").on("click", ".btnEliminarDispositivo", function(){
     var idEliminarDispositivo = $(this).attr("idEliminarDispositivo")
@@ -129,7 +213,7 @@ $(".tablaDispositivos").on("click", ".btnEliminarDispositivo", function(){
     $("#btnEliminarDis").click(function(){
         var dato = new FormData();
         dato.append("idEliminarDispositivo", idEliminarDispositivo);
-    
+
         $.ajax({
             url: "ajax/dispositivos.ajax.php",
             method: "POST",
@@ -144,7 +228,7 @@ $(".tablaDispositivos").on("click", ".btnEliminarDispositivo", function(){
                     icon: "success",
                     title: "El dispositivo ha sido eliminado",
                     showConfirmButton: true,
-                    confirmButtonText: "Cerrar"                            
+                    confirmButtonText: "Cerrar"
                 }).then(function(result){
                     window.location = "dispositivos";
                 })
@@ -158,63 +242,4 @@ $(".tablaDispositivos").on("click", ".btnEliminarDispositivo", function(){
 //Aplicar el formato con buscador del select de asignación de dispositivo
 new Choices(document.querySelector(".choices-single"));
 
-
-$(document).ready(function(){
-
-    //Traducir datatable
-var table = $('#datatable').DataTable({
-    "ajax": "ajax/tablaDispositivos.ajax.php",
-    "deferRender": true,
-    "retrieve": true,
-    "processing": true,
-    language: {
-        "decimal": "",
-        "emptyTable": "No hay información",
-        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-        "infoPostFix": "",
-        "thousands": ",",
-        "lengthMenu": "Mostrar _MENU_ Entradas",
-        "loadingRecords": "Cargando...",
-        "processing": "Procesando...",
-        "search": "Buscar:",
-        "zeroRecords": "Sin resultados encontrados",
-        "paginate": {
-            "first": "Primero",
-            "last": "Ultimo",
-            "next": "Siguiente",
-            "previous": "Anterior"
-        }
-    },
-    dom: 'Bfrtip',
-        buttons: [
-            {
-                extend: 'pdfHtml5',
-                download: 'open'
-            },
-            {
-                extend: 'excelHtml5',
-                autoFilter: true,
-                sheetName: 'Exported data'
-            }
-        ]
-});
- 
-    //Creamos una fila en el head de la tabla y lo clonamos para cada columna
-    $('#datatable thead tr').clone(true).appendTo( '#datatable thead' );
- 
-    $('#datatable thead tr:eq(1) th').each( function (i) {
-        $(this).html( '<input style="width: 100%;" type="text" placeholder="Search..." />' );
-  
-        $( 'input', this ).on( 'keyup change', function () {
-            if ( table.column(i).search() !== this.value ) {
-                table
-                    .column(i)
-                    .search( this.value )
-                    .draw();
-            }
-        } );
-    } );  
-});
-
+//__________________________________________________________________________________________

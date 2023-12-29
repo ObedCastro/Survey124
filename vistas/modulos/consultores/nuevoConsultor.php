@@ -64,8 +64,8 @@
         </form>
 
         <?php
-        /*  $registrarConsultor = new ControladorConsultores();
-          $registrarConsultor->ctrRegistrarConsultor();*/
+          $registrarConsultor = new ControladorConsultores();
+          $registrarConsultor->ctrRegistrarConsultor();
         ?>
 
       </div>

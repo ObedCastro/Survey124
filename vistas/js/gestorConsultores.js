@@ -6,7 +6,7 @@ $(".tablaConsultores").on("click", ".btnMostrarConsultor", function(){
     var idBuscado = new FormData();
     idBuscado.append("idConsultor", idConsultor);
 
-    
+
 })
 
 
@@ -38,7 +38,7 @@ $(".tablaConsultores").on("click", ".btnEditarConsultor", function(){
 
 
 //Traducir datatable
-$('#datatableConsultores').DataTable({
+var tabla = $('#datatableConsultores').DataTable({
     "ajax": "ajax/tablaConsultores.ajax.php",
     "deferRender": true,
     "retrieve": true,
@@ -63,6 +63,4 @@ $('#datatableConsultores').DataTable({
             "previous": "Anterior"
         }
     }
-}); 
-
-
+});
