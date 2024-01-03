@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-12-2023 a las 04:38:30
+-- Tiempo de generación: 03-01-2024 a las 18:23:57
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -31,6 +31,7 @@ CREATE TABLE `administradores` (
   `id` int(11) NOT NULL,
   `nombre` text NOT NULL,
   `email` text NOT NULL,
+  `cargo` varchar(50) NOT NULL,
   `foto` text NOT NULL,
   `password` text NOT NULL,
   `perfil` text NOT NULL,
@@ -41,9 +42,19 @@ CREATE TABLE `administradores` (
 -- Volcado de datos para la tabla `administradores`
 --
 
-INSERT INTO `administradores` (`id`, `nombre`, `email`, `foto`, `password`, `perfil`, `fecha`) VALUES
-(1, 'Obed Castro', 'admin@gmail.com', '', 'admin', 'superadministrador', '2023-12-14 16:14:17'),
-(2, 'Usuario prueba', 'prueba@gmail.com', '', 'prueba', 'editor', '2023-12-14 16:14:17');
+INSERT INTO `administradores` (`id`, `nombre`, `email`, `cargo`, `foto`, `password`, `perfil`, `fecha`) VALUES
+(1, 'Obed Alberto Castro Orellana', 'admin@gmail.com', 'Técnico de Soporte Informático', '', 'admin', 'superadministrador', '2024-01-03 15:46:04'),
+(2, 'Usuario prueba', 'prueba@gmail.com', 'Técnico de Soporte Informático', '', 'prueba', 'editor', '2024-01-03 15:46:13'),
+(3, 'asdfasfd', 'asfasfd@asfasf.com', '', '', '', '', '2023-12-29 19:22:41'),
+(4, 'Miguel Angel Portillo Lozano', 'miguel.portillo@bcr.gob.sv', 'Técnico de Soporte Informático', '', 'admin2', 'superadministrador', '2024-01-03 15:50:13'),
+(5, 'Miguel Portillo 2', 'migual@gmail.com', '', '', '', '', '2023-12-29 19:49:34'),
+(6, 'Miguel Portillo 3', 'miguelito@gmail.com', '', '', '', '', '2023-12-29 19:50:26'),
+(7, 'Miguel Portillo 4', 'portillo@gmail.com', '', '', '', '', '2023-12-29 19:53:10'),
+(8, 'Migueeeeeel', 'migueee@gmail.com', '', '', '', '', '2023-12-29 19:54:10'),
+(9, 'scxbcncnv', 'aaaaa@aaaa.com', '', '', '', '', '2023-12-29 19:55:50'),
+(10, 'bbb', 'bbb@gmail.com', '', '', '', '', '2023-12-29 19:56:34'),
+(11, 'Diego Dubán Rivera Martinez', 'diego.rivera@bcr.gob.sv', 'Técnico de Soporte Informático', '', 'admin3', 'superadministrador', '2024-01-03 15:50:18'),
+(12, 'Prueba', 'prueba@gmail.com', '', '', '', '', '2023-12-29 19:58:57');
 
 -- --------------------------------------------------------
 
@@ -68,12 +79,15 @@ CREATE TABLE `consultores` (
 --
 
 INSERT INTO `consultores` (`idconsultor`, `nombreconsultor`, `duiconsultor`, `cargoconsultor`, `contactoconsultor`, `dispositivo_id`, `sedeconsultor`, `fechaactualizacionconsultor`, `fecharegistroconsultor`) VALUES
-(1, 'Consultor test 1', 'DUI1', 'Cargo consultor test 1', 'Contacto1', 1, 'Sede1', '2023-12-24 03:34:09', '2023-12-23'),
-(2, 'Consultor test 2', 'DUI2', 'Cargo consultor test 2', 'Contacto2', 2, 'Sede2', '2023-12-24 03:34:09', '2023-12-23'),
-(3, 'Consultor test 3', 'DUI3', 'Cargo consultor test 3', 'Contacto3', 3, 'Sede3', '2023-12-24 04:37:11', '2023-12-23'),
-(4, 'Consultor 1 ingresando', '', '', '', 0, '1', '2023-12-24 05:38:57', '0000-00-00'),
+(1, 'Wendy Yasmín Velloso Jiménez', 'DUI1', 'Cargo consultor test 1', 'Contacto1', 1, '1', '2024-01-03 16:37:07', '2023-12-23'),
+(2, 'Consultor test 2', 'DUI2', 'Cargo consultor test 2', 'Contacto2', 2, '2', '2024-01-03 16:29:27', '2023-12-23'),
+(3, 'Consultor test 3', 'DUI3', 'Cargo consultor test 3', 'Contacto3', 3, '1', '2024-01-03 16:29:35', '2023-12-23'),
+(4, 'Consultor 1 ingresando', '55555555-0', 'Cargo inventado', '50332323233', 0, '1', '2023-12-26 20:58:19', '0000-00-00'),
 (5, 'Consultor 2 ingresando', '22222222-2', 'Cargo de prueba 2', '50316558747', 0, '1', '2023-12-24 05:46:35', '0000-00-00'),
-(6, 'Consultor 3 ingresando', '11111111-1', 'Cargo de prueba 3', '50312345675', 0, '1', '2023-12-24 05:49:47', '2023-12-23');
+(6, 'Consultor 3 ingresando', '11111111-1', 'Cargo de prueba 3', '50312345675', 0, '1', '2023-12-24 05:49:47', '2023-12-23'),
+(7, 'Consultor Obed', '12121212-1', 'Soporte', '12121212', 0, '1', '2023-12-26 16:41:50', '2023-12-26'),
+(8, 'Miguel Portillo Lozano', '0000000000', 'rrrrrrrrrrrrrrrr', '1123123123', 0, '2', '2024-01-03 16:30:01', '2023-12-26'),
+(9, 'Consultor Consultor', '923749414-', 'Gerente de GITI', '53253245325', 0, '2', '2023-12-29 16:24:51', '2023-12-29');
 
 -- --------------------------------------------------------
 
@@ -94,7 +108,7 @@ CREATE TABLE `dispositivos` (
   `sededispositivo` tinyint(4) NOT NULL,
   `estadodispositivo` int(11) NOT NULL,
   `comentariodispositivo` text NOT NULL,
-  `fecharegistro` date NOT NULL,
+  `fecharegistro` date NOT NULL DEFAULT current_timestamp(),
   `fechamodificacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `fechaasignacion` date NOT NULL DEFAULT current_timestamp(),
   `fecharecepcion` date NOT NULL DEFAULT current_timestamp()
@@ -105,18 +119,18 @@ CREATE TABLE `dispositivos` (
 --
 
 INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositivo`, `modelodispositivo`, `imeidispositivo`, `seriedispositivo`, `telefonodispositivo`, `accesorios`, `responsabledispositivo`, `sededispositivo`, `estadodispositivo`, `comentariodispositivo`, `fecharegistro`, `fechamodificacion`, `fechaasignacion`, `fecharecepcion`) VALUES
-(1, 'Laptop', 'HP', '640 G9', '', '77777777777', '', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', 'Obed Alberto Castro Orellana', 2, 1, '', '2023-12-18', '2023-12-22 14:54:29', '2023-12-23', '2023-12-23'),
-(2, 'Telefono', 'Samsung', 'Galaxy A34', '849384837483748', 'IH98KH98798BB', '50375869444', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', 'Obed Alberto Castro Orellana', 2, 1, '', '2023-12-18', '2023-12-22 20:39:08', '2023-12-23', '2023-12-23'),
-(3, 'Telefono', 'Samsung', 'Galaxy A34', '9879879987', 'kj987iuhiu', '987987987', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 2, 1, '', '0000-00-00', '2023-12-21 21:58:59', '2023-12-23', '2023-12-23'),
-(4, 'Tablet', 'Samsung', 'Tab S9', '129812738728732', 'KJHSDF987SD9FSD', '50376453676', '{\"Cubo\":\"0\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', 'Obed Alberto Castro Orellana', 1, 1, '', '0000-00-00', '2023-12-21 22:14:37', '2023-12-23', '2023-12-23'),
-(5, 'Tablet', 'Samsung', 'Tab S9', '198276354612736', 'HJ34KHJ34KJ3', '50367584938', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Lapiz\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 3, 2, '', '0000-00-00', '2023-12-22 21:09:09', '2023-12-23', '2023-12-23'),
-(6, 'Telefono', 'Samsung', 'Galaxy A33', '123427182737281', 'KH123KH23K2HK', '50376253527', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2', 3, 3, '', '0000-00-00', '2023-12-22 21:39:48', '2023-12-23', '2023-12-23'),
-(7, 'Tablet', 'Samsung', 'Tab S9', '197827838297192', 'LKN3LKN2L3N2', '50478327827', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 1, 0, '', '0000-00-00', '2023-12-21 22:14:48', '2023-12-23', '2023-12-23'),
-(8, 'Telefono', 'Samsung', 'Galaxy A34', '098574837465746', 'KJ34JL3K434LJ', '50364345654', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 1, 0, '', '0000-00-00', '2023-12-21 22:14:51', '2023-12-23', '2023-12-23'),
-(9, 'Laptop', 'HP', '640 G9', '', 'LKH45L4545', '', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"0\"}', '1', 2, 0, 'Este fue autorizado por el Ingeniero Diego.', '0000-00-00', '2023-12-22 21:50:25', '2023-12-23', '2023-12-23'),
-(10, 'Telefono', 'Samsung', 'Galaxy A33', '999999999999999', 'AAAAAA111111', '50367544321', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"0...', '1', 2, 2, '', '0000-00-00', '2023-12-22 21:09:02', '2023-12-23', '2023-12-23'),
-(12, 'Tablet', 'Samsung', 'Tab S9', '324523535353523', 'SHD4535SGG', '50376854543', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 2, 2, '', '0000-00-00', '2023-12-22 21:08:59', '2023-12-23', '2023-12-23'),
-(15, 'Telefono', 'HP', '640 G9', '', 'LLLLLLL00000', '', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"1\"}', '3', 1, 2, 'Este es un comentario modificado por el jefe Miguel', '0000-00-00', '2023-12-22 21:58:24', '2023-12-23', '2023-12-23');
+(6, 'Telefono', 'Samsung', 'Galaxy A33', '123427182737281', 'KH123KH23K2HK', '50376253527', '', '', 3, 1, '', '0000-00-00', '2024-01-03 15:11:16', '2023-12-23', '2023-12-23'),
+(10, 'Telefono', 'Samsung', 'Galaxy A33', '999999999999999', 'AAAAAA111111', '50367544321', '', '', 2, 1, '', '0000-00-00', '2023-12-29 22:08:53', '2023-12-23', '2023-12-23'),
+(19, 'Telefono', 'Samsung', 'Galaxy A34', '454546575334', '343434343', '76678990', '', '', 2, 1, '', '2023-12-28', '2024-01-03 16:36:59', '2023-12-28', '2023-12-28'),
+(20, 'Tablet', 'Samsung', 'Galaxy A33', '323243445465', '554656565', '66445454', '', '', 3, 1, '', '2023-12-28', '2024-01-03 16:36:59', '2023-12-28', '2023-12-28'),
+(21, 'Tablet', 'Samsung', 'Tab S9', '534535435346', '645435435', '23234556', '', '', 2, 1, '', '2023-12-28', '2024-01-03 16:36:59', '2023-12-28', '2023-12-28'),
+(22, 'Tablet', 'Samsung', 'Tab S9', '434234235235234', '3432432323', '45678909', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 1, 2, '', '2023-12-28', '2024-01-03 16:45:55', '2023-12-28', '2023-12-28'),
+(23, 'Telefono', 'Samsung', 'Galaxy A34', '121323434335', '654645653444', '67567890', '', '', 1, 1, '', '2023-12-28', '2024-01-03 16:36:59', '2023-12-28', '2023-12-28'),
+(24, 'Telefono', 'Samsung', 'Galaxy A33', '87686786556765', '4545455454', '78909832', '', '', 1, 1, '', '2023-12-28', '2024-01-03 16:36:59', '2023-12-28', '2023-12-28'),
+(26, 'Tablet', 'Lenovo', 'Tab S9', '12312332343', '43434353', '7875656879', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 1, 2, '', '2023-12-28', '2024-01-03 16:44:36', '2023-12-28', '2023-12-28'),
+(27, 'Telefono', 'Samsung', 'Galaxy A34', '543434', '34343', '535353', '', '', 0, 1, '', '2023-12-28', '2024-01-03 16:36:59', '2023-12-28', '2023-12-28'),
+(28, 'Telefono', 'Samsung', 'Galaxy A33', '777777777777777', '7777777777777', '50377777777', '', '', 1, 1, '', '2023-12-29', '2024-01-03 16:36:59', '2023-12-29', '2023-12-29'),
+(29, 'Laptop', 'HP', '640 G9', '', 'ASDASD1213', '', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"1\"}', '1', 1, 2, '', '2024-01-03', '2024-01-03 16:37:18', '2024-01-03', '2024-01-03');
 
 -- --------------------------------------------------------
 
@@ -207,19 +221,19 @@ ALTER TABLE `sedes`
 -- AUTO_INCREMENT de la tabla `administradores`
 --
 ALTER TABLE `administradores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `consultores`
 --
 ALTER TABLE `consultores`
-  MODIFY `idconsultor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idconsultor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `dispositivos`
 --
 ALTER TABLE `dispositivos`
-  MODIFY `iddispositivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `iddispositivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `sedes`

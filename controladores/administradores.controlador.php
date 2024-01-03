@@ -20,6 +20,7 @@ class ControladorAdministradores{
                     $_SESSION["nombre"] = $respuesta["nombre"];
                     $_SESSION["foto"] = $respuesta["foto"];
                     $_SESSION["email"] = $respuesta["email"];
+                    $_SESSION["cargo"] = $respuesta["cargo"];
                     $_SESSION["password"] = $respuesta["password"];
                     $_SESSION["perfil"] = $respuesta["perfil"];
 

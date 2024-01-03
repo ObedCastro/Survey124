@@ -9,4 +9,11 @@ class ControladorInicio{
         return $datos;
     }
 
+    static public function ctrMostrarGraficoLineas(){
+      $tabla = "dispositivos";
+
+      $respuesta = ModeloInicio::mdlMostrarGraficoLineas($tabla);
+      return $respuesta;
+    }
+
 }

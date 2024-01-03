@@ -12,38 +12,42 @@ class TablaDispositivos{
     public function mostrarTabla(){
         $item = null;
         $valor = null;
-    
+
         $dispositivos = ControladorDispositivos::ctrMostrarDispositivos($item, $valor);
-         
+
         $datosJson = '{
             "data": [';
-            
+
             for($i=0; $i<count($dispositivos); $i++){
 
                 $tipoDispositivo = "<div class='d-flex justify-content-evenly'><div class='d-flex flex-column justify-content-center'><h6 class='mb-0 text-sm'>".$dispositivos[$i]['tipodispositivo']."</h6></div></div>";
                 $marcaDispositivo = "<p class='text-xs font-weight-bold mb-0'>".$dispositivos[$i]['marcadispositivo']."</p>";
-                
+
                 //Comprobar el estado del dispositivo
                 $edispositivo = $dispositivos[$i]['estadodispositivo'];
                 if($edispositivo == "1"){
                     $colorElemento = "bg-light text-dark";
                     $textoMostrar = "Disponible";
+                    $boton = "btnAsignarDispositivo";
+                    $modal = "modalAsignarDispositivo";
                 } else if($edispositivo == "2"){
                     $colorElemento = "alert-success";
                     $textoMostrar = "Asignado";
+                    $boton = "btnRecuperarDispositivo";
+                    $modal = "modalRecuperarDispositivo";
                 } else if($edispositivo == "3"){
                     $colorElemento = "alert-danger";
                     $textoMostrar = "Dañado";
                 }
 
                 $modeloDispositivo = "<span class='text-secondary text-xs'>".$dispositivos[$i]['modelodispositivo']."</span>";
-
-                if($dispositivos[$i]['imeidispositivo']){
-                    $imeiDispositivo = "<span idDispositivo='".$dispositivos[$i]['iddispositivo']."' style='cursor:pointer;' class='text-secondary text-xs font-weight-bold btnAsignarDispositivo' data-bs-toggle='modal' data-bs-target='#modalAsignarDispositivo'>".$dispositivos[$i]['imeidispositivo']."</span>";
-                } else{
-                    $imeiDispositivo = "<span idDispositivo='".$dispositivos[$i]['iddispositivo']."' style='cursor:pointer;' class='text-secondary text-xs font-weight-bold btnAsignarDispositivo' data-bs-toggle='modal' data-bs-target='#modalAsignarDispositivo'>".$dispositivos[$i]['seriedispositivo']."</span>";
-                }
                 
+                if($dispositivos[$i]['imeidispositivo']){
+                    $imeiDispositivo = "<span idDispositivo='".$dispositivos[$i]['iddispositivo']."' style='cursor:pointer;' class='text-secondary text-xs font-weight-bold ".$boton."' data-bs-toggle='modal' data-bs-target='#".$modal."'>".$dispositivos[$i]['imeidispositivo']."</span>";
+                } else{
+                    $imeiDispositivo = "<span idDispositivo='".$dispositivos[$i]['iddispositivo']."' style='cursor:pointer;' class='text-secondary text-xs font-weight-bold ".$boton."' data-bs-toggle='modal' data-bs-target='#".$modal."'>".$dispositivos[$i]['seriedispositivo']."</span>";
+                }
+
                 $telefonoDispositivo = "<span class='text-secondary text-xs font-weight-bold'>".$dispositivos[$i]['telefonodispositivo']."</span>";
 
                 $estadodispositivo = "<span class='badge badge-sm ".$colorElemento."'>".$textoMostrar."</span>";
@@ -66,8 +70,8 @@ class TablaDispositivos{
                                     "<button idAsignarDispositivo='".$dispositivos[$i]['iddispositivo']."' type='button' class='btn btn-primary p-1 btn-lg rounded-circle btnImprimirHoja mb-0'><i class='fa fa-file-pdf-o fs-6 p-1'></i></button>".
                                     "</div>".
                                 "</li>".
-                            "</ul>";        
- 
+                            "</ul>";
+
                 $datosJson .= '[
                             "'.$tipoDispositivo.'",
                             "'.$marcaDispositivo.'",
@@ -90,4 +94,3 @@ class TablaDispositivos{
 
 $activar = new TablaDispositivos();
 $activar->mostrarTabla();
-
