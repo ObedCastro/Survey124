@@ -27,6 +27,15 @@ class ModeloDispositivos{
         $stmt->close();
     }
 
+    static public function mdlMostrarDispositivoAsignado($tabla, $item, $valor){
+        $sql = "SELECT * FROM $tabla WHERE $item = :$item";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     //REGISTRAR NUEVO PRODUCTO
     static public function mdlRegistrarDispositivo($tabla, $datos, $accesorios){
         $estado = "1";

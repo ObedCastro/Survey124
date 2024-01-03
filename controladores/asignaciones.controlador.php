@@ -1,5 +1,5 @@
 <?php
-require "fpdf/fpdf.php";
+
 
 class ControladorAsignaciones{
 
@@ -13,7 +13,7 @@ class ControladorAsignaciones{
         /*$item = "iddispositivo";
         $infodispositivo = ModeloDispositivos::mdlMostrarDispositivos($tabla, $item, $id);
         $infoconsultor = ModeloConsultores::mdlMostrarConsultores("consultores", "idconsultor", $res);
-*/
+        */
         return $respuesta;
 
     }

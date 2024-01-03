@@ -49,7 +49,7 @@ class ControladorConsultores{
                       </script>';
             }
         } else {
-          echo '<script>alert("Ejecutando");</script>' ;
+          
         }
     }
 

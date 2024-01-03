@@ -9,7 +9,6 @@ class ControladorDispositivos{
         return $datos;
     }
 
-
     //REGISTRAR NUEVO DISPOSITIVOS
     static public function ctrRegistrarDispositivo(){
         if(isset($_POST["tipoDispositivo"])){
@@ -131,11 +130,17 @@ class ControladorDispositivos{
 
        $respuesta = ModeloDispositivos::mdlAsignarDispositivo($tabla, $id, $res, $accesorios);
 
-       /*$item = "iddispositivo";
-       $infodispositivo = ModeloDispositivos::mdlMostrarDispositivos($tabla, $item, $id);
-       $infoconsultor = ModeloConsultores::mdlMostrarConsultores("consultores", "idconsultor", $res);
-*/
-       return $respuesta;
+       if($respuesta == "ok"){
+           $item = "iddispositivo";
+           $infodispositivo = ModeloDispositivos::mdlMostrarDispositivoAsignado($tabla, $item, $id);
+           //$infoconsultor = ModeloConsultores::mdlMostrarConsultores("consultores", "idconsultor", $res);
+           return $infodispositivo;
+           
+       } else{
+            return $respuesta;
+       }
+
+
 
    }
 

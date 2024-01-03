@@ -3,6 +3,7 @@
 require_once "../controladores/dispositivos.controlador.php";
 require_once "../modelos/dispositivos.modelo.php";
 
+
 class AjaxDispositivos{
 
     public $idDispositivo;
@@ -32,7 +33,7 @@ class AjaxDispositivos{
         echo json_encode($respuesta);
     }
 
-    public function ajaxAsignarDispositivo(){
+    /*public function ajaxAsignarDispositivo(){
 
       if(isset($_POST["idDispositivoAsignar"]) && isset($_POST["responsableDispositivo"])){
         $id = $_POST["idDispositivoAsignar"];
@@ -53,16 +54,11 @@ class AjaxDispositivos{
         $accesorios = json_encode($datos);
 
         $respuesta = ControladorDispositivos::ctrAsignarDispositivo($id, $res, $accesorios);
-        
-        if($respuesta == "ok"){
-          echo json_encode(array("mensaje" => "Asignación realizada con éxito"));
-        }else{
-          echo json_encode(array("mensaje" => "Imposible asignar dispositivo"));
-        }
 
+        echo json_encode($respuesta);
       }
 
-    }
+    }*/
 
 }
 
@@ -90,7 +86,7 @@ if(isset($_POST["idEliminarDispositivo"])){
 }
 
 //PARA ASIGNAR DISPOSITIVO
-if(!isset($_POST["asignar"])){
+/*if(!isset($_POST["asignar"])){
   $asignar = new AjaxDispositivos();
   $asignar->ajaxAsignarDispositivo();
-}
+}*/
