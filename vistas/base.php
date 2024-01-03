@@ -57,6 +57,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/styles/choices.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script>
 
+<!-- PARA GENERAR PDF POR MEDIO DE JAVASCRIPT -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+
+
 </head>
 <body class="g-sidenav-show  bg-gray-100">
 
@@ -81,6 +85,9 @@
                    $_GET["ruta"] == "administradores" ||
                    $_GET["ruta"] == "salir"){
                     include "modulos/".$_GET["ruta"].".php";
+                }else{
+                    echo "Error 404";
+
                 }
             }
 

@@ -56,29 +56,20 @@ $(document).ready(function(){
     });
 
 
-$("#formularioAsignacion").on("click", ".btnNuevaAsignacion", function(event){
+    //PARA ASIGNAR DISPOSITIVO
+    $("#formularioAsignacion").on("click", ".btnNuevaAsignacion", function(event){
     //$("#formularioAsignacion" ).on( "submit", function( event ) {
       event.preventDefault();
       let datosAsignar = $("#formularioAsignacion").serialize();
+      var url = 'fpdf/Asignar.php?' + datosAsignar;
 
-      $.ajax({
-        url: 'ajax/dispositivos.ajax.php',
-        method: "POST",
-        dataType: "json",
-        data: datosAsignar,
-        success: function(respuesta){
-          table.ajax.reload();
-          $("#modalAsignarDispositivo").modal('hide');
-        },
-        error: function(error){
-          console.log("Erroraso: "+error);
-        }
-      });
+      window.open(url, '_blank');
+      $("#modalAsignarDispositivo").hide();
+      location.reload();
+
     });
 
 });
-
-
 
 
 //Mostrar información de un solo dispositivo
