@@ -1,10 +1,10 @@
 <!-- MODAL DE DISPOSITIVOS -->
 
-<div class="modal fade" id="modalAsignarDispositivo" data-bs-backdrop="static" tabindex="-1" aria-labelledby="modalAsignarDispositivoLabel" aria-hidden="true">
+<div class="modal fade" id="modalRecuperarDispositivo" data-bs-backdrop="static" tabindex="-1" aria-labelledby="modalAsignarDispositivoLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
 
-      <form method="POST" id="formularioAsignacion">
+      <form method="POST" id="formularioRecuperar">
 
         <div class="modal-header">
             <h1 class="modal-title fs-5" id="modalAsignarDispositivoLabel">Asignar dispositivo</h1>
@@ -109,7 +109,7 @@
 
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <input type="submit" class="btn btn-primary btnNuevaAsignacion" name="asignar" value="Asignar">
+            <input type="submit" class="btn btn-primary btnRecuperar" name="asignar" value="Asignar">
         </div>
 
       </form>

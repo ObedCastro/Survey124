@@ -5,13 +5,13 @@
     ?>
 
     <div class="container-fluid py-4">
-      
+
       <?php
         include "inicio/info-relevante.php";
       ?>
 
       <div class="row mt-4">
-        
+
         <?php
           include "inicio/dispositivos-modelos.php";
           include "inicio/dispositivos-asignaciones.php";
@@ -19,7 +19,7 @@
 
       </div>
       <div class="row my-4">
-        
+
         <?php
           include "inicio/ultimos-movimientos.php";
         ?>
@@ -94,7 +94,7 @@
           </div>
         </div>
       </div>
-      
+
       <?php
         //include "footer.php";
       ?>
@@ -105,7 +105,7 @@
 
 
   <script>
-  
+
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
     new Chart(ctx, {
@@ -187,93 +187,113 @@
     gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
     gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
 
-    new Chart(ctx2, {
-      type: "line",
-      data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        datasets: [{
-            label: "Mobile apps",
-            tension: 0.4,
-            borderWidth: 0,
-            pointRadius: 0,
-            borderColor: "#cb0c9f",
-            borderWidth: 3,
-            backgroundColor: gradientStroke1,
-            fill: true,
-            data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-            maxBarThickness: 6
+    $.ajax({
+      url: "ajax/graficolineas.ajax.php",
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(respuesta){
 
-          },
-          {
-            label: "Websites",
-            tension: 0.4,
-            borderWidth: 0,
-            pointRadius: 0,
-            borderColor: "#3A416F",
-            borderWidth: 3,
-            backgroundColor: gradientStroke2,
-            fill: true,
-            data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
-            maxBarThickness: 6
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          }
-        },
-        interaction: {
-          intersect: false,
-          mode: 'index',
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [5, 5]
-            },
-            ticks: {
-              display: true,
-              padding: 10,
-              color: '#b2b9bf',
-              font: {
-                size: 11,
-                family: "Open Sans",
-                style: 'normal',
-                lineHeight: 2
+        var datos = JSON.parse(respuesta);
+        var meses = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var mostrarMes = [];
+        var mostrarCantidadAsignaciones = [];
+        var mostrarCantidadRecepciones = [];
+
+        for (let i = 0; i < datos[0].length; i++) {
+          mostrarMes.push(meses[(datos[0][i].mes)-1]);
+          mostrarCantidadAsignaciones.push(datos[0][i].total);
+        }
+
+        new Chart(ctx2, {
+          type: "line",
+          data: {
+            labels: mostrarMes,
+            datasets: [{
+                label: "Asignaciones",
+                tension: 0.4,
+                borderWidth: 0,
+                pointRadius: 0,
+                borderColor: "#cb0c9f",
+                borderWidth: 3,
+                backgroundColor: gradientStroke1,
+                fill: true,
+                data: mostrarCantidadAsignaciones,
+                maxBarThickness: 6
+
               },
-            }
+              /*{
+                label: "Recepciones",
+                tension: 0.4,
+                borderWidth: 0,
+                pointRadius: 0,
+                borderColor: "#3A416F",
+                borderWidth: 3,
+                backgroundColor: gradientStroke2,
+                fill: true,
+                data: mostrarCantidadRecepciones,
+                maxBarThickness: 6
+              },*/
+            ],
           },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false,
-              borderDash: [5, 5]
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false,
+              }
             },
-            ticks: {
-              display: true,
-              color: '#b2b9bf',
-              padding: 20,
-              font: {
-                size: 11,
-                family: "Open Sans",
-                style: 'normal',
-                lineHeight: 2
+            interaction: {
+              intersect: false,
+              mode: 'index',
+            },
+            scales: {
+              y: {
+                grid: {
+                  drawBorder: false,
+                  display: true,
+                  drawOnChartArea: true,
+                  drawTicks: false,
+                  borderDash: [5, 5]
+                },
+                ticks: {
+                  display: true,
+                  padding: 10,
+                  color: '#b2b9bf',
+                  font: {
+                    size: 11,
+                    family: "Open Sans",
+                    style: 'normal',
+                    lineHeight: 2
+                  },
+                }
               },
-            }
+              x: {
+                grid: {
+                  drawBorder: false,
+                  display: false,
+                  drawOnChartArea: false,
+                  drawTicks: false,
+                  borderDash: [5, 5]
+                },
+                ticks: {
+                  display: true,
+                  color: '#b2b9bf',
+                  padding: 20,
+                  font: {
+                    size: 11,
+                    family: "Open Sans",
+                    style: 'normal',
+                    lineHeight: 2
+                  },
+                }
+              },
+            },
           },
-        },
-      },
-    });
+        });
+      }
+    })
   </script>
 
   <script>

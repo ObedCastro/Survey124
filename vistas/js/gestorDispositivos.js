@@ -69,6 +69,20 @@ $(document).ready(function(){
 
     });
 
+
+    //PARA RECUPERAR DISPOSITIVO
+    $("#formularioRecuperar").on("click", ".btnRecuperar", function(event){
+    //$("#formularioAsignacion" ).on( "submit", function( event ) {
+      event.preventDefault();
+      let datosAsignar = $("#formularioAsignacion").serialize();
+      var url = 'fpdf/Asignar.php?' + datosAsignar;
+
+      window.open(url, '_blank');
+      $("#modalAsignarDispositivo").hide();
+      location.reload();
+
+    });
+
 });
 
 

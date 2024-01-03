@@ -9,9 +9,9 @@
                     <h5 class="font-weight-bolder mb-0">
                       <?php
                         $telefonosasignados = ControladorInicio::ctrMostrarDispositivosAsignados();
-                        echo $telefonosasignados['telefonosAsignados'];
+                        echo $telefonosasignados[0]['telefonosAsignados'];
                       ?>
-                      <span class="text-success text-sm font-weight-bolder">+55%</span>
+                      <span class="text-success text-sm font-weight-bolder"> de <?php echo $telefonosasignados[1]['totalTelefonos']; ?></span>
                     </h5>
                   </div>
                 </div>

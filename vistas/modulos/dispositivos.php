@@ -269,6 +269,7 @@
   include "vistas/modulos/dispositivos/verDetalleDispositivo.php";
 
   include "vistas/modulos/dispositivos/asignar.php";
+  include "vistas/modulos/dispositivos/recuperar.php";
 ?>
 
 
