@@ -15,6 +15,16 @@ class AjaxDispositivos{
         echo json_encode($respuesta);
     }
 
+    public $idDispositivoRecuperar;
+    public function ajaxMostrarDispositivoRecuperar(){
+        $item = "iddispositivo";
+        $consultor = $_POST["consultorResposable"];
+        $valor = $this->idDispositivoRecuperar;
+
+        $respuesta = ControladorDispositivos::ctrMostrarDispositivoRecuperar($item, $valor, $consultor);
+        echo json_encode($respuesta);
+    }
+
     public $idEditarDispositivo;
     public function ajaxEditarDispositivo(){
         $item = "iddispositivo";
@@ -68,6 +78,14 @@ if(isset($_POST["idDispositivo"])){
     $mostrar = new AjaxDispositivos();
     $mostrar->idDispositivo = $_POST["idDispositivo"];
     $mostrar->ajaxMostrarDispositivo();
+
+}
+
+//PARA MOSTRAR LA INFORMACION DEL DISPOSITIVO A RECUPERAR
+if(isset($_POST["idDispositivoRecuperar"])){
+    $recuperar = new AjaxDispositivos();
+    $recuperar->idDispositivoRecuperar = $_POST["idDispositivoRecuperar"];
+    $recuperar->ajaxMostrarDispositivoRecuperar();
 
 }
 

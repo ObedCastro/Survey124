@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-01-2024 a las 18:23:57
+-- Tiempo de generación: 04-01-2024 a las 05:48:40
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -122,15 +122,34 @@ INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositiv
 (6, 'Telefono', 'Samsung', 'Galaxy A33', '123427182737281', 'KH123KH23K2HK', '50376253527', '', '', 3, 1, '', '0000-00-00', '2024-01-03 15:11:16', '2023-12-23', '2023-12-23'),
 (10, 'Telefono', 'Samsung', 'Galaxy A33', '999999999999999', 'AAAAAA111111', '50367544321', '', '', 2, 1, '', '0000-00-00', '2023-12-29 22:08:53', '2023-12-23', '2023-12-23'),
 (19, 'Telefono', 'Samsung', 'Galaxy A34', '454546575334', '343434343', '76678990', '', '', 2, 1, '', '2023-12-28', '2024-01-03 16:36:59', '2023-12-28', '2023-12-28'),
-(20, 'Tablet', 'Samsung', 'Galaxy A33', '323243445465', '554656565', '66445454', '', '', 3, 1, '', '2023-12-28', '2024-01-03 16:36:59', '2023-12-28', '2023-12-28'),
-(21, 'Tablet', 'Samsung', 'Tab S9', '534535435346', '645435435', '23234556', '', '', 2, 1, '', '2023-12-28', '2024-01-03 16:36:59', '2023-12-28', '2023-12-28'),
-(22, 'Tablet', 'Samsung', 'Tab S9', '434234235235234', '3432432323', '45678909', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 1, 2, '', '2023-12-28', '2024-01-03 16:45:55', '2023-12-28', '2023-12-28'),
+(20, 'Tablet', 'Samsung', 'Galaxy A33', '323243445465', '554656565', '66445454', '', '', 3, 1, '', '2023-12-28', '2024-01-04 02:09:14', '2023-12-28', '2023-12-28'),
+(21, 'Tablet', 'Samsung', 'Tab S9', '534535435346', '645435435', '23234556', '', '', 2, 1, '', '2023-12-28', '2024-01-04 02:09:14', '2023-12-28', '2024-01-03'),
+(22, 'Tablet', 'Samsung', 'Tab S9', '434234235235234', '3432432323', '45678909', '', '', 1, 1, '', '2023-12-28', '2024-01-04 02:09:14', '2023-12-28', '2023-12-28'),
 (23, 'Telefono', 'Samsung', 'Galaxy A34', '121323434335', '654645653444', '67567890', '', '', 1, 1, '', '2023-12-28', '2024-01-03 16:36:59', '2023-12-28', '2023-12-28'),
 (24, 'Telefono', 'Samsung', 'Galaxy A33', '87686786556765', '4545455454', '78909832', '', '', 1, 1, '', '2023-12-28', '2024-01-03 16:36:59', '2023-12-28', '2023-12-28'),
-(26, 'Tablet', 'Lenovo', 'Tab S9', '12312332343', '43434353', '7875656879', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 1, 2, '', '2023-12-28', '2024-01-03 16:44:36', '2023-12-28', '2023-12-28'),
+(26, 'Tablet', 'Lenovo', 'Tab S9', '12312332343', '43434353', '7875656879', '', '', 1, 1, '', '2023-12-28', '2024-01-04 02:09:14', '2023-12-28', '2023-12-28'),
 (27, 'Telefono', 'Samsung', 'Galaxy A34', '543434', '34343', '535353', '', '', 0, 1, '', '2023-12-28', '2024-01-03 16:36:59', '2023-12-28', '2023-12-28'),
-(28, 'Telefono', 'Samsung', 'Galaxy A33', '777777777777777', '7777777777777', '50377777777', '', '', 1, 1, '', '2023-12-29', '2024-01-03 16:36:59', '2023-12-29', '2023-12-29'),
-(29, 'Laptop', 'HP', '640 G9', '', 'ASDASD1213', '', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"1\"}', '1', 1, 2, '', '2024-01-03', '2024-01-03 16:37:18', '2024-01-03', '2024-01-03');
+(28, 'Telefono', 'Samsung', 'Galaxy A33', '777777777777777', '7777777777777', '50377777777', '', '', 1, 1, '', '2023-12-29', '2024-01-04 02:09:14', '2023-12-29', '2024-01-03'),
+(29, 'Laptop', 'HP', '640 G9', '', 'ASDASD1213', '', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 1, 2, '', '2024-01-03', '2024-01-04 04:47:50', '2024-01-03', '2024-01-03');
+
+--
+-- Disparadores `dispositivos`
+--
+DELIMITER $$
+CREATE TRIGGER `actualizar_registros` AFTER UPDATE ON `dispositivos` FOR EACH ROW BEGIN
+    IF NEW.estadodispositivo = '2' THEN
+        INSERT INTO registros (fecha_asignacion, usuario_campo_id, sede_id, dispositivo_id)
+        VALUES (NEW.fechaasignacion, NEW.responsabledispositivo, NEW.sededispositivo, NEW.iddispositivo);
+
+    ELSEIF NEW.estadodispositivo = '1' THEN
+        UPDATE registros
+        SET fecha_recepcion = NEW.fecharecepcion 
+        WHERE dispositivo_id = NEW.iddispositivo;
+
+    END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -139,12 +158,15 @@ INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositiv
 --
 
 CREATE TABLE `registros` (
+  `id` int(11) NOT NULL,
   `fecha_asignacion` date DEFAULT NULL,
   `nombre_asignador` varchar(30) DEFAULT NULL,
   `cargo_asignador` varchar(30) DEFAULT NULL,
   `usuario_campo_id` int(11) DEFAULT NULL,
   `sede_id` int(11) DEFAULT NULL,
   `dispositivo_id` int(11) DEFAULT NULL,
+  `accesorios_entregados` text NOT NULL,
+  `accesorios_recuperados` text NOT NULL,
   `fecha_recepcion` date DEFAULT NULL,
   `nombre_receptor` date DEFAULT NULL,
   `cargo_receptor` date DEFAULT NULL,
@@ -155,8 +177,34 @@ CREATE TABLE `registros` (
 -- Volcado de datos para la tabla `registros`
 --
 
-INSERT INTO `registros` (`fecha_asignacion`, `nombre_asignador`, `cargo_asignador`, `usuario_campo_id`, `sede_id`, `dispositivo_id`, `fecha_recepcion`, `nombre_receptor`, `cargo_receptor`, `comentario`) VALUES
-('2023-08-21', 'Obed Castro', 'Tecnico de soporte informatico', 1, 1, 1, NULL, '0000-00-00', '0000-00-00', '');
+INSERT INTO `registros` (`id`, `fecha_asignacion`, `nombre_asignador`, `cargo_asignador`, `usuario_campo_id`, `sede_id`, `dispositivo_id`, `accesorios_entregados`, `accesorios_recuperados`, `fecha_recepcion`, `nombre_receptor`, `cargo_receptor`, `comentario`) VALUES
+(9, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(10, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(11, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(12, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(13, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(14, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(15, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(16, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(17, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(18, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(19, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(20, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(21, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(22, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(23, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(24, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(25, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(26, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(27, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(28, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(29, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(30, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(31, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(32, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(33, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(34, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
+(35, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, '');
 
 -- --------------------------------------------------------
 
@@ -204,6 +252,7 @@ ALTER TABLE `dispositivos`
 -- Indices de la tabla `registros`
 --
 ALTER TABLE `registros`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `sede_id` (`sede_id`),
   ADD KEY `dispositivo_id` (`dispositivo_id`);
 
@@ -234,6 +283,12 @@ ALTER TABLE `consultores`
 --
 ALTER TABLE `dispositivos`
   MODIFY `iddispositivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT de la tabla `registros`
+--
+ALTER TABLE `registros`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `sedes`

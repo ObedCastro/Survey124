@@ -8,6 +8,14 @@ class ControladorDispositivos{
 
         return $datos;
     }
+    
+    //METODO PARA MOSTRAR INFORMACION DE DISPOSITIVO A RECUPERAR
+    static public function ctrMostrarDispositivoRecuperar($item, $valor, $consultor){
+        $tabla = "dispositivos";
+        $datos = ModeloDispositivos::mdlMostrarDispositivoRecuperar($tabla, $item, $valor, $consultor);
+
+        return $datos;
+    }
 
     //REGISTRAR NUEVO DISPOSITIVOS
     static public function ctrRegistrarDispositivo(){
@@ -125,10 +133,10 @@ class ControladorDispositivos{
     }
 
     //ASIGNAR DISPOSITIVO
-    static public function ctrAsignarDispositivo($id, $res, $accesorios){
+    static public function ctrAsignarDispositivo($id, $res, $accesorios, $comentario){
        $tabla = "dispositivos";
 
-       $respuesta = ModeloDispositivos::mdlAsignarDispositivo($tabla, $id, $res, $accesorios);
+       $respuesta = ModeloDispositivos::mdlAsignarDispositivo($tabla, $id, $res, $accesorios, $comentario);
 
        if($respuesta == "ok"){
            $item = "iddispositivo";
@@ -139,10 +147,16 @@ class ControladorDispositivos{
        } else{
             return $respuesta;
        }
-
-
-
    }
+
+   //RECUPERAR DISPOSITIVO
+   /*static public function ctrRecuperarDispositivo($id, $accesorios){
+    $tabla = "dispositivos";
+    $item = "iddispositivo";
+    $infodispositivo = ModeloDispositivos::mdlMostrarDispositivoAsignado($tabla, $id, $accesorios);
+    return $infodispositivo;
+
+   }*/
 
     //ELIMINAR DISPOSITIVO
     static public function ctrEliminarDispositivo($item, $valor){

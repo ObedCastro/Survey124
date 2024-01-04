@@ -7,7 +7,6 @@ class ModeloDispositivos{
     static public function mdlMostrarDispositivos($tabla, $item, $valor){
 
         if($item != null){
-            //$sql1 = "SELECT dispositivos.* AND sedes.nombresede as ubicacion WHERE dispositivos.sededispositivo = sedes.sede";
             $sql = "SELECT * FROM $tabla WHERE $item = :$item";
             $stmt = Conexion::conectar()->prepare($sql);
             $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
@@ -26,7 +25,27 @@ class ModeloDispositivos{
 
         $stmt->close();
     }
+    
+    //METODO PARA MOSTRAR INFORMACION DE DISPOSITIVO A RECUPERAR
+    static public function mdlMostrarDispositivoRecuperar($tabla, $item, $valor, $consultor){
 
+        $sql1 = "SELECT * FROM $tabla WHERE $item = :$item";
+        $stmt1 = Conexion::conectar()->prepare($sql1);
+        $stmt1->bindParam(":".$item, $valor, PDO::PARAM_STR);
+        $stmt1->execute();
+        
+        $sql2 = "SELECT * FROM consultores WHERE idconsultor = :$item";
+        $stmt2 = Conexion::conectar()->prepare($sql2);
+        $stmt2->bindParam(":".$item, $consultor, PDO::PARAM_STR);
+        $stmt2->execute();
+
+        return array($stmt1->fetch(), $stmt2->fetch());
+
+        $stmt1->close();
+        $stmt2->close();
+    }
+
+    //METODO ESPECIFICO PARA GENERAR EL PDF AL ASIGNAR
     static public function mdlMostrarDispositivoAsignado($tabla, $item, $valor){
         $sql = "SELECT * FROM $tabla WHERE $item = :$item";
         $stmt = Conexion::conectar()->prepare($sql);
@@ -90,12 +109,13 @@ class ModeloDispositivos{
 
 
     // ASIGNAR UN DISPOSITIVO
-    static public function mdlAsignarDispositivo($tabla, $id, $res, $accesorios){
+    static public function mdlAsignarDispositivo($tabla, $id, $res, $accesorios, $comentario){
         $estado = "2";
-        $sql = "UPDATE $tabla SET responsabledispositivo = :responsabledispositivo, estadodispositivo = $estado, accesorios = :accesorios WHERE iddispositivo = :$id";
+        $sql = "UPDATE $tabla SET responsabledispositivo = :responsabledispositivo, estadodispositivo = $estado, accesorios = :accesorios, comentariodispositivo = :comentariodispositivo WHERE iddispositivo = :$id";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(":responsabledispositivo", $res, PDO::PARAM_STR);
         $stmt->bindParam(":accesorios", $accesorios, PDO::PARAM_STR);
+        $stmt->bindParam(":comentariodispositivo", $comentario, PDO::PARAM_STR);
         $stmt->bindParam(":".$id, $id, PDO::PARAM_INT);
 
         if($stmt->execute()){

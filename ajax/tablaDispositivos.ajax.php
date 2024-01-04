@@ -43,9 +43,9 @@ class TablaDispositivos{
                 $modeloDispositivo = "<span class='text-secondary text-xs'>".$dispositivos[$i]['modelodispositivo']."</span>";
                 
                 if($dispositivos[$i]['imeidispositivo']){
-                    $imeiDispositivo = "<span idDispositivo='".$dispositivos[$i]['iddispositivo']."' style='cursor:pointer;' class='text-secondary text-xs font-weight-bold ".$boton."' data-bs-toggle='modal' data-bs-target='#".$modal."'>".$dispositivos[$i]['imeidispositivo']."</span>";
+                    $imeiDispositivo = "<span idDispositivo='".$dispositivos[$i]['iddispositivo']."' consultor='".$dispositivos[$i]['responsabledispositivo']."' style='cursor:pointer;' class='text-secondary text-xs font-weight-bold ".$boton."' data-bs-toggle='modal' data-bs-target='#".$modal."'>".$dispositivos[$i]['imeidispositivo']."</span>";
                 } else{
-                    $imeiDispositivo = "<span idDispositivo='".$dispositivos[$i]['iddispositivo']."' style='cursor:pointer;' class='text-secondary text-xs font-weight-bold ".$boton."' data-bs-toggle='modal' data-bs-target='#".$modal."'>".$dispositivos[$i]['seriedispositivo']."</span>";
+                    $imeiDispositivo = "<span idDispositivo='".$dispositivos[$i]['iddispositivo']."' consultor='".$dispositivos[$i]['responsabledispositivo']."' style='cursor:pointer;' class='text-secondary text-xs font-weight-bold ".$boton."' data-bs-toggle='modal' data-bs-target='#".$modal."'>".$dispositivos[$i]['seriedispositivo']."</span>";
                 }
 
                 $telefonoDispositivo = "<span class='text-secondary text-xs font-weight-bold'>".$dispositivos[$i]['telefonodispositivo']."</span>";
