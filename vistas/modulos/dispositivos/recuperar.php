@@ -1,13 +1,13 @@
 <!-- MODAL DE DISPOSITIVOS -->
 
-<div class="modal fade" id="modalRecuperarDispositivo" data-bs-backdrop="static" tabindex="-1" aria-labelledby="modalAsignarDispositivoLabel" aria-hidden="true">
+<div class="modal fade" id="modalRecuperarDispositivo" data-bs-backdrop="static" tabindex="-1" aria-labelledby="modalRecuperarDispositivoLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
 
       <form method="POST" id="formularioRecuperar">
 
         <div class="modal-header">
-            <h1 class="modal-title fs-5" id="modalAsignarDispositivoLabel">Asignar dispositivo</h1>
+            <h1 class="modal-title fs-5" id="modalRecuperarDispositivoLabel">Recuperar dispositivo</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
@@ -19,16 +19,16 @@
                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                         <div class="d-flex flex-column">
                             <h6 class="mb-3 text-sm">Detalle del dispositivo</h6>
-                            <input type="hidden" class="idDispositivoAsignar" name="idDispositivoAsignar">
-                            <span class="mb-2 text-xs">Tipo: <span class="text-dark font-weight-bold ms-sm-2 detalleAsignarTipo"></span></span>
-                            <span class="mb-2 text-xs">Marca: <span class="text-dark ms-sm-2 font-weight-bold detalleAsignarMarca"></span></span>
-                            <span class="mb-2 text-xs">Modelo: <span class="text-dark ms-sm-2 font-weight-bold detalleAsignarModelo"></span></span>
-                            <span class="mb-2 text-xs">IMEI: <span class="text-dark ms-sm-2 font-weight-bold detalleAsignarIMEI"></span></span>
-                            <span class="mb-2 text-xs">Serie: <span class="text-dark ms-sm-2 font-weight-bold detalleAsignarSerie"></span></span>
-                            <span class="mb-2 text-xs">Teléfono: <span class="text-dark ms-sm-2 font-weight-bold detalleAsignarTelefono"></span></span>
-                            <span class="mb-2 text-xs">Ubicación: <span class="text-dark ms-sm-2 font-weight-bold detalleAsignarSede"></span></span>
-                            <span class="mb-2 text-xs">Registrado en: <span class="text-dark ms-sm-2 font-weight-bold detalleAsignarFecha"></span></span>
-                            <span class="mb-2 text-xs">Más información: <span class="text-dark ms-sm-2 font-weight-bold detalleAsignarComentario"></span></span>
+                            <input type="hidden" class="idDispositivoRecuperar" name="idDispositivoRecuperar">
+                            <span class="mb-2 text-xs">Tipo: <span class="text-dark font-weight-bold ms-sm-2 detalleRecuperarTipo"></span></span>
+                            <span class="mb-2 text-xs">Marca: <span class="text-dark ms-sm-2 font-weight-bold detalleRecuperarMarca"></span></span>
+                            <span class="mb-2 text-xs">Modelo: <span class="text-dark ms-sm-2 font-weight-bold detalleRecuperarModelo"></span></span>
+                            <span class="mb-2 text-xs">IMEI: <span class="text-dark ms-sm-2 font-weight-bold detalleRecuperarIMEI"></span></span>
+                            <span class="mb-2 text-xs">Serie: <span class="text-dark ms-sm-2 font-weight-bold detalleRecuperarSerie"></span></span>
+                            <span class="mb-2 text-xs">Teléfono: <span class="text-dark ms-sm-2 font-weight-bold detalleRecuperarTelefono"></span></span>
+                            <span class="mb-2 text-xs">Ubicación: <span class="text-dark ms-sm-2 font-weight-bold detalleRecuperarSede"></span></span>
+                            <span class="mb-2 text-xs">Registrado en: <span class="text-dark ms-sm-2 font-weight-bold detalleRecuperarFecha"></span></span>
+                            <span class="mb-2 text-xs">Más información: <span class="text-dark ms-sm-2 font-weight-bold detalleRecuperarComentario"></span></span>
                             <?php
                                 date_default_timezone_set('America/El_Salvador');
                                 $fechahoy = date("d-m-Y");
@@ -41,22 +41,13 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="selectConsultores" class="form-label">Consultor responsable</label>
-                    <select class="form-control choices-single form-select" id="selectConsultores" name="responsableDispositivo">
-                        <option></option>
-
-                        <?php
-                            $item = null;
-                            $valor = null;
-                            $consultores = ControladorConsultores::ctrMostrarConsultores($item, $valor);
-
-                            foreach ($consultores as $consultor) {
-                                echo '<option value="'.$consultor["idconsultor"].'">'.$consultor["nombreconsultor"].'</option>';
-                            }
-                        ?>
-                    </select>
+                    <label class="form-label">Actualmente asignado a:</label>
+                    <span id="responsableRecuperar" class="text-primary"></span>
+                    <input type="hidden" name="responsableActual" id="responsableActual">
+                    <br><br>
 
                     <div class="row">
+                        <p>Accesorios que entrega:</p>
                         <div class="col-md-6">
 
                             <div class="form-check">
@@ -105,11 +96,18 @@
 
             </div>
 
+            <div class="row">
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Escribir un comentario" name="comentarioRecuperar" id="comentarioRecuperar" style="height: 100px"></textarea>
+                    <label for="comentarioRecuperar">Comentario</label>
+                </div>
+            </div>
+
         </div>
 
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <input type="submit" class="btn btn-primary btnRecuperar" name="asignar" value="Asignar">
+            <input type="submit" class="btn btn-primary btnRecuperar" name="recuperar" value="Recuperar">
         </div>
 
       </form>

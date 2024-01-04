@@ -74,11 +74,11 @@ $(document).ready(function(){
     $("#formularioRecuperar").on("click", ".btnRecuperar", function(event){
     //$("#formularioAsignacion" ).on( "submit", function( event ) {
       event.preventDefault();
-      let datosAsignar = $("#formularioAsignacion").serialize();
-      var url = 'fpdf/Asignar.php?' + datosAsignar;
+      let datosRecuperar = $("#formularioRecuperar").serialize();
+      var url = 'fpdf/Recuperar.php?' + datosRecuperar;
 
       window.open(url, '_blank');
-      $("#modalAsignarDispositivo").hide();
+      $("#modalRecuperarDispositivo").hide();
       location.reload();
 
     });
@@ -166,7 +166,7 @@ $(".tablaDispositivos").on("click", ".btnEditarDispositivo", function(){
 });
 
 //__________________________________________________________________________________________
-//Mostrar información antes de asignar un dispositivo
+//Mostrar información antes de ASIGNAR un dispositivo
 $(".tablaDispositivos").on("click", ".btnAsignarDispositivo", function(){
     var idDispositivo = $(this).attr("idDispositivo")
     var datos3 = new FormData();
@@ -207,6 +207,58 @@ $(".tablaDispositivos").on("click", ".btnAsignarDispositivo", function(){
             $("#modalAsignarDispositivo .detalleAsignarComentario").text(respuesta['comentariodispositivo']);
         }
     })
+})
+
+//__________________________________________________________________________________________
+//Mostrar información antes de RECUPERAR un dispositivo
+$(".tablaDispositivos").on("click", ".btnRecuperarDispositivo", function(){
+    var idDispositivoRecuperar = $(this).attr("idDispositivo");
+    var consultorResposable = $(this).attr("consultor");
+    var datos4 = new FormData();
+    datos4.append("idDispositivoRecuperar", idDispositivoRecuperar);
+    datos4.append("consultorResposable", consultorResposable);
+
+    $.ajax({
+        url: "ajax/dispositivos.ajax.php",
+        method: "POST",
+        data: datos4,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(resultado){
+            
+            var respuesta = resultado[0];
+            //Mostrar información en la ventana de Recuperar el dispositivo
+            $("#responsableRecuperar").text(resultado[1]["nombreconsultor"]);
+            $("#responsableActual").val(resultado[1]["idconsultor"]);
+
+            $("#modalRecuperarDispositivo .idDispositivoRecuperar").val(respuesta['iddispositivo']);
+            $("#modalRecuperarDispositivo .detalleRecuperarTipo").text(respuesta['tipodispositivo']);
+            $("#modalRecuperarDispositivo .detalleRecuperarMarca").text(respuesta['marcadispositivo']);
+            $("#modalRecuperarDispositivo .detalleRecuperarModelo").text(respuesta['modelodispositivo']);
+
+            if(respuesta["imeidispositivo"]){
+                $("#modalRecuperarDispositivo .detalleRecuperarIMEI").parent().show();
+                $("#modalRecuperarDispositivo .detalleRecuperarIMEI").text(respuesta['imeidispositivo']);
+            }else{
+                $("#modalRecuperarDispositivo .detalleRecuperarIMEI").parent().hide();
+            }
+
+            if(respuesta["respuesta['telefonodispositivo']"]){
+                $("#modalRecuperarDispositivo .detalleRecuperarTelefono").parent().show();
+                $("#modalRecuperarDispositivo .detalleRecuperarTelefono").text(respuesta['telefonodispositivo']);
+            }else{
+                $("#modalRecuperarDispositivo .detalleRecuperarTelefono").parent().hide();
+            }
+
+            $("#modalRecuperarDispositivo .detalleRecuperarSerie").text(respuesta['seriedispositivo']);
+            $("#modalRecuperarDispositivo .detalleRecuperarSede").text(respuesta['sededispositivo']);
+            $("#modalRecuperarDispositivo .detalleRecuperarFecha").text(respuesta['fecharegistro']);
+            $("#modalRecuperarDispositivo .detalleRecuperarComentario").text(respuesta['comentariodispositivo']);
+        }
+    })
+    
 })
 
 
