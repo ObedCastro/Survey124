@@ -99,7 +99,7 @@
             </div>
             <div class="col-md-3">
               <label for="telefonoDispositivo" class="form-label">Teléfono</label>
-              <input type="text" class="form-control" placeholder="Ingrese el teléfono" id="telefonoDispositivo" name="telefonoDispositivo">
+              <input type="text" class="form-control" placeholder="Ingrese el teléfono" id="telefonoDispositivo" name="telefonoDispositivo" maxlength="11">
               <div class="valid-feedback"></div>
             </div>
             <div class="col-md-3">

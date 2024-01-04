@@ -21,10 +21,10 @@
       <div class="row my-4">
 
         <?php
-          include "inicio/ultimos-movimientos.php";
+          //include "inicio/ultimos-movimientos.php";
         ?>
 
-        <div class="col-lg-4 col-md-6">
+        <div class="col-md-12">
           <div class="card h-100">
             <div class="card-header pb-0">
               <h6>Orders overview</h6>
