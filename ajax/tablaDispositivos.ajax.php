@@ -89,6 +89,7 @@ class TablaDispositivos{
             }';
 
         echo $datosJson;
+        
         }
 }
 

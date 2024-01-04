@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 04-01-2024 a las 05:48:40
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Servidor: localhost:3306
+-- Tiempo de generación: 04-01-2024 a las 22:11:33
+-- Versión del servidor: 8.0.30
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,15 +28,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `administradores` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `nombre` text NOT NULL,
   `email` text NOT NULL,
   `cargo` varchar(50) NOT NULL,
   `foto` text NOT NULL,
   `password` text NOT NULL,
   `perfil` text NOT NULL,
-  `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Volcado de datos para la tabla `administradores`
@@ -63,15 +63,15 @@ INSERT INTO `administradores` (`id`, `nombre`, `email`, `cargo`, `foto`, `passwo
 --
 
 CREATE TABLE `consultores` (
-  `idconsultor` int(11) NOT NULL,
-  `nombreconsultor` varchar(50) NOT NULL,
-  `duiconsultor` varchar(10) NOT NULL,
-  `cargoconsultor` varchar(50) NOT NULL,
-  `contactoconsultor` varchar(11) NOT NULL,
-  `dispositivo_id` int(11) NOT NULL,
-  `sedeconsultor` varchar(20) NOT NULL,
-  `fechaactualizacionconsultor` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `fecharegistroconsultor` date NOT NULL DEFAULT current_timestamp()
+  `idconsultor` int NOT NULL,
+  `nombreconsultor` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `duiconsultor` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `cargoconsultor` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `contactoconsultor` varchar(11) COLLATE utf8mb4_general_ci NOT NULL,
+  `dispositivo_id` int NOT NULL,
+  `sedeconsultor` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `fechaactualizacionconsultor` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `fecharegistroconsultor` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -96,7 +96,7 @@ INSERT INTO `consultores` (`idconsultor`, `nombreconsultor`, `duiconsultor`, `ca
 --
 
 CREATE TABLE `dispositivos` (
-  `iddispositivo` int(11) NOT NULL,
+  `iddispositivo` int NOT NULL,
   `tipodispositivo` varchar(20) NOT NULL,
   `marcadispositivo` varchar(20) NOT NULL,
   `modelodispositivo` varchar(20) NOT NULL,
@@ -104,47 +104,43 @@ CREATE TABLE `dispositivos` (
   `seriedispositivo` varchar(20) NOT NULL,
   `telefonodispositivo` varchar(11) NOT NULL,
   `accesorios` text NOT NULL,
-  `responsabledispositivo` varchar(50) NOT NULL,
-  `sededispositivo` tinyint(4) NOT NULL,
-  `estadodispositivo` int(11) NOT NULL,
-  `comentariodispositivo` text NOT NULL,
-  `fecharegistro` date NOT NULL DEFAULT current_timestamp(),
-  `fechamodificacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `fechaasignacion` date NOT NULL DEFAULT current_timestamp(),
-  `fecharecepcion` date NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `responsabledispositivo` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `sededispositivo` tinyint NOT NULL,
+  `estadodispositivo` int NOT NULL,
+  `comentariodispositivo` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci,
+  `fecharegistro` date DEFAULT NULL,
+  `fechamodificacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `fechaasignacion` timestamp NULL DEFAULT NULL,
+  `fecharecepcion` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Volcado de datos para la tabla `dispositivos`
 --
 
 INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositivo`, `modelodispositivo`, `imeidispositivo`, `seriedispositivo`, `telefonodispositivo`, `accesorios`, `responsabledispositivo`, `sededispositivo`, `estadodispositivo`, `comentariodispositivo`, `fecharegistro`, `fechamodificacion`, `fechaasignacion`, `fecharecepcion`) VALUES
-(6, 'Telefono', 'Samsung', 'Galaxy A33', '123427182737281', 'KH123KH23K2HK', '50376253527', '', '', 3, 1, '', '0000-00-00', '2024-01-03 15:11:16', '2023-12-23', '2023-12-23'),
-(10, 'Telefono', 'Samsung', 'Galaxy A33', '999999999999999', 'AAAAAA111111', '50367544321', '', '', 2, 1, '', '0000-00-00', '2023-12-29 22:08:53', '2023-12-23', '2023-12-23'),
-(19, 'Telefono', 'Samsung', 'Galaxy A34', '454546575334', '343434343', '76678990', '', '', 2, 1, '', '2023-12-28', '2024-01-03 16:36:59', '2023-12-28', '2023-12-28'),
-(20, 'Tablet', 'Samsung', 'Galaxy A33', '323243445465', '554656565', '66445454', '', '', 3, 1, '', '2023-12-28', '2024-01-04 02:09:14', '2023-12-28', '2023-12-28'),
-(21, 'Tablet', 'Samsung', 'Tab S9', '534535435346', '645435435', '23234556', '', '', 2, 1, '', '2023-12-28', '2024-01-04 02:09:14', '2023-12-28', '2024-01-03'),
-(22, 'Tablet', 'Samsung', 'Tab S9', '434234235235234', '3432432323', '45678909', '', '', 1, 1, '', '2023-12-28', '2024-01-04 02:09:14', '2023-12-28', '2023-12-28'),
-(23, 'Telefono', 'Samsung', 'Galaxy A34', '121323434335', '654645653444', '67567890', '', '', 1, 1, '', '2023-12-28', '2024-01-03 16:36:59', '2023-12-28', '2023-12-28'),
-(24, 'Telefono', 'Samsung', 'Galaxy A33', '87686786556765', '4545455454', '78909832', '', '', 1, 1, '', '2023-12-28', '2024-01-03 16:36:59', '2023-12-28', '2023-12-28'),
-(26, 'Tablet', 'Lenovo', 'Tab S9', '12312332343', '43434353', '7875656879', '', '', 1, 1, '', '2023-12-28', '2024-01-04 02:09:14', '2023-12-28', '2023-12-28'),
-(27, 'Telefono', 'Samsung', 'Galaxy A34', '543434', '34343', '535353', '', '', 0, 1, '', '2023-12-28', '2024-01-03 16:36:59', '2023-12-28', '2023-12-28'),
-(28, 'Telefono', 'Samsung', 'Galaxy A33', '777777777777777', '7777777777777', '50377777777', '', '', 1, 1, '', '2023-12-29', '2024-01-04 02:09:14', '2023-12-29', '2024-01-03'),
-(29, 'Laptop', 'HP', '640 G9', '', 'ASDASD1213', '', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '1', 1, 2, '', '2024-01-03', '2024-01-04 04:47:50', '2024-01-03', '2024-01-03');
+(30, 'Telefono', 'Samsung', 'Galaxy A34', '234253252353535', 'ert345ert', '11111111111', '', '', 1, 1, 'aaa', NULL, '2024-01-04 21:41:11', NULL, NULL),
+(31, 'Tablet', 'HP', 'Tab S9', '4354677', 'HYYYF5667', '76543677', '', '', 3, 1, NULL, NULL, '2024-01-04 21:41:11', NULL, NULL),
+(32, 'Tablet', 'HP', 'Galaxy A34', '737382920', 'HF799335', '72053930', '', '', 1, 1, NULL, NULL, '2024-01-04 21:41:11', NULL, NULL),
+(33, 'Telefono', 'Samsung', 'Galaxy A33', '719283714', 'HV8R840H', '04048958', '', '', 1, 1, NULL, NULL, '2024-01-04 21:41:11', NULL, NULL),
+(34, 'Laptop', 'Lenovo', '640 G9', '8549934JH', '455633F5', '32454543', '', '', 2, 1, NULL, NULL, '2024-01-04 21:41:11', NULL, NULL),
+(35, 'Tablet', 'Samsung', 'Tab S9', '738453879435', 'DHER844H3', '453636232', '', '', 1, 1, NULL, NULL, '2024-01-04 21:41:11', NULL, NULL),
+(36, 'Telefono', 'Samsung', 'Galaxy A34', '546564Y7', '54654Y6Y6', '5454Y', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '', 1, 1, '', NULL, '2024-01-04 22:10:20', '2024-01-04 10:09:44', '2024-01-04 10:10:20'),
+(37, 'Laptop', 'Lenovo', '640 G9', '876654T4', '36546758G', '22577777', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '', 1, 1, '', NULL, '2024-01-04 22:09:14', '2024-01-04 10:08:38', '2024-01-04 10:09:14');
 
 --
 -- Disparadores `dispositivos`
 --
 DELIMITER $$
 CREATE TRIGGER `actualizar_registros` AFTER UPDATE ON `dispositivos` FOR EACH ROW BEGIN
-    IF NEW.estadodispositivo = '2' THEN
-        INSERT INTO registros (fecha_asignacion, usuario_campo_id, sede_id, dispositivo_id)
-        VALUES (NEW.fechaasignacion, NEW.responsabledispositivo, NEW.sededispositivo, NEW.iddispositivo);
+    IF NEW.estadodispositivo = 2 THEN
+        INSERT INTO registros (fecha_asignacion, usuario_campo_id, sede_id, dispositivo_id, accesorios_entregados)
+        VALUES (NEW.fechaasignacion, NEW.responsabledispositivo, NEW.sededispositivo, NEW.iddispositivo, NEW.accesorios);
 
-    ELSEIF NEW.estadodispositivo = '1' THEN
+    ELSEIF NEW.estadodispositivo = 1 THEN
         UPDATE registros
-        SET fecha_recepcion = NEW.fecharecepcion 
-        WHERE dispositivo_id = NEW.iddispositivo;
+        SET fecha_recepcion = NEW.fecharecepcion, accesorios_recuperados = NEW.accesorios 
+        WHERE dispositivo_id = OLD.iddispositivo AND fecha_asignacion = OLD.fechaasignacion AND usuario_campo_id = OLD.responsabledispositivo;
 
     END IF;
 END
@@ -158,53 +154,30 @@ DELIMITER ;
 --
 
 CREATE TABLE `registros` (
-  `id` int(11) NOT NULL,
-  `fecha_asignacion` date DEFAULT NULL,
-  `nombre_asignador` varchar(30) DEFAULT NULL,
-  `cargo_asignador` varchar(30) DEFAULT NULL,
-  `usuario_campo_id` int(11) DEFAULT NULL,
-  `sede_id` int(11) DEFAULT NULL,
-  `dispositivo_id` int(11) DEFAULT NULL,
-  `accesorios_entregados` text NOT NULL,
-  `accesorios_recuperados` text NOT NULL,
-  `fecha_recepcion` date DEFAULT NULL,
+  `id` int NOT NULL,
+  `fecha_asignacion` timestamp NULL DEFAULT NULL,
+  `nombre_asignador` varchar(30) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `cargo_asignador` varchar(30) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `usuario_campo_id` int DEFAULT NULL,
+  `sede_id` int DEFAULT NULL,
+  `dispositivo_id` int DEFAULT NULL,
+  `accesorios_entregados` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `accesorios_recuperados` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `fecha_recepcion` timestamp NULL DEFAULT NULL,
   `nombre_receptor` date DEFAULT NULL,
   `cargo_receptor` date DEFAULT NULL,
-  `comentario` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `comentario` varchar(500) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `registros`
 --
 
 INSERT INTO `registros` (`id`, `fecha_asignacion`, `nombre_asignador`, `cargo_asignador`, `usuario_campo_id`, `sede_id`, `dispositivo_id`, `accesorios_entregados`, `accesorios_recuperados`, `fecha_recepcion`, `nombre_receptor`, `cargo_receptor`, `comentario`) VALUES
-(9, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(10, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(11, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(12, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(13, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(14, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(15, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(16, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(17, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(18, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(19, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(20, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(21, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(22, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(23, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(24, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(25, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(26, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(27, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(28, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(29, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(30, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(31, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(32, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(33, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(34, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, ''),
-(35, '2024-01-03', NULL, NULL, 1, 1, 29, '', '', NULL, NULL, NULL, '');
+(111, '2024-01-04 09:58:13', NULL, NULL, 8, 1, 37, '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', NULL, NULL, NULL, NULL, NULL),
+(112, '2024-01-04 10:07:07', NULL, NULL, 4, 1, 37, '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"1\"}', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2024-01-04 10:07:32', NULL, NULL, NULL),
+(113, '2024-01-04 10:08:38', NULL, NULL, 4, 1, 37, '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2024-01-04 10:09:14', NULL, NULL, NULL),
+(114, '2024-01-04 10:09:44', NULL, NULL, 8, 1, 36, '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2024-01-04 10:10:20', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -213,10 +186,10 @@ INSERT INTO `registros` (`id`, `fecha_asignacion`, `nombre_asignador`, `cargo_as
 --
 
 CREATE TABLE `sedes` (
-  `idsede` int(11) NOT NULL,
+  `idsede` int NOT NULL,
   `nombresede` varchar(50) NOT NULL,
   `departamentosede` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Volcado de datos para la tabla `sedes`
@@ -270,31 +243,31 @@ ALTER TABLE `sedes`
 -- AUTO_INCREMENT de la tabla `administradores`
 --
 ALTER TABLE `administradores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `consultores`
 --
 ALTER TABLE `consultores`
-  MODIFY `idconsultor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idconsultor` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `dispositivos`
 --
 ALTER TABLE `dispositivos`
-  MODIFY `iddispositivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `iddispositivo` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `registros`
 --
 ALTER TABLE `registros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT de la tabla `sedes`
 --
 ALTER TABLE `sedes`
-  MODIFY `idsede` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idsede` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -58,6 +58,7 @@ class ModeloDispositivos{
     //REGISTRAR NUEVO PRODUCTO
     static public function mdlRegistrarDispositivo($tabla, $datos, $accesorios){
         $estado = "1";
+
         $sql = "INSERT INTO $tabla(tipodispositivo, marcadispositivo, modelodispositivo, imeidispositivo, seriedispositivo, telefonodispositivo, accesorios, sededispositivo, estadodispositivo) VALUES (:tipodispositivo, :marcadispositivo, :modelodispositivo, :imeidispositivo, :seriedispositivo, :telefonodispositivo, :accesorios, :sededispositivo, :estadodispositivo)";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(":tipodispositivo", $datos["tipo"], PDO::PARAM_STR);
@@ -107,16 +108,36 @@ class ModeloDispositivos{
         $stmt = null;
     }
 
+    //CAMBIAR ESTADO DE DISPOSITIVO AL RECUPERARLO
+    static public function mdlCambiarEstadoDispositivo($tabla, $item, $valor, $accesorios){
+        $estado = "1";
+        date_default_timezone_set('America/El_Salvador');
+        $fecha_actual = date("Y-m-d h:i:s");
+
+        $sql = "UPDATE $tabla SET responsabledispositivo = '', estadodispositivo = $estado, accesorios = :accesorios, fecharecepcion = :fecharecepcion WHERE $item = :$item";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":accesorios", $accesorios, PDO::PARAM_STR);
+        $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
+        $stmt->bindParam(":fecharecepcion", $fecha_actual);
+        
+        $stmt->execute();
+    }
+
 
     // ASIGNAR UN DISPOSITIVO
     static public function mdlAsignarDispositivo($tabla, $id, $res, $accesorios, $comentario){
         $estado = "2";
-        $sql = "UPDATE $tabla SET responsabledispositivo = :responsabledispositivo, estadodispositivo = $estado, accesorios = :accesorios, comentariodispositivo = :comentariodispositivo WHERE iddispositivo = :$id";
+
+        date_default_timezone_set('America/El_Salvador');
+        $fecha_actual = date("Y-m-d h:i:s");
+
+        $sql = "UPDATE $tabla SET responsabledispositivo = :responsabledispositivo, estadodispositivo = $estado, accesorios = :accesorios, comentariodispositivo = :comentariodispositivo, fechaasignacion = :fechaasignacion WHERE iddispositivo = :$id";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(":responsabledispositivo", $res, PDO::PARAM_STR);
         $stmt->bindParam(":accesorios", $accesorios, PDO::PARAM_STR);
         $stmt->bindParam(":comentariodispositivo", $comentario, PDO::PARAM_STR);
         $stmt->bindParam(":".$id, $id, PDO::PARAM_INT);
+        $stmt->bindParam(":fechaasignacion", $fecha_actual, PDO::PARAM_STR);
 
         if($stmt->execute()){
             return "ok";

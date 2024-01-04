@@ -9,7 +9,7 @@ class ControladorDispositivos{
         return $datos;
     }
     
-    //METODO PARA MOSTRAR INFORMACION DE DISPOSITIVO A RECUPERAR
+    //METODO PARA MOSTRAR INFORMACION DE DISPOSITIVO A RECUPERAR _______________________________________________________
     static public function ctrMostrarDispositivoRecuperar($item, $valor, $consultor){
         $tabla = "dispositivos";
         $datos = ModeloDispositivos::mdlMostrarDispositivoRecuperar($tabla, $item, $valor, $consultor);
@@ -17,7 +17,7 @@ class ControladorDispositivos{
         return $datos;
     }
 
-    //REGISTRAR NUEVO DISPOSITIVOS
+    //REGISTRAR NUEVO DISPOSITIVOS ____________________________________________________________________________________
     static public function ctrRegistrarDispositivo(){
         if(isset($_POST["tipoDispositivo"])){
             if($_POST["tipoDispositivo"] == "Telefono" || $_POST["tipoDispositivo"] == "Tablet" || $_POST["tipoDispositivo"] == "Laptop"){
@@ -80,7 +80,7 @@ class ControladorDispositivos{
     }
 
 
-    //MODIFICAR DISPOSITIVO
+    //MODIFICAR DISPOSITIVO __________________________________________________________________________________________
     static public function ctrModificarDispositivo(){
         if(isset($_POST["editarTipoDispositivo"])){
             if($_POST["editarTipoDispositivo"] == "Telefono" || $_POST["editarTipoDispositivo"] == "Tablet" || $_POST["editarTipoDispositivo"] == "Laptop"){
@@ -132,7 +132,14 @@ class ControladorDispositivos{
         }
     }
 
-    //ASIGNAR DISPOSITIVO
+    //CAMBIAR ESTADO DE DISPOSITIVO AL RECUPERARLO ____________________________________________________________________
+    static public function ctrCambiarEstadoDispositivo($item, $valor, $accesorios){
+        $tabla = "dispositivos";
+        ModeloDispositivos::mdlCambiarEstadoDispositivo($tabla, $item, $valor, $accesorios);
+    }
+
+
+    //ASIGNAR DISPOSITIVO _____________________________________________________________________________________________
     static public function ctrAsignarDispositivo($id, $res, $accesorios, $comentario){
        $tabla = "dispositivos";
 
