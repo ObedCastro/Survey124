@@ -27,7 +27,7 @@
                         <span class="mb-1 text-xs">Teléfono: <span id="mostrarTelefonoDispositivo" class="text-dark ms-sm-2 font-weight-bold"></span></span>
                         <span class="mb-1 text-xs">Responsable: <span id="mostrarResponsableDispositivo" class="text-dark ms-sm-2 font-weight-bold"></span></span>
                       </div>
-                    </li>
+                    </li> 
 
                     <li class="list-group-item border-0 d-flex p-4 mb-1 bg-gray-100 border-radius-lg">
                       <div class="d-flex flex-column">
@@ -52,19 +52,28 @@
                         <span class="mb-1 text-xs"><i class="fa fa-check"></i> Mousepad <span id="checkMousepad" class="text-dark ms-sm-2 font-weight-bold"></span></span>
                       </div>
                     </li>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="form-floating">
-                    <textarea disabled class="form-control" placeholder="Leave a comment here" id="mostrarComentarioDispositivo" style="height: 100px"></textarea>
-                    <label for="mostrarComentarioDispositivo">Comentario</label>
+                    <li class="list-group-item border-0">
+                          <div class="form-floating">
+                            <textarea readonly class="form-control" placeholder="Leave a comment here" id="mostrarComentarioDispositivo" style="height: 100px"></textarea>
+                            <label for="mostrarComentarioDispositivo">Comentario</label>
+                          </div>                       
+                    </li>
                   </div>
                 </div>
               </ul>
 
             </div>
           </div>
+
+          <div class="card">
+            <div class="card-header pb-0 px-3 d-flex justify-content-between">
+                <h6 class="mb-0">Movimientos</h6>
+                  <span type="button" style="color: grey;" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></span>
+              </div>
+            </div>
+
+            
+
 
         </div>
       </div>
