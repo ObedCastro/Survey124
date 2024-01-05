@@ -17,11 +17,19 @@ class ModeloInicio{
     }
 
     static public function mdlMostrarGraficoLineas($tabla){
-      $sql1 = "SELECT count(tipodispositivo) AS total, MONTH(fechaasignacion) AS mes FROM $tabla WHERE fechaasignacion >= '2023-01-01' AND fechaasignacion <= '2023-12-31' GROUP BY mes ORDER BY mes";
-      $stmt1 = Conexion::conectar()->prepare($sql1);
-      $stmt1->execute();
+      $sql = "SELECT count(tipodispositivo) AS total, MONTH(fechaasignacion) AS mes FROM $tabla WHERE fechaasignacion >= '2024-01-01 00:00:00' AND fechaasignacion <= '2024-12-31 23:59:59' AND estadodispositivo = '2' GROUP BY mes ORDER BY mes";
+      $stmt = Conexion::conectar()->prepare($sql);
+      $stmt->execute();
 
-      return array($stmt1->fetchAll());
+      return $stmt->fetchAll();
+    }
+
+    static public function mdlMostrarUltimosMovimientos($tabla){
+      $sql = "SELECT * FROM $tabla order by id DESC LIMIT 10";
+      $stmt = Conexion::conectar()->prepare($sql);
+      $stmt->execute();
+
+      return $stmt->fetchAll();
     }
 
 }

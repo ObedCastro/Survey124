@@ -1,5 +1,7 @@
 <?php
 
+//session_start();
+
 require_once "conexion.php";
 
 class ModeloDispositivos{
@@ -111,12 +113,14 @@ class ModeloDispositivos{
     //CAMBIAR ESTADO DE DISPOSITIVO AL RECUPERARLO
     static public function mdlCambiarEstadoDispositivo($tabla, $item, $valor, $accesorios){
         $estado = "1";
+        $receptor = $_SESSION["nombre"];
         date_default_timezone_set('America/El_Salvador');
         $fecha_actual = date("Y-m-d h:i:s");
 
-        $sql = "UPDATE $tabla SET responsabledispositivo = '', estadodispositivo = $estado, accesorios = :accesorios, fecharecepcion = :fecharecepcion WHERE $item = :$item";
+        $sql = "UPDATE $tabla SET responsabledispositivo = '', estadodispositivo = $estado, accesorios = :accesorios, receptordispositivo = :receptordispositivo, fecharecepcion = :fecharecepcion WHERE $item = :$item";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(":accesorios", $accesorios, PDO::PARAM_STR);
+        $stmt->bindParam(":receptordispositivo", $receptor, PDO::PARAM_STR);
         $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
         $stmt->bindParam(":fecharecepcion", $fecha_actual);
         
@@ -127,14 +131,16 @@ class ModeloDispositivos{
     // ASIGNAR UN DISPOSITIVO
     static public function mdlAsignarDispositivo($tabla, $id, $res, $accesorios, $comentario){
         $estado = "2";
+        $asignador = $_SESSION["nombre"];
 
         date_default_timezone_set('America/El_Salvador');
         $fecha_actual = date("Y-m-d h:i:s");
 
-        $sql = "UPDATE $tabla SET responsabledispositivo = :responsabledispositivo, estadodispositivo = $estado, accesorios = :accesorios, comentariodispositivo = :comentariodispositivo, fechaasignacion = :fechaasignacion WHERE iddispositivo = :$id";
+        $sql = "UPDATE $tabla SET responsabledispositivo = :responsabledispositivo, estadodispositivo = $estado, accesorios = :accesorios, asignadordispositivo = :asignadordispositivo, comentariodispositivo = :comentariodispositivo, fechaasignacion = :fechaasignacion WHERE iddispositivo = :$id";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(":responsabledispositivo", $res, PDO::PARAM_STR);
         $stmt->bindParam(":accesorios", $accesorios, PDO::PARAM_STR);
+        $stmt->bindParam(":asignadordispositivo", $asignador, PDO::PARAM_STR);
         $stmt->bindParam(":comentariodispositivo", $comentario, PDO::PARAM_STR);
         $stmt->bindParam(":".$id, $id, PDO::PARAM_INT);
         $stmt->bindParam(":fechaasignacion", $fecha_actual, PDO::PARAM_STR);

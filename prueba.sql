@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 04-01-2024 a las 22:11:33
+-- Tiempo de generación: 05-01-2024 a las 22:23:06
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.1.10
 
@@ -109,6 +109,8 @@ CREATE TABLE `dispositivos` (
   `estadodispositivo` int NOT NULL,
   `comentariodispositivo` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci,
   `fecharegistro` date DEFAULT NULL,
+  `asignadordispositivo` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `receptordispositivo` varchar(50) DEFAULT NULL,
   `fechamodificacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `fechaasignacion` timestamp NULL DEFAULT NULL,
   `fecharecepcion` timestamp NULL DEFAULT NULL
@@ -118,15 +120,15 @@ CREATE TABLE `dispositivos` (
 -- Volcado de datos para la tabla `dispositivos`
 --
 
-INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositivo`, `modelodispositivo`, `imeidispositivo`, `seriedispositivo`, `telefonodispositivo`, `accesorios`, `responsabledispositivo`, `sededispositivo`, `estadodispositivo`, `comentariodispositivo`, `fecharegistro`, `fechamodificacion`, `fechaasignacion`, `fecharecepcion`) VALUES
-(30, 'Telefono', 'Samsung', 'Galaxy A34', '234253252353535', 'ert345ert', '11111111111', '', '', 1, 1, 'aaa', NULL, '2024-01-04 21:41:11', NULL, NULL),
-(31, 'Tablet', 'HP', 'Tab S9', '4354677', 'HYYYF5667', '76543677', '', '', 3, 1, NULL, NULL, '2024-01-04 21:41:11', NULL, NULL),
-(32, 'Tablet', 'HP', 'Galaxy A34', '737382920', 'HF799335', '72053930', '', '', 1, 1, NULL, NULL, '2024-01-04 21:41:11', NULL, NULL),
-(33, 'Telefono', 'Samsung', 'Galaxy A33', '719283714', 'HV8R840H', '04048958', '', '', 1, 1, NULL, NULL, '2024-01-04 21:41:11', NULL, NULL),
-(34, 'Laptop', 'Lenovo', '640 G9', '8549934JH', '455633F5', '32454543', '', '', 2, 1, NULL, NULL, '2024-01-04 21:41:11', NULL, NULL),
-(35, 'Tablet', 'Samsung', 'Tab S9', '738453879435', 'DHER844H3', '453636232', '', '', 1, 1, NULL, NULL, '2024-01-04 21:41:11', NULL, NULL),
-(36, 'Telefono', 'Samsung', 'Galaxy A34', '546564Y7', '54654Y6Y6', '5454Y', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '', 1, 1, '', NULL, '2024-01-04 22:10:20', '2024-01-04 10:09:44', '2024-01-04 10:10:20'),
-(37, 'Laptop', 'Lenovo', '640 G9', '876654T4', '36546758G', '22577777', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '', 1, 1, '', NULL, '2024-01-04 22:09:14', '2024-01-04 10:08:38', '2024-01-04 10:09:14');
+INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositivo`, `modelodispositivo`, `imeidispositivo`, `seriedispositivo`, `telefonodispositivo`, `accesorios`, `responsabledispositivo`, `sededispositivo`, `estadodispositivo`, `comentariodispositivo`, `fecharegistro`, `asignadordispositivo`, `receptordispositivo`, `fechamodificacion`, `fechaasignacion`, `fecharecepcion`) VALUES
+(30, 'Telefono', 'Samsung', 'Galaxy A34', '234253252353535', 'ert345ert', '11111111111', '', '', 1, 1, 'aaa', '2024-01-02', NULL, NULL, '2024-01-05 21:32:47', NULL, NULL),
+(31, 'Tablet', 'HP', 'Tab S9', '4354677', 'HYYYF5667', '76543677', '', '', 3, 1, NULL, '2024-01-02', NULL, NULL, '2024-01-05 21:32:52', NULL, NULL),
+(32, 'Tablet', 'HP', 'Galaxy A34', '737382920', 'HF799335', '72053930', '', '', 1, 1, NULL, '2024-01-02', NULL, NULL, '2024-01-05 21:32:54', NULL, NULL),
+(33, 'Telefono', 'Samsung', 'Galaxy A33', '719283714', 'HV8R840H', '04048958', '', '', 1, 1, NULL, '2024-01-02', NULL, NULL, '2024-01-05 21:32:56', NULL, NULL),
+(34, 'Laptop', 'Lenovo', '640 G9', '8549934JH', '455633F5', '32454543', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"0\"}', '5', 2, 2, '', '2024-01-02', 'Obed Alberto Castro Orellana', NULL, '2024-01-05 21:33:00', '2024-02-05 17:12:22', NULL),
+(35, 'Tablet', 'Samsung', 'Tab S9', '738453879435', 'DHER844H3', '453636232', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"0\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '', 1, 1, '', '2024-01-02', 'Obed Alberto Castro Orellana', 'Obed Alberto Castro Orellana', '2024-01-05 21:33:02', '2024-01-05 09:20:17', '2024-01-05 09:20:43'),
+(36, 'Telefono', 'Samsung', 'Galaxy A34', '546564Y7', '54654Y6Y6', '5454Y', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '7', 1, 2, '', '2024-01-02', 'Obed Alberto Castro Orellana', NULL, '2024-01-05 21:33:04', '2024-01-05 16:25:16', '2024-01-04 10:10:20'),
+(37, 'Laptop', 'Lenovo', '640 G9', '876654T4', '36546758G', '22577777', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"1\"}', '4', 1, 2, '', '2024-01-02', 'Obed Alberto Castro Orellana', 'Obed Alberto Castro Orellana', '2024-01-05 21:36:49', '2024-01-05 17:47:01', '2024-01-05 17:13:56');
 
 --
 -- Disparadores `dispositivos`
@@ -134,12 +136,12 @@ INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositiv
 DELIMITER $$
 CREATE TRIGGER `actualizar_registros` AFTER UPDATE ON `dispositivos` FOR EACH ROW BEGIN
     IF NEW.estadodispositivo = 2 THEN
-        INSERT INTO registros (fecha_asignacion, usuario_campo_id, sede_id, dispositivo_id, accesorios_entregados)
-        VALUES (NEW.fechaasignacion, NEW.responsabledispositivo, NEW.sededispositivo, NEW.iddispositivo, NEW.accesorios);
+        INSERT INTO registros (fecha_asignacion, usuario_campo_id, sede_id, dispositivo_id, tipo_dispositivo, accesorios_entregados, nombre_asignador)
+        VALUES (NEW.fechaasignacion, NEW.responsabledispositivo, NEW.sededispositivo, NEW.iddispositivo, NEW.tipodispositivo, NEW.accesorios, NEW.asignadordispositivo);
 
     ELSEIF NEW.estadodispositivo = 1 THEN
         UPDATE registros
-        SET fecha_recepcion = NEW.fecharecepcion, accesorios_recuperados = NEW.accesorios 
+        SET fecha_recepcion = NEW.fecharecepcion, accesorios_recuperados = NEW.accesorios, nombre_receptor = NEW.receptordispositivo
         WHERE dispositivo_id = OLD.iddispositivo AND fecha_asignacion = OLD.fechaasignacion AND usuario_campo_id = OLD.responsabledispositivo;
 
     END IF;
@@ -157,15 +159,14 @@ CREATE TABLE `registros` (
   `id` int NOT NULL,
   `fecha_asignacion` timestamp NULL DEFAULT NULL,
   `nombre_asignador` varchar(30) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
-  `cargo_asignador` varchar(30) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `usuario_campo_id` int DEFAULT NULL,
   `sede_id` int DEFAULT NULL,
   `dispositivo_id` int DEFAULT NULL,
+  `tipo_dispositivo` varchar(20) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `accesorios_entregados` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
   `accesorios_recuperados` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
   `fecha_recepcion` timestamp NULL DEFAULT NULL,
-  `nombre_receptor` date DEFAULT NULL,
-  `cargo_receptor` date DEFAULT NULL,
+  `nombre_receptor` varchar(50) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `comentario` varchar(500) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
@@ -173,11 +174,28 @@ CREATE TABLE `registros` (
 -- Volcado de datos para la tabla `registros`
 --
 
-INSERT INTO `registros` (`id`, `fecha_asignacion`, `nombre_asignador`, `cargo_asignador`, `usuario_campo_id`, `sede_id`, `dispositivo_id`, `accesorios_entregados`, `accesorios_recuperados`, `fecha_recepcion`, `nombre_receptor`, `cargo_receptor`, `comentario`) VALUES
-(111, '2024-01-04 09:58:13', NULL, NULL, 8, 1, 37, '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', NULL, NULL, NULL, NULL, NULL),
-(112, '2024-01-04 10:07:07', NULL, NULL, 4, 1, 37, '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"1\"}', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2024-01-04 10:07:32', NULL, NULL, NULL),
-(113, '2024-01-04 10:08:38', NULL, NULL, 4, 1, 37, '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2024-01-04 10:09:14', NULL, NULL, NULL),
-(114, '2024-01-04 10:09:44', NULL, NULL, 8, 1, 36, '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2024-01-04 10:10:20', NULL, NULL, NULL);
+INSERT INTO `registros` (`id`, `fecha_asignacion`, `nombre_asignador`, `usuario_campo_id`, `sede_id`, `dispositivo_id`, `tipo_dispositivo`, `accesorios_entregados`, `accesorios_recuperados`, `fecha_recepcion`, `nombre_receptor`, `comentario`) VALUES
+(111, '2024-01-04 09:58:13', NULL, 8, 1, 37, NULL, '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', NULL, NULL, NULL, NULL),
+(112, '2024-01-04 10:07:07', NULL, 4, 1, 37, NULL, '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"1\"}', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2024-01-04 10:07:32', NULL, NULL),
+(113, '2024-01-04 10:08:38', NULL, 4, 1, 37, NULL, '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2024-01-04 10:09:14', NULL, NULL),
+(114, '2024-01-04 10:09:44', NULL, 8, 1, 36, 'Telefono', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2024-01-04 10:10:20', NULL, NULL),
+(115, '2024-01-05 15:39:50', NULL, 8, 1, 37, 'Laptop', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"1\"}', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2024-01-05 15:41:31', NULL, NULL),
+(116, '2024-01-05 15:42:57', 'Obed Alberto Castro Orellana', 8, 1, 37, 'Laptop', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"1\"}', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2024-01-05 15:51:04', 'Miguel Angel Portillo Lozano', NULL),
+(117, '2024-01-05 15:42:57', 'Obed Alberto Castro Orellana', 8, 1, 37, 'Laptop', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"1\"}', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2024-01-05 15:51:04', 'Miguel Angel Portillo Lozano', NULL),
+(118, '2024-01-05 15:51:58', 'Miguel Angel Portillo Lozano', 4, 1, 37, 'Laptop', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"1\"}', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2024-01-05 15:54:30', 'Obed Alberto Castro Orellana', NULL),
+(119, '2024-01-05 16:23:39', 'Obed Alberto Castro Orellana', 4, 1, 37, 'Laptop', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"0\"}', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2024-01-05 16:50:55', 'Obed Alberto Castro Orellana', NULL),
+(120, '2024-01-05 16:25:16', 'Obed Alberto Castro Orellana', 7, 1, 36, 'Tablet', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', NULL, NULL, NULL, NULL),
+(121, '2024-02-05 16:25:16', 'Obed Alberto Castro Orellana', 7, 1, 36, 'Telefono', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', NULL, NULL, NULL, NULL),
+(122, '2024-01-05 16:25:16', 'Obed Alberto Castro Orellana', 7, 1, 36, 'Telefono', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', NULL, NULL, NULL, NULL),
+(123, '2024-01-05 16:56:15', 'Obed Alberto Castro Orellana', 4, 1, 37, 'Laptop', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"1\"}', NULL, NULL, NULL, NULL),
+(124, '2024-02-05 16:56:15', 'Obed Alberto Castro Orellana', 4, 1, 37, 'Laptop', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"1\"}', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2024-01-05 17:13:56', 'Obed Alberto Castro Orellana', NULL),
+(125, '2024-01-05 17:12:22', 'Obed Alberto Castro Orellana', 5, 2, 34, 'Laptop', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"0\"}', NULL, NULL, NULL, NULL),
+(126, '2024-02-05 17:12:22', 'Obed Alberto Castro Orellana', 5, 2, 34, 'Laptop', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"0\"}', NULL, NULL, NULL, NULL),
+(127, '2024-01-05 17:47:01', 'Obed Alberto Castro Orellana', 4, 1, 37, 'Laptop', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"1\"}', NULL, NULL, NULL, NULL),
+(128, '2024-01-05 09:20:17', 'Obed Alberto Castro Orellana', 1, 1, 35, 'Tablet', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"0\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', '2024-01-05 09:20:43', 'Obed Alberto Castro Orellana', NULL),
+(129, '2024-02-05 17:12:22', 'Obed Alberto Castro Orellana', 5, 2, 34, 'Laptop', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"0\"}', NULL, NULL, NULL, NULL),
+(130, '2024-01-05 16:25:16', 'Obed Alberto Castro Orellana', 7, 1, 36, 'Telefono', '{\"Cubo\":\"1\",\"Cable\":\"1\",\"Funda\":\"1\",\"Lapiz\":\"1\",\"Powerbank\":\"1\",\"Maletin\":\"0\",\"Cargador\":\"0\",\"Mouse\":\"0\",\"Mousepad\":\"0\"}', NULL, NULL, NULL, NULL),
+(131, '2024-01-05 17:47:01', 'Obed Alberto Castro Orellana', 4, 1, 37, 'Laptop', '{\"Cubo\":\"0\",\"Cable\":\"0\",\"Funda\":\"0\",\"Lapiz\":\"0\",\"Powerbank\":\"0\",\"Maletin\":\"1\",\"Cargador\":\"1\",\"Mouse\":\"1\",\"Mousepad\":\"1\"}', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -261,7 +279,7 @@ ALTER TABLE `dispositivos`
 -- AUTO_INCREMENT de la tabla `registros`
 --
 ALTER TABLE `registros`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT de la tabla `sedes`

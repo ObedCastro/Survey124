@@ -16,4 +16,11 @@ class ControladorInicio{
       return $respuesta;
     }
 
+    static public function ctrMostrarUltimosMovimientos(){
+      $tabla = "registros";
+
+      $respuesta = ModeloInicio::mdlMostrarUltimosMovimientos($tabla);
+      return $respuesta;
+    }
+
 }
