@@ -168,6 +168,7 @@ $(".tablaDispositivos").on("click", ".btnEditarDispositivo", function(){
 //__________________________________________________________________________________________
 //Mostrar información antes de ASIGNAR un dispositivo
 $(".tablaDispositivos").on("click", ".btnAsignarDispositivo", function(){
+
     var idDispositivo = $(this).attr("idDispositivo")
     var datos3 = new FormData();
     datos3.append("idDispositivo", idDispositivo);
@@ -181,6 +182,16 @@ $(".tablaDispositivos").on("click", ".btnAsignarDispositivo", function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
+
+            //Mostrar solo los accesorios que corresponen al tipo de dispositivo
+            if(respuesta["tipodispositivo"] == "Telefono" || respuesta["tipodispositivo"] == "Tablet"){
+                $(".accesoriosMovil").show();
+                $(".accesoriosLaptop").hide();
+            } else if(respuesta["tipodispositivo"] == "Laptop"){
+                $(".accesoriosMovil").hide();
+                $(".accesoriosLaptop").show();
+            }
+
             //Mostrar información en la ventana de asignar el dispositivo
             $("#modalAsignarDispositivo .idDispositivoAsignar").val(respuesta['iddispositivo']);
             $("#modalAsignarDispositivo .detalleAsignarTipo").text(respuesta['tipodispositivo']);

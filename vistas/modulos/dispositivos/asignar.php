@@ -57,7 +57,7 @@
                     </select>
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 accesoriosMovil">
 
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="checkCubo" id="checkCubo">
@@ -81,7 +81,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-6 accesoriosLaptop">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="checkMaletin" id="checkMaletin">
                                 <label class="form-check-label" for="checkMaletin">Maletín de laptop</label>

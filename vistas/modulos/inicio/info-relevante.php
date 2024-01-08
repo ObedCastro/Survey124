@@ -8,10 +8,10 @@
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Telefonos asignados</p>
                     <h5 class="font-weight-bolder mb-0">
                       <?php
-                        $telefonosasignados = ControladorInicio::ctrMostrarDispositivosAsignados();
-                        echo $telefonosasignados[0]['telefonosAsignados'];
+                        $dispositivosAsignados = ControladorInicio::ctrMostrarDispositivosAsignados();
+                        echo $dispositivosAsignados[0]['telefonosAsignados'];
                       ?>
-                      <span class="text-success text-sm font-weight-bolder"> de <?php echo $telefonosasignados[1]['totalTelefonos']; ?></span>
+                      <span class="text-success text-sm font-weight-bolder"> de <?php echo $dispositivosAsignados[0]['totalTelefonos']; ?></span>
                     </h5>
                   </div>
                 </div>
@@ -30,16 +30,16 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Tablets asignadas</p>
                     <h5 class="font-weight-bolder mb-0">
-                      2,300
-                      <span class="text-success text-sm font-weight-bolder">+3%</span>
+                      <?php echo $dispositivosAsignados[1]["tabletsAsignadas"]; ?>
+                      <span class="text-success text-sm font-weight-bolder">de <?php echo $dispositivosAsignados[1]["totalTablets"]; ?></span>
                     </h5>
                   </div>
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-tablet-button opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -52,16 +52,16 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">New Clients</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Laptops asignadas</p>
                     <h5 class="font-weight-bolder mb-0">
-                      +3,462
-                      <span class="text-danger text-sm font-weight-bolder">-2%</span>
+                      <?php echo $dispositivosAsignados[2]["laptopsAsignadas"]; ?>
+                      <span class="text-success text-sm font-weight-bolder">de <?php echo $dispositivosAsignados[2]["totalLaptops"]; ?></span>
                     </h5>
                   </div>
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-laptop text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>

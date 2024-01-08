@@ -116,7 +116,7 @@
 
     gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
     gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-    gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
+    gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors 
 
     $.ajax({
       url: "ajax/graficolineas.ajax.php",
@@ -124,8 +124,9 @@
       contentType: false,
       processData: false,
       success: function(respuesta){
-
+        console.log(respuesta);
         var datos = JSON.parse(respuesta);
+        console.log(datos);
         var meses = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         var mostrarMes = [];
         var mostrarCantidadAsignaciones = [];
