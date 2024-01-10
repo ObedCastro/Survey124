@@ -4,7 +4,7 @@
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
 
-      <form method="POST" id="formularioAsignacion">
+      <form method="POST" id="formularioAsignacion" class="requires-validation" novalidate>
 
         <div class="modal-header">
             <h1 class="modal-title fs-5" id="modalAsignarDispositivoLabel">Asignar dispositivo</h1>
@@ -42,8 +42,8 @@
 
                 <div class="col-md-6">
                     <label for="selectConsultores" class="form-label">Consultor responsable</label>
-                    <select class="form-control choices-single form-select" id="selectConsultores" name="responsableDispositivo">
-                        <option></option>
+                    <select class="form-control choices-single form-select is-invalid" id="selectConsultores" name="responsableDispositivo" required>
+                        <option selected disabled value=""></option>
 
                         <?php
                             $item = null;
@@ -117,3 +117,8 @@
     </div>
   </div>
 </div>
+
+
+<script>
+    
+</script>

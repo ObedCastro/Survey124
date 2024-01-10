@@ -1,3 +1,5 @@
+
+
 <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -5,7 +7,7 @@
             <div class="card-header pb-0 d-flex justify-content-between">
               <h6>Administrar dispositivos</h6>
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalDispositivos">
+              <button type="button" class="btn btn-outline-primary btnNuevoDispositivo" data-bs-toggle="modal" data-bs-target="#modalDispositivos">
               <i class="fa fa-plus me-sm-1 cursor-pointer" aria-hidden="true"></i>
                 Nuevo dispositivo
               </button>
@@ -44,76 +46,99 @@
 <div class="modal fade" id="modalDispositivos" data-bs-backdrop="static" tabindex="-1" aria-labelledby="modalDispositivosLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalDispositivosLabel">Registrar nuevo dispositivo</h1>
+      <div class="modal-header bg-primary">
+        <h1 class="modal-title fs-5 text-white" id="modalDispositivosLabel">Registrar nuevo dispositivo</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="" method="post" class="needs-validation">
+        <form action="" method="post" class="needs-validation" novalidate>
           <div class="mb-3 row">
             <div class="col-md-4">
               <label for="tipoDispositivo" class="form-label">Tipo</label>
-              <select class="form-select" aria-label="Default select example" id="tipoDispositivo" name="tipoDispositivo">
+              <select class="form-select" aria-label="Default select example" id="tipoDispositivo" name="tipoDispositivo" required>
                 <option value=""></option>
-                <option value=""></option>
-                <option value="Telefono">Telefono</option>
-                <option value="Tablet">Tablet</option>
-                <option value="Laptop">Laptop</option>
+                <?php
+                  $tipos = ControladorTipos::ctrMostrarTipos();
+                  foreach ($tipos as $key => $value) {
+                    echo '<option value="'.$value["nombretipo"].'">'.$value["nombretipo"].'</option>';
+                  }
+                ?>
               </select>
               <div class="valid-feedback"></div>
+              <div class="invalid-feedback">Debe seleccionar el tipo de dispositivo</div>
             </div>
             <div class="col-md-4">
               <label for="marcaDispositivo" class="form-label">Marca</label>
-              <select class="form-select" aria-label="Default select example" id="marcaDispositivo" name="marcaDispositivo">
+              <select class="form-select" aria-label="Default select example" id="marcaDispositivo" name="marcaDispositivo" required>
                 <option value=""></option>
-                <option value="Samsung">Samsung</option>
-                <option value="HP">HP</option>
-                <option value="Lenovo">Lenovo</option>
+                <?php
+                  $marcas = ControladorMarcas::ctrMostrarMarcas();
+                  foreach ($marcas as $key => $value) {
+                    echo '<option value="'.$value["nombremarca"].'">'.$value["nombremarca"].'</option>';
+                  }
+                ?>
               </select>
               <div class="valid-feedback"></div>
+              <div class="invalid-feedback">Debe seleccionar marca de dispositivo</div>
             </div>
             <div class="col-md-4">
               <label for="modeloDispositivo" class="form-label">Modelo</label>
-              <select class="form-select" aria-label="Default select example" id="modeloDispositivo" name="modeloDispositivo">
+              <select class="form-select" aria-label="Default select example" id="modeloDispositivo" name="modeloDispositivo" required>
                 <option value=""></option>
-                <option value="Galaxy A34">Galaxy A34</option>
-                <option value="Galaxy A33">Galaxy A33</option>
-                <option value="Tab S9">Tab S9</option>
-                <option value="640 G9">640 G9</option>
+                <?php
+                  $modelos = ControladorModelos::ctrMostrarModelos();
+                  foreach ($modelos as $key => $value) {
+                    echo '<option value="'.$value["nombremodelo"].'">'.$value["nombremodelo"].'</option>';
+                  }
+                ?>
               </select>
               <div class="valid-feedback"></div>
+              <div class="invalid-feedback">Debe seleccionar el modelo de dispositivo</div>
             </div>
           </div>
 
 
           <div class="mb-3 row">
-            <div class="col-md-3">
+            <div class="col-md-3 mostrarInputImei">
               <label for="imeiDispositivo" class="form-label">IMEI</label>
-              <input type="text" class="form-control" placeholder="Ingrese el IMEI" id="imeiDispositivo" name="imeiDispositivo" maxlength="15">
+              <input type="text" class="form-control" placeholder="Ingrese el IMEI" id="imeiDispositivo" name="imeiDispositivo" maxlength="15" required>
               <div class="valid-feedback"></div>
+              <div class="invalid-feedback">El IMEI es requerido</div>
             </div>
             <div class="col-md-3">
               <label for="serieDispositivo" class="form-label">Serie</label>
-              <input type="text" class="form-control" placeholder="Ingrese la serie" id="serieDispositivo" name="serieDispositivo">
+              <input type="text" class="form-control" placeholder="Ingrese la serie" id="serieDispositivo" name="serieDispositivo" required>
               <div class="valid-feedback"></div>
+              <div class="invalid-feedback">La serie del dispositivo es requerida</div>
             </div>
             <div class="col-md-3">
-              <label for="telefonoDispositivo" class="form-label">Teléfono</label>
-              <input type="text" class="form-control" placeholder="Ingrese el teléfono" id="telefonoDispositivo" name="telefonoDispositivo" maxlength="11">
+              <label for="telefonoDispositivo" class="form-label mostrarInputTelefono">Teléfono</label>
+              <input type="text" class="form-control" placeholder="Ingrese el teléfono" id="telefonoDispositivo" name="telefonoDispositivo" maxlength="11" required>
               <div class="valid-feedback"></div>
+              <div class="invalid-feedback">Debe agregar el teléfono del dispositivo</div>
             </div>
             <div class="col-md-3">
               <label for="sedeDispositivo" class="form-label">Sede</label>
-              <select class="form-select" aria-label="Default select example" id="sedeDispositivo" name="sedeDispositivo">
-                <option value=""></option>
-                <option value="1">San Miguel</option>
-                <option value="2">La Unión</option>
-                <option value="3">Morazán</option>
+              <select class="form-select" aria-label="Default select example" id="sedeDispositivo" name="sedeDispositivo" required>
+                <option value=""></option> 
+                <?php
+                  $sedes = ControladorSedes::ctrMostrarSedes(null, null);
+                  foreach ($sedes as $key => $value) {
+                    echo '<option value="'.$value["idsede"].'">'.$value["nombresede"].' '.$value["departamentosede"].'</option>';
+                  }
+                ?>
               </select>
               <div class="valid-feedback"></div>
+              <div class="invalid-feedback">Debe seleccionar la sede del dispositivo</div>
             </div>
           </div>
 
+            <?php
+              date_default_timezone_set('America/El_Salvador');
+              $fechahoy = date("Y-m-d");
+              echo '<p class="text-xs mt-5">Realizando registro en: <strong>'.$fechahoy.'</strong></p>';
+            ?>
+            <input name="fechaRegistro" type="hidden" value="<?php echo $fechahoy ?>">
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             <button type="submit" class="btn btn-primary">Guardar</button>
@@ -129,6 +154,36 @@
     </div>
   </div>
 </div>
+
+
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function () {
+    'use strict'
+
+    //Resetear formularios de modal, en cuanto el modal se oculte
+    $("#modalDispositivos").on("hidden.bs.modal", function () {
+      $(this).find('form')[0].reset();
+    });
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+          console.log(event);
+        }, false)
+      })
+  })()
+</script>
 
 
 
@@ -157,28 +212,36 @@
               <input type="hidden" id="idEditarDispositivo" name="idDispositivo" value="">
               <label for="editarTipoDispositivo" class="form-label">Tipo</label>
               <select class="form-select" aria-label="Default select example" id="editarTipoDispositivo" name="editarTipoDispositivo">
-                <option value="Telefono">Telefono</option>
-                <option value="Tablet">Tablet</option>
-                <option value="Laptop">Laptop</option>
+              <?php
+                  $tipos = ControladorTipos::ctrMostrarTipos();
+                  foreach ($tipos as $key => $value) {
+                    echo '<option value="'.$value["nombretipo"].'">'.$value["nombretipo"].'</option>';
+                  }
+                ?>
               </select>
               <div class="valid-feedback"></div>
             </div>
             <div class="col-md-4">
               <label for="marcaDispositivo" class="form-label">Marca</label>
               <select class="form-select" aria-label="Default select example" id="marcaDispositivo" name="marcaDispositivo">
-                <option value="Samsung">Samsung</option>
-                <option value="HP">HP</option>
-                <option value="Lenovo">Lenovo</option>
+              <?php
+                  $marcas = ControladorMarcas::ctrMostrarMarcas();
+                  foreach ($marcas as $key => $value) {
+                    echo '<option value="'.$value["nombremarca"].'">'.$value["nombremarca"].'</option>';
+                  }
+                ?>
               </select>
               <div class="valid-feedback"></div>
             </div>
             <div class="col-md-4">
               <label for="modeloDispositivo" class="form-label">Modelo</label>
               <select class="form-select" aria-label="Default select example" id="modeloDispositivo" name="modeloDispositivo">
-                <option value="Galaxy A34">Galaxy A34</option>
-                <option value="Galaxy A33">Galaxy A33</option>
-                <option value="Tab S9">Tab S9</option>
-                <option value="640 G9">640 G9</option>
+              <?php
+                  $modelos = ControladorModelos::ctrMostrarModelos();
+                  foreach ($modelos as $key => $value) {
+                    echo '<option value="'.$value["nombremodelo"].'">'.$value["nombremodelo"].'</option>';
+                  }
+                ?>
               </select>
               <div class="valid-feedback"></div>
             </div>
@@ -204,9 +267,12 @@
             <div class="col-md-3">
               <label for="sedeDispositivo" class="form-label">Sede</label>
               <select class="form-select" aria-label="Default select example" id="sedeDispositivo" name="sedeDispositivo">
-                <option value="1">San Miguel</option>
-                <option value="2">La Unión</option>
-                <option value="3">Morazán</option>
+              <?php
+                  $sedes = ControladorSedes::ctrMostrarSedes(null, null);
+                  foreach ($sedes as $key => $value) {
+                    echo '<option value="'.$value["idsede"].'">'.$value["nombresede"].' '.$value["departamentosede"].'</option>';
+                  }
+                ?>
               </select>
               <div class="valid-feedback"></div>
             </div>

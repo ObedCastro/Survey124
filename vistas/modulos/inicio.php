@@ -39,69 +39,91 @@
 
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
-    new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        datasets: [{
-          label: "Sales",
-          tension: 0.4,
-          borderWidth: 0,
-          borderRadius: 4,
-          borderSkipped: false,
-          backgroundColor: "#fff",
-          data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
-          maxBarThickness: 6
-        }, ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          }
-        },
-        interaction: {
-          intersect: false,
-          mode: 'index',
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false,
+    $.ajax({
+      url: "ajax/graficobarras.ajax.php",
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(resultado){
+        var respuesta = JSON.parse(resultado);
+        console.log(respuesta);
+
+        var mostrarModelos = [];
+        var mostrarCantidadModelos = [];
+        respuesta.forEach(e => {
+          mostrarCantidadModelos.push(e[0]);
+          mostrarModelos.push(e[1]);
+        });
+
+        console.log(mostrarCantidadModelos);
+
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: mostrarModelos,
+            datasets: [{
+              label: "Cantidad",
+              tension: 0.4,
+              borderWidth: 0,
+              borderRadius: 4,
+              borderSkipped: false,
+              backgroundColor: "#fff",
+              data: mostrarCantidadModelos,
+              maxBarThickness: 6
+            }, ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false,
+              }
             },
-            ticks: {
-              suggestedMin: 0,
-              suggestedMax: 500,
-              beginAtZero: true,
-              padding: 15,
-              font: {
-                size: 14,
-                family: "Open Sans",
-                style: 'normal',
-                lineHeight: 2
+            interaction: {
+              intersect: false,
+              mode: 'index',
+            },
+            scales: {
+              y: {
+                grid: {
+                  drawBorder: false,
+                  display: false,
+                  drawOnChartArea: false,
+                  drawTicks: false,
+                },
+                ticks: {
+                  suggestedMin: 0,
+                  suggestedMax: 500,
+                  beginAtZero: true,
+                  padding: 15,
+                  font: {
+                    size: 14,
+                    family: "Open Sans",
+                    style: 'normal',
+                    lineHeight: 2
+                  },
+                  color: "#fff"
+                },
               },
-              color: "#fff"
+              x: {
+                grid: {
+                  drawBorder: false,
+                  display: false,
+                  drawOnChartArea: false,
+                  drawTicks: false
+                },
+                ticks: {
+                  display: false
+                },
+              },
             },
           },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false
-            },
-            ticks: {
-              display: false
-            },
-          },
-        },
-      },
-    });
+        });
+      }
+    })
+
+    
 
 
     var ctx2 = document.getElementById("chart-line").getContext("2d");
@@ -124,9 +146,7 @@
       contentType: false,
       processData: false,
       success: function(respuesta){
-        console.log(respuesta);
         var datos = JSON.parse(respuesta);
-        console.log(datos);
         var meses = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         var mostrarMes = [];
         var mostrarCantidadAsignaciones = [];

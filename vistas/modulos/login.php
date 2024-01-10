@@ -11,9 +11,9 @@
                 </div>
                 <div class="card-body">
                   <form method="post" role="form">
-                    <label>Email</label>
+                    <label>Usuario</label>
                     <div class="mb-3">
-                      <input name="ingEmail" type="email" class="form-control" placeholder="Correo electronico" aria-label="Email" aria-describedby="email-addon">
+                      <input name="ingUsuario" type="usuario" class="form-control" placeholder="Ingrese usuario" aria-label="Usuario" aria-describedby="usuario-addon">
                     </div>
                     <label>Password</label>
                     <div class="mb-3">

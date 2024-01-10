@@ -28,7 +28,6 @@
                             <span class="mb-2 text-xs">Teléfono: <span class="text-dark ms-sm-2 font-weight-bold detalleRecuperarTelefono"></span></span>
                             <span class="mb-2 text-xs">Ubicación: <span class="text-dark ms-sm-2 font-weight-bold detalleRecuperarSede"></span></span>
                             <span class="mb-2 text-xs">Registrado en: <span class="text-dark ms-sm-2 font-weight-bold detalleRecuperarFecha"></span></span>
-                            <span class="mb-2 text-xs">Más información: <span class="text-dark ms-sm-2 font-weight-bold detalleRecuperarComentario"></span></span>
                             <?php
                                 date_default_timezone_set('America/El_Salvador');
                                 $fechahoy = date("d-m-Y");
@@ -48,7 +47,7 @@
 
                     <div class="row">
                         <p>Accesorios que entrega:</p>
-                        <div class="col-md-6">
+                        <div class="col-md-6 recuperarAccesoriosMovil">
 
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="checkCubo" id="checkCubo">
@@ -72,7 +71,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-6 recuperarAccesoriosLaptop">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="checkMaletin" id="checkMaletin">
                                 <label class="form-check-label" for="checkMaletin">Maletín de laptop</label>

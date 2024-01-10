@@ -5,7 +5,7 @@
     </div>
 
     <?php
-      $movimientos = ControladorInicio::ctrMostrarUltimosMovimientos();
+      $movimientos = ControladorInicio::ctrMostrarUltimosMovimientos(null, null);
     ?>
 
     <div class="card-body p-3">
@@ -28,26 +28,33 @@
               default: ""; 
             }
 
-                      if($movimiento["fecha_asignacion"] != "" && $movimiento["fecha_recepcion"] == ""){
-                        echo '<div class="timeline-block mb-3">
-                                <span class="timeline-step"><i class="ni '.$i.' text-success text-gradient"></i></span>
-                                <div class="timeline-content">
-                                  <h6 class="text-dark text-sm font-weight-bold mb-0">Asignación</h6>';
-                                  if($infoDispositivo["imeidispositivo"]){ $identificador = $infoDispositivo["imeidispositivo"]; } else{ $identificador = $infoDispositivo["seriedispositivo"]; }
-                                  echo '<p class="text-muted text-xs mt-1 mb-0">'.$nombre[0].' ha realizado asignación de <span class="font-weight-bold">'.$movimiento["tipo_dispositivo"].'</span> con IMEI <span class="font-weight-bold">'.$identificador.'</span> de la sede '.$sede["nombresede"].'</p>
-                                  <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">'.$movimiento["fecha_asignacion"].'</p>
-                                </div>
-                              </div>';
-                      } else if($movimiento["fecha_asignacion"] != "" && $movimiento["fecha_recepcion"] != ""){
+            if($infoDispositivo["imeidispositivo"]){ 
+              $identificador = $infoDispositivo["imeidispositivo"]; 
+            } else{ 
+              $identificador = $infoDispositivo["seriedispositivo"]; 
+            
+            }
+                      if($movimiento["fecha_recepcion"] != "" && $movimiento["fecha_asignacion"] != ""){
                         echo '<div class="timeline-block mb-3">
                                 <span class="timeline-step"><i class="ni '.$i.' text-danger text-gradient"></i></span>
                                 <div class="timeline-content">
                                   <h6 class="text-dark text-sm font-weight-bold mb-0">Recepción</h6>
-                                  <p class="text-muted text-xs mt-1 mb-0">'.$nombre[0].' ha realizado la recepción de <span class="font-weight-bold">'.$movimiento["tipo_dispositivo"].'</span> con IMEI <span class="font-weight-bold">'.$infoDispositivo["imeidispositivo"].'</span> de la sede '.$sede["nombresede"].'</p>
+                                  <p class="text-muted text-xs mt-1 mb-0">'.$nombre[0].' ha realizado la recepción de <span class="font-weight-bold">'.$movimiento["tipo_dispositivo"].'</span> con IMEI <span class="font-weight-bold">'.$identificador.'</span> de la sede '.$sede["nombresede"].' '.$sede["departamentosede"].'</p>
                                   <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">'.$movimiento["fecha_recepcion"].'</p>
                                 </div>
                               </div>';
                       }
+                      if($movimiento["fecha_recepcion"] == "" && $movimiento["fecha_asignacion"] != ""){
+                        echo '<div class="timeline-block mb-3">
+                                <span class="timeline-step"><i class="ni '.$i.' text-success text-gradient"></i></span>
+                                <div class="timeline-content">
+                                  <h6 class="text-dark text-sm font-weight-bold mb-0">Asignación</h6>';
+                                  echo '<p class="text-muted text-xs mt-1 mb-0">'.$nombre[0].' ha realizado asignación de <span class="font-weight-bold">'.$movimiento["tipo_dispositivo"].'</span> con IMEI <span class="font-weight-bold">'.$identificador.'</span> de la sede '.$sede["nombresede"].' '.$sede["departamentosede"].'</p>
+                                  <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">'.$movimiento["fecha_asignacion"].'</p>
+                                </div>
+                              </div>';
+                      } 
+                      
 
           }
 

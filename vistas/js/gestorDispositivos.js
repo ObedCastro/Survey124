@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     //Traducir datatable
     var table = $('#datatable').DataTable({
       "ajax": "ajax/tablaDispositivos.ajax.php",
@@ -44,7 +45,7 @@ $(document).ready(function(){
     //Creamos una fila en el head de la tabla y lo clonamos para cada columna
     $('#datatable thead tr').clone(true).appendTo( '#datatable thead' );
     $('#datatable thead tr:eq(1) th').each( function (i) {
-        $(this).html( '<input style="width: 100%;" type="text" placeholder="Search..." />' );
+        $(this).html( '<input style="width: 100%;" type="text" placeholder="Buscar..." />' );
         $( 'input', this ).on( 'keyup change', function () {
             if ( table.column(i).search() !== this.value ) {
                 table
@@ -55,20 +56,57 @@ $(document).ready(function(){
         });
     });
 
+    // --------------------------------------------------------------------------------------------
+    // VALIDANDO EL TIPO DE DISPOSITIVO Y OCULTAR CAMPOS EN EL FOMRULARIO DE NUEVO DISPOSITIVO
+    $(".btnNuevoDispositivo").on("click", function(){
+        $("#tipoDispositivo").on("change", function(){
+            if($("#tipoDispositivo").val() == "Laptop"){
+                $("#imeiDispositivo").parent().hide();
+                $("#imeiDispositivo").removeAttr("required");
+                $("#telefonoDispositivo").parent().hide();
+                $("#telefonoDispositivo").removeAttr("required");
+            }
+            if($("#tipoDispositivo").val() == "Telefono" || $("#tipoDispositivo").val() == "Tablet"){
+                $("#imeiDispositivo").parent().show();
+                $("#imeiDispositivo").prop("required", true);
+                $("#telefonoDispositivo").parent().show();
+                $("#telefonoDispositivo").prop("required", true);
+            }
+        })
+    })
+    // ---------------------------------------------------------------------------------------------
 
     //PARA ASIGNAR DISPOSITIVO
     $("#formularioAsignacion").on("click", ".btnNuevaAsignacion", function(event){
-    //$("#formularioAsignacion" ).on( "submit", function( event ) {
-      event.preventDefault();
-      let datosAsignar = $("#formularioAsignacion").serialize();
-      var url = 'fpdf/Asignar.php?' + datosAsignar;
+        event.preventDefault();
 
-      window.open(url, '_blank');
-      $("#modalAsignarDispositivo").hide();
-      location.reload();
+        $("#selectConsultores").on("change", function(){
+            $(".invalid-feedback").hide();
+        })
 
-    });
+        if($("#selectConsultores").val() == ""){
+            Swal.fire({
+                icon: "warning",
+                title: "Por favor seleccione un consultor",
+                showConfirmButton: true,
+                confirmButtonText: "Cerrar"
+            }).then(function(result){
+                //window.location = "dispositivos";
+            });
+        } else{
+            
+            let datosAsignar = $("#formularioAsignacion").serialize();
+            var url = 'fpdf/Asignar.php?' + datosAsignar;
+    
+            window.open(url, '_blank');
+            $("#modalAsignarDispositivo").hide();
+            location.reload();
 
+        }
+
+        
+
+});
 
     //PARA RECUPERAR DISPOSITIVO
     $("#formularioRecuperar").on("click", ".btnRecuperar", function(event){
@@ -88,6 +126,10 @@ $(document).ready(function(){
 
 //Mostrar información de un solo dispositivo
 $(".tablaDispositivos").on("click", ".btnMostrarDispositivos", function(){
+
+    //Limpiar el elemnto para mostrar el historial, si es que lo tiene
+    $(".timelineHistorial").empty();
+
     var idDispositivo = $(this).attr("idDispositivo");
 
     var datos = new FormData();
@@ -102,31 +144,103 @@ $(".tablaDispositivos").on("click", ".btnMostrarDispositivos", function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
-            $("#mostrarTipoDispositivo").text(respuesta.tipodispositivo);
-            $("#mostrarMarcaDispositivo").text(respuesta.marcadispositivo);
-            $("#mostrarModeloDispositivo").text(respuesta.modelodispositivo);
-            $("#mostrarImeiDispositivo").text(respuesta.imeidispositivo);
-            $("#mostrarSerieDispositivo").text(respuesta.seriedispositivo);
-            $("#mostrarTelefonoDispositivo").text(respuesta.telefonodispositivo);
-            $("#mostrarResponsableDispositivo").text(respuesta.responsabledispositivo);
-            $("#fechaRegistro").text(respuesta.fecharegistro);
-            $("#fechaModificacion").text(respuesta.fechamodificacion);
-            $("#mostrarComentarioDispositivo").text(respuesta.comentariodispositivo);
+            $("#mostrarTipoDispositivo").text(respuesta[0].tipodispositivo);
+            $("#mostrarMarcaDispositivo").text(respuesta[0].marcadispositivo);
+            $("#mostrarModeloDispositivo").text(respuesta[0].modelodispositivo);
 
-            if(respuesta.accesorios != ""){
-                const datos = JSON.parse(respuesta.accesorios);
-                if(datos.Cubo == "1"){$("#checkCubo").parent().show();}else{$("#checkCubo").parent().hide();}
-                if(datos.Cable == "1"){$("#checkCable").parent().show();}else{$("#checkCable").parent().hide();}
-                if(datos.Lapiz == "1"){$("#checkLapiz").parent().show();}else{$("#checkLapiz").parent().hide();}
-                if(datos.Powerbank == "1"){$("#checkPowerbank").parent().show();}else{$("#checkPowerbank").parent().hide();}
-                if(datos.Funda == "1"){$("#checkFunda").parent().show();}else{$("#checkFunda").parent().hide();}
-                if(datos.Cargador == "1"){$("#checkCargadorLaptop").parent().show();}else{$("#checkCargadorLaptop").parent().hide();}
-                if(datos.Maletin == "1"){$("#checkMaletin").parent().show();}else{$("#checkMaletin").parent().hide();}
-                if(datos.Mouse == "1"){$("#checkMouse").parent().show();}else{$("#checkMouse").parent().hide();}
-                if(datos.Mousepad == "1"){$("#checkMousepad").parent().show();}else{$("#checkMousepad").parent().hide();}
+            if(respuesta[0].imeidispositivo == ""){
+                $("#mostrarImeiDispositivo").parent().hide();
+            } else{
+                $("#mostrarImeiDispositivo").parent().show();
+                $("#mostrarImeiDispositivo").text(respuesta[0].imeidispositivo);
+            }
+
+            $("#mostrarSerieDispositivo").text(respuesta[0].seriedispositivo);
+
+            if(respuesta[0].telefonodispositivo == ""){
+                $("#mostrarTelefonoDispositivo").parent().hide();
+            }else{
+                $("#mostrarTelefonoDispositivo").parent().show();;
+                $("#mostrarTelefonoDispositivo").text(respuesta[0].telefonodispositivo);
+
+            }
+
+            $("#fechaRegistro").text(respuesta[0].fecharegistro);
+            $("#fechaModificacion").text(respuesta[0].fechamodificacion);
+
+            if(respuesta[0].comentariodispositivo != ""){
+                $("#mostrarComentarioDispositivo").parent().show();
+                $("#mostrarComentarioDispositivo").text(respuesta[0].comentariodispositivo);
+            } else{
+                $("#mostrarComentarioDispositivo").parent().hide();
+            }
+
+            if(respuesta[0].estadodispositivo != "2"){
+                $(".sin-accesorios").text("Sin accesorios asignados actualmente");
+                $("#checkCubo").parent().hide();
+                $("#checkCable").parent().hide();
+                $("#checkLapiz").parent().hide();
+                $("#checkPowerbank").parent().hide();
+                $("#checkFunda").parent().hide();
+                $("#checkCargadorLaptop").parent().hide();
+                $("#checkMaletin").parent().hide();
+                $("#checkMouse").parent().hide();
+                $("#checkMousepad").parent().hide();
 
             } else{
-                console.log("Sin datos");
+                if(respuesta[0].accesorios != ""){
+                    $(".sin-accesorios").text("");
+                    const datos = JSON.parse(respuesta[0].accesorios);
+                    if(datos.Cubo == "1"){$("#checkCubo").parent().show();}
+                    if(datos.Cable == "1"){$("#checkCable").parent().show();}
+                    if(datos.Lapiz == "1"){$("#checkLapiz").parent().show();}
+                    if(datos.Powerbank == "1"){$("#checkPowerbank").parent().show();}
+                    if(datos.Funda == "1"){$("#checkFunda").parent().show();}
+                    if(datos.Cargador == "1"){$("#checkCargadorLaptop").parent().show();}
+                    if(datos.Maletin == "1"){$("#checkMaletin").parent().show();}
+                    if(datos.Mouse == "1"){$("#checkMouse").parent().show();}
+                    if(datos.Mousepad == "1"){$("#checkMousepad").parent().show();}
+                } else{
+                    console.log("Sin accesorios");
+                }
+
+            }
+
+
+            if(respuesta[1] != ""){
+                $("#mostrarMovimientos").show();
+
+                respuesta[1].forEach(datos => {
+                    if(datos.fecha_asignacion != ""){
+                        
+                        if(datos.fecha_recepcion != null){
+                            $(".timelineHistorial").append(
+                                '<div class=" mb-3">'+
+                                    '<span class="timeline-step"><i class="ni ni-laptop text-danger text-gradient"></i></span>'+
+                                    '<div class="timeline-content">'+
+                                        '<h6 class="text-dark text-sm font-weight-bold mb-0">Recepción</h6>'+
+                                        '<p class="text-muted text-xs mt-1 mb-0 d-inline-flex"><span>'+datos.nombre_receptor+'</span> Ha asignado el dispositivo <span class="font-weight-bold"> en fecha <span class="text-secondary font-weight-bold text-xs mt-1 mb-0"></span>'+datos.fecha_recepcion+'</span></p>'+
+                                    '</div>'+
+                                '</div>'
+                            );
+    
+                        }
+    
+                        $(".timelineHistorial").append(
+                            '<div class=" mb-3">'+
+                                '<span class="timeline-step"><i class="ni ni-laptop text-success text-gradient"></i></span>'+
+                                '<div class="timeline-content">'+
+                                    '<h6 class="text-dark text-sm font-weight-bold mb-0">Asignación</h6>'+
+                                    '<p class="text-muted text-xs mt-1 mb-0 d-inline-flex"><span>'+datos.nombre_asignador+'</span> Ha asignado el dispositivo <span class="font-weight-bold"> en fecha <span class="text-secondary font-weight-bold text-xs mt-1 mb-0"></span>'+datos.fecha_asignacion+'</span></p>'+
+                                '</div>'+
+                            '</div>'
+                        );
+    
+                    }
+                });
+
+            } else{
+                $("#mostrarMovimientos").hide();
             }
 
 
@@ -152,13 +266,21 @@ $(".tablaDispositivos").on("click", ".btnEditarDispositivo", function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
+            if(respuesta['tipodispositivo'] != "Laptop"){
+                $("#modalEditarDispositivos #imeiDispositivo").parent().show();
+                $("#modalEditarDispositivos #telefonoDispositivo").parent().show();
+                $("#modalEditarDispositivos #imeiDispositivo").val(respuesta['imeidispositivo']);
+                $("#modalEditarDispositivos #telefonoDispositivo").val(respuesta['telefonodispositivo']);
+            } else if(respuesta['tipodispositivo'] != "Telefono" || respuesta['tipodispositivo'] != "Tablet"){
+                $("#modalEditarDispositivos #imeiDispositivo").parent().hide();
+                $("#modalEditarDispositivos #telefonoDispositivo").parent().hide();
+            }
+
             $("#modalEditarDispositivos #idEditarDispositivo").val(respuesta['iddispositivo']);
             $("#modalEditarDispositivos #editarTipoDispositivo").val(respuesta['tipodispositivo']);
             $("#modalEditarDispositivos #marcaDispositivo").val(respuesta['marcadispositivo']);
             $("#modalEditarDispositivos #modeloDispositivo").val(respuesta['modelodispositivo']);
-            $("#modalEditarDispositivos #imeiDispositivo").val(respuesta['imeidispositivo']);
             $("#modalEditarDispositivos #serieDispositivo").val(respuesta['seriedispositivo']);
-            $("#modalEditarDispositivos #telefonoDispositivo").val(respuesta['telefonodispositivo']);
             $("#modalEditarDispositivos #sedeDispositivo").val(respuesta['sededispositivo']);
             $("#modalEditarDispositivos #comentarioDispositivo").val(respuesta['comentariodispositivo']);
         }
@@ -181,8 +303,9 @@ $(".tablaDispositivos").on("click", ".btnAsignarDispositivo", function(){
         contentType: false,
         processData: false,
         dataType: "json",
-        success: function(respuesta){
+        success: function(resultado){
 
+            var respuesta = resultado[0];
             //Mostrar solo los accesorios que corresponen al tipo de dispositivo
             if(respuesta["tipodispositivo"] == "Telefono" || respuesta["tipodispositivo"] == "Tablet"){
                 $(".accesoriosMovil").show();
@@ -238,8 +361,32 @@ $(".tablaDispositivos").on("click", ".btnRecuperarDispositivo", function(){
         processData: false,
         dataType: "json",
         success: function(resultado){
-            
             var respuesta = resultado[0];
+            var accesorios = JSON.parse(respuesta["accesorios"]);
+
+            //Mostrar solo los accesorios que corresponen al tipo de dispositivo
+            if(respuesta["tipodispositivo"] == "Telefono" || respuesta["tipodispositivo"] == "Tablet"){
+                $(".recuperarAccesoriosMovil").show();
+                $(".recuperarAccesoriosLaptop").hide();
+
+                if(accesorios.Cubo == "1"){$("#modalRecuperarDispositivo #checkCubo").parent().show();} else{$(" #modalRecuperarDispositivo #checkCubo").parent().hide();}
+                if(accesorios.Cable == "1"){$("#modalRecuperarDispositivo #checkCable").parent().show();} else{$(" #modalRecuperarDispositivo #checkCable").parent().hide();}
+                if(accesorios.Funda == "1"){$("#modalRecuperarDispositivo #checkFunda").parent().show();} else{$(" #modalRecuperarDispositivo #checkFunda").parent().hide();}
+                if(accesorios.Lapiz == "1"){$("#modalRecuperarDispositivo #checkLapiz").parent().show();} else{$(" #modalRecuperarDispositivo #checkLapiz").parent().hide();}
+                if(accesorios.Powerbank == "1"){$("#modalRecuperarDispositivo #checkPowerbank").parent().show();} else{$(" #modalRecuperarDispositivo #checkPowerbank").parent().hide();}
+
+            } else if(respuesta["tipodispositivo"] == "Laptop"){
+                $(".recuperarAccesoriosMovil").hide();
+                $(".recuperarAccesoriosLaptop").show();
+
+                if(accesorios.Maletin == "1"){$("#modalRecuperarDispositivo #checkMaletin").parent().show();} else{$(" #modalRecuperarDispositivo #checkMaletin").parent().hide();}
+                if(accesorios.Cargador == "1"){$("#modalRecuperarDispositivo #checkCargador").parent().show();} else{$(" #modalRecuperarDispositivo #checkCargador").parent().hide();}
+                if(accesorios.Mouse == "1"){$("#modalRecuperarDispositivo #checkMouse").parent().show();} else{$(" #modalRecuperarDispositivo #checkMouse").parent().hide();}
+                if(accesorios.Mousepad == "1"){$("#modalRecuperarDispositivo #checkMousepad").parent().show();} else{$(" #modalRecuperarDispositivo #checkMousepad").parent().hide();}
+
+            }
+            
+            
             //Mostrar información en la ventana de Recuperar el dispositivo
             $("#responsableRecuperar").text(resultado[1]["nombreconsultor"]);
             $("#responsableActual").val(resultado[1]["idconsultor"]);
@@ -262,11 +409,13 @@ $(".tablaDispositivos").on("click", ".btnRecuperarDispositivo", function(){
             }else{
                 $("#modalRecuperarDispositivo .detalleRecuperarTelefono").parent().hide();
             }
-
+ 
             $("#modalRecuperarDispositivo .detalleRecuperarSerie").text(respuesta['seriedispositivo']);
             $("#modalRecuperarDispositivo .detalleRecuperarSede").text(respuesta['sededispositivo']);
             $("#modalRecuperarDispositivo .detalleRecuperarFecha").text(respuesta['fecharegistro']);
-            $("#modalRecuperarDispositivo .detalleRecuperarComentario").text(respuesta['comentariodispositivo']);
+
+            console.log(accesorios);
+
         }
     })
     
