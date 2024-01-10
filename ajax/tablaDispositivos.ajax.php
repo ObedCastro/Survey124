@@ -43,14 +43,14 @@ class TablaDispositivos{
                 $modeloDispositivo = "<span class='text-secondary text-xs'>".$dispositivos[$i]['modelodispositivo']."</span>";
                 
                 if($dispositivos[$i]['imeidispositivo']){
-                    $imeiDispositivo = "<span idDispositivo='".$dispositivos[$i]['iddispositivo']."' consultor='".$dispositivos[$i]['responsabledispositivo']."' style='cursor:pointer;' class='text-secondary text-xs font-weight-bold ".$boton."' data-bs-toggle='modal' data-bs-target='#".$modal."'>".$dispositivos[$i]['imeidispositivo']."</span>";
+                    $imeiDispositivo = "<span class='text-secondary text-xs font-weight-bold'>".$dispositivos[$i]['imeidispositivo']."</span>";
                 } else{
-                    $imeiDispositivo = "<span idDispositivo='".$dispositivos[$i]['iddispositivo']."' consultor='".$dispositivos[$i]['responsabledispositivo']."' style='cursor:pointer;' class='text-secondary text-xs font-weight-bold ".$boton."' data-bs-toggle='modal' data-bs-target='#".$modal."'>".$dispositivos[$i]['seriedispositivo']."</span>";
+                    $imeiDispositivo = "<span class='text-secondary text-xs font-weight-bold'>".$dispositivos[$i]['seriedispositivo']."</span>";
                 }
 
                 $telefonoDispositivo = "<span class='text-secondary text-xs font-weight-bold'>".$dispositivos[$i]['telefonodispositivo']."</span>";
 
-                $estadodispositivo = "<span class='badge badge-sm ".$colorElemento."'>".$textoMostrar."</span>";
+                $estadodispositivo = "<span idDispositivo='".$dispositivos[$i]['iddispositivo']."' consultor='".$dispositivos[$i]['responsabledispositivo']."' style='cursor:pointer;' class='".$boton." badge badge-sm ".$colorElemento."' data-bs-toggle='modal' data-bs-target='#".$modal."'>".$textoMostrar."</span>";
 
                 //Obtener el nombre del responsable del dispoaisivo
                 $respuesta2 = ControladorConsultores::ctrMostrarConsultores("idconsultor", $dispositivos[$i]["responsabledispositivo"]);
@@ -58,7 +58,7 @@ class TablaDispositivos{
                 if($respuesta2 > 0){
                     $consultor = $respuesta2["nombreconsultor"];
                 } else{
-                    $consultor = "ASIGNAR";
+                    $consultor = "--------------";
                 }
                 $resposableDispositivo = "<span class='text-secondary text-xs font-weight-bold'>".$consultor."</span>";
                 $acciones = "<ul class='navbar-nav justify-content-end'>".
@@ -67,7 +67,6 @@ class TablaDispositivos{
                                     "<button idDispositivo='".$dispositivos[$i]['iddispositivo']."' type='button' class='btn btn-default p-1 btn-lg rounded-circle btnMostrarDispositivos mb-0' data-bs-toggle='modal' data-bs-target='#modalVerDetalleDispositivo'><i class='fa fa-eye fs-6 p-1'></i></button>".
                                     "<button idEditarDispositivo='".$dispositivos[$i]['iddispositivo']."' type='button' class='btn btn-secondary p-1 btn-lg rounded-circle btnEditarDispositivo mb-0' data-bs-toggle='modal' data-bs-target='#modalEditarDispositivos'><i class='fa fa-pencil fs-6 p-1'></i></button>".
                                     "<button idEliminarDispositivo='".$dispositivos[$i]['iddispositivo']."' type='button' class='btn btn-warning p-1 btn-lg rounded-circle btnEliminarDispositivo mb-0' data-bs-toggle='modal' data-bs-target='#modalEliminarDispositivo'><i class='fa fa-trash fs-6 p-1'></i></button>".
-                                    "<button idAsignarDispositivo='".$dispositivos[$i]['iddispositivo']."' type='button' class='btn btn-primary p-1 btn-lg rounded-circle btnImprimirHoja mb-0'><i class='fa fa-file-pdf-o fs-6 p-1'></i></button>".
                                     "</div>".
                                 "</li>".
                             "</ul>";

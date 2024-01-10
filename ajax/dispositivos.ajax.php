@@ -1,7 +1,10 @@
 <?php
 
 require_once "../controladores/dispositivos.controlador.php";
+require_once "../controladores/inicio.controlador.php";
+
 require_once "../modelos/dispositivos.modelo.php";
+require_once "../modelos/inicio.modelo.php";
 
 
 class AjaxDispositivos{
@@ -12,7 +15,9 @@ class AjaxDispositivos{
         $valor = $this->idDispositivo;
 
         $respuesta = ControladorDispositivos::ctrMostrarDispositivos($item, $valor);
-        echo json_encode($respuesta);
+        $ultimosMovimientos = ControladorInicio::ctrMostrarUltimosMovimientos("dispositivo_id", $valor);
+
+        echo json_encode(array($respuesta, $ultimosMovimientos));
     }
 
     public $idDispositivoRecuperar;

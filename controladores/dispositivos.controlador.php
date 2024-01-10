@@ -28,7 +28,8 @@ class ControladorDispositivos{
                     "imei"=>$_POST["imeiDispositivo"],
                     "serie"=>$_POST["serieDispositivo"],
                     "telefono"=>$_POST["telefonoDispositivo"],
-                    "sede"=>$_POST["sedeDispositivo"]
+                    "sede"=>$_POST["sedeDispositivo"],
+                    "fecha"=>$_POST["fechaRegistro"]
                 );
 
                 $accesorios = array(

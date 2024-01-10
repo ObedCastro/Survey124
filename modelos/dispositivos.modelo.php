@@ -61,7 +61,7 @@ class ModeloDispositivos{
     static public function mdlRegistrarDispositivo($tabla, $datos, $accesorios){
         $estado = "1";
 
-        $sql = "INSERT INTO $tabla(tipodispositivo, marcadispositivo, modelodispositivo, imeidispositivo, seriedispositivo, telefonodispositivo, accesorios, sededispositivo, estadodispositivo) VALUES (:tipodispositivo, :marcadispositivo, :modelodispositivo, :imeidispositivo, :seriedispositivo, :telefonodispositivo, :accesorios, :sededispositivo, :estadodispositivo)";
+        $sql = "INSERT INTO $tabla(tipodispositivo, marcadispositivo, modelodispositivo, imeidispositivo, seriedispositivo, telefonodispositivo, accesorios, sededispositivo, fecharegistro, estadodispositivo) VALUES (:tipodispositivo, :marcadispositivo, :modelodispositivo, :imeidispositivo, :seriedispositivo, :telefonodispositivo, :accesorios, :sededispositivo, :fecharegistro, :estadodispositivo)";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(":tipodispositivo", $datos["tipo"], PDO::PARAM_STR);
         $stmt->bindParam(":marcadispositivo", $datos["marca"], PDO::PARAM_STR);
@@ -71,6 +71,7 @@ class ModeloDispositivos{
         $stmt->bindParam(":telefonodispositivo", $datos["telefono"], PDO::PARAM_STR);
         $stmt->bindParam(":accesorios", json_encode($accesorios), PDO::PARAM_STR);
         $stmt->bindParam(":sededispositivo", $datos["sede"], PDO::PARAM_STR);
+        $stmt->bindParam(":fecharegistro", $datos["fecha"], PDO::PARAM_STR);
         $stmt->bindParam(":estadodispositivo", $estado, PDO::PARAM_STR);
 
         if($stmt->execute()){

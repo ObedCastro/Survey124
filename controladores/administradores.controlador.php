@@ -3,23 +3,24 @@
 class ControladorAdministradores{
 
     public function ctrIngresarAdministradores(){
-        $expresionEmail = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+        //$expresionUsuario = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
         $expresionPassword = '/^[a-zA-Z0-9]+$/';
 
-        if(isset($_POST['ingEmail'])){
-            if(preg_match($expresionEmail, $_POST['ingEmail']) && preg_match($expresionPassword, $_POST['ingPassword'])){
+        if(isset($_POST['ingUsuario'])){
+            if($_POST['ingUsuario'] && preg_match($expresionPassword, $_POST['ingPassword'])){
                 $tabla = "administradores";
-                $item = "email";
-                $valor = $_POST['ingEmail'];
-
+                $item = "usuario";
+                $valor = $_POST['ingUsuario'];
+ 
                 $respuesta = ModeloAdministradores::mdlIngresarAdministradores($tabla, $item, $valor);
 
-                if($respuesta["email"] == $_POST["ingEmail"] && $respuesta["password"] == $_POST["ingPassword"]){
+                if($respuesta["usuario"] == $_POST["ingUsuario"] && $respuesta["password"] == $_POST["ingPassword"]){
                     $_SESSION["validarSesion"] = "ok";
                     $_SESSION["id"] = $respuesta["id"];
                     $_SESSION["nombre"] = $respuesta["nombre"];
-                    $_SESSION["foto"] = $respuesta["foto"];
                     $_SESSION["email"] = $respuesta["email"];
+                    $_SESSION["foto"] = $respuesta["foto"];
+                    $_SESSION["usuario"] = $respuesta["usuario"];
                     $_SESSION["cargo"] = $respuesta["cargo"];
                     $_SESSION["password"] = $respuesta["password"];
                     $_SESSION["perfil"] = $respuesta["perfil"];

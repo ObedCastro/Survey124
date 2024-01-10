@@ -9,6 +9,13 @@ class ControladorInicio{
         return $datos;
     }
 
+    static public function ctrMostrarDispositivosDepartamento(){
+      $tabla = "dispositivos";
+      $datos = ModeloInicio::mdlMostrarDispositivosDepartamento($tabla);
+
+      return $datos;
+    }
+
     static public function ctrMostrarGraficoLineas(){
       $tabla = "dispositivos";
 
@@ -16,10 +23,17 @@ class ControladorInicio{
       return $respuesta;
     }
 
-    static public function ctrMostrarUltimosMovimientos(){
+    static public function ctrMostrarGraficoBarras(){
+      $tabla = "dispositivos";
+
+      $respuesta = ModeloInicio::mdlMostrarGraficoBarras($tabla);
+      return $respuesta;
+    }
+
+    static public function ctrMostrarUltimosMovimientos($item, $valor){
       $tabla = "registros";
 
-      $respuesta = ModeloInicio::mdlMostrarUltimosMovimientos($tabla);
+      $respuesta = ModeloInicio::mdlMostrarUltimosMovimientos($tabla, $item, $valor);
       return $respuesta;
     }
 
