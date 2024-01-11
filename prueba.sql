@@ -14,7 +14,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Volcando datos para la tabla prueba.administradores: ~4 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.administradores: ~3 rows (aproximadamente)
 INSERT INTO `administradores` (`id`, `nombre`, `email`, `cargo`, `foto`, `usuario`, `password`, `perfil`, `fecha`) VALUES
 	(1, 'Obed Alberto Castro Orellana', 'obed.castro@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'inobed', 'admin', 'superadministrador', '2024-01-10 20:29:48'),
 	(4, 'Miguel Angel Portillo Lozano', 'miguel.portillo@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'inportillo', 'admin2', 'superadministrador', '2024-01-10 20:30:37'),
@@ -30,10 +30,10 @@ INSERT INTO `consultores` (`idconsultor`, `nombreconsultor`, `duiconsultor`, `ca
 	(5, 'Ibrahim Adalberto Ramirez Castle', '22222222-2', 'Digitador ', '50316558747', 0, '1', '2024-01-10 22:04:43', '0000-00-00'),
 	(6, 'Roberto Emiliano Firme Roble', '11111111-1', 'Digitador', '50312345675', 0, '1', '2024-01-10 22:04:46', '2023-12-23'),
 	(7, 'Osti Reily Lopez Mena', '12121212-1', 'Censista', '12121212', 0, '1', '2024-01-10 22:04:53', '2023-12-26'),
-	(8, 'Frank Bequebauer Ortiz', '0000000000', 'Delegado de Brigada', '1123123123', 0, '2', '2024-01-10 22:05:05', '2023-12-26'),
+	(8, 'Frank Bequenbauer Ortiz', '0000000000', 'Delegado de Brigada', '1123123123', 0, '2', '2024-01-11 17:56:23', '2023-12-26'),
 	(9, 'Julio Mario Pineda Zometa', '923749414-', 'Delegado de Brigada', '53253245325', 0, '2', '2024-01-10 22:05:12', '2023-12-29');
 
--- Volcando datos para la tabla prueba.dispositivos: ~16 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.dispositivos: ~15 rows (aproximadamente)
 INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositivo`, `modelodispositivo`, `imeidispositivo`, `seriedispositivo`, `telefonodispositivo`, `accesorios`, `responsabledispositivo`, `sededispositivo`, `estadodispositivo`, `comentariodispositivo`, `fecharegistro`, `asignadordispositivo`, `receptordispositivo`, `fechamodificacion`, `fechaasignacion`, `fecharecepcion`) VALUES
 	(31, 'Tablet', 'HP', 'Tab S9', '4354677', 'HYYYF5667', '76543677', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '', 2, 1, '', '2024-01-02', 'Obed Alberto Castro Orellana', 'Obed Alberto Castro Orellana', '2024-01-09 19:52:23', '2024-02-05 16:29:43', '2024-01-09 07:52:23'),
 	(32, 'Tablet', 'HP', 'Galaxy A34', '737382920', 'HF799335', '72053930', '', '', 1, 1, NULL, '2024-01-02', NULL, NULL, '2024-01-06 04:27:48', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -48,11 +48,11 @@ INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositiv
 	(42, 'Laptop', 'HP', '640 G9', 'N/A', 'DRTHE547DFHTD', 'N/A', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"1","Mousepad":"1"}', '', 5, 1, '', NULL, 'Obed Alberto Castro Orellana', 'Obed Alberto Castro Orellana', '2024-01-10 22:06:34', '2024-01-10 17:01:10', '2024-01-10 17:01:23'),
 	(43, 'Laptop', 'HP', '640 G9', 'N/A', 'TJYRTYU567FHJ', 'N/A', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"1","Mousepad":"0"}', '', 2, 1, '', NULL, 'Obed Alberto Castro Orellana', 'Obed Alberto Castro Orellana', '2024-01-10 22:06:35', '2024-01-09 08:06:21', '2024-01-09 08:06:26'),
 	(44, 'Laptop', 'Lenovo', 'IdeaPad Slim 5', 'N/A', 'GWERT34534TERW', 'N/A', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, 1, 1, NULL, NULL, NULL, NULL, '2024-01-10 22:06:37', NULL, NULL),
-	(45, 'Laptop', 'Lenovo', '640 G9', 'N/A', 'DGE43536RTE', 'N/A', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, 2, 1, '', NULL, NULL, NULL, '2024-01-10 22:06:38', NULL, NULL),
+	(45, 'Laptop', 'Lenovo', '640 G9', 'N/A', 'DGE43536RTE', 'N/A', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"0","Mousepad":"1"}', '', 2, 1, '', NULL, 'Obed Alberto Castro Orellana', 'Obed Alberto Castro Orellana', '2024-01-11 16:37:01', '2024-01-11 16:35:58', '2024-01-11 16:37:01'),
 	(47, 'Telefono', 'Honor', 'Honor X7', '777777777777777', 'ouuuuuuuuuuuuu', '45645634564', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, 5, 1, NULL, NULL, NULL, NULL, '2024-01-10 16:35:16', NULL, NULL),
-	(48, 'Telefono', 'Samsung', 'Galaxy A34', '222222222222222', '222222222222222', '22222222222', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, 1, 1, NULL, '2024-01-10', NULL, NULL, '2024-01-10 21:47:02', NULL, NULL);
+	(48, 'Telefono', 'Samsung', 'Galaxy A34', '222222222222222', '222222222222222', '22222222222', '{"Cubo":"1","Cable":"1","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '', 1, 1, '', '2024-01-10', 'Obed Alberto Castro Orellana', 'Obed Alberto Castro Orellana', '2024-01-11 22:19:24', '2024-01-11 10:18:46', '2024-01-11 10:19:24');
 
--- Volcando datos para la tabla prueba.marcadispositivo: ~6 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.marcadispositivo: ~0 rows (aproximadamente)
 INSERT INTO `marcadispositivo` (`idmarca`, `nombremarca`) VALUES
 	(1, 'Samsung'),
 	(2, 'Honor'),
@@ -70,18 +70,20 @@ INSERT INTO `modelodispositivo` (`idmodelo`, `nombremodelo`) VALUES
 	(5, 'Tab S9'),
 	(6, '640 G9');
 
--- Volcando datos para la tabla prueba.registros: ~8 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.registros: ~9 rows (aproximadamente)
 INSERT INTO `registros` (`id`, `fecha_asignacion`, `nombre_asignador`, `usuario_campo_id`, `sede_id`, `dispositivo_id`, `tipo_dispositivo`, `accesorios_entregados`, `accesorios_recuperados`, `fecha_recepcion`, `nombre_receptor`, `comentario`, `fecha_modificacion`) VALUES
-	(1, '2024-01-09 07:52:59', 'Obed Alberto Castro Orellana', 8, 2, 43, 'Laptop', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"1","Mousepad":"1"}', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '2024-01-09 08:03:26', 'Obed Alberto Castro Orellana', NULL, '2024-01-09 20:03:26'),
+	(1, '2024-01-09 07:52:59', 'Obed Alberto Castro Orellana', 8, 2, 43, 'Laptop', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"1","Mousepad":"1"}', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"1","Mouse":"0","Mousepad":"0"}', '2024-01-09 08:03:26', 'Obed Alberto Castro Orellana', NULL, '2024-01-11 19:20:43'),
 	(3, '2024-01-09 08:04:13', 'Obed Alberto Castro Orellana', 1, 2, 43, 'Laptop', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"1","Mousepad":"1"}', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"1","Mousepad":"1"}', '2024-01-09 08:04:20', 'Obed Alberto Castro Orellana', NULL, '2024-01-09 20:04:20'),
 	(4, '2024-01-09 08:06:21', 'Obed Alberto Castro Orellana', 7, 2, 43, 'Laptop', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"1","Mousepad":"0"}', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"1","Mousepad":"0"}', '2024-01-09 08:06:26', 'Obed Alberto Castro Orellana', NULL, '2024-01-09 20:06:26'),
 	(5, '2024-01-09 08:54:33', 'Obed Alberto Castro Orellana', 1, 1, 36, 'Telefono', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, NULL, NULL, NULL, '2024-01-09 20:54:34'),
 	(6, '2024-01-09 08:54:33', 'Obed Alberto Castro Orellana', 1, 3, 36, 'Telefono', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, NULL, NULL, NULL, '2024-01-09 22:14:52'),
 	(7, '2024-01-09 07:57:11', 'Obed Alberto Castro Orellana', 1, 5, 42, 'Laptop', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"1","Mousepad":"1"}', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"1","Mousepad":"1"}', '2024-01-10 16:52:20', 'Obed Alberto Castro Orellana', NULL, '2024-01-10 16:52:20'),
 	(8, '2024-01-10 16:49:25', 'Obed Alberto Castro Orellana', 1, 3, 35, 'Tablet', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, NULL, NULL, NULL, '2024-01-10 16:49:25'),
-	(9, '2024-01-10 17:01:10', 'Obed Alberto Castro Orellana', 7, 5, 42, 'Laptop', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"1","Mousepad":"1"}', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"1","Mousepad":"1"}', '2024-01-10 17:01:23', 'Obed Alberto Castro Orellana', NULL, '2024-01-10 17:01:23');
+	(9, '2024-01-10 17:01:10', 'Obed Alberto Castro Orellana', 7, 5, 42, 'Laptop', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"1","Mousepad":"1"}', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"1","Mousepad":"1"}', '2024-01-10 17:01:23', 'Obed Alberto Castro Orellana', NULL, '2024-01-10 17:01:23'),
+	(10, '2024-01-11 16:35:58', 'Obed Alberto Castro Orellana', 3, 2, 45, 'Laptop', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"1","Mousepad":"1"}', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"0","Mousepad":"1"}', '2024-01-11 16:37:01', 'Obed Alberto Castro Orellana', NULL, '2024-01-11 16:37:01'),
+	(11, '2024-01-11 10:18:46', 'Obed Alberto Castro Orellana', 5, 1, 48, 'Telefono', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '{"Cubo":"1","Cable":"1","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '2024-01-11 10:19:24', 'Obed Alberto Castro Orellana', NULL, '2024-01-11 22:19:24');
 
--- Volcando datos para la tabla prueba.sedes: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.sedes: ~4 rows (aproximadamente)
 INSERT INTO `sedes` (`idsede`, `nombresede`, `departamentosede`) VALUES
 	(1, 'ExBandesal', 'San Miguel'),
 	(2, 'ITCA MEGATEC', 'La Unión'),

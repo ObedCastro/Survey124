@@ -11,6 +11,7 @@ require_once "controladores/asignaciones.controlador.php";
 require_once "controladores/marcas.controlador.php";
 require_once "controladores/modelos.controlador.php";
 require_once "controladores/tipos.controlador.php";
+require_once "controladores/faltantes.controlador.php";
 
 //MODELOS
 require_once "modelos/administradores.modelo.php";
@@ -22,6 +23,7 @@ require_once "modelos/asignaciones.modelo.php";
 require_once "modelos/marcas.modelo.php";
 require_once "modelos/modelos.modelo.php";
 require_once "modelos/tipos.modelo.php";
+require_once "modelos/faltantes.modelo.php";
 
 $base = new ControladorBase();
 $base->base();
