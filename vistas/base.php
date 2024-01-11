@@ -83,7 +83,7 @@
                    $_GET["ruta"] == "dispositivos" ||
                    $_GET["ruta"] == "consultores" ||
                    $_GET["ruta"] == "administradores" ||
-                   $_GET["ruta"] == "registros" ||
+                   $_GET["ruta"] == "faltantes" ||
                    $_GET["ruta"] == "salir"){
                     include "modulos/".$_GET["ruta"].".php";
                 }else{
