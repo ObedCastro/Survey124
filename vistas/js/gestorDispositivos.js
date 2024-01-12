@@ -27,17 +27,26 @@ $(document).ready(function(){
           }
       },
       dom: 'Bfrtip',
-          buttons: [
-              {
-                  extend: 'pdfHtml5',
-                  download: 'open'
-              },
-              {
-                  extend: 'excelHtml5',
-                  autoFilter: true,
-                  sheetName: 'Exported data'
-              }
-          ]
+        buttons: [
+            {
+                extend: 'pdfHtml5',
+                className: 'btnDt btn-app export pdf',
+                titleAttr: 'PDF',
+                text: '<i class="fa fa-file-pdf-o" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Exportar a PDF"></i>',
+                download: 'open',
+                orientation: 'landscape',
+                exportOptions: {
+                columns: [0,1,2,3,4,5,6,7]
+            }
+            },
+            {
+                extend: 'excelHtml5',
+                className: 'btnDt btn-app export excel',
+                text: '<i class="fa fa-file-excel-o" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Exportar a Excel"></i>',
+                autoFilter: true,
+                sheetName: 'Exported data'
+            }
+        ]
       });
 
     //__________________________________________________________________________________________
@@ -413,8 +422,6 @@ $(".tablaDispositivos").on("click", ".btnRecuperarDispositivo", function(){
             $("#modalRecuperarDispositivo .detalleRecuperarSerie").text(respuesta['seriedispositivo']);
             $("#modalRecuperarDispositivo .detalleRecuperarSede").text(respuesta['sededispositivo']);
             $("#modalRecuperarDispositivo .detalleRecuperarFecha").text(respuesta['fecharegistro']);
-
-            console.log(accesorios);
 
         }
     })

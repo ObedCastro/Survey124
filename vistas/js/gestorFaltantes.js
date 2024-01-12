@@ -122,13 +122,18 @@ let tabla = new DataTable('#datatableFaltantes', {
     dom: 'Bfrtip',
           buttons: [
               {
-                  extend: 'pdfHtml5',
-                  download: 'open'
+                extend: 'pdfHtml5',
+                className: 'btnDt btn-app export pdf',
+                titleAttr: 'PDF',
+                text: '<i class="fa fa-file-pdf-o" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Exportar a PDF"></i>',
+                download: 'open'
               },
               {
-                  extend: 'excelHtml5',
-                  autoFilter: true,
-                  sheetName: 'Exported data'
+                extend: 'excelHtml5',
+                className: 'btnDt btn-app export excel',
+                text: '<i class="fa fa-file-excel-o" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Exportar a Excel"></i>',
+                autoFilter: true,
+                sheetName: 'Exported data'
               }
           ]
 });

@@ -27,7 +27,7 @@
                 <p class="text-xs mt-1 mb-0 font-weight-bold">'.$value["departamento"].'</p>
                 <h4 class="font-weight-bolder">'.$value["total"].'</h4>
                 <div class="progress w-75">
-                  <div class="progress-bar bg-dark w-60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar bg-dark w-'.$value["total"].'" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>';
               

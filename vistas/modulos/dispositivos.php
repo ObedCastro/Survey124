@@ -23,6 +23,7 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Modelo</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">IMEI/SERIE</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Teléfono</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sede</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ESTADO</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Responsable</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acción</th>
@@ -139,6 +140,7 @@
               echo '<p class="text-xs mt-5">Realizando registro en: <strong>'.$fechahoy.'</strong></p>';
             ?>
             <input name="fechaRegistro" type="hidden" value="<?php echo $fechahoy ?>">
+
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             <button type="submit" class="btn btn-primary">Guardar</button>
@@ -157,32 +159,7 @@
 
 
 <script>
-  // Example starter JavaScript for disabling form submissions if there are invalid fields
-  (function () {
-    'use strict'
-
-    //Resetear formularios de modal, en cuanto el modal se oculte
-    $("#modalDispositivos").on("hidden.bs.modal", function () {
-      $(this).find('form')[0].reset();
-    });
-
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll('.needs-validation')
-
-    // Loop over them and prevent submission
-    Array.prototype.slice.call(forms)
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
-
-          form.classList.add('was-validated')
-          console.log(event);
-        }, false)
-      })
-  })()
+ 
 </script>
 
 
@@ -340,3 +317,36 @@
 
 
 <script src="vistas/js/gestorDispositivos.js"></script>
+
+<script>
+
+  $("#modalAsignarDispositivo").on("hidden.bs.modal", function () {
+    $(this).find('form')[0].reset();
+  });
+
+ // Example starter JavaScript for disabling form submissions if there are invalid fields
+ (function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+
+      //Resetear formularios de modal, en cuanto el modal se oculte
+    $("#modalDispositivos").on("hidden.bs.modal", function () {
+      $(this).find('form')[0].reset();
+    });
+  })()
+
+</script>
