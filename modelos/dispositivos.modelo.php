@@ -17,7 +17,7 @@ class ModeloDispositivos{
             return $stmt->fetch();
 
         } else{
-            $sql = "SELECT * FROM $tabla ORDER BY iddispositivo DESC";
+            $sql = "SELECT d.*, CONCAT(s.nombresede,' ',s.departamentosede) as sede FROM $tabla d INNER JOIN sedes s ON s.idsede = d.sededispositivo ORDER BY d.iddispositivo DESC";
             $stmt = Conexion::conectar()->prepare($sql);
             $stmt->execute();
 

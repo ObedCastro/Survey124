@@ -15,7 +15,7 @@ class ModeloConsultores{
             return $stmt->fetch();
             
         } else{
-            $sql = "SELECT * FROM $tabla ORDER BY idconsultor DESC";
+            $sql = "SELECT c.*, CONCAT(s.nombresede,' ',s.departamentosede) as sede FROM $tabla c INNER JOIN sedes s ON s.idsede = c.sedeconsultor ORDER BY c.idconsultor DESC";
             $stmt = Conexion::conectar()->prepare($sql);
             $stmt->execute();
             

@@ -21,7 +21,7 @@ class TablaDispositivos{
             for($i=0; $i<count($dispositivos); $i++){
 
                 $tipoDispositivo = "<div class='d-flex justify-content-evenly'><div class='d-flex flex-column justify-content-center'><h6 class='mb-0 text-sm'>".$dispositivos[$i]['tipodispositivo']."</h6></div></div>";
-                $marcaDispositivo = "<p class='text-xs font-weight-bold mb-0'>".$dispositivos[$i]['marcadispositivo']."</p>";
+                $marcaDispositivo = "<p class='text-xs mb-0'>".$dispositivos[$i]['marcadispositivo']."</p>";
 
                 //Comprobar el estado del dispositivo
                 $edispositivo = $dispositivos[$i]['estadodispositivo'];
@@ -43,12 +43,14 @@ class TablaDispositivos{
                 $modeloDispositivo = "<span class='text-secondary text-xs'>".$dispositivos[$i]['modelodispositivo']."</span>";
                 
                 if($dispositivos[$i]['imeidispositivo']){
-                    $imeiDispositivo = "<span class='text-secondary text-xs font-weight-bold'>".$dispositivos[$i]['imeidispositivo']."</span>";
+                    $imeiDispositivo = "<span class='text-secondary text-xs'>".$dispositivos[$i]['imeidispositivo']."</span>";
                 } else{
-                    $imeiDispositivo = "<span class='text-secondary text-xs font-weight-bold'>".$dispositivos[$i]['seriedispositivo']."</span>";
+                    $imeiDispositivo = "<span class='text-secondary text-xs'>".$dispositivos[$i]['seriedispositivo']."</span>";
                 }
 
-                $telefonoDispositivo = "<span class='text-secondary text-xs font-weight-bold'>".$dispositivos[$i]['telefonodispositivo']."</span>";
+                $telefonoDispositivo = "<span class='text-secondary text-xs'>".$dispositivos[$i]['telefonodispositivo']."</span>";
+                
+                $sedeDispositivo = "<span class='text-secondary text-xs'>".$dispositivos[$i]['sede']."</span>";
 
                 $estadodispositivo = "<span idDispositivo='".$dispositivos[$i]['iddispositivo']."' consultor='".$dispositivos[$i]['responsabledispositivo']."' style='cursor:pointer;' class='".$boton." badge badge-sm ".$colorElemento."' data-bs-toggle='modal' data-bs-target='#".$modal."'>".$textoMostrar."</span>";
 
@@ -61,12 +63,12 @@ class TablaDispositivos{
                     $consultor = "--------------";
                 }
                 $resposableDispositivo = "<span class='text-secondary text-xs font-weight-bold'>".$consultor."</span>";
-                $acciones = "<ul class='navbar-nav justify-content-end'>".
-                                "<li class='nav-item dropdown pe-2 d-flex align-items-center'>".
+                $acciones = "<ul class='navbar-nav justify-content-evenly'>".
+                                "<li class='nav-item pe-2 d-flex justify-content-center'>".
                                     "<div class='nav-link text-body p-0'>".
-                                    "<button idDispositivo='".$dispositivos[$i]['iddispositivo']."' type='button' class='btn btn-default p-1 btn-lg rounded-circle btnMostrarDispositivos mb-0' data-bs-toggle='modal' data-bs-target='#modalVerDetalleDispositivo'><i class='fa fa-eye fs-6 p-1'></i></button>".
-                                    "<button idEditarDispositivo='".$dispositivos[$i]['iddispositivo']."' type='button' class='btn btn-secondary p-1 btn-lg rounded-circle btnEditarDispositivo mb-0' data-bs-toggle='modal' data-bs-target='#modalEditarDispositivos'><i class='fa fa-pencil fs-6 p-1'></i></button>".
-                                    "<button idEliminarDispositivo='".$dispositivos[$i]['iddispositivo']."' type='button' class='btn btn-warning p-1 btn-lg rounded-circle btnEliminarDispositivo mb-0' data-bs-toggle='modal' data-bs-target='#modalEliminarDispositivo'><i class='fa fa-trash fs-6 p-1'></i></button>".
+                                    "<a idDispositivo='".$dispositivos[$i]['iddispositivo']."' style='cursor:pointer;' class='text-secondary p-1 btnMostrarDispositivos mb-0' data-bs-toggle='modal' data-bs-target='#modalVerDetalleDispositivo'><i class='fa fa-eye fs-6 p-1' data-bs-toggle='tooltip' data-bs-placement='top' title='Ver más información'></i></a>".
+                                    "<a idEditarDispositivo='".$dispositivos[$i]['iddispositivo']."' style='cursor:pointer;' class='text-secondary p-1 btnEditarDispositivo mb-0' data-bs-toggle='modal' data-bs-target='#modalEditarDispositivos'><i class='fa fa-pencil fs-6 p-1' data-bs-toggle='tooltip' data-bs-placement='top' title='Modificar la información'></i></a>".
+                                    "<a idEliminarDispositivo='".$dispositivos[$i]['iddispositivo']."' style='cursor:pointer;' class='text-secondary p-1 btnEliminarDispositivo mb-0' data-bs-toggle='modal' data-bs-target='#modalEliminarDispositivo'><i class='fa fa-trash fs-6 p-1' data-bs-toggle='tooltip' data-bs-placement='top' title='Eliminar dispositivo'></i></a>".
                                     "</div>".
                                 "</li>".
                             "</ul>";
@@ -77,6 +79,7 @@ class TablaDispositivos{
                             "'.$modeloDispositivo.'",
                             "'.$imeiDispositivo.'",
                             "'.$telefonoDispositivo.'",
+                            "'.$sedeDispositivo.'",
                             "'.$estadodispositivo.'",
                             "'.$resposableDispositivo.'",
                             "'.$acciones.'"
