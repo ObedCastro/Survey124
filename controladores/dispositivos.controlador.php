@@ -18,133 +18,43 @@ class ControladorDispositivos{
     }
 
     //REGISTRAR NUEVO DISPOSITIVOS ____________________________________________________________________________________
-    static public function ctrRegistrarDispositivo(){
-        if(isset($_POST["tipoDispositivo"])){
-            if($_POST["tipoDispositivo"] == "Telefono" || $_POST["tipoDispositivo"] == "Tablet" || $_POST["tipoDispositivo"] == "Laptop"){
-                $datos = array(
-                    "tipo"=>$_POST["tipoDispositivo"],
-                    "marca"=>$_POST["marcaDispositivo"],
-                    "modelo"=>$_POST["modeloDispositivo"],
-                    "imei"=>$_POST["imeiDispositivo"],
-                    "serie"=>$_POST["serieDispositivo"],
-                    "telefono"=>$_POST["telefonoDispositivo"],
-                    "sede"=>$_POST["sedeDispositivo"],
-                    "fecha"=>$_POST["fechaRegistro"]
-                );
+    static public function ctrRegistrarDispositivo($datos, $accesorios){
+        $tabla = "dispositivos";
+        $respuesta = ModeloDispositivos::mdlRegistrarDispositivo($tabla, $datos, $accesorios);
 
-                $accesorios = array(
-                    "Cubo"=>"0",
-                    "Cable"=>"0",
-                    "Funda"=>"0",
-                    "Lapiz"=>"0",
-                    "Powerbank"=>"0",
-                    "Maletin"=>"0",
-                    "Cargador"=>"0",
-                    "Mouse"=>"0",
-                    "Mousepad"=>"0"
-                );
-
-                $respuesta = ModeloDispositivos::mdlRegistrarDispositivo("dispositivos", $datos, $accesorios);
-
-                if($respuesta == "ok"){
-                    echo '<script>
-                        Swal.fire({
-                            type: "success",
-                            icon: "success",
-                            title: "El dispositivo se registró correctamente.",
-                            showConfirmButton: true,
-                            confirmButtonText: "Cerrar"
-                        }).then(function(result){
-                            window.location = "dispositivos";
-                        })
-                        </script>';
-                }
-
-            } else{
-                echo '<script>
-                Swal.fire({
-                    type: "error",
-                    icon: "error",
-                    title: "Error, no se ha podido registrar el dispositivo. Intente nuevamente",
-                    showConfirmButton: true,
-                    confirmButtonText: "Cerrar"
-
-                })
-                </script>';
-
-                return;
-            }
-
-        } else{
-
+        if($respuesta == "ok"){
+            return array("mensaje" => "Registro realizado exitosamente.");
+        }else{
+            return array("mensaje" => "No ha sido posible registrar el nuevo dispositivo");
         }
     }
 
 
     //MODIFICAR DISPOSITIVO __________________________________________________________________________________________
-    static public function ctrModificarDispositivo(){
-        if(isset($_POST["editarTipoDispositivo"])){
-            if($_POST["editarTipoDispositivo"] == "Telefono" || $_POST["editarTipoDispositivo"] == "Tablet" || $_POST["editarTipoDispositivo"] == "Laptop"){
-                $id = $_POST["idDispositivo"];
-                $datos = array(
-                    "tipo"=>$_POST["editarTipoDispositivo"],
-                    "marca"=>$_POST["marcaDispositivo"],
-                    "modelo"=>$_POST["modeloDispositivo"],
-                    "imei"=>$_POST["imeiDispositivo"],
-                    "serie"=>$_POST["serieDispositivo"],
-                    "telefono"=>$_POST["telefonoDispositivo"],
-                    "sede"=>$_POST["sedeDispositivo"],
-                    "comentario"=>$_POST["comentarioDispositivo"]
-                );
+    static public function ctrModificarDispositivo($item, $valor, $datos){
+        $tabla = "dispositivos";
+        $respuesta = ModeloDispositivos::mdlModificarDispositivo($tabla, $item, $valor, $datos);
 
-                $respuesta = ModeloDispositivos::mdlModificarDispositivo($id, "dispositivos", $datos);
-
-                if($respuesta == "ok"){
-                    echo '<script>
-                        Swal.fire({
-                            type: "success",
-                            icon: "success",
-                            title: "La información del dispositivo se modificó correctamente.",
-                            showConfirmButton: true,
-                            confirmButtonText: "Cerrar"
-                        }).then(function(result){
-                            window.location = "dispositivos";
-                        })
-                        </script>';
-                }
-
-            } else{
-                echo '<script>
-                Swal.fire({
-                    type: "error",
-                    icon: "error",
-                    title: "Error, no se ha podido registrar el dispositivo. Intente nuevamente",
-                    showConfirmButton: true,
-                    confirmButtonText: "Cerrar"
-
-                })
-                </script>';
-
-                //return;
-            }
-
-        } else{
-
+        if($respuesta == "ok"){
+            return array("mensaje" => "Información del dispositivo modificada correctamente.");
+        }else{
+            return array("mensaje" => "No ha sido posible modificar la información del dispositivo");
         }
+
     }
 
     //CAMBIAR ESTADO DE DISPOSITIVO AL RECUPERARLO ____________________________________________________________________
-    static public function ctrCambiarEstadoDispositivo($item, $valor, $accesorios){
+    static public function ctrCambiarEstadoDispositivo($item, $valor, $accesorios, $estado, $comentario){
         $tabla = "dispositivos";
-        ModeloDispositivos::mdlCambiarEstadoDispositivo($tabla, $item, $valor, $accesorios);
+        ModeloDispositivos::mdlCambiarEstadoDispositivo($tabla, $item, $valor, $accesorios, $estado, $comentario);
     }
 
 
     //ASIGNAR DISPOSITIVO _____________________________________________________________________________________________
-    static public function ctrAsignarDispositivo($id, $res, $accesorios, $comentario){
+    static public function ctrAsignarDispositivo($id, $res, $accesorios, $fecha){
        $tabla = "dispositivos";
 
-       $respuesta = ModeloDispositivos::mdlAsignarDispositivo($tabla, $id, $res, $accesorios, $comentario);
+       $respuesta = ModeloDispositivos::mdlAsignarDispositivo($tabla, $id, $res, $accesorios, $fecha);
 
        if($respuesta == "ok"){
            $item = "iddispositivo";

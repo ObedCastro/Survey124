@@ -26,7 +26,7 @@ class TablaConsultores{
                                 "<li class='nav-item dropdown pe-2 d-flex align-items-center'>".
                                     "<div class='nav-link text-body p-0'>".
                                     "<a idEditarConsultor='".$consultores[$i]['idconsultor']."' style='cursor:pointer;' class='text-secondary p-1 btn-lg btnEditarConsultor mb-0' data-bs-toggle='modal' data-bs-target='#modalEditarConsultores'><i class='fa fa-pencil fs-6 p-1' data-bs-toggle='tooltip' data-bs-placement='top' title='Modificar información'></i></a>".
-                                    "<a idEliminarConsultor='".$consultores[$i]['idconsultor']."' style='cursor:pointer;' class='text-secondary p-1 btn-lg mb-0'><i class='fa fa-trash  fs-6 p-1' data-bs-toggle='tooltip' data-bs-placement='top' title='Eliminar'></i></a>".
+                                    "<a idEliminarConsultor='".$consultores[$i]['idconsultor']."' style='cursor:pointer;' class='text-secondary p-1 btn-lg btnEliminarConsultor mb-0'><i class='fa fa-trash  fs-6 p-1' data-bs-toggle='tooltip' data-bs-placement='top' title='Eliminar'></i></a>".
                                     "</div>".
                                 "</li>".
                             "</ul>";

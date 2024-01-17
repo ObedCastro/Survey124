@@ -68,4 +68,31 @@ class ModeloConsultores{
         $stmt = null;
     }
 
+    //PARA LLENAR SELECT DE CONSULTORES
+    static public function mdlMostrarConsultoresSedes($tabla, $item, $valor){
+        $sql = "SELECT idconsultor, nombreconsultor FROM $tabla WHERE $item = :$item";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
+        
+        if($stmt->execute()){
+            return $stmt->fetchAll();
+        } else{
+            return array("Mensaje" => "No hay información disponible");
+        }
+
+    }
+
+    //PARA ELIMINAR CONSULTOR
+    static public function mdlEliminarConsultor($tabla, $item, $valor){
+        $sql = "DELETE FROM $tabla WHERE $item = :$item";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
+        
+        if($stmt->execute()){
+            return "ok";
+        } else{
+            return "error";
+        }
+    }
+
 }

@@ -26,7 +26,8 @@ class ControladorAdministradores{
                     $_SESSION["perfil"] = $respuesta["perfil"];
 
                     echo '<script>
-                            window.location = "inicio";
+                            $(".page-header").hide();
+                            window.location.href = "inicio";                            
                         </script>';
 
 

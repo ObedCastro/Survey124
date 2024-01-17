@@ -102,4 +102,24 @@ class ControladorConsultores{
         }
     }
 
+    //MOSTRAR SEDES PARA SELECT
+    static public function ctrMostrarConsultoresSede($item, $valor){
+        $tabla = "consultores";
+        $respuesta = ModeloConsultores::mdlMostrarConsultoresSedes($tabla, $item, $valor);
+
+        return $respuesta;
+    }
+
+    //PARA ELIMINAR CONSULTOR
+    static public function ctrEliminarConsultor($item, $valor){
+        $tabla = "consultores";
+        $respuesta = ModeloConsultores::mdlEliminarConsultor($tabla, $item, $valor);
+
+        if($respuesta == "ok"){
+            return array("mensaje" => "Consultor eliminado satisfactoriamente");
+        } else{
+            return array("mensaje" => "No ha sido posible eliminar el consultor");
+        }
+    }
+
 }

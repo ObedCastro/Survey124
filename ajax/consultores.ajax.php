@@ -1,5 +1,5 @@
 <?php
-
+ 
 require_once "../controladores/consultores.controlador.php"; 
 require_once "../modelos/consultores.modelo.php";
 
@@ -23,6 +23,24 @@ class AjaxConsultores {
         echo json_encode($respuesta);
     }
 
+    public $sedeConsultor;
+    public function ajaxMostrarConsultoresSede(){
+        $item = "sedeconsultor";
+        $valor = $this->sedeConsultor;
+
+        $respuesta = ControladorConsultores::ctrMostrarConsultoresSede($item, $valor);
+        echo json_encode($respuesta);
+    }
+
+    public $idEliminarConsultor;
+    public function ajaxEliminarConsultor(){
+        $item = "idconsultor";
+        $valor = $this->idEliminarConsultor;
+
+        $respuesta = ControladorConsultores::ctrEliminarConsultor($item, $valor);
+        echo json_encode($respuesta);
+    }
+
 }
 
 
@@ -38,4 +56,18 @@ if(isset($_POST["idEditarConsultor"])){
     $editar = new AjaxConsultores();
     $editar->idEditarConsultor = $_POST["idEditarConsultor"];
     $editar->ajaxEditarConsultor();
+}
+
+//PARA MOSTRAR LAS SEDES EN SELECT
+if(isset($_POST["sedeDispositivo"])){
+    $sede = new AjaxConsultores();
+    $sede->sedeConsultor = $_POST["sedeDispositivo"];
+    $sede->ajaxMostrarConsultoresSede();
+}
+
+//PARA ELIMINAR CONSULTOR
+if(isset($_POST["idEliminarConsultor"])){
+    $eliminar = new AjaxConsultores();
+    $eliminar->idEliminarConsultor = $_POST["idEliminarConsultor"];
+    $eliminar->ajaxEliminarConsultor();
 }

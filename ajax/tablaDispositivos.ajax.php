@@ -29,15 +29,17 @@ class TablaDispositivos{
                     $colorElemento = "bg-light text-dark";
                     $textoMostrar = "Disponible";
                     $boton = "btnAsignarDispositivo";
-                    $modal = "modalAsignarDispositivo";
+                    $modal = "data-bs-toggle='modal' data-bs-target='#modalAsignarDispositivo'";
                 } else if($edispositivo == "2"){
                     $colorElemento = "alert-success";
                     $textoMostrar = "Asignado";
                     $boton = "btnRecuperarDispositivo";
-                    $modal = "modalRecuperarDispositivo";
+                    $modal = "data-bs-toggle='modal' data-bs-target='#modalRecuperarDispositivo'";
                 } else if($edispositivo == "3"){
                     $colorElemento = "alert-danger";
                     $textoMostrar = "Dañado";
+                    $boton = "";
+                    $modal = "";
                 }
 
                 $modeloDispositivo = "<span class='text-secondary text-xs'>".$dispositivos[$i]['modelodispositivo']."</span>";
@@ -52,7 +54,7 @@ class TablaDispositivos{
                 
                 $sedeDispositivo = "<span class='text-secondary text-xs'>".$dispositivos[$i]['sede']."</span>";
 
-                $estadodispositivo = "<span idDispositivo='".$dispositivos[$i]['iddispositivo']."' consultor='".$dispositivos[$i]['responsabledispositivo']."' style='cursor:pointer;' class='".$boton." badge badge-sm ".$colorElemento."' data-bs-toggle='modal' data-bs-target='#".$modal."'>".$textoMostrar."</span>";
+                $estadodispositivo = "<span idDispositivo='".$dispositivos[$i]['iddispositivo']."' consultor='".$dispositivos[$i]['responsabledispositivo']."' style='cursor:pointer;' ".$modal." class='".$boton." badge badge-sm ".$colorElemento."'><span data-bs-toggle='tooltip' data-bs-placement='top' title='ASIGNAR/RECEPCIONAR'>".$textoMostrar."</span></span>";
 
                 //Obtener el nombre del responsable del dispoaisivo
                 $respuesta2 = ControladorConsultores::ctrMostrarConsultores("idconsultor", $dispositivos[$i]["responsabledispositivo"]);
