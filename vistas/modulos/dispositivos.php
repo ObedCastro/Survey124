@@ -52,7 +52,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="" method="post" class="needs-validation" novalidate>
+        <form action="" method="post" class="needs-validation" id="formNuevoDispositivo" novalidate>
+          <input type="hidden" name="nuevo" value="nuevo">
           <div class="mb-3 row">
             <div class="col-md-4">
               <label for="tipoDispositivo" class="form-label">Tipo</label>
@@ -142,14 +143,14 @@
             <input name="fechaRegistro" type="hidden" value="<?php echo $fechahoy ?>">
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-secondary cancelarevento" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary btnNuevoRegistro">Guardar</button>
           </div>
         </form>
 
         <?php
-          $registrarDispositivo = new ControladorDispositivos();
-          $registrarDispositivo->ctrRegistrarDispositivo();
+          //$registrarDispositivo = new ControladorDispositivos();
+          //$registrarDispositivo->ctrRegistrarDispositivo();
         ?>
 
       </div>
@@ -183,10 +184,10 @@
       </div>
       <div class="modal-body">
 
-      <form action="" method="post" class="needs-validation">
+      <form action="" method="post" class="needs-validation" id="formModificarDispositivo">
           <div class="mb-3 row">
             <div class="col-md-4">
-              <input type="hidden" id="idEditarDispositivo" name="idDispositivo" value="">
+              <input type="hidden" id="idEditarDispositivo_" name="idEditarDispositivo_" value="">
               <label for="editarTipoDispositivo" class="form-label">Tipo</label>
               <select class="form-select" aria-label="Default select example" id="editarTipoDispositivo" name="editarTipoDispositivo">
               <?php
@@ -270,38 +271,13 @@
 
 
       <?php
-          $modificarDispositivo = new ControladorDispositivos();
-          $modificarDispositivo->ctrModificarDispositivo();
+          /*$modificarDispositivo = new ControladorDispositivos();
+          $modificarDispositivo->ctrModificarDispositivo();*/
         ?>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-<!-- MODAL DE CONFIRMACIÓN PARA ELIMINAR DISPOSITIVO -->
-
-<div class="modal fade" id="modalEliminarDispositivo" tabindex="-1" aria-labelledby="modalEliminarDispositivoLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalEliminarDispositivoLabel">Eliminar dispositivo</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ¿Está seguro que desea eliminar este dispositivo?
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button id="btnEliminarDis" type="button" class="btn btn-primary" data-bs-dismiss="modal">Sí, eliminar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 
 
 
@@ -315,8 +291,9 @@
   include "vistas/modulos/dispositivos/recuperar.php";
 ?>
 
-
 <script src="vistas/js/gestorDispositivos.js"></script>
+
+
 
 <script>
 
@@ -328,25 +305,35 @@
  (function () {
     'use strict'
 
+      //Resetear formularios de modal, en cuanto el modal se oculte
+      $("#modalDispositivos").on("hidden.bs.modal", function () {
+        $(this).find('form')[0].reset();
+      });
+
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     var forms = document.querySelectorAll('.needs-validation')
 
     // Loop over them and prevent submission
     Array.prototype.slice.call(forms).forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
+      const boton = document.querySelector(".btnNuevoRegistro");
+
+      function handleButtonClick(event) {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
           }
 
-          form.classList.add('was-validated')
-        }, false)
-      })
+          form.classList.add('was-validated');
+        }
 
-      //Resetear formularios de modal, en cuanto el modal se oculte
-    $("#modalDispositivos").on("hidden.bs.modal", function () {
-      $(this).find('form')[0].reset();
-    });
+        boton.addEventListener('click', handleButtonClick);
+
+        function handleModalClose(){
+          form.classList.remove('was-validated');
+        }
+
+        document.getElementById('modalDispositivos').addEventListener('hidden.bs.modal', handleModalClose);
+      })
   })()
 
 </script>

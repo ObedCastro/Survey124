@@ -38,7 +38,7 @@
 
                   <div class="col-md-6">
                     <li class="list-group-item border-0 d-flex p-4 mb-1 bg-gray-100 border-radius-lg">
-                      <div class="d-flex flex-column">
+                      <div class="d-flex flex-column contenedorAccesorios">
                         <h6 class="mb-3 text-sm">Accesorios</h6>
                         <span class="mb-1 text-xs sin-accesorios"></span>
                         <span class="mb-1 text-xs"><i class="fa fa-check"></i> Cubo de carga <span id="checkCubo" class="text-dark font-weight-bold ms-sm-2"></span></span>

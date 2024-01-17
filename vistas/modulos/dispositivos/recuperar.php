@@ -41,8 +41,8 @@
 
                 <div class="col-md-6">
                     <label class="form-label">Actualmente asignado a:</label>
-                    <span id="responsableRecuperar" class="text-primary"></span>
-                    <input type="hidden" name="responsableActual" id="responsableActual">
+                        <span id="responsableRecuperar" class="text-primary"></span>
+                        <input type="hidden" name="responsableActual" id="responsableActual">
                     <br><br>
 
                     <div class="row">
@@ -50,49 +50,83 @@
                         <div class="col-md-6 recuperarAccesoriosMovil">
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkCubo" id="checkCubo">
-                                <label class="form-check-label" for="checkCubo">Cubo de carga</label>
+                                <label class="form-check-label">Cubo de carga
+                                    <input class="form-check-input" type="checkbox" name="checkCubo" id="checkCubo">
+                                </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkCable" id="checkCable">
-                                <label class="form-check-label" for="checkCable">Cable de cargador</label>
+                                <label class="form-check-label">Cable de cargador
+                                    <input class="form-check-input" type="checkbox" name="checkCable" id="checkCable">
+                                </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkFunda" id="checkFunda">
-                                <label class="form-check-label" for="checkFunda">Funda protectora</label>
+                                <label class="form-check-label">Funda protectora
+                                    <input class="form-check-input" type="checkbox" name="checkFunda" id="checkFunda">
+                                </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkLapiz" id="checkLapiz">
-                                <label class="form-check-label" for="checkLapiz">Lápiz óptico</label>
+                                <label class="form-check-label">Lápiz óptico
+                                    <input class="form-check-input" type="checkbox" name="checkLapiz" id="checkLapiz">
+                                </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkPowerbank" id="checkPowerbank">
-                                <label class="form-check-label" for="checkPowerbank">Powerbank</label>
+                                <label class="form-check-label">Powerbank
+                                    <input class="form-check-input" type="checkbox" name="checkPowerbank" id="checkPowerbank">
+                                </label>
                             </div>
                         </div>
 
                         <div class="col-md-6 recuperarAccesoriosLaptop">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkMaletin" id="checkMaletin">
-                                <label class="form-check-label" for="checkMaletin">Maletín de laptop</label>
+                                <label class="form-check-label">Maletín de laptop
+                                    <input class="form-check-input" type="checkbox" name="checkMaletin" id="checkMaletin">
+                                </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkCargador" id="checkCargador">
-                                <label class="form-check-label" for="checkCargador">Cargador de laptop</label>
+                                <label class="form-check-label">Cargador de laptop
+                                    <input class="form-check-input" type="checkbox" name="checkCargador" id="checkCargador">
+                                </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkMouse" id="checkMouse">
-                                <label class="form-check-label" for="checkMouse">Mouse</label>
+                                <label class="form-check-label">Mouse
+                                    <input class="form-check-input" type="checkbox" name="checkMouse" id="checkMouse">
+                                </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkMousepad" id="checkMousepad">
-                                <label class="form-check-label" for="checkMousepad">Mousepad</label>
+                                <label class="form-check-label">Mousepad
+                                    <input class="form-check-input" type="checkbox" name="checkMousepad" id="checkMousepad">
+                                </label>
                             </div>
                         </div>
                     </div>
 
                 </div>
 
+            </div>
+
+            <div class="row container">
+                <p class="text-secondary text-center text-xs mb-0">¿En qué condición se recibe el dispositivo?</p>
+                <div class="col-md-12 radiosEstado">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="condicionDispositivo" id="condicionDispositivo1" value="option1" checked>
+                        <label class="form-check-label" for="condicionDispositivo1">
+                            Buen estado
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="condicionDispositivo" id="condicionDispositivo2" value="option2">
+                        <label class="form-check-label" for="condicionDispositivo2">
+                            Dañado
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="condicionDispositivo" id="condicionDispositivo3" value="option3">
+                        <label class="form-check-label" for="condicionDispositivo3">
+                            Robo o Extravío
+                        </label>
+                    </div>
+
+                </div>
             </div>
 
             <div class="row">

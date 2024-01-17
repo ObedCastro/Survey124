@@ -28,12 +28,6 @@
                             <span class="mb-2 text-xs">Teléfono: <span class="text-dark ms-sm-2 font-weight-bold detalleAsignarTelefono"></span></span>
                             <span class="mb-2 text-xs">Ubicación: <span class="text-dark ms-sm-2 font-weight-bold detalleAsignarSede"></span></span>
                             <span class="mb-2 text-xs">Registrado en: <span class="text-dark ms-sm-2 font-weight-bold detalleAsignarFecha"></span></span>
-                            <span class="mb-2 text-xs">Más información: <span class="text-dark ms-sm-2 font-weight-bold detalleAsignarComentario"></span></span>
-                            <?php
-                                date_default_timezone_set('America/El_Salvador');
-                                $fechahoy = date("d-m-Y");
-                                echo '<span class="mb-2 text-xs">Fecha de asignación: <span class="text-dark ms-sm-2 font-weight-bold">'.$fechahoy.'</span></span>';
-                            ?>
                         </div>
                     </li>
                 </ul>
@@ -41,65 +35,88 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="selectConsultores" class="form-label">Consultor responsable</label>
-                    <select class="form-control choices-single form-select is-invalid" id="selectConsultores" name="responsableDispositivo" required>
+                    <label for="selectConsultores" class="form-label selectConsultores">Consultor responsable</label>
+                    <div class="mostrarSelect">
+
+                    </div>
+                    <!--<select class="form-control choices-single form-select is-invalid" id="selectConsultores" name="responsableDispositivo" required>
                         <option selected disabled value=""></option>
 
                         <?php
-                            $item = null;
+                            /*$item = null;
                             $valor = null;
                             $consultores = ControladorConsultores::ctrMostrarConsultores($item, $valor);
 
                             foreach ($consultores as $consultor) {
                                 echo '<option value="'.$consultor["idconsultor"].'">'.$consultor["nombreconsultor"].'</option>';
-                            }
+                            }*/
                         ?>
-                    </select>
+                    </select>-->
 
                     <div class="row">
                         <div class="col-md-6 accesoriosMovil">
-
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkCubo" id="checkCubo">
-                                <label class="form-check-label" for="checkCubo">Cubo de carga</label>
+                                <label class="form-check-label">Cubo de carga
+                                    <input class="form-check-input" type="checkbox" name="checkCubo" id="checkCubo">
+                                </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkCable" id="checkCable">
-                                <label class="form-check-label" for="checkCable">Cable de cargador</label>
+                                <label class="form-check-label">Cable de cargador
+                                    <input class="form-check-input" type="checkbox" name="checkCable" id="checkCable">
+                                </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkFunda" id="checkFunda">
-                                <label class="form-check-label" for="checkFunda">Funda protectora</label>
+                                <label class="form-check-label">Funda protectora
+                                    <input class="form-check-input" type="checkbox" name="checkFunda" id="checkFunda">
+                                </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkLapiz" id="checkLapiz">
-                                <label class="form-check-label" for="checkLapiz">Lápiz óptico</label>
+                                <label class="form-check-label">Lápiz óptico
+                                    <input class="form-check-input" type="checkbox" name="checkLapiz" id="checkLapiz">
+                                </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkPowerbank" id="checkPowerbank">
-                                <label class="form-check-label" for="checkPowerbank">Powerbank</label>
+                                <label class="form-check-label">Powerbank
+                                    <input class="form-check-input" type="checkbox" name="checkPowerbank" id="checkPowerbank">
+                                </label>
                             </div>
                         </div>
 
                         <div class="col-md-6 accesoriosLaptop">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkMaletin" id="checkMaletin">
-                                <label class="form-check-label" for="checkMaletin">Maletín de laptop</label>
+                                <label class="form-check-label">Maletín de laptop
+                                    <input class="form-check-input" type="checkbox" name="checkMaletin" id="checkMaletin">
+                                </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkCargador" id="checkCargador">
-                                <label class="form-check-label" for="checkCargador">Cargador de laptop</label>
+                                <label class="form-check-label">Cargador de laptop
+                                    <input class="form-check-input" type="checkbox" name="checkCargador" id="checkCargador">
+                                </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkMouse" id="checkMouse">
-                                <label class="form-check-label" for="checkMouse">Mouse</label>
+                                <label class="form-check-label">Mouse
+                                    <input class="form-check-input" type="checkbox" name="checkMouse" id="checkMouse">
+                                </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="checkMousepad" id="checkMousepad">
-                                <label class="form-check-label" for="checkMousepad">Mousepad</label>
+                                <label class="form-check-label">Mousepad
+                                    <input class="form-check-input" type="checkbox" name="checkMousepad" id="checkMousepad">
+                                </label>
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-12 d-flex">
+                            <?php
+                                date_default_timezone_set('America/El_Salvador');
+                                $fechahoy = date("Y-m-d");
+                                echo '<div class="col-md-3"><label class="form-label" for="fechaAsignacion">Fecha asignación: </label></div>
+                                <div class="col-md-3"><input type="date" class="form-control" name="fechaAsignacion" id="fechaAsignacion" value="'.$fechahoy.'"></div>';
+                            ?>
+                        </div>
+                    </div>
+
 
                 </div>
 

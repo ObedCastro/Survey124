@@ -48,7 +48,7 @@
   include "vistas/modulos/consultores/modificarConsultor.php";
   
 
-  include "vistas/modulos/consultores/verDetalleConsultor.php";
+  //include "vistas/modulos/consultores/verDetalleConsultor.php";
 ?>
 
 <script src="vistas/js/gestorConsultores.js"></script>

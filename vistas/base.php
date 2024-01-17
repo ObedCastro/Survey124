@@ -47,6 +47,9 @@
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.colVis.min.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
     <!-- GRÁFICOS -->
     <script src="vistas/assets/js/plugins/chartjs.min.js"></script>
 
@@ -65,7 +68,6 @@
 
     session_start();
     if(isset($_SESSION["validarSesion"]) && $_SESSION["validarSesion"] == "ok"){
-
 
         include "modulos/aside.php";
 

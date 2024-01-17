@@ -46,7 +46,6 @@
       processData: false,
       success: function(resultado){
         var respuesta = JSON.parse(resultado);
-        console.log(respuesta);
 
         var mostrarModelos = [];
         var mostrarCantidadModelos = [];
@@ -54,8 +53,6 @@
           mostrarCantidadModelos.push(e[0]);
           mostrarModelos.push(e[1]);
         });
-
-        console.log(mostrarCantidadModelos);
 
         new Chart(ctx, {
           type: "bar",
@@ -147,7 +144,7 @@
       processData: false,
       success: function(respuesta){
         var datos = JSON.parse(respuesta);
-        var meses = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var meses = ["Ene", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
         var mostrarMes = [];
         var mostrarCantidadAsignaciones = [];
         var mostrarCantidadRecepciones = [];

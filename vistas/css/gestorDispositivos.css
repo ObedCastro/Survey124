@@ -148,3 +148,8 @@ button.dt-button, div.dt-button, a.dt-button {
 .choices__inner{
     background-color: transparent !important;
 }
+
+.radiosEstado{
+    display: flex;
+    justify-content: space-evenly;
+}

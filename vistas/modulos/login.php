@@ -19,10 +19,6 @@
                     <div class="mb-3">
                       <input name="ingPassword" type="password" class="form-control" placeholder="Contrasena" aria-label="Password" aria-describedby="password-addon">
                     </div>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
-                      <label class="form-check-label" for="rememberMe">Recordarme</label>
-                    </div>
                     <div class="text-center">
                       <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Ingresar</button>
                     </div>
@@ -37,7 +33,7 @@
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-4 text-sm mx-auto">
                     He olvidado mi
-                    <a href="javascript:;" class="text-info text-gradient font-weight-bold">conntrasena</a>
+                    <a href="javascript:;" class="text-info text-gradient font-weight-bold">contrasena</a>
                   </p>
                 </div>
               </div>

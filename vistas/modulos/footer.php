@@ -7,8 +7,7 @@
           © <script>
             document.write(new Date().getFullYear())
           </script>,
-          Todos los derechos reservados
-          <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">GITI Oriente</a>
+          Todos los derechos reservados <strong>GITI Oriente</strong>
         </div>
       </div>
     </div>

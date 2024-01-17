@@ -64,3 +64,56 @@ var tabla = $('#datatableConsultores').DataTable({
         }
     }
 });
+
+$(".tablaConsultores").on("click", ".btnEliminarConsultor", function(){
+    Swal.fire({
+        title: "Eliminar consultor",
+        text: "¿Está seguro que desea eliminar este consultor?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+            var idEliminarConsultor = $(this).attr("idEliminarConsultor");
+
+            var datos = new FormData();
+            datos.append("idEliminarConsultor", idEliminarConsultor);
+
+            $.ajax({
+                url: "ajax/consultores.ajax.php",
+                method: "POST",
+                data: datos,
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success: function(respuesta){
+                    var icono = respuesta.success ? "success" : "error";
+                    var mensaje = respuesta.success ? respuesta.success : respuesta.error;
+                    Swal.fire({
+                        position: "center",
+                        icon: icono,
+                        title: mensaje,
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+
+                      tabla.ajax.reload();
+                      console.log(respuesta);
+                },
+                error: function(res){
+                    Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: "No se pudo ejecutar la instrucción",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                }
+            })
+        }
+      });
+})
