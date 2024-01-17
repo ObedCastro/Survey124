@@ -116,9 +116,9 @@ class ControladorConsultores{
         $respuesta = ModeloConsultores::mdlEliminarConsultor($tabla, $item, $valor);
 
         if($respuesta == "ok"){
-            return array("mensaje" => "Consultor eliminado satisfactoriamente");
-        } else{
-            return array("mensaje" => "No ha sido posible eliminar el consultor");
+            return array("success" => "Consultor eliminado satisfactoriamente.");
+        }else{
+            return array("error" => "No ha sido posible eliminar el consultor");
         }
     }
 

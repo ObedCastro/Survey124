@@ -131,7 +131,7 @@ class ModeloDispositivos{
         date_default_timezone_set('America/El_Salvador');
         $fecha_actual = date("Y-m-d h:i:s");
 
-        $sql = "UPDATE $tabla SET responsabledispositivo = '', estadodispositivo = $estado, accesorios = :accesorios, receptordispositivo = :receptordispositivo, comentariodispositivo = :comentariodispositivo, fecharecepcion = :fecharecepcion WHERE $item = :$item";
+        $sql = "UPDATE $tabla SET responsabledispositivo = null, estadodispositivo = $estado, accesorios = :accesorios, receptordispositivo = :receptordispositivo, comentariodispositivo = :comentariodispositivo, fecharecepcion = :fecharecepcion WHERE $item = :$item";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(":accesorios", $accesorios, PDO::PARAM_STR);
         $stmt->bindParam(":receptordispositivo", $receptor, PDO::PARAM_STR);

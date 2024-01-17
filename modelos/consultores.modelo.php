@@ -84,15 +84,20 @@ class ModeloConsultores{
 
     //PARA ELIMINAR CONSULTOR
     static public function mdlEliminarConsultor($tabla, $item, $valor){
-        $sql = "DELETE FROM $tabla WHERE $item = :$item";
-        $stmt = Conexion::conectar()->prepare($sql);
-        $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
         
-        if($stmt->execute()){
-            return "ok";
-        } else{
+        try {
+            $sql = "DELETE FROM $tabla WHERE $item = :$item";
+            $stmt = Conexion::conectar()->prepare($sql);
+            $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
+
+            if($stmt->execute()){
+                return "ok";
+            }
+
+        } catch (PDOException $e) {
             return "error";
         }
+        
     }
 
 }

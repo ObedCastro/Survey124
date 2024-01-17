@@ -82,6 +82,12 @@ class ControladorDispositivos{
 
         $respuesta = ModeloDispositivos::mdlEliminarDispositivos($tabla, $item, $valor);
 
+        if($respuesta == "ok"){
+            return array("mensaje" => "Dispositivo eliminado satisfactoriamente.");
+        }else{
+            return array("mensaje" => "No ha sido posible eliminar el dispositivo");
+        }
+
     }
 
 }

@@ -70,7 +70,7 @@ class TablaDispositivos{
                                     "<div class='nav-link text-body p-0'>".
                                     "<a idDispositivo='".$dispositivos[$i]['iddispositivo']."' style='cursor:pointer;' class='text-secondary p-1 btnMostrarDispositivos mb-0' data-bs-toggle='modal' data-bs-target='#modalVerDetalleDispositivo'><i class='fa fa-eye fs-6 p-1' data-bs-toggle='tooltip' data-bs-placement='top' title='Ver más información'></i></a>".
                                     "<a idEditarDispositivo='".$dispositivos[$i]['iddispositivo']."' style='cursor:pointer;' class='text-secondary p-1 btnEditarDispositivo mb-0' data-bs-toggle='modal' data-bs-target='#modalEditarDispositivos'><i class='fa fa-pencil fs-6 p-1' data-bs-toggle='tooltip' data-bs-placement='top' title='Modificar la información'></i></a>".
-                                    "<a idEliminarDispositivo='".$dispositivos[$i]['iddispositivo']."' style='cursor:pointer;' class='text-secondary p-1 btnEliminarDispositivo mb-0' data-bs-toggle='modal' data-bs-target='#modalEliminarDispositivo'><i class='fa fa-trash fs-6 p-1' data-bs-toggle='tooltip' data-bs-placement='top' title='Eliminar dispositivo'></i></a>".
+                                    "<a idEliminarDispositivo='".$dispositivos[$i]['iddispositivo']."' style='cursor:pointer;' class='text-secondary p-1 btnEliminarDispositivo mb-0'><i class='fa fa-trash fs-6 p-1' data-bs-toggle='tooltip' data-bs-placement='top' title='Eliminar dispositivo'></i></a>".
                                     "</div>".
                                 "</li>".
                             "</ul>";
