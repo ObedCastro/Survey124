@@ -1,0 +1,155 @@
+.botonesTabla{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn-circle {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+    margin-right: 2px;
+}
+
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+    
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+    border: none !important;
+	font-size: 13px !important;
+	min-width: 30px !important;
+	min-height: 30px !important;
+	color: #999 !important;
+	margin: 0 2px !important;
+	line-height: 30px !important;
+	border-radius: 2px !important;
+	text-align: center !important;
+	padding: 0 6px !important;
+    border-radius: 10% !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover{
+    color: #fff !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+    background: #cdcdcd !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current{
+    background: #cb0c9f  !important;
+    color: #fff !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+    color: #fff !important;
+}
+
+.btnDt {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.btn-app {
+    color: white;
+    box-shadow: none;
+    border-radius: 3px;
+    position: relative;
+    padding: 4px 2px;
+    margin: 5px;
+    min-width: 30px;
+    max-width: 60px;
+    text-align: center;
+    border: 1px solid #ddd;
+    background-color: #f4f4f4;
+    font-size: 25px;
+    transition: all .2s;
+    background-color: steelblue !important;
+}
+
+.pdf {
+    background-color: transparent !important;
+    color: #dc2f2f;
+  }
+  
+  .pdf:hover {
+    background-color: red !important;
+    color: white;
+  }
+
+.btn-app:hover {
+    border-color: #dc2f2f;
+    transform: scale(1.1);
+}
+
+button.dt-button, div.dt-button, a.dt-button {
+  background-image:none;
+  color:white;
+}
+
+.excel{
+    background-color: transparent !important;
+    color: #3ca23c;
+}
+
+.excel:hover{
+    background-color: #3ca23c !important;
+    color: white;
+}
+
+.fa.fa-file-pdf-o, .fa-file-excel-o{
+    display: grid;
+}
+
+.fa-file-excel-o span, .fa.fa-file-pdf-o span{
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+
+.fa-pencil:hover{
+    color: rgb(255, 200, 0);
+    padding: 5px;
+    transition-property: color;
+    transition-duration: .5s;
+}
+
+.fa-trash{
+    color: rgb(255, 95, 90);
+    padding: 5px;
+    transition-property: color;
+    transition-duration: .5s;
+}
+
+
+
+/*
+---------------------------------------------------------------
+*/
+.choices__inner{
+    background-color: transparent !important;
+}
+
+.radiosEstado{
+    display: flex;
+    justify-content: space-evenly;
+}
