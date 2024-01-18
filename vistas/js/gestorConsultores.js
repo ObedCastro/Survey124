@@ -102,7 +102,6 @@ $(".tablaConsultores").on("click", ".btnEliminarConsultor", function(){
                       });
 
                       tabla.ajax.reload();
-                      console.log(respuesta);
                 },
                 error: function(res){
                     Swal.fire({

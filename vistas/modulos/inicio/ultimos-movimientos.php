@@ -30,16 +30,17 @@
 
             if($infoDispositivo["imeidispositivo"]){ 
               $identificador = $infoDispositivo["imeidispositivo"]; 
+              $palabra = "IMEI";
             } else{ 
               $identificador = $infoDispositivo["seriedispositivo"]; 
-            
+              $palabra = "Serie";
             }
                       if($movimiento["fecha_recepcion"] != "" && $movimiento["fecha_asignacion"] != ""){
                         echo '<div class="timeline-block mb-3">
                                 <span class="timeline-step"><i class="ni '.$i.' text-danger text-gradient"></i></span>
                                 <div class="timeline-content">
                                   <h6 class="text-dark text-sm font-weight-bold mb-0">Recepción</h6>
-                                  <p class="text-muted text-xs mt-1 mb-0">'.$nombre[0].' ha realizado la recepción de <span class="font-weight-bold">'.$movimiento["tipo_dispositivo"].'</span> con IMEI <span class="font-weight-bold">'.$identificador.'</span> de la sede '.$sede["nombresede"].' '.$sede["departamentosede"].'</p>
+                                  <p class="text-muted text-xs mt-1 mb-0">'.$nombre[0].' ha realizado la recepción de <span class="font-weight-bold">'.$movimiento["tipo_dispositivo"].'</span> con '.$palabra.' <span class="font-weight-bold">'.$identificador.'</span> de la sede '.$sede["nombresede"].' '.$sede["departamentosede"].'</p>
                                   <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">'.$movimiento["fecha_recepcion"].'</p>
                                 </div>
                               </div>';
@@ -49,7 +50,7 @@
                                 <span class="timeline-step"><i class="ni '.$i.' text-success text-gradient"></i></span>
                                 <div class="timeline-content">
                                   <h6 class="text-dark text-sm font-weight-bold mb-0">Asignación</h6>';
-                                  echo '<p class="text-muted text-xs mt-1 mb-0">'.$nombre[0].' ha realizado asignación de <span class="font-weight-bold">'.$movimiento["tipo_dispositivo"].'</span> con IMEI <span class="font-weight-bold">'.$identificador.'</span> de la sede '.$sede["nombresede"].' '.$sede["departamentosede"].'</p>
+                                  echo '<p class="text-muted text-xs mt-1 mb-0">'.$nombre[0].' ha realizado asignación de <span class="font-weight-bold">'.$movimiento["tipo_dispositivo"].'</span> con '.$palabra.' <span class="font-weight-bold">'.$identificador.'</span> de la sede '.$sede["nombresede"].' '.$sede["departamentosede"].'</p>
                                   <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">'.$movimiento["fecha_asignacion"].'</p>
                                 </div>
                               </div>';

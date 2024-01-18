@@ -38,7 +38,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="modalNuevoAdmin" tabindex="-1" aria-labelledby="modalNuevoAdminLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalNuevoAdminLabel">Agregar nuevo administrador</h5>
@@ -47,14 +47,36 @@
       <div class="modal-body">
 
         <form method="POST" id="formularioNuevoAdmin">
-          <div class="mb-3">
-            <label for="nombreAdmin" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombreAdmin" name="nombreAdmin" aria-describedby="emailHelp">
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <label for="nombreAdmin" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombreAdmin" name="nombreAdmin" required>
+            </div>
+            <div class="mb-3 col-md-6">
+              <label for="emailAdmin" class="form-label">Email</label>
+              <input type="email" class="form-control" id="emailAdmin" name="emailAdmin" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="mb-3 col-md-4">
+              <label for="usuarioAdmin" class="form-label">Usuario</label>
+              <input type="text" class="form-control" id="usuarioAdmin" name="usuarioAdmin" aria-describedby="emailHelp" required>
+            </div>
+            <div class="mb-3 col-md-4">
+              <label for="passwordAdmin" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="passwordAdmin" name="passwordAdmin" aria-describedby="emailHelp" required>
+            </div>
+            <div class="mb-3 col-md-4">
+              <label for="perfilAdmin" class="form-label">Perfil</label>
+              <input type="text" class="form-control" id="perfilAdmin" name="perfilAdmin" aria-describedby="emailHelp" required>
+            </div>
           </div>
           <div class="mb-3">
-            <label for="emailAdmin" class="form-label">Email</label>
-            <input type="email" class="form-control" id="emailAdmin" name="emailAdmin">
+            <label for="cargoAdmin" class="form-label">Cargo</label>
+            <input type="text" class="form-control" id="cargoAdmin" name="cargoAdmin" required>
           </div>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             <input type="submit" class="btn btn-primary" value="Guardar" name="opcion">
@@ -102,9 +124,9 @@
             }
         }
     });
-
+ 
     //REALIZAR NUEVO REGISTRO
-    $( "#formularioNuevoAdmin" ).on( "submit", function( event ) {
+    $("#formularioNuevoAdmin").on( "submit", function( event ) {
       event.preventDefault();
       let datos = $("#formularioNuevoAdmin").serialize();
 
@@ -114,10 +136,16 @@
         dataType: "json",
         data: datos,
         success: function(respuesta){
-          tablaAdmin.ajax.reload();
-          $("#modalNuevoAdmin #nombreAdmin").val("");
-          $("#modalNuevoAdmin #emailAdmin").val("");
           $("#modalNuevoAdmin").modal('hide');
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: respuesta.mensaje,
+            showConfirmButton: false,
+            timer: 1500
+          });
+
+          tablaAdmin.ajax.reload();
         },
         error: function(error){
           console.log("Error: "+error)
@@ -126,6 +154,11 @@
     })
 
   })
+
+  //Resetear formularios de modal, en cuanto el modal se oculte
+  $("#modalNuevoAdmin").on("hidden.bs.modal", function () {
+    $(this).find('form')[0].reset();
+  });
 
 
 

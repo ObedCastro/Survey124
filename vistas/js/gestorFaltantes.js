@@ -29,7 +29,7 @@ function format(d) {
         '<br><br><dt>Accesorios devueltos:</dt>' +
         acc_devueltos +
         '<br><br><dt>Comentario:</dt>' +
-        '<dd>Este es el comentario</dd>' +
+        '<dd>'+d.comentario+'</dd>' +
         '</dl>'
     );
 }
@@ -54,6 +54,11 @@ let tabla = new DataTable('#datatableFaltantes', {
         },
         { 
             data: 'sede',
+            render: function (data, type) {
+                return '<span class="text-xs">'+data+'</span>';
+            }
+        },{ 
+            data: 'dispositivo',
             render: function (data, type) {
                 return '<span class="text-xs">'+data+'</span>';
             }

@@ -233,7 +233,7 @@ $(".tablaDispositivos").on("click", ".btnMostrarDispositivos", function(){
                                     '<span class="timeline-step"><i class="ni ni-laptop text-danger text-gradient"></i></span>'+
                                     '<div class="timeline-content">'+
                                         '<h6 class="text-dark text-sm font-weight-bold mb-0">Recepción</h6>'+
-                                        '<p class="text-muted text-xs mt-1 mb-0 d-inline-flex"><span>'+datos.nombre_receptor+'</span> Ha asignado el dispositivo <span class="font-weight-bold"> en fecha <span class="text-secondary font-weight-bold text-xs mt-1 mb-0"></span>'+datos.fecha_recepcion+'</span></p>'+
+                                        '<p class="text-muted text-xs mt-1 mb-0 d-inline-flex"><span style="margin-right:5px;">'+datos.nombre_receptor+'</span> Ha recuperado el dispositivo en fecha <span class="font-weight-bold" style="margin-left:5px;">'+datos.fecha_recepcion+'</span></p>'+
                                     '</div>'+
                                 '</div>'
                             );
@@ -245,7 +245,7 @@ $(".tablaDispositivos").on("click", ".btnMostrarDispositivos", function(){
                                 '<span class="timeline-step"><i class="ni ni-laptop text-success text-gradient"></i></span>'+
                                 '<div class="timeline-content">'+
                                     '<h6 class="text-dark text-sm font-weight-bold mb-0">Asignación</h6>'+
-                                    '<p class="text-muted text-xs mt-1 mb-0 d-inline-flex"><span>'+datos.nombre_asignador+'</span> Ha asignado el dispositivo <span class="font-weight-bold"> en fecha <span class="text-secondary font-weight-bold text-xs mt-1 mb-0"></span>'+datos.fecha_asignacion+'</span></p>'+
+                                    '<p class="text-muted text-xs mt-1 mb-0 d-inline-flex"><span style="margin-right:5px;">'+datos.nombre_asignador+'</span>Ha asignado el dispositivo en fecha <span class="font-weight-bold" style="margin-left:5px;">'+datos.fecha_asignacion+'</span></p>'+
                                 '</div>'+
                             '</div>'
                         );
