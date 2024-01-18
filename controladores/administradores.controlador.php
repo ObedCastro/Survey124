@@ -49,11 +49,15 @@ class ControladorAdministradores{
         return $datos;
     }
 
-    static public function ctrNuevoAdmin($nombre, $email){
+    static public function ctrNuevoAdmin($datos){
       $tabla = "administradores";
-      $datos = ModeloAdministradores::mdlNuevoAdmin($tabla, $nombre, $email);
+      $datos = ModeloAdministradores::mdlNuevoAdmin($tabla, $datos);
 
-      return $datos;
+      if($datos == "ok"){
+        return array("mensaje" => "Usuario registrado satisfactoriamente.");
+      } else{
+        return array("error" => "No fue posible registrar el usuario con los datos ingresados.");
+      }
     }
 
 }

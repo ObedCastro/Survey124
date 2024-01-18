@@ -25,17 +25,24 @@ class ModeloAdministradores{
         return $stmt->fetchAll();
     }
 
-    static public function mdlNuevoAdmin($tabla, $nombre, $email){
-      $sql = "INSERT INTO $tabla (nombre, email) values (:nombre, :email)";
-      $stmt = Conexion::conectar()->prepare($sql);
-      $stmt->bindParam(":nombre", $nombre, PDO::PARAM_STR);
-      $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+    static public function mdlNuevoAdmin($tabla, $datos){
+      try{
+        $sql = "INSERT INTO $tabla (nombre, email, cargo, usuario, password, perfil) values (:nombre, :email, :cargo, :usuario, :password, :perfil)";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+        $stmt->bindParam(":email", $datos["email"], PDO::PARAM_STR);
+        $stmt->bindParam(":cargo", $datos["cargo"], PDO::PARAM_STR);
+        $stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
+        $stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
+        $stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
 
-      if($stmt->execute()){
-        return array("mensaje" => "Datos recibidos correctamente");
-      }else{
-        return array("error" => "No ha sido posible guardar la información");
+        if($stmt->execute()){
+          return "ok";
+        }
+      } catch(PDOException $e){
+        return "error";
       }
+
     }
 
 }

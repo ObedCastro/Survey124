@@ -7,10 +7,20 @@ class AjaxAdministradores{
 
   public function ajaxNuevoAdmin(){
 
-    $nombre = $_POST["nombreAdmin"];
-    $email = $_POST["emailAdmin"];
+    if(isset($_POST["nombreAdmin"])){
+      $password = md5($_POST["passwordAdmin"]);
 
-    $respuesta = ControladorAdministradores::ctrNuevoAdmin($nombre, $email);
+      $datos = array(
+        'nombre' => $_POST["nombreAdmin"],
+        'email' => $_POST["emailAdmin"],
+        'cargo' => $_POST["cargoAdmin"],
+        'usuario' => $_POST["usuarioAdmin"],
+        'password' => $password,
+        'perfil' => $_POST["perfilAdmin"]
+      );
+    }
+
+    $respuesta = ControladorAdministradores::ctrNuevoAdmin($datos);
     echo json_encode($respuesta);
 
   }
