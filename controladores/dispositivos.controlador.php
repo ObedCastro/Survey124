@@ -23,9 +23,9 @@ class ControladorDispositivos{
         $respuesta = ModeloDispositivos::mdlRegistrarDispositivo($tabla, $datos, $accesorios);
 
         if($respuesta == "ok"){
-            return array("mensaje" => "Registro realizado exitosamente.");
+            return array("titulo" => "Éxito", "mensaje" => "Registro realizado exitosamente.", "icono" => "success");
         }else{
-            return array("mensaje" => "No ha sido posible registrar el nuevo dispositivo");
+            return array("titulo" => "Error", "mensaje" => $respuesta, "icono" => "error");
         }
     }
 
@@ -83,9 +83,9 @@ class ControladorDispositivos{
         $respuesta = ModeloDispositivos::mdlEliminarDispositivos($tabla, $item, $valor);
 
         if($respuesta == "ok"){
-            return array("mensaje" => "Dispositivo eliminado satisfactoriamente.");
+            return array("titulo" => "Éxito", "mensaje" => "Dispositivo eliminado satisfactoriamente.", "icono" => "success");
         }else{
-            return array("mensaje" => "No ha sido posible eliminar el dispositivo");
+            return array("titulo" => "Error", "mensaje" => "No ha sido posible eliminar el dispositivo", "icono" => "error");
         }
 
     }

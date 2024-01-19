@@ -11,10 +11,11 @@ class ControladorAdministradores{
                 $tabla = "administradores";
                 $item = "usuario";
                 $valor = $_POST['ingUsuario'];
- 
+                $passInput = md5($_POST["ingPassword"]);
+                
                 $respuesta = ModeloAdministradores::mdlIngresarAdministradores($tabla, $item, $valor);
 
-                if($respuesta["usuario"] == $_POST["ingUsuario"] && $respuesta["password"] == $_POST["ingPassword"]){
+                if($respuesta["usuario"] == $_POST["ingUsuario"] && $respuesta["password"] == $passInput){
                     $_SESSION["validarSesion"] = "ok";
                     $_SESSION["id"] = $respuesta["id"];
                     $_SESSION["nombre"] = $respuesta["nombre"];
@@ -42,9 +43,9 @@ class ControladorAdministradores{
         }
     }
 
-    static public function ctrMostrarAdministradores(){
+    static public function ctrMostrarAdministradores($item, $valor){
         $tabla = "administradores";
-        $datos = ModeloAdministradores::mdlMostrarAdministradores($tabla);
+        $datos = ModeloAdministradores::mdlMostrarAdministradores($tabla, $item, $valor);
 
         return $datos;
     }
@@ -56,8 +57,32 @@ class ControladorAdministradores{
       if($datos == "ok"){
         return array("mensaje" => "Usuario registrado satisfactoriamente.");
       } else{
-        return array("error" => "No fue posible registrar el usuario con los datos ingresados.");
+        return array("mensaje" => "No fue posible registrar el usuario con los datos ingresados.");
       }
+    }
+
+    //PARA CAMBIAR CONTRASEÑA
+    static public function ctrCambiarPassword($item, $valor, $pass){
+        $tabla = "administradores";
+        $respuesta = ModeloAdministradores::mdlCambiarPassword($tabla, $item, $valor, $pass);
+
+        if($respuesta == "ok"){
+            return array("mensaje" => "Contraseña cambiada satisfactoriamente.");
+        } else{
+            return array("mensaje" => $respuesta);
+        }
+    }
+
+    //PARA MODIFICAR LA INFORMACIÓN DE UN ADMINISTRADOR
+    static public function ctrModificarAdministrador($item, $valor, $datos){
+        $tabla = "administradores";
+        $respuesta = ModeloAdministradores::mdlModificarAdministrador($tabla, $item, $valor, $datos);
+        
+        if($respuesta == "ok"){
+            return array("mensaje" => "Información modificada satisfactoriamente.");
+        } else{
+            return array("mensaje" => $respuesta);
+        }
     }
 
 }

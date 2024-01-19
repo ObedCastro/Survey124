@@ -59,43 +59,52 @@ class ModeloDispositivos{
 
     //REGISTRAR NUEVO PRODUCTO
     static public function mdlRegistrarDispositivo($tabla, $datos, $accesorios){
+
         $estado = "1";
         $acc = json_encode($accesorios);
 
         $sql = "INSERT INTO $tabla(tipodispositivo, marcadispositivo, modelodispositivo, imeidispositivo, seriedispositivo, telefonodispositivo, accesorios, sededispositivo, fecharegistro, estadodispositivo) VALUES (:tipodispositivo, :marcadispositivo, :modelodispositivo, :imeidispositivo, :seriedispositivo, :telefonodispositivo, :accesorios, :sededispositivo, :fecharegistro, :estadodispositivo)";
+
+        $imei = array_key_exists("imei", $datos) ? $datos["imei"] : null;
+        $telefono = array_key_exists("telefono", $datos) ? $datos["telefono"] : null;
+
+        try{
+            $aa = Conexion::conectar()->prepare("SELECT COUNT(imeidispositivo) AS canimei, COUNT(seriedispositivo) as canserie FROM dispositivos WHERE imeidispositivo = :imeidispositivo OR seriedispositivo = :seriedispositivo");
+            $aa->bindParam("imeidispositivo", $datos["imei"], PDO::PARAM_STR);
+            $aa->bindParam("seriedispositivo", $datos["serie"], PDO::PARAM_STR);
+            $aa->execute();
+            $row = $aa->fetch();
+
+            if($row['canimei']>0) {
+                return "Ya existe un dispositivo con el IMEI: ".$datos["imei"];
+            } else if($row['canserie']>0){
+                return "Ya existe un dispositivo con la serie: ".$datos["serie"];
+            } 
+            else{
+                $stmt = Conexion::conectar()->prepare($sql);
+                $stmt->bindParam(":tipodispositivo", $datos["tipo"], PDO::PARAM_STR);
+                $stmt->bindParam(":marcadispositivo", $datos["marca"], PDO::PARAM_STR);
+                $stmt->bindParam(":modelodispositivo", $datos["modelo"], PDO::PARAM_STR);
+                $stmt->bindParam(":imeidispositivo", $imei, PDO::PARAM_STR);
+                $stmt->bindParam(":seriedispositivo", $datos["serie"], PDO::PARAM_STR);
+                $stmt->bindParam(":telefonodispositivo", $telefono, PDO::PARAM_STR);
+                $stmt->bindParam(":accesorios", $acc, PDO::PARAM_STR);
+                $stmt->bindParam(":sededispositivo", $datos["sede"], PDO::PARAM_STR);
+                $stmt->bindParam(":fecharegistro", $datos["fecha"], PDO::PARAM_STR);
+                $stmt->bindParam(":estadodispositivo", $estado, PDO::PARAM_STR);
         
-        if(in_array("imei", $datos)){
-            $imei = $datos["imei"];
-        } else{
-            $imei = null;
+                if($stmt->execute()){
+                    return "ok";
+                }
+        
+                $stmt->close();
+                $stmt = null;
+
+            }
+
+        } catch(PDOException $e){
+            return "error: ".$e->getMessage();
         }
-        if(in_array("telefono", $datos)){
-            $telefono = $datos["telefono"];
-        } else{
-            $telefono = null;
-        }
-
-
-        $stmt = Conexion::conectar()->prepare($sql);
-        $stmt->bindParam(":tipodispositivo", $datos["tipo"], PDO::PARAM_STR);
-        $stmt->bindParam(":marcadispositivo", $datos["marca"], PDO::PARAM_STR);
-        $stmt->bindParam(":modelodispositivo", $datos["modelo"], PDO::PARAM_STR);
-        $stmt->bindParam(":imeidispositivo", $imei, PDO::PARAM_STR);
-        $stmt->bindParam(":seriedispositivo", $datos["serie"], PDO::PARAM_STR);
-        $stmt->bindParam(":telefonodispositivo", $telefono, PDO::PARAM_STR);
-        $stmt->bindParam(":accesorios", $acc, PDO::PARAM_STR);
-        $stmt->bindParam(":sededispositivo", $datos["sede"], PDO::PARAM_STR);
-        $stmt->bindParam(":fecharegistro", $datos["fecha"], PDO::PARAM_STR);
-        $stmt->bindParam(":estadodispositivo", $estado, PDO::PARAM_STR);
-
-        if($stmt->execute()){
-            return "ok";
-        } else{
-            return "Error";
-        }
-
-        $stmt->close();
-        $stmt = null;
     }
 
 
@@ -169,14 +178,16 @@ class ModeloDispositivos{
 
     //ELIMINAR DISPOSITIVO
     static public function mdlEliminarDispositivos($tabla, $item, $valor){
-        $sql = "DELETE FROM $tabla WHERE $item = :$item";
-        $stmt = Conexion::conectar()->prepare($sql);
-        $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
-
-        if($stmt->execute()){
-            return "ok";
-        } else{
-            return "Error";
+        try{
+            $sql = "DELETE FROM $tabla WHERE $item = :$item";
+            $stmt = Conexion::conectar()->prepare($sql);
+            $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
+    
+            if($stmt->execute()){
+                return "ok";
+            }
+        } catch(PDOException $e){
+            return "error";
         }
     }
 
