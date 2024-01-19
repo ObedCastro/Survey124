@@ -4,7 +4,7 @@
         //include "header.php";
     ?>
 
-    <div class="container-fluid py-4">
+    <div class="container-fluid py-2">
 
       <?php
         include "inicio/info-relevante.php";

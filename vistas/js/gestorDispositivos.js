@@ -263,6 +263,11 @@ $(".tablaDispositivos").on("click", ".btnMostrarDispositivos", function(){
     })
 });
 
+//Convertir a mayúsculas a medida se va escribiendo
+function mayus(e) {
+    e.value = e.value.toUpperCase();
+}
+
 //REGISTRAR NUEVO DISPOSITIVO
 $("#formNuevoDispositivo").on("click", ".btnNuevoRegistro", function(e){
     e.preventDefault();
@@ -278,28 +283,25 @@ $("#formNuevoDispositivo").on("click", ".btnNuevoRegistro", function(e){
         success: function(respuesta){
             Swal.fire({
                 position: "center",
-                icon: "success",
-                title: respuesta.mensaje,
-                showConfirmButton: false
+                icon: respuesta.icono,
+                title: respuesta.titulo,
+                text: respuesta.mensaje,
+                showConfirmButton: true
               });
 
-            $("#modalDispositivos").hide();
-            setTimeout(() => {
-                location.reload();
-            }, 1500)
+            $("#modalDispositivos").modal('hide');
+            table.ajax.reload();
         },
         error: function(res){
             Swal.fire({
                 position: "center",
                 icon: "error",
-                title: res.validacion,
-                showConfirmButton: false
+                title: res,
+                showConfirmButton: true
               });
 
             $("#modalDispositivos").hide();
-            setTimeout(() => {
-                location.reload();
-            }, 1500)
+            table.ajax.reload();
         }
     })
 
@@ -589,9 +591,9 @@ $(".tablaDispositivos").on("click", ".btnEliminarDispositivo", function(){
                 dataType: "json",
                 success: function(respuesta){
                     Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: respuesta.mensaje,
+                        title: respuesta.titulo,
+                        text: respuesta.mensaje,
+                        icon: respuesta.icono,
                         showConfirmButton: false,
                         timer: 1500
                       });

@@ -3,6 +3,7 @@ function format(d) {
     // `d` is the original data object for the row
     var aen = JSON.parse(d.entregado);
     var are = JSON.parse(d.recuperado);
+    var comentario = (d.comentario != null) ? d.comentario : "Sin comentario";
 
     var acc_entregados = "";
     var acc_devueltos = "";
@@ -29,7 +30,7 @@ function format(d) {
         '<br><br><dt>Accesorios devueltos:</dt>' +
         acc_devueltos +
         '<br><br><dt>Comentario:</dt>' +
-        '<dd>'+d.comentario+'</dd>' +
+        '<dd>'+comentario+'</dd>' +
         '</dl>'
     );
 }

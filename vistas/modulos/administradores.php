@@ -1,4 +1,4 @@
-<div class="container-fluid py-4">
+<div class="container-fluid py-2">
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
@@ -18,6 +18,8 @@
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nombre</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Usuario</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Cargo</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acción</th>
                     </tr>
                   </thead>
@@ -36,7 +38,7 @@
 
 
 
-<!-- Modal -->
+<!-- MODAL PARA REGISTRAR UN NUEVO ADMINISTRADOR -->
 <div class="modal fade" id="modalNuevoAdmin" tabindex="-1" aria-labelledby="modalNuevoAdminLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -47,6 +49,7 @@
       <div class="modal-body">
 
         <form method="POST" id="formularioNuevoAdmin">
+          <input type="hidden" name="nuevo" value="nuevo">
           <div class="row">
             <div class="mb-3 col-md-6">
               <label for="nombreAdmin" class="form-label">Nombre</label>
@@ -79,7 +82,61 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <input type="submit" class="btn btn-primary" value="Guardar" name="opcion">
+            <button type="submit" class="btn btn-primary" name="opcion">Guardar</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL PARA MODIFICAR LA INFORMACIÓN DE ADMINISTRADOR -->
+<div class="modal fade" id="modalEditarAdmin" tabindex="-1" aria-labelledby="modalEditarAdminLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalEditarAdminLabel">Modificar información de administrador</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form method="POST" id="formularioEditarAdmin">
+          <input type="hidden" name="idEditarAdmin" id="idEditarAdmin">
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <label for="editarNombreAdmin" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="editarNombreAdmin" name="editarNombreAdmin" required>
+            </div>
+            <div class="mb-3 col-md-6">
+              <label for="editarEmailAdmin" class="form-label">Email</label>
+              <input type="email" class="form-control" id="editarEmailAdmin" name="editarEmailAdmin" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="mb-3 col-md-4">
+              <label for="editarUsuarioAdmin" class="form-label">Usuario</label>
+              <input type="text" class="form-control" id="editarUsuarioAdmin" name="editarUsuarioAdmin" aria-describedby="emailHelp" required>
+            </div>
+            <div class="mb-3 col-md-4">
+              <label for="editarPasswordAdmin" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="editarPasswordAdmin" name="editarPasswordAdmin" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3 col-md-4">
+              <label for="editarPerfilAdmin" class="form-label">Perfil</label>
+              <input type="text" class="form-control" id="editarPerfilAdmin" name="editarPerfilAdmin" aria-describedby="emailHelp" required>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="editarCargoAdmin" class="form-label">Cargo</label>
+            <input type="text" class="form-control" id="editarCargoAdmin" name="editarCargoAdmin" required>
+          </div>
+
+          <div class="mt-5 text-end">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary" name="opcionE">Modificar</button>
           </div>
         </form>
 
@@ -93,73 +150,4 @@
 
 
 
-<script type="text/javascript">
-
-
-  //Traducir datatable
-  $(document).ready(function(){ 
-    var tablaAdmin = $('#datatableAdmin').DataTable({
-        "ajax": "ajax/tablaAdmin.ajax.php",
-        "deferRender": true,
-        "retrieve": true,
-        "processing": true,
-        language: {
-            "decimal": "",
-            "emptyTable": "No hay información",
-            "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-            "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-            "infoPostFix": "",
-            "thousands": ",",
-            "lengthMenu": "Mostrar _MENU_ Entradas",
-            "loadingRecords": "Cargando...",
-            "processing": "Procesando...",
-            "search": "Buscar:",
-            "zeroRecords": "Sin resultados encontrados",
-            "paginate": {
-                "first": "Primero",
-                "last": "Ultimo",
-                "next": "Siguiente",
-                "previous": "Anterior"
-            }
-        }
-    });
- 
-    //REALIZAR NUEVO REGISTRO
-    $("#formularioNuevoAdmin").on( "submit", function( event ) {
-      event.preventDefault();
-      let datos = $("#formularioNuevoAdmin").serialize();
-
-      $.ajax({
-        url: 'ajax/administradores.ajax.php',
-        method: "POST",
-        dataType: "json",
-        data: datos,
-        success: function(respuesta){
-          $("#modalNuevoAdmin").modal('hide');
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: respuesta.mensaje,
-            showConfirmButton: false,
-            timer: 1500
-          });
-
-          tablaAdmin.ajax.reload();
-        },
-        error: function(error){
-          console.log("Error: "+error)
-        }
-      })
-    })
-
-  })
-
-  //Resetear formularios de modal, en cuanto el modal se oculte
-  $("#modalNuevoAdmin").on("hidden.bs.modal", function () {
-    $(this).find('form')[0].reset();
-  });
-
-
-
-</script>
+<script src="vistas/js/gestorAdministradores.js"></script>

@@ -1,6 +1,6 @@
 
 
-<div class="container-fluid py-4">
+<div class="container-fluid py-2">
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
@@ -103,21 +103,21 @@
           <div class="mb-3 row">
             <div class="col-md-3 mostrarInputImei">
               <label for="imeiDispositivo" class="form-label">IMEI</label>
-              <input type="text" class="form-control" placeholder="Ingrese el IMEI" id="imeiDispositivo" name="imeiDispositivo" maxlength="15" required>
+              <input type="text" class="form-control" placeholder="Ingrese el IMEI" id="imeiDispositivo" name="imeiDispositivo" minlength="15" maxlength="15" required>
               <div class="valid-feedback"></div>
-              <div class="invalid-feedback">El IMEI es requerido</div>
+              <div class="invalid-feedback">El IMEI es requerido (15 dígitos)</div>
             </div>
             <div class="col-md-3">
               <label for="serieDispositivo" class="form-label">Serie</label>
-              <input type="text" class="form-control" placeholder="Ingrese la serie" id="serieDispositivo" name="serieDispositivo" required>
+              <input onkeyup="mayus(this);" type="text" class="form-control" placeholder="Ingrese la serie" id="serieDispositivo" name="serieDispositivo" maxlength="15" required>
               <div class="valid-feedback"></div>
               <div class="invalid-feedback">La serie del dispositivo es requerida</div>
             </div>
             <div class="col-md-3">
               <label for="telefonoDispositivo" class="form-label mostrarInputTelefono">Teléfono</label>
-              <input type="text" class="form-control" placeholder="Ingrese el teléfono" id="telefonoDispositivo" name="telefonoDispositivo" maxlength="11" required>
+              <input type="text" class="form-control" placeholder="Ingrese el teléfono" id="telefonoDispositivo" name="telefonoDispositivo" minlength="8" maxlength="11" required>
               <div class="valid-feedback"></div>
-              <div class="invalid-feedback">Debe agregar el teléfono del dispositivo</div>
+              <div class="invalid-feedback">Debe agregar el teléfono del dispositivo (Min 8 dígitos)</div>
             </div>
             <div class="col-md-3">
               <label for="sedeDispositivo" class="form-label">Sede</label>
