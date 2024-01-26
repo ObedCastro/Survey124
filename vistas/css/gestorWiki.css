@@ -1,0 +1,29 @@
+.how-section1{
+    padding: 20px;
+}
+
+.how-section1 h5{
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 0px;
+}
+
+.how-section1 .subheading{
+    color: #313131;
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.how-section1 .row
+{
+    margin-top: 5px;
+}
+
+.how-img 
+{
+    text-align: center;
+}
+
+.how-img img{
+    width: 80%;
+}

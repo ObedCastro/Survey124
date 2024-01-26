@@ -21,6 +21,7 @@
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha entrega</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha devuelto</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Faltante</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Recuperar</th>
                             </tr>
                             </thead>
 
@@ -34,6 +35,10 @@
         </div>
     </div>
 </div>
+
+<?php
+    include ("vistas/modulos/faltantes/recuperarFaltantes.php");
+?>
 
 
 <script src="vistas/js/gestorFaltantes.js"></script>

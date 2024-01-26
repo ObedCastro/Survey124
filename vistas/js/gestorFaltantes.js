@@ -13,7 +13,7 @@ function format(d) {
                 acc_entregados += '<dd class="mb-0 badge bg-primary" style="margin-right: 5px;">'+key+'</dd>';
             }
         }
-    }
+    } 
     
     for(var key in are){
         if(are.hasOwnProperty(key)){
@@ -104,6 +104,11 @@ let tabla = new DataTable('#datatableFaltantes', {
                 return '<span class="text-xs">'+datosTexto+'</span>';
             }
         },
+        {
+            render: function () {
+                return '<span class="text-xs btnRecuperarFaltante" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#modalRecuperarFaltantes"><i class="fa fa-cogs" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Recuperar accesorios faltantes"></i></span>';
+            }
+        },
     ],
     language: {
         "decimal": "",
@@ -158,3 +163,6 @@ tabla.on('click', 'td.dt-control', function (e) {
         row.child(format(row.data())).show();
     }
 });
+
+//------------------------------------------------------------------------------------------------------------
+//PARA RECUPERAR LOS ACCESORIOS QUE QUEDARON PENDIENTES DE ENTREGAR POR PARTE DE LOS CONSULTORES

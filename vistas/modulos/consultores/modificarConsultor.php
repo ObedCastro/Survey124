@@ -38,9 +38,12 @@
                     <label for="editarSedeConsultor" class="form-label">Sede</label>
                     <select class="form-select" aria-label="Default select example" id="editarSedeConsultor" name="editarSedeConsultor">
                         <option value=""></option>
-                        <option value="1">San Miguel</option>
-                        <option value="2">La Unión</option>
-                        <option value="3">Morazán</option>
+                        <?php 
+                          $sedes = ControladorSedes::ctrMostrarSedes(null, null);
+                          foreach ($sedes as $key => $value) {
+                            echo '<option value="'.$value["idsede"].'">'.$value["nombresede"].' '.$value["departamentosede"].'</option>';
+                          }
+                        ?>
                     </select>
                     <div class="valid-feedback"></div>
                 </div>
