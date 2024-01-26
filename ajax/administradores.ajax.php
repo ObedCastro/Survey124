@@ -40,6 +40,16 @@ class AjaxAdministradores{
 
       $actualizar = ControladorAdministradores::ctrCambiarPassword($item, $valor, $pass);
 
+      //--------------------------------------------------
+      $para      = 'albcast26@gmail.com';
+      $titulo    = 'Survey124';
+      $mensaje   = 'Mensaje de prueba Survey124';
+      $cabeceras = 'From: obed_castro@outlook.com' . "\r\n" .
+          'X-Mailer: PHP/' . phpversion();
+
+      mail($para, $titulo, $mensaje, $cabeceras);
+      //--------------------------------------------------
+
       echo json_encode($actualizar);
 
     } else{

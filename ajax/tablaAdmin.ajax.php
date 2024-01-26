@@ -24,7 +24,6 @@ class TablaAdministradores{
                                 "<li class='nav-item dropdown pe-2 d-flex align-items-center'>".
                                     "<div class='nav-link text-body p-0'>".
                                     "<a idEditarAdmin_='".$admin[$i]['id']."' class='p-1 btn-lg mb-0 text-secondary btnEditarAdmin' data-bs-toggle='modal' data-bs-target='#modalEditarAdmin' style='cursor:pointer;'><i class='fa fa-pencil fs-6 p-1'></i></a>".
-                                    "<a idAdmin='".$admin[$i]['id']."' class='p-1 btn-lg mb-0 text-secondary'><i class='fa fa-trash fs-6 p-1' style='cursor:pointer;'></i></a>".
                                     "</div>".
                                 "</li>".
                             "</ul>";
