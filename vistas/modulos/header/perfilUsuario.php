@@ -1,15 +1,14 @@
-<div class="card" style="width: 18rem;">
+<div>
   <?php
-    echo '<img style="width: 10rem; margin: auto; border-radius: 100px;" src="'.$_SESSION["foto"].'/'.$_SESSION["usuario"].'.jpg" class="card-img-top imgPerfil" alt="...">';
+    echo '<img style="width: 7rem; margin: auto; border-radius: 100px;" src="'.$_SESSION["foto"].'/'.$_SESSION["usuario"].'.jpg" class="card-img-top imgPerfil" alt="...">';
   ?>
-  <div class="card-body">
+  
     <h6 class="card-title mb-0"><?php echo $_SESSION['nombre']; ?></h6>
     <p class="card-title"><?php echo $_SESSION['email']; ?></p>
     <p class="text-xs mb-2"><strong>Cargo:</strong> <?php echo $_SESSION['cargo']; ?></p>
     <p class="text-xs"><strong>Perfil:</strong> <?php echo strtoupper($_SESSION['perfil']); ?></p>
-  </div>
+ 
 
-  <div class="container">
     <div class="accordion" id="accordionPassword">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
@@ -40,13 +39,35 @@
             </div>
           </form>
 
+          <!-- CONTENIDO QUE NO SE MEUSTRA -->
+          <div class="d-none">
+            <button class="btn bg-gradient-primary w-100 px-3 mb-2 active disabled" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
+            <button class="btn bg-gradient-primary w-100 px-3 mb-2 ms-2 disabled" data-class="bg-white" onclick="sidebarType(this)">White</button>
+            </div>
+          <div class="d-none form-check form-switch ps-0">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)" checked="true">
+          </div>
+
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="card-body text-center pt-2">
+  <div class="text-center pt-2">
     <a href="salir" class=" btn btn-outline-danger">Cerrar sesión</a>
   </div>
 </div>
  
+
+
+<script>
+
+  //LIMPIAR CAMPOS DE CAMBIO DE CONTRASEÑA
+  const myOffcanvas = document.getElementById('offcanvasScrolling')
+  myOffcanvas.addEventListener('hidden.bs.offcanvas', event => {
+    $("#anteriorPassword").val("");
+      $("#nuevaPassword").val("");
+      $("#repetirPassword").val("");
+      $(".mensajeError").text("");
+      $("#accordionPassword .collapse").collapse("hide");
+    })
+</script>

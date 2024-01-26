@@ -65,11 +65,11 @@ let tabla = new DataTable('#datatableFaltantes', {
             }
         },
         { 
-            data: 'imei',
-            render: function (data, type) {
+            data: 'serie',
+            render: function (data, type) {                
                 return '<span class="text-xs">'+data+'</span>';
             }
-        },
+        }, 
         { 
             data: 'fecha_asignacion',
             render: function (data, type) {

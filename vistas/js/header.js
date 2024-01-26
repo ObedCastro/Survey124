@@ -1,5 +1,5 @@
 //PARA LIMPIAR EL FORMULARIO DE CAMBIO DE CONTRASEÑA
-var miElemento = $(".dropdownCambioPassword")[0];
+var miElemento = $(".offcanvas")[0];
 var observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
         // Verifica si se han removido clases
@@ -67,8 +67,7 @@ $("#formCambioPassword").on("submit", function(e){
             }
         })
     }
-
-
-
     
-  })
+})
+
+
