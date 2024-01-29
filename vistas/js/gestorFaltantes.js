@@ -105,8 +105,9 @@ let tabla = new DataTable('#datatableFaltantes', {
             }
         },
         {
-            render: function () {
-                return '<span class="text-xs btnRecuperarFaltante" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#modalRecuperarFaltantes"><i class="fa fa-cogs" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Recuperar accesorios faltantes"></i></span>';
+            data: 'idregistro',
+            render: function (data) {
+                return '<span class="text-xs btnRecuperarFaltante" id="'+data+'" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#modalRecuperarFaltantes"><i class="fa fa-cogs" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Recuperar accesorios faltantes"></i></span>';
             }
         },
     ],
@@ -166,3 +167,64 @@ tabla.on('click', 'td.dt-control', function (e) {
 
 //------------------------------------------------------------------------------------------------------------
 //PARA RECUPERAR LOS ACCESORIOS QUE QUEDARON PENDIENTES DE ENTREGAR POR PARTE DE LOS CONSULTORES
+$(document).ready(function(){
+    $(".btnRecuperarFaltante").on("click", function(){
+
+        var idregistro = $(this).attr("id");
+
+        var dato = new FormData();
+        dato.append("idregistro", idregistro);
+
+        $.ajax({
+            url: "ajax/faltantes.ajax.php",
+            method: "POST",
+            data: dato,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            success: function(respuesta){
+                
+                var array = [];
+                Object.entries(JSON.parse(respuesta.accesorios_entregados)).forEach(function(entry){
+                    var key = entry[0];
+                    
+                    if(entry[1] != JSON.parse(respuesta.accesorios_recuperados)[key]){
+                        array.push(entry[0]);
+                    }
+                    
+                });
+
+                var checkbox = ["Cubo", "Cable", "Funda", "Lapiz", "Powerbank", "Maletin", "Cargador", "Mouse", "Mousepad"];
+                for (let a = 0; a < checkbox.length; a++) {                    
+                    $("#modalRecuperarFaltantes #check"+checkbox[a]).hide(); 
+                }
+                
+                for (let i = 0; i < array.length; i++) {                   
+                    $("#modalRecuperarFaltantes #check"+array[i]).show();                    
+                }
+            }
+        })
+    })
+
+    
+})
+
+
+//-----------------------------------------------------------------------------------------------
+$("#formularioRecuperarAccesorios").on("submit", function(e){
+    e.preventDefault();
+
+    var datos = $("#formularioRecuperarAccesorios").serialize();
+    console.log(datos);
+
+    $.ajax({
+        url: "ajax/faltantes.ajax.php",
+            method: "POST",
+            data: datos,
+            dataType: "json",
+            success: function(respuesta){
+                console.log(respuesta);
+            }
+    })
+})

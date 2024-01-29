@@ -13,6 +13,7 @@
       <div class="row mt-4">
 
         <?php
+
           include "inicio/dispositivos-modelos.php";
           include "inicio/dispositivos-asignaciones.php";
         ?>

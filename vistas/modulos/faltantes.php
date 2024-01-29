@@ -14,7 +14,7 @@
                             <thead>
                             <tr>
                                 <th></th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Consultor</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 clicar">Consultor</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Sede</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Dispositivo</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SERIE/IMEI</th>

@@ -47,54 +47,58 @@
 
                     <div class="row">
                         <p>Accesorios que entrega:</p>
-                        <div class="col-md-6 recuperarAccesoriosMovil">
+                        <div class="col-md-6">
+                            <div class="recuperarAccesoriosMovil">
+                                <div class="form-check">
+                                    <label class="form-check-label" id="checkCubo">Cubo de carga
+                                        <input class="form-check-input" type="checkbox" name="checkCubo">
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label" id="checkCable">Cable de cargador
+                                        <input class="form-check-input" type="checkbox" name="checkCable">
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label" id="checkFunda">Funda protectora
+                                        <input class="form-check-input" type="checkbox" name="checkFunda">
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label" id="checkPowerbank">Powerbank
+                                        <input class="form-check-input" type="checkbox" name="checkPowerbank">
+                                    </label>
+                                </div>
+                            </div>
 
-                            <div class="form-check">
-                                <label class="form-check-label">Cubo de carga
-                                    <input class="form-check-input" type="checkbox" name="checkCubo" id="checkCubo">
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label">Cable de cargador
-                                    <input class="form-check-input" type="checkbox" name="checkCable" id="checkCable">
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label">Funda protectora
-                                    <input class="form-check-input" type="checkbox" name="checkFunda" id="checkFunda">
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label">Lápiz óptico
-                                    <input class="form-check-input" type="checkbox" name="checkLapiz" id="checkLapiz">
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label">Powerbank
-                                    <input class="form-check-input" type="checkbox" name="checkPowerbank" id="checkPowerbank">
-                                </label>
+                            <div class="accesorioLapizR">
+                                <div class="form-check">
+                                    <label class="form-check-label" id="checkLapiz">Lápiz óptico
+                                        <input class="form-check-input" type="checkbox" name="checkLapiz">
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="col-md-6 recuperarAccesoriosLaptop">
                             <div class="form-check">
-                                <label class="form-check-label">Maletín de laptop
-                                    <input class="form-check-input" type="checkbox" name="checkMaletin" id="checkMaletin">
+                                <label class="form-check-label" id="checkMaletin">Maletín de laptop
+                                    <input class="form-check-input" type="checkbox" name="checkMaletin">
                                 </label>
                             </div>
                             <div class="form-check">
-                                <label class="form-check-label">Cargador de laptop
-                                    <input class="form-check-input" type="checkbox" name="checkCargador" id="checkCargador">
+                                <label class="form-check-label" id="checkCargador">Cargador de laptop
+                                    <input class="form-check-input" type="checkbox" name="checkCargador">
                                 </label>
                             </div>
                             <div class="form-check">
-                                <label class="form-check-label">Mouse
-                                    <input class="form-check-input" type="checkbox" name="checkMouse" id="checkMouse">
+                                <label class="form-check-label" id="checkMouse">Mouse
+                                    <input class="form-check-input" type="checkbox" name="checkMouse">
                                 </label>
                             </div>
                             <div class="form-check">
-                                <label class="form-check-label">Mousepad
-                                    <input class="form-check-input" type="checkbox" name="checkMousepad" id="checkMousepad">
+                                <label class="form-check-label" id="checkMousepad">Mousepad
+                                    <input class="form-check-input" type="checkbox" name="checkMousepad">
                                 </label>
                             </div>
                         </div>

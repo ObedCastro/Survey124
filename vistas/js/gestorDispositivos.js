@@ -410,11 +410,17 @@ $(document).ready(function(){
 
                 var respuesta = resultado[0];
                 //Mostrar solo los accesorios que corresponen al tipo de dispositivo
-                if(respuesta["tipodispositivo"] == "Telefono" || respuesta["tipodispositivo"] == "Tablet"){
+                if(respuesta["tipodispositivo"] == "Telefono"){
                     $(".accesoriosMovil").show();
+                    $(".accesoriosLaptop").hide();
+                    $(".accesorioLapiz").hide();
+                } else if(respuesta["tipodispositivo"] == "Tablet"){
+                    $(".accesoriosMovil").show();
+                    $(".accesorioLapiz").show();
                     $(".accesoriosLaptop").hide();
                 } else if(respuesta["tipodispositivo"] == "Laptop"){
                     $(".accesoriosMovil").hide();
+                    $(".accesorioLapiz").hide();
                     $(".accesoriosLaptop").show();
                 }
 
@@ -507,8 +513,19 @@ $(".tablaDispositivos").on("click", ".btnRecuperarDispositivo", function(){
             var accesorios = JSON.parse(respuesta["accesorios"]);
 
             //Mostrar solo los accesorios que corresponen al tipo de dispositivo
-            if(respuesta["tipodispositivo"] == "Telefono" || respuesta["tipodispositivo"] == "Tablet"){
+            if(respuesta["tipodispositivo"] == "Telefono"){
+                $(".recuperarAccesoriosMovil").parent().show();
+                $(".recuperarAccesoriosLaptop").hide();
+                $(".accesorioLapizR").hide();
+
+                if(accesorios.Cubo == "1"){$("#modalRecuperarDispositivo #checkCubo").parent().show();} else{$(" #modalRecuperarDispositivo #checkCubo").parent().hide();}
+                if(accesorios.Cable == "1"){$("#modalRecuperarDispositivo #checkCable").parent().show();} else{$(" #modalRecuperarDispositivo #checkCable").parent().hide();}
+                if(accesorios.Funda == "1"){$("#modalRecuperarDispositivo #checkFunda").parent().show();} else{$(" #modalRecuperarDispositivo #checkFunda").parent().hide();}
+                if(accesorios.Powerbank == "1"){$("#modalRecuperarDispositivo #checkPowerbank").parent().show();} else{$(" #modalRecuperarDispositivo #checkPowerbank").parent().hide();}
+
+            } else if(respuesta["tipodispositivo"] == "Tablet"){
                 $(".recuperarAccesoriosMovil").show();
+                $(".accesorioLapizR").show();
                 $(".recuperarAccesoriosLaptop").hide();
 
                 if(accesorios.Cubo == "1"){$("#modalRecuperarDispositivo #checkCubo").parent().show();} else{$(" #modalRecuperarDispositivo #checkCubo").parent().hide();}
@@ -517,8 +534,10 @@ $(".tablaDispositivos").on("click", ".btnRecuperarDispositivo", function(){
                 if(accesorios.Lapiz == "1"){$("#modalRecuperarDispositivo #checkLapiz").parent().show();} else{$(" #modalRecuperarDispositivo #checkLapiz").parent().hide();}
                 if(accesorios.Powerbank == "1"){$("#modalRecuperarDispositivo #checkPowerbank").parent().show();} else{$(" #modalRecuperarDispositivo #checkPowerbank").parent().hide();}
 
+
             } else if(respuesta["tipodispositivo"] == "Laptop"){
-                $(".recuperarAccesoriosMovil").hide();
+                $(".recuperarAccesoriosMovil").parent().hide();
+                $(".accesorioLapizR").parent().hide();
                 $(".recuperarAccesoriosLaptop").show();
 
                 if(accesorios.Maletin == "1"){$("#modalRecuperarDispositivo #checkMaletin").parent().show();} else{$(" #modalRecuperarDispositivo #checkMaletin").parent().hide();}
