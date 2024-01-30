@@ -107,7 +107,7 @@ let tabla = new DataTable('#datatableFaltantes', {
         {
             data: 'idregistro',
             render: function (data) {
-                return '<span class="text-xs btnRecuperarFaltante" id="'+data+'" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#modalRecuperarFaltantes"><i class="fa fa-cogs" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Recuperar accesorios faltantes"></i></span>';
+                return '<span onclick="recuperarFaltantes('+data+')" class="text-xs btnRecuperarFaltante" id="'+data+'" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#modalRecuperarFaltantes"><i class="fa fa-cogs" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Recuperar accesorios faltantes"></i></span>';
             }
         },
     ],
@@ -167,14 +167,14 @@ tabla.on('click', 'td.dt-control', function (e) {
 
 //------------------------------------------------------------------------------------------------------------
 //PARA RECUPERAR LOS ACCESORIOS QUE QUEDARON PENDIENTES DE ENTREGAR POR PARTE DE LOS CONSULTORES
-$(document).ready(function(){
-    $(".btnRecuperarFaltante").on("click", function(){
 
-        var idregistro = $(this).attr("id");
-
+    function recuperarFaltantes(id){
+        $("#modalRecuperarFaltantes .form-check").hide();
+        $("#formularioRecuperarAccesorios")[0].reset()
+    
         var dato = new FormData();
-        dato.append("idregistro", idregistro);
-
+        dato.append("idregistro", id);
+    
         $.ajax({
             url: "ajax/faltantes.ajax.php",
             method: "POST",
@@ -184,31 +184,28 @@ $(document).ready(function(){
             processData: false,
             dataType: "json",
             success: function(respuesta){
-                
-                var array = [];
+
+                $("#idAccRecuperar").val(respuesta.id);
+    
                 Object.entries(JSON.parse(respuesta.accesorios_entregados)).forEach(function(entry){
                     var key = entry[0];
                     
                     if(entry[1] != JSON.parse(respuesta.accesorios_recuperados)[key]){
-                        array.push(entry[0]);
+                        $("#modalRecuperarFaltantes #check"+entry[0]+"R").parent().show();
+                        $("#modalRecuperarFaltantes #check"+entry[0]+"R >input").removeAttr("checked", true);
+                        //$("#modalRecuperarFaltantes #check"+entry[0]+"R >input").removeAttr("disabled", true);
+                    } else if(entry[1] == "1"){
+                        $("#modalRecuperarFaltantes #check"+entry[0]+"R").parent().show();
+                        $("#modalRecuperarFaltantes #check"+entry[0]+"R >input").attr("checked", true);
+                        $("#modalRecuperarFaltantes #check"+entry[0]+"R >input").attr("onclick", "return deshabilitarCheckbox()");
+                        //$("#modalRecuperarFaltantes #check"+entry[0]+"R >input").attr("disabled", true);
                     }
                     
                 });
-
-                var checkbox = ["Cubo", "Cable", "Funda", "Lapiz", "Powerbank", "Maletin", "Cargador", "Mouse", "Mousepad"];
-                for (let a = 0; a < checkbox.length; a++) {                    
-                    $("#modalRecuperarFaltantes #check"+checkbox[a]).hide(); 
-                }
-                
-                for (let i = 0; i < array.length; i++) {                   
-                    $("#modalRecuperarFaltantes #check"+array[i]).show();                    
-                }
             }
         })
-    })
+    }
 
-    
-})
 
 
 //-----------------------------------------------------------------------------------------------
@@ -216,15 +213,31 @@ $("#formularioRecuperarAccesorios").on("submit", function(e){
     e.preventDefault();
 
     var datos = $("#formularioRecuperarAccesorios").serialize();
-    console.log(datos);
 
     $.ajax({
         url: "ajax/faltantes.ajax.php",
-            method: "POST",
-            data: datos,
-            dataType: "json",
-            success: function(respuesta){
-                console.log(respuesta);
-            }
+        method: "POST",
+        data: datos,
+        dataType: "json",
+        success: function(respuesta){
+            Swal.fire({
+                title: respuesta.titulo,
+                text: respuesta.mensaje,
+                icon: respuesta.icono,
+                showConfirmButton: false,
+                timer: 1500
+              });
+
+            $("#modalRecuperarFaltantes").modal("hide");
+
+            tabla.ajax.reload();
+        }
     })
 })
+
+
+
+
+function deshabilitarCheckbox(){
+    return false;
+}
