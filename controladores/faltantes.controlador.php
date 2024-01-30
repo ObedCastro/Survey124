@@ -18,4 +18,17 @@ class ControladorFaltantes{
         return $respuesta;
     }
 
+    //PARA GUARDAR LOS ACCESORIOS RECUPERADOS
+    static public function ctrRecuperarFaltantes($item, $valor, $accesorios){
+        $tabla = "registros";
+        $respuesta = ModeloFaltantes::mdlRecuperarFaltantes($tabla, $item, $valor, $accesorios);
+
+        if($respuesta == "ok"){
+            return array("icono" => "success", "titulo" => "Éxito", "mensaje" => "Información guardada satisfactoriamente");
+        } else{
+            return array("icono" => "error", "titulo" => "Error", "mensaje" => "No fue posible realizar esta operación "+$respuesta);
+        }
+        
+    }
+
 }

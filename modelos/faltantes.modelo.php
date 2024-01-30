@@ -24,7 +24,7 @@ class ModeloFaltantes{
 
     //PARA MOSTRAR ACCESORIOS A RECUPERAR
     static public function mdlMostrarAccesoriosFaltantes($tabla, $item, $valor){
-        $sql = "SELECT accesorios_entregados, accesorios_recuperados FROM $tabla WHERE $item = :$item";
+        $sql = "SELECT id, accesorios_entregados, accesorios_recuperados FROM $tabla WHERE $item = :$item";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
         $stmt->execute();
@@ -34,6 +34,28 @@ class ModeloFaltantes{
         } else{
             return array("Error" => "No ha sido posible obtener la información");
         }
+
+    }
+
+    //PARA GUARDAR LOS ACCESORIOS RECUPERADOS
+    static public function mdlRecuperarFaltantes($tabla, $item, $valor, $accesorios){
+
+        $acc_rec = json_encode($accesorios);
+
+        try{
+            $sql = "UPDATE $tabla SET accesorios_recuperados = :accesorios_recuperados WHERE $item = :$item";
+            $stmt = Conexion::conectar()->prepare($sql);
+            $stmt->bindParam(":accesorios_recuperados", $acc_rec , PDO::PARAM_STR);
+            $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
+            
+            if($stmt->execute()){
+                return "ok";
+            }    
+
+        } catch(PDOException $e){
+            return $e;
+        }
+      
 
     }
 
