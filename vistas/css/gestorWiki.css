@@ -27,3 +27,14 @@
 .how-img img{
     width: 80%;
 }
+
+.solucionProblema{
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+#modalRespuestasWikiLabel{
+    width: 100%;
+}

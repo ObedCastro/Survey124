@@ -78,7 +78,6 @@
         echo '<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y">';
             include "modulos/header.php";
 
-
             if(isset($_GET["ruta"])){
                 if($_GET["ruta"] == "inicio" ||
                    $_GET["ruta"] == "dispositivos" ||

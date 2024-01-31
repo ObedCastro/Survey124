@@ -53,6 +53,11 @@ $(".mostrarRespuestas").on("click", function(){
             if(respuesta.length > 0){
                 $(".respuestas .tituloProblema").text(respuesta[0].tituloproblema);
                 $(".respuestas .descripcionProblema").text(respuesta[0].descripcionproblema);
+                $(".respuestas .solucionProblema").text(respuesta[0].solucionproblema);
+
+                if(respuesta[0].solucionproblema == ""){
+                    $(".respuestas .solucionProblema").text("No propuso una respuesta");
+                }
 
                 for(var key in respuesta){
                     $("#idWikiColabora").val(respuesta[key].idwiki);
@@ -87,10 +92,15 @@ $(".mostrarRespuestas").on("click", function(){
                 }
 
             } else{
-                console.log(respuesta);
+                //console.log(respuesta);
                 $("#idWikiColabora").val(respuesta.idwiki);
                 $(".respuestas .tituloProblema").text(respuesta.tituloproblema);
                 $(".respuestas .descripcionProblema").text(respuesta.descripcionproblema);
+                $(".respuestas .solucionProblema").text(respuesta.solucionproblema);
+
+                if(respuesta.solucionproblema == ""){
+                    $(".respuestas .solucionProblema").text("No propuso una respuesta");
+                }
                 return;
             }
         }

@@ -21,7 +21,6 @@
                                     <div class="pl-4">
                                         <p class="mb-0 mx-2">'.$nombre[0]." ".$nombre[2].'</p>
                                         <p class="mt-0 mb-0 mx-2 text-xs">'.$reporta["cargo"].'</p>
-                                        <a href="#" class="text-primary text-xs mb-0 mt-0 mx-2"><i class="fa fa-plus mr-2"></i> Colaborar</a href="#">
                                     </div>
                                 </div>
                                 <p class="mt-2 mb-0 mx-2 text-xs">'.$wiki["tituloproblema"].'</p>
@@ -36,6 +35,18 @@
             }
         ?>
     </div>
+
+    
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination d-flex justify-content-center mt-4">
+            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-backward" aria-hidden="true"></i></a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-forward" aria-hidden="true"></i></a></li>
+        </ul>
+    </nav>
 
 </div>
 
@@ -95,18 +106,29 @@
 <div class="modal fade" id="modalRespuestasWiki" tabindex="-1" aria-labelledby="modalRespuestasWikiLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content respuestas">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalRespuestasWikiLabel">Respuestas</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-header text-center bg-primary">
+        <h5 class="modal-title text-white" id="modalRespuestasWikiLabel">RESPUESTAS</h5>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
       </div>
       <div class="modal-body">
         
         <div class="container text-center">
-            <p class="text-lg tituloProblema mb-0"></p>
-            <p class="descripcionProblema text-xs"></p>
+            <div class="container encabezadoProblema">
+                <p class="text-lg tituloProblema mb-0"></p>
+                <p class="descripcionProblema text-xs"></p>
+            </div>
+            <div class="container">
+                <p class="mb-0 badge text-bg-secondary text-white">SOLUCIÓN PROPUESTA</p>
+                <div class="container solucionpropuesta">
+                    <p class="text-xs solucionProblema mt-2"></p>
+                </div>
+            </div>
         </div>
 
         <div class="container">
+            <div class="text-center">
+                <p class="text-primary">Otros aportes <i class="fa fa-arrow-down" aria-hidden="true"></i></p>
+            </div>
             <div class="how-section1">
                 
             </div>
