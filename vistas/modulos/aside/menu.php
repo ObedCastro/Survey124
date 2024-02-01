@@ -1,7 +1,11 @@
+<?php
+  $ruta = explode("/", $_GET["ruta"]);
+?>
+
 <ul class="navbar-nav">
   <li class="nav-item">
     <?php
-      if($_GET["ruta"] != "inicio"){echo '<a class="nav-link" href="inicio">';}else{echo '<a class="nav-link active" href="inicio">';}
+      if($ruta[0] != "inicio"){echo '<a class="nav-link" href="'.$url.'inicio">';}else{echo '<a class="nav-link active" href="'.$url.'inicio">';}
     ?>
       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -23,7 +27,7 @@
   </li>
   <li class="nav-item">
     <?php
-      if($_GET["ruta"] != "dispositivos"){echo '<a class="nav-link" href="dispositivos">';}else{echo '<a class="nav-link active" href="dispositivos">';}
+      if($ruta[0] != "dispositivos"){echo '<a class="nav-link" href="'.$url.'dispositivos">';}else{echo '<a class="nav-link active" href="'.$url.'dispositivos">';}
     ?>
 
       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -46,7 +50,7 @@
   </li>
   <li class="nav-item">
     <?php
-      if($_GET["ruta"] != "consultores"){echo '<a class="nav-link" href="consultores">';}else{echo '<a class="nav-link active" href="consultores">';}
+      if($ruta[0] != "consultores"){echo '<a class="nav-link" href="'.$url.'consultores">';}else{echo '<a class="nav-link active" href="'.$url.'consultores">';}
     ?>
       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -68,7 +72,7 @@
   </li>
   <li class="nav-item">
     <?php
-      if($_GET["ruta"] != "administradores"){echo '<a class="nav-link" href="administradores">';}else{echo '<a class="nav-link active" href="administradores">';}
+      if($ruta[0] != "administradores"){echo '<a class="nav-link" href="'.$url.'administradores">';}else{echo '<a class="nav-link active" href="'.$url.'administradores">';}
     ?>
       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -91,7 +95,7 @@
   </li>
   <li class="nav-item">
     <?php
-      if($_GET["ruta"] != "faltantes"){echo '<a class="nav-link" href="faltantes">';}else{echo '<a class="nav-link active" href="faltantes">';}
+      if($ruta[0] != "faltantes"){echo '<a class="nav-link" href="'.$url.'faltantes">';}else{echo '<a class="nav-link active" href="'.$url.'faltantes">';}
     ?>
       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
         <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -114,7 +118,7 @@
   </li>
   <li class="nav-item">
       <?php
-        if($_GET["ruta"] != "wiki"){echo '<a class="nav-link" href="wiki">';}else{echo '<a class="nav-link active" href="wiki">';}
+        if($ruta[0] != "wiki"){echo '<a class="nav-link" href="'.$url.'wiki">';}else{echo '<a class="nav-link active" href="'.$url.'wiki">';}
       ?>
       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
         <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

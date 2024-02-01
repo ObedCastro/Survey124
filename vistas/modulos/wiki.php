@@ -1,3 +1,7 @@
+<?php
+  $ruta = explode("/", $_GET["ruta"]);
+?>
+
 <div class="container">
 
     <div class="row">
@@ -8,22 +12,32 @@
 
     <div class="row">
         <?php
-            $wikis = ControladorWiki::ctrMostrarWiki(null, null);
+
+            if(isset($ruta[1])){
+                $max = 8;
+                $base = ($ruta[1] - 1)*$max;
+            } else{
+                $ruta[1] = 1;
+                $base = 0;
+                $max = 8;
+            }
+
+            $wikis = ControladorWiki::ctrMostrarWiki(null, null, $base, $max);
             
             foreach ($wikis as $key => $wiki) {
                 $reporta = ControladorAdministradores::ctrMostrarAdministradores("id", $wiki["reportaproblema"]);
                 $nombre = explode(" ", $reporta["nombre"]);
-                echo '<div class="col-sm-12 col-md-6 col-lg-3 mb-2">
-                        <div class="card">
+                echo '<div class="col-sm-12 col-md-6 col-lg-3 mb-3">
+                        <div class="card cardWiki">
                             <div class="p-4 pb-2">
                                 <div class="d-flex flex-row wrap">
-                                    <div class=""><img src="vistas/assets/img/'.$reporta["usuario"].'.jpg" alt="user" class="rounded-circle" width="30" /></div>
+                                    <div class=""><img src="'.$url.'vistas/assets/img/'.$reporta["usuario"].'.jpg" alt="user" class="rounded-circle" width="30" /></div>
                                     <div class="pl-4">
                                         <p class="mb-0 mx-2">'.$nombre[0]." ".$nombre[2].'</p>
                                         <p class="mt-0 mb-0 mx-2 text-xs">'.$reporta["cargo"].'</p>
                                     </div>
                                 </div>
-                                <p class="mt-2 mb-0 mx-2 text-xs">'.$wiki["tituloproblema"].'</p>
+                                <p class="mt-2 mb-0 mx-2 text-xs">'.substr($wiki["tituloproblema"], 0, 25).'...</p>
                             </div>
                             <div class="card-body border-top">
                                 <p class="text-center text-xs aboutscroll">
@@ -36,15 +50,39 @@
         ?>
     </div>
 
-    
-
+    <!-- Paginación -->
     <nav aria-label="Page navigation">
         <ul class="pagination d-flex justify-content-center mt-4">
-            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-backward" aria-hidden="true"></i></a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-forward" aria-hidden="true"></i></a></li>
+            <?php
+                $elementos = ControladorWiki::ctrMostrarWiki(null, null, null, null);
+                
+                $total = count($elementos);
+                $totalPag = (int) ceil($total/$max);
+
+                $pagAnterior = ($ruta[1] > 1) ? ($ruta[1]-1) : 1 ;
+                $pagSiguiente = ($ruta[1] < $totalPag) ? ($ruta[1]+1) : $ruta[1] ;
+                
+                $deshabilitarAnt = ($ruta[1] == 1) ? "disabled" : "";
+                $deshabilitarSig = ($ruta[1] == $totalPag) ? "disabled" : "";
+                
+                if($totalPag > 2){
+                    echo '<li class="page-item"><a class="page-link '.$deshabilitarAnt.'" href="'.$url.$ruta[0]."/".$pagAnterior.'"><i class="fa fa-backward" aria-hidden="true"></i></a></li>';
+
+                    for ($i=1; $i <= $totalPag ; $i++) { 
+                        $activo = ($i == $ruta[1]) ? "activePaginacion" : "";
+                        echo '<li class="page-item"><a class="page-link '.$activo.'" href="'.$url.$ruta[0]."/".$i.'">'.$i.'</a></li>';
+                    }
+
+                    echo '<li class="page-item"><a class="page-link '.$deshabilitarSig.'" href="'.$url.$ruta[0]."/".$pagSiguiente.'"><i class="fa fa-forward" aria-hidden="true"></i></a></li>';
+
+                } else{
+                    for ($i=1; $i <= 2 ; $i++) { 
+                        $activo = ($i == $ruta[1]) ? "activePaginacion" : "";
+                        echo '<li class="page-item"><a class="page-link '.$activo.'" href="'.$url.$ruta[0]."/".$i.'">'.$i.'</a></li>';
+                    }
+                }
+
+            ?>
         </ul>
     </nav>
 
@@ -153,4 +191,5 @@
   </div>
 </div>
 
-<script src="vistas/js/gestorWiki.js"></script>
+<script src="<?php echo $url; ?>vistas/js/gestorWiki.js"></script>
+

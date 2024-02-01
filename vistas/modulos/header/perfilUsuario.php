@@ -1,6 +1,6 @@
 <div>
   <?php
-    echo '<img style="width: 7rem; margin: auto; border-radius: 100px;" src="'.$_SESSION["foto"].'/'.$_SESSION["usuario"].'.jpg" class="card-img-top imgPerfil" alt="...">';
+    echo '<img style="width: 7rem; margin: auto; border-radius: 100px;" src="'.$url.$_SESSION["foto"].'/'.$_SESSION["usuario"].'.jpg" class="card-img-top imgPerfil" alt="...">';
   ?>
   
     <h6 class="card-title mb-0"><?php echo $_SESSION['nombre']; ?></h6>

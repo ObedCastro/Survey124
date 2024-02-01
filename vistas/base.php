@@ -1,3 +1,7 @@
+<?php 
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,6 +10,12 @@
     <title>Survey124</title>
     <link rel="icon" type="image/jpg" href="vistas/assets/img/favicon.ico"/>
 
+    <!-- Para mostrar la ruta estática -->
+    <?php
+      $url = Rutas::mdlRuta();
+    ?>
+
+
     <!-- Fonts and icons -->
     <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,14 +23,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 
     <!-- Nucleo Icons -->
-    <link href="vistas/assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="vistas/assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="<?php echo $url; ?>vistas/assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="<?php echo $url; ?>vistas/assets/css/nucleo-svg.css" rel="stylesheet" />
 
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 
-    <link href="vistas/assets/css/nucleo-svg.css" rel="stylesheet" />
-    <link id="pagestyle" href="vistas/assets/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
+    <link href="<?php echo $url; ?>vistas/assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link id="pagestyle" href="<?php echo $url; ?>vistas/assets/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
 
     <!-- CSS DATATABLES -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
@@ -30,8 +40,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css">
 
     <!-- ESTILOS PERSONALIZADOS -->
-    <link rel="stylesheet" href="vistas/css/gestorDispositivos.css">
-    <link rel="stylesheet" href="vistas/css/gestorWiki.css">
+    <link rel="stylesheet" href="<?php echo $url; ?>vistas/css/gestorDispositivos.css">
+    <link rel="stylesheet" href="<?php echo $url; ?>vistas/css/gestorWiki.css">
 
     <!-- CSS DATATABLE BOOTSTRAP 5 -->
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
@@ -54,7 +64,7 @@
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>-->
 
     <!-- GRÁFICOS -->
-    <script src="vistas/assets/js/plugins/chartjs.min.js"></script>
+    <script src="<?php echo $url; ?>vistas/assets/js/plugins/chartjs.min.js"></script>
 
     <!-- JS ALERTAS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.all.min.js"></script>
@@ -70,7 +80,6 @@
 
 <?php
 
-    session_start();
     if(isset($_SESSION["validarSesion"]) && $_SESSION["validarSesion"] == "ok"){
 
         include "modulos/aside.php";
@@ -78,18 +87,22 @@
         echo '<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y">';
             include "modulos/header.php";
 
-            if(isset($_GET["ruta"])){
-                if($_GET["ruta"] == "inicio" ||
-                   $_GET["ruta"] == "dispositivos" ||
-                   $_GET["ruta"] == "consultores" ||
-                   $_GET["ruta"] == "administradores" ||
-                   $_GET["ruta"] == "faltantes" ||
-                   $_GET["ruta"] == "wiki" ||
-                   $_GET["ruta"] == "salir"){
-                    include "modulos/".$_GET["ruta"].".php";
+            $ruta = explode("/", $_GET["ruta"]);
+
+            if(isset($ruta[0])){
+                if($ruta[0] == "inicio" ||
+                   $ruta[0] == "dispositivos" ||
+                   $ruta[0] == "consultores" ||
+                   $ruta[0] == "administradores" ||
+                   $ruta[0] == "faltantes" ||
+                   $ruta[0] == "wiki" ||
+                   $ruta[0] == "salir"){
+                    include "modulos/".$ruta[0].".php";
                 } else{
                     echo "Error 404";
                 }
+            } else if(isset($ruta[1])){
+              include "modulos/".$ruta[0].".php";
             }
 
             include "modulos/footer.php";
@@ -104,12 +117,12 @@
 
 
 
-  <script src="vistas/assets/js/core/popper.min.js"></script>
-  <script src="vistas/assets/js/core/bootstrap.min.js"></script>
+  <script src="<?php echo $url; ?>vistas/assets/js/core/popper.min.js"></script>
+  <script src="<?php echo $url; ?>vistas/assets/js/core/bootstrap.min.js"></script>
   <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>-->
-  <script src="vistas/assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="vistas/assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <script src="vistas/assets/js/soft-ui-dashboard.js"></script>
+  <script src="<?php echo $url; ?>vistas/assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="<?php echo $url; ?>vistas/assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="<?php echo $url; ?>vistas/assets/js/soft-ui-dashboard.js"></script>
   
 
   <script>
@@ -121,6 +134,7 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
   </script>
+  
 
 
 

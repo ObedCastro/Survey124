@@ -38,3 +38,18 @@
 #modalRespuestasWikiLabel{
     width: 100%;
 }
+
+.page-item:not(:first-child) .page-link:hover{
+    color: #fff;
+    background-color: #cb0c9f;
+}
+
+.activePaginacion{
+    color: #fff !important;
+    background-color: #cb0c9f;
+}
+
+.cardWiki:hover{
+    transform: scale(1.05);
+    transition: .3s transform;
+}

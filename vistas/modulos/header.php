@@ -21,7 +21,7 @@
               <a href="javascript:;" class="nav-link text-body p-0 dropdownCambioPassword" id="dropdownCambioPassword" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION["nombre"]; ?></span>
                   <?php
-                    echo '<img style="width: 3rem; margin: auto; border-radius: 100px;" src="'.$_SESSION["foto"].'/'.$_SESSION["usuario"].'.jpg" class="card-img-top imgPerfil" alt="Foto de perfil">';
+                    echo '<img style="width: 3rem; margin: auto; border-radius: 100px;" src="'.$url.$_SESSION["foto"].'/'.$_SESSION["usuario"].'.jpg" class="card-img-top imgPerfil" alt="Foto de perfil">';
                   ?>
               </a>
             </li>
@@ -51,4 +51,4 @@
     </script>
 
 
-<script src="vistas/js/header.js"></script> 
+<script src="<?php echo $url; ?>vistas/js/header.js"></script> 
