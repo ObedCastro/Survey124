@@ -33,10 +33,10 @@ CREATE TABLE IF NOT EXISTS `administradores` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla prueba.administradores: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.administradores: ~6 rows (aproximadamente)
 INSERT INTO `administradores` (`id`, `nombre`, `email`, `cargo`, `foto`, `usuario`, `password`, `perfil`, `fecha`) VALUES
 	(1, 'Obed Alberto Castro Orellana', 'obed.castro@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'inobed', '9c1ad00a16a7c67e2727b471ac969e96', 'superadministrador', '2024-01-22 17:52:16'),
-	(4, 'Miguel Angel Portillo Lozano', 'miguel.portillo@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'inportillo', '6b44146a52fe0cb872686e7631786802', 'superadministrador', '2024-01-19 20:23:14'),
+	(4, 'Miguel Portillo', 'miguel.portillo@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'inportillo', '6b44146a52fe0cb872686e7631786802', 'superadministrador', '2024-02-01 21:46:47'),
 	(11, 'Diego Dubán Rivera Martinez', 'diego.rivera@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'induban', 'e823be777ac3d8b1052e62c96c965049', 'superadministrador', '2024-01-19 20:23:34'),
 	(13, 'Juver Nahúm Argueta Ortíz', 'juver.argueta@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'injuver', 'fc1ebc848e31e0a68e868432225e3c82', 'superadministrador', '2024-01-19 19:45:20'),
 	(34, 'Administrador de prueba', 'prueba@prueba.com', 'Cargo de prueba', 'vistas/assets/img', 'prueba1', '81dc9bdb52d04dc20036dbd8313ed055', 'Perfil de prueba', '2024-01-19 22:24:32');
@@ -93,9 +93,9 @@ CREATE TABLE IF NOT EXISTS `dispositivos` (
   UNIQUE KEY `imeidispositivo` (`imeidispositivo`),
   KEY `FKresponsabledispositivo` (`responsabledispositivo`),
   CONSTRAINT `FKresponsabledispositivo` FOREIGN KEY (`responsabledispositivo`) REFERENCES `consultores` (`idconsultor`) ON DELETE RESTRICT
-) ENGINE=InnoDB AUTO_INCREMENT=151 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla prueba.dispositivos: ~26 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.dispositivos: ~27 rows (aproximadamente)
 INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositivo`, `modelodispositivo`, `imeidispositivo`, `seriedispositivo`, `telefonodispositivo`, `accesorios`, `responsabledispositivo`, `sededispositivo`, `estadodispositivo`, `comentariodispositivo`, `fecharegistro`, `asignadordispositivo`, `receptordispositivo`, `fechamodificacion`, `fechaasignacion`, `fecharecepcion`) VALUES
 	(31, 'Tablet', 'HP', 'Tab S9', '4354677', 'HYYYF5667', '76543677', NULL, NULL, 2, 1, '', '2024-01-02', NULL, NULL, '2024-01-29 17:24:06', NULL, NULL),
 	(32, 'Tablet', 'HP', 'Galaxy A34', '737382920', 'HF799335', '72053930', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, 1, 3, 'Pérdida de lápiz óptico en labor de campo y pantalla rota por caída en alcantarilla.', '2024-01-02', 'Obed Alberto Castro Orellana', 'Obed Alberto Castro Orellana', '2024-01-15 17:17:40', '2024-01-15 17:16:48', '2024-01-15 17:17:40'),
@@ -122,7 +122,8 @@ INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositiv
 	(145, 'Telefono', 'Honor', 'Galaxy A34', '34634636346', 'sdhsh364346', NULL, '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', 21, 2, 2, NULL, '2024-01-18', 'Obed Alberto Castro Orellana', NULL, '2024-01-29 17:14:59', '2024-01-29 17:14:59', NULL),
 	(146, 'Telefono', 'Samsung', 'Galaxy A34', '34636363463', 'sdfgsd3t436', NULL, '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, 2, 1, NULL, '2024-01-18', NULL, NULL, '2024-01-18 19:31:53', NULL, NULL),
 	(148, 'Telefono', 'Honor', 'Galaxy A33', '346363634634634', 'dshsdgh34636346', '43763634634', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', 21, 2, 2, NULL, '2024-01-18', 'Miguel Angel Portillo Lozano', NULL, '2024-01-26 21:19:12', '2024-01-26 09:19:12', NULL),
-	(150, 'Telefono', 'Honor', 'Galaxy A34', '345634574537474', '4GTRU3456RTY435', '35345345', NULL, NULL, 2, 3, 'Fue perseguido por unos perros y se le cayó el celular.', '2024-01-18', NULL, NULL, '2024-01-31 20:19:11', NULL, NULL);
+	(150, 'Telefono', 'Honor', 'Galaxy A34', '345634574537474', '4GTRU3456RTY435', '35345345', NULL, NULL, 2, 3, 'Fue perseguido por unos perros y se le cayó el celular.', '2024-01-18', NULL, NULL, '2024-01-31 20:19:11', NULL, NULL),
+	(151, 'Tablet', 'Samsung', 'Tab S9', '245235326346236', 'WER3465ERT345', '50375757347', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', 10, 1, 2, NULL, '2024-02-01', 'Obed Alberto Castro Orellana', NULL, '2024-02-01 21:49:39', '2024-02-01 09:49:39', NULL);
 
 -- Volcando estructura para tabla prueba.marcadispositivo
 CREATE TABLE IF NOT EXISTS `marcadispositivo` (
@@ -175,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `registros` (
   KEY `sede_id` (`sede_id`),
   KEY `dispositivo_id` (`dispositivo_id`),
   CONSTRAINT `FK1restriccionregistros` FOREIGN KEY (`dispositivo_id`) REFERENCES `dispositivos` (`iddispositivo`) ON DELETE RESTRICT
-) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 -- Volcando datos para la tabla prueba.registros: ~41 rows (aproximadamente)
 INSERT INTO `registros` (`id`, `fecha_asignacion`, `nombre_asignador`, `usuario_campo_id`, `sede_id`, `dispositivo_id`, `tipo_dispositivo`, `accesorios_entregados`, `accesorios_recuperados`, `fecha_recepcion`, `nombre_receptor`, `comentario`, `fecha_modificacion`) VALUES
@@ -219,7 +220,8 @@ INSERT INTO `registros` (`id`, `fecha_asignacion`, `nombre_asignador`, `usuario_
 	(84, '2024-01-29 17:13:45', 'Obed Alberto Castro Orellana', 14, 3, 140, 'Telefono', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '2024-01-29 17:23:55', 'Obed Alberto Castro Orellana', '', '2024-01-30 21:04:57'),
 	(85, '2024-01-29 17:14:59', 'Obed Alberto Castro Orellana', 21, 2, 145, 'Telefono', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, NULL, NULL, NULL, '2024-01-29 17:14:59'),
 	(86, '2024-01-29 17:15:47', 'Obed Alberto Castro Orellana', 21, 2, 31, 'Tablet', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '2024-01-29 17:24:06', 'Obed Alberto Castro Orellana', '', '2024-01-30 20:51:46'),
-	(87, NULL, NULL, NULL, 1, 37, 'Laptop', NULL, NULL, NULL, NULL, NULL, '2024-01-29 17:24:38');
+	(87, NULL, NULL, NULL, 1, 37, 'Laptop', NULL, NULL, NULL, NULL, NULL, '2024-01-29 17:24:38'),
+	(88, '2024-02-01 09:49:39', 'Obed Alberto Castro Orellana', 10, 1, 151, 'Tablet', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, NULL, NULL, NULL, '2024-02-01 21:49:39');
 
 -- Volcando estructura para tabla prueba.sedes
 CREATE TABLE IF NOT EXISTS `sedes` (
@@ -229,7 +231,7 @@ CREATE TABLE IF NOT EXISTS `sedes` (
   PRIMARY KEY (`idsede`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla prueba.sedes: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.sedes: ~4 rows (aproximadamente)
 INSERT INTO `sedes` (`idsede`, `nombresede`, `departamentosede`) VALUES
 	(1, 'ExBandesal', 'San Miguel'),
 	(2, 'ITCA MEGATEC', 'La Unión'),
@@ -244,7 +246,7 @@ CREATE TABLE IF NOT EXISTS `tipodispositivo` (
   PRIMARY KEY (`idtipo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla prueba.tipodispositivo: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.tipodispositivo: ~2 rows (aproximadamente)
 INSERT INTO `tipodispositivo` (`idtipo`, `nombretipo`) VALUES
 	(1, 'Laptop'),
 	(2, 'Telefono'),
@@ -261,9 +263,9 @@ CREATE TABLE IF NOT EXISTS `wiki` (
   PRIMARY KEY (`idwiki`),
   KEY `FK1reporta` (`reportaproblema`),
   CONSTRAINT `FK1reporta` FOREIGN KEY (`reportaproblema`) REFERENCES `administradores` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla prueba.wiki: ~11 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.wiki: ~14 rows (aproximadamente)
 INSERT INTO `wiki` (`idwiki`, `tituloproblema`, `descripcionproblema`, `solucionproblema`, `reportaproblema`, `fechareporte`) VALUES
 	(3, 'Problema en segmento 12140098', 'El segmento se encuentra mal delimitado por que hay manzanas que estan compartidas con segmento 12146678', 'Escalar caso a Dto de Censos para que trasladar a los expertos en sistemas de edicion cartografica arreglen el segmento', 1, '2024-01-23 22:24:39'),
 	(4, 'Problema en mapa 1417 Conchagua', 'No sale la isla de conchaguita', 'Actualizarle el archivo tpkx del 18 de Enero', 11, '2024-01-23 22:29:22'),
@@ -275,7 +277,10 @@ INSERT INTO `wiki` (`idwiki`, `tituloproblema`, `descripcionproblema`, `solucion
 	(10, 'Otra entrada', 'Entrada para comprobar que esta baina, aún funciona.', '', 1, '2024-01-26 19:21:37'),
 	(11, 'Problema con el sr. Mike', 'Prueba para ver si funciona lo de que lo agregue de una vez.', 'Solución del problema, bla, bla, bla.', 1, '2024-01-30 22:02:09'),
 	(12, 'Probando', 'Probando de nuevo', 'Nueva solución', 1, '2024-01-30 22:04:10'),
-	(13, 'asdfasdfasf', 'dsfgdshsd ghsdsdfg', 'dshdfjhgfhkghjl drh dfj ', 1, '2024-01-30 22:08:36');
+	(13, 'asdfasdfasf', 'dsfgdshsd ghsdsdfg', 'dshdfjhgfhkghjl drh dfj ', 1, '2024-01-30 22:08:36'),
+	(14, 'asdflubl', 'lainsldif laisd fas dfib sñfasdf', '', 1, '2024-02-01 21:29:12'),
+	(15, 'problemas en teams', 'revisar version', '', 11, '2024-02-01 21:44:14'),
+	(16, 'PROBLEMAS EN TEAMS', 'librefutbol', 'librefutbol', 4, '2024-02-01 21:44:55');
 
 -- Volcando estructura para tabla prueba.wikicolaboraciones
 CREATE TABLE IF NOT EXISTS `wikicolaboraciones` (
@@ -291,7 +296,7 @@ CREATE TABLE IF NOT EXISTS `wikicolaboraciones` (
   CONSTRAINT `FK2wiki` FOREIGN KEY (`idwiki`) REFERENCES `wiki` (`idwiki`)
 ) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla prueba.wikicolaboraciones: ~32 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.wikicolaboraciones: ~26 rows (aproximadamente)
 INSERT INTO `wikicolaboraciones` (`idwikicolaboraciones`, `idcolabora`, `idwiki`, `colaboracion`, `fechacolaboracion`) VALUES
 	(66, 1, 6, 'asasdvasv', '2024-01-25 19:35:01'),
 	(67, 1, 6, 'qweqweqweqweqweqweqweqwe', '2024-01-25 19:35:48'),

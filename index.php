@@ -26,6 +26,7 @@ require_once "modelos/modelos.modelo.php";
 require_once "modelos/tipos.modelo.php";
 require_once "modelos/faltantes.modelo.php";
 require_once "modelos/wiki.modelo.php";
+require_once "modelos/rutas.php";
 
 $base = new ControladorBase();
 $base->base();

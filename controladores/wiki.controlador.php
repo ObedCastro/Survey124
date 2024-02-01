@@ -3,9 +3,9 @@
 class ControladorWiki{
 
     //PARA MOSTRAR TODAS LAS ENTRADAS
-    static public function ctrMostrarWiki($item, $valor){
+    static public function ctrMostrarWiki($item, $valor, $base, $max){
         $tabla = "wiki";
-        $respuesta = ModeloWiki::mdlMostrarwiki($tabla, $item, $valor);
+        $respuesta = ModeloWiki::mdlMostrarwiki($tabla, $item, $valor, $base, $max);
 
         return $respuesta;
     }

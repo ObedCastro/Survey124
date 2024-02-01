@@ -4,8 +4,13 @@ require_once "conexion.php";
 
 class ModeloWiki{
 
-    static public function mdlMostrarwiki($tabla, $item, $valor){
-        $sql = "SELECT * FROM $tabla";
+    static public function mdlMostrarwiki($tabla, $item, $valor, $base, $max){
+        if($base != null || $max != null){
+            $sql = "SELECT * FROM $tabla LIMIT $base, $max";
+        } else{
+            $sql = "SELECT * FROM $tabla";
+        }
+
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->execute();
 
