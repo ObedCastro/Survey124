@@ -33,10 +33,10 @@ CREATE TABLE IF NOT EXISTS `administradores` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla prueba.administradores: ~6 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.administradores: ~5 rows (aproximadamente)
 INSERT INTO `administradores` (`id`, `nombre`, `email`, `cargo`, `foto`, `usuario`, `password`, `perfil`, `fecha`) VALUES
 	(1, 'Obed Alberto Castro Orellana', 'obed.castro@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'inobed', '9c1ad00a16a7c67e2727b471ac969e96', 'superadministrador', '2024-01-22 17:52:16'),
-	(4, 'Miguel Portillo', 'miguel.portillo@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'inportillo', '6b44146a52fe0cb872686e7631786802', 'superadministrador', '2024-02-01 21:46:47'),
+	(4, 'Miguel Ángel Portillo Lozano', 'miguel.portillo@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'inportillo', '6b44146a52fe0cb872686e7631786802', 'superadministrador', '2024-02-01 22:08:48'),
 	(11, 'Diego Dubán Rivera Martinez', 'diego.rivera@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'induban', 'e823be777ac3d8b1052e62c96c965049', 'superadministrador', '2024-01-19 20:23:34'),
 	(13, 'Juver Nahúm Argueta Ortíz', 'juver.argueta@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'injuver', 'fc1ebc848e31e0a68e868432225e3c82', 'superadministrador', '2024-01-19 19:45:20'),
 	(34, 'Administrador de prueba', 'prueba@prueba.com', 'Cargo de prueba', 'vistas/assets/img', 'prueba1', '81dc9bdb52d04dc20036dbd8313ed055', 'Perfil de prueba', '2024-01-19 22:24:32');
@@ -178,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `registros` (
   CONSTRAINT `FK1restriccionregistros` FOREIGN KEY (`dispositivo_id`) REFERENCES `dispositivos` (`iddispositivo`) ON DELETE RESTRICT
 ) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
--- Volcando datos para la tabla prueba.registros: ~41 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.registros: ~42 rows (aproximadamente)
 INSERT INTO `registros` (`id`, `fecha_asignacion`, `nombre_asignador`, `usuario_campo_id`, `sede_id`, `dispositivo_id`, `tipo_dispositivo`, `accesorios_entregados`, `accesorios_recuperados`, `fecha_recepcion`, `nombre_receptor`, `comentario`, `fecha_modificacion`) VALUES
 	(5, '2024-01-09 08:54:33', 'Obed Alberto Castro Orellana', 1, 1, 36, 'Telefono', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '2024-01-15 16:17:34', 'Obed Alberto Castro Orellana', NULL, '2024-01-15 16:17:34'),
 	(6, '2024-01-09 08:54:33', 'Obed Alberto Castro Orellana', 1, 3, 36, 'Telefono', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '2024-01-15 16:17:34', 'Obed Alberto Castro Orellana', NULL, '2024-01-15 16:17:34'),
@@ -231,7 +231,7 @@ CREATE TABLE IF NOT EXISTS `sedes` (
   PRIMARY KEY (`idsede`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla prueba.sedes: ~4 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.sedes: ~5 rows (aproximadamente)
 INSERT INTO `sedes` (`idsede`, `nombresede`, `departamentosede`) VALUES
 	(1, 'ExBandesal', 'San Miguel'),
 	(2, 'ITCA MEGATEC', 'La Unión'),
@@ -246,7 +246,7 @@ CREATE TABLE IF NOT EXISTS `tipodispositivo` (
   PRIMARY KEY (`idtipo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla prueba.tipodispositivo: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.tipodispositivo: ~3 rows (aproximadamente)
 INSERT INTO `tipodispositivo` (`idtipo`, `nombretipo`) VALUES
 	(1, 'Laptop'),
 	(2, 'Telefono'),
@@ -296,7 +296,7 @@ CREATE TABLE IF NOT EXISTS `wikicolaboraciones` (
   CONSTRAINT `FK2wiki` FOREIGN KEY (`idwiki`) REFERENCES `wiki` (`idwiki`)
 ) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla prueba.wikicolaboraciones: ~26 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.wikicolaboraciones: ~32 rows (aproximadamente)
 INSERT INTO `wikicolaboraciones` (`idwikicolaboraciones`, `idcolabora`, `idwiki`, `colaboracion`, `fechacolaboracion`) VALUES
 	(66, 1, 6, 'asasdvasv', '2024-01-25 19:35:01'),
 	(67, 1, 6, 'qweqweqweqweqweqweqweqwe', '2024-01-25 19:35:48'),
