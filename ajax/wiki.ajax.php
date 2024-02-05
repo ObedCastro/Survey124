@@ -80,9 +80,21 @@ if(isset($_POST["idWiki"])){
     $mostrarRespuestas->ajaxMostrarRespuestas();
 }
 
-//PARA MOSTRAR LAS RESPUESTAS
+//PARA REGISTRAR UNA COLABORACIÓN
 if(isset($_POST["idWikiColabora"])){
     $colaboracion = new AjaxWiki();
     $colaboracion->idWikiColabora = $_POST["idWikiColabora"];
     $colaboracion->ajaxNuevaColaboracion();
+}
+
+//PARA MOSTRAR RESULTADOS DE BÚSQUEDAS
+if(isset($_POST["busqueda"])){
+    $buscar = new AjaxWiki();
+    $buscar->ajaxBusqueda();
+}
+
+//PARA OBTENER EL REPONSABLE DEL REPORTE
+if(isset($_POST["reporta"])){
+    $admin = new AjaxWiki();
+    $admin->ajaxObtenerAdmin();
 }
