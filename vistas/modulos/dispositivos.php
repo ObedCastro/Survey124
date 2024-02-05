@@ -103,7 +103,7 @@
           <div class="mb-3 row">
             <div class="col-md-3 mostrarInputImei">
               <label for="imeiDispositivo" class="form-label">IMEI</label>
-              <input type="text" class="form-control" placeholder="Ingrese el IMEI" id="imeiDispositivo" name="imeiDispositivo" minlength="15" maxlength="15" required>
+              <input type="text" pattern="[0-9]+" class="form-control" placeholder="Ingrese el IMEI" id="imeiDispositivo" name="imeiDispositivo" minlength="15" maxlength="15" required>
               <div class="valid-feedback"></div>
               <div class="invalid-feedback">El IMEI es requerido (15 dígitos)</div>
             </div>

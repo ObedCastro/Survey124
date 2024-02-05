@@ -5,8 +5,16 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-md-4">
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNuevaEntradaWiki">Nueva entrada</button>
+        <div class="col-md-3 d-flex">
+            <button style="width:100%;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNuevaEntradaWiki"><i class="fa fa-plus" aria-hidden="true"></i> Nueva entrada</button>
+        </div>
+        <div class="col-md-9 mb-2">            
+            <!-- <form action="vistas/modulos/wiki.php" method="post" id="buscadorWiki">
+                <div class="input-group">
+                    <button class="input-group-text"><i class="fa fa-search"></i></button>
+                    <input type="text" class="form-control" placeholder="Buscar..." name="busqueda">
+                </div>
+            </form> -->
         </div>
     </div>
 
@@ -82,6 +90,10 @@
                     }
                 }
 
+                if(isset($_POST["busqueda"])){
+                    echo json_encode(array("busqueda" => $_POST["busqueda"]));
+                }
+
             ?>
         </ul>
     </nav>
@@ -148,7 +160,7 @@
         <h5 class="modal-title text-white" id="modalRespuestasWikiLabel">RESPUESTAS</h5>
         <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
       </div>
-      <div class="modal-body">
+      <div class="modal-body bodyModal">
         
         <div class="container text-center">
             <div class="container encabezadoProblema">

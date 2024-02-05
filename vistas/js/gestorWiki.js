@@ -1,5 +1,3 @@
-var localhost = "http://localhost/Survey124/";
-var urlServidor = "https://1036-216-194-101-5.ngrok-free.app/Survey124/";
 
 $("#formNuevaEntradaWiki").on("submit", function(e){
     e.preventDefault();
@@ -69,7 +67,7 @@ $(".mostrarRespuestas").on("click", function(){
                         $(".how-section1").append(
                             '<div class="row text-start">'
                                 +'<div class="col-md-1 how-img px-0 pb-0">'
-                                    +'<img src=localhost+"vistas/assets/img/'+respuesta[key].usuario+'.jpg" class="rounded-circle img-fluid" alt=""/>'
+                                    +'<img src="'+localhost+'vistas/assets/img/'+respuesta[key].usuario+'.jpg" class="rounded-circle img-fluid" alt=""/>'
                                 +'</div>'
                                 +'<div class="col-md-10 px-0 mx-0">'
                                     +'<h5 class="text-primary nombreAdminRespuesta">'+respuesta[key].nombreadmin+'</h5>'
@@ -86,13 +84,19 @@ $(".mostrarRespuestas").on("click", function(){
                                     +'<p class="text-muted text-xs respuesta">'+respuesta[key].colaboracion+'</p>'
                                 +'</div>'
                                 +'<div class="col-md-1 how-img px-0">'
-                                    +'<img src=localhost+"vistas/assets/img/'+respuesta[key].usuario+'.jpg" class="rounded-circle img-fluid" alt=""/>'
+                                    +'<img src="'+localhost+'vistas/assets/img/'+respuesta[key].usuario+'.jpg" class="rounded-circle img-fluid" alt=""/>'
                                 +'</div>'
                             +'</div><hr>');
                     }
-                
+
                     
                 }
+
+                $('#modalRespuestasWiki').on('shown.bs.modal', function () {
+                    $('#modalRespuestasWiki').modal('handleUpdate');
+                    $('#modalRespuestasWiki').scrollTop(1);
+
+                })                
 
             } else{
                 //console.log(respuesta);
@@ -132,9 +136,11 @@ $("#formNuevaColaboracion").on("submit", function(e){
                         +'<p class="text-muted text-xs respuesta">'+respuesta.colaboracion+'</p>'
                     +'</div>'
                     +'<div class="col-md-1 how-img px-0">'
-                        +'<img src="vistas/assets/img/'+respuesta.usuario+'.jpg" class="rounded-circle img-fluid" alt=""/>'
+                        +'<img src="'+localhost+'vistas/assets/img/'+respuesta.usuario+'.jpg" class="rounded-circle img-fluid" alt=""/>'
                     +'</div>'
                 +'</div><hr>');
         }
     })
 })
+
+

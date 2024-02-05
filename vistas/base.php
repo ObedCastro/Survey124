@@ -29,7 +29,6 @@
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 
-    <link href="<?php echo $url; ?>vistas/assets/css/nucleo-svg.css" rel="stylesheet" />
     <link id="pagestyle" href="<?php echo $url; ?>vistas/assets/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
 
     <!-- CSS DATATABLES -->
@@ -76,9 +75,13 @@
 </head>
 <body class="g-sidenav-show bg-gray-100">
 
-
+<script>
+  var localhost = "http://localhost/Survey124/";
+  var urlServidor = "https://1036-216-194-101-5.ngrok-free.app/Survey124/";
+</script>
 
 <?php
+
 
     if(isset($_SESSION["validarSesion"]) && $_SESSION["validarSesion"] == "ok"){
 
@@ -119,7 +122,6 @@
 
   <script src="<?php echo $url; ?>vistas/assets/js/core/popper.min.js"></script>
   <script src="<?php echo $url; ?>vistas/assets/js/core/bootstrap.min.js"></script>
-  <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>-->
   <script src="<?php echo $url; ?>vistas/assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="<?php echo $url; ?>vistas/assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="<?php echo $url; ?>vistas/assets/js/soft-ui-dashboard.js"></script>
@@ -133,6 +135,7 @@
       }
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
+
   </script>
   
 
