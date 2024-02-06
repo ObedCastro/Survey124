@@ -28,19 +28,21 @@ class ModeloConsultores{
 
     //REGISTRAR NUEVO CONSULTOR
     static public function mdlRegistrarConsultor($tabla, $datos){
-        $sql = "INSERT INTO $tabla(nombreconsultor, duiconsultor, cargoconsultor, contactoconsultor, sedeconsultor, fecharegistroconsultor) VALUES (:nombreconsultor, :duiconsultor, :cargoconsultor, :contactoconsultor, :sedeconsultor, :fecharegistroconsultor)";
-        $stmt = Conexion::conectar()->prepare($sql);
-        $stmt->bindParam(":nombreconsultor", $datos["nombre"], PDO::PARAM_STR);
-        $stmt->bindParam(":duiconsultor", $datos["dui"], PDO::PARAM_STR);
-        $stmt->bindParam(":cargoconsultor", $datos["cargo"], PDO::PARAM_STR);
-        $stmt->bindParam(":contactoconsultor", $datos["contacto"], PDO::PARAM_STR);
-        $stmt->bindParam(":sedeconsultor", $datos["sede"], PDO::PARAM_STR);
-        $stmt->bindParam(":fecharegistroconsultor", $datos["fecha"], PDO::PARAM_STR);
-
-        if($stmt->execute()){
-            return "ok";
-        } else{
-            return "Error";
+        try{
+            $sql = "INSERT INTO $tabla(nombreconsultor, duiconsultor, cargoconsultor, contactoconsultor, sedeconsultor, fecharegistroconsultor) VALUES (:nombreconsultor, :duiconsultor, :cargoconsultor, :contactoconsultor, :sedeconsultor, :fecharegistroconsultor)";
+            $stmt = Conexion::conectar()->prepare($sql);
+            $stmt->bindParam(":nombreconsultor", $datos["nombre"], PDO::PARAM_STR);
+            $stmt->bindParam(":duiconsultor", $datos["dui"], PDO::PARAM_STR);
+            $stmt->bindParam(":cargoconsultor", $datos["cargo"], PDO::PARAM_STR);
+            $stmt->bindParam(":contactoconsultor", $datos["contacto"], PDO::PARAM_STR);
+            $stmt->bindParam(":sedeconsultor", $datos["sede"], PDO::PARAM_STR);
+            $stmt->bindParam(":fecharegistroconsultor", $datos["fecha"], PDO::PARAM_STR);
+    
+            if($stmt->execute()){
+                return "ok";
+            }
+        } catch (PDOException $e){
+            return $e->getMessage();
         }
 
         $stmt->close();
@@ -48,24 +50,28 @@ class ModeloConsultores{
     }
 
     //MODIFICAR INFORMACIÓN DE CONSULTOR
-    static public function mdlModificarConsultor($id, $tabla, $datos){
-        $sql = "UPDATE $tabla SET nombreconsultor = :nombreconsultor, duiconsultor = :duiconsultor, cargoconsultor = :cargoconsultor, contactoconsultor = :contactoconsultor, sedeconsultor = :sedeconsultor WHERE idconsultor = :idconsultor";
-        $stmt = Conexion::conectar()->prepare($sql);
-        $stmt->bindParam(":nombreconsultor", $datos["nombre"], PDO::PARAM_STR);
-        $stmt->bindParam(":duiconsultor", $datos["dui"], PDO::PARAM_STR);
-        $stmt->bindParam(":cargoconsultor", $datos["cargo"], PDO::PARAM_STR);
-        $stmt->bindParam(":contactoconsultor", $datos["contacto"], PDO::PARAM_STR);
-        $stmt->bindParam(":sedeconsultor", $datos["sede"], PDO::PARAM_STR);
-        $stmt->bindParam(":idconsultor", $id, PDO::PARAM_INT);
+    static public function mdlModificarConsultor($tabla, $id, $datos){
+        try{
+            $sql = "UPDATE $tabla SET nombreconsultor = :nombreconsultor, duiconsultor = :duiconsultor, cargoconsultor = :cargoconsultor, contactoconsultor = :contactoconsultor, sedeconsultor = :sedeconsultor WHERE idconsultor = :idconsultor";
+            $stmt = Conexion::conectar()->prepare($sql);
+            $stmt->bindParam(":nombreconsultor", $datos["nombre"], PDO::PARAM_STR);
+            $stmt->bindParam(":duiconsultor", $datos["dui"], PDO::PARAM_STR);
+            $stmt->bindParam(":cargoconsultor", $datos["cargo"], PDO::PARAM_STR);
+            $stmt->bindParam(":contactoconsultor", $datos["contacto"], PDO::PARAM_STR);
+            $stmt->bindParam(":sedeconsultor", $datos["sede"], PDO::PARAM_STR);
+            $stmt->bindParam(":idconsultor", $id, PDO::PARAM_INT);
+    
+            if($stmt->execute()){
+                return "ok";
+            }
 
-        if($stmt->execute()){
-            return "ok";
-        } else{
-            return "Error";
+        } catch (PDOException $e){
+            return $e->getMessage();
         }
-
+        
         $stmt->close();
         $stmt = null;
+
     }
 
     //PARA LLENAR SELECT DE CONSULTORES

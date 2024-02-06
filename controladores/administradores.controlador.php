@@ -1,5 +1,7 @@
 <?php
 
+const RUTA = "http://localhost/Survey124/";
+
 class ControladorAdministradores{
 
     public function ctrIngresarAdministradores(){
@@ -24,12 +26,9 @@ class ControladorAdministradores{
                     $_SESSION["usuario"] = $respuesta["usuario"];
                     $_SESSION["cargo"] = $respuesta["cargo"];
                     $_SESSION["password"] = $respuesta["password"];
-                    $_SESSION["perfil"] = $respuesta["perfil"];
+                    $_SESSION["perfil"] = $respuesta["perfil"];                    
 
-                    echo '<script>
-                            $(".page-header").hide();
-                            window.location.href = "inicio";                            
-                        </script>';
+                    header("Location: ".RUTA."inicio");
 
 
                 }else{
@@ -38,7 +37,7 @@ class ControladorAdministradores{
                         </div>';
                 }
 
-
+ 
             }
         }
     }

@@ -1,5 +1,5 @@
 <?php
-
+ 
 require_once "../controladores/administradores.controlador.php";
 require_once "../modelos/administradores.modelo.php";
 
@@ -11,7 +11,7 @@ class TablaAdministradores{
         $valor = null;
         $admin = ControladorAdministradores::ctrMostrarAdministradores($item, $valor);
 
-        $datosJson = '{
+        /* $datosJson = '{
             "data": [';
 
             for($i=0; $i<count($admin); $i++){
@@ -41,7 +41,9 @@ class TablaAdministradores{
             $datosJson .= ']
         }';
 
-        echo $datosJson;
+        echo $datosJson; */
+
+        echo json_encode(array("data"=>$admin));
     }
 
 }

@@ -33,13 +33,13 @@ CREATE TABLE IF NOT EXISTS `administradores` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla prueba.administradores: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.administradores: ~6 rows (aproximadamente)
 INSERT INTO `administradores` (`id`, `nombre`, `email`, `cargo`, `foto`, `usuario`, `password`, `perfil`, `fecha`) VALUES
-	(1, 'Obed Alberto Castro Orellana', 'obed.castro@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'inobed', '9c1ad00a16a7c67e2727b471ac969e96', 'superadministrador', '2024-01-22 17:52:16'),
-	(4, 'Miguel Ángel Portillo Lozano', 'miguel.portillo@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'inportillo', '6b44146a52fe0cb872686e7631786802', 'superadministrador', '2024-02-01 22:08:48'),
-	(11, 'Diego Dubán Rivera Martinez', 'diego.rivera@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'induban', 'e823be777ac3d8b1052e62c96c965049', 'superadministrador', '2024-01-19 20:23:34'),
-	(13, 'Juver Nahúm Argueta Ortíz', 'juver.argueta@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'injuver', 'fc1ebc848e31e0a68e868432225e3c82', 'superadministrador', '2024-01-19 19:45:20'),
-	(34, 'Administrador de prueba', 'prueba@prueba.com', 'Cargo de prueba', 'vistas/assets/img', 'prueba1', '81dc9bdb52d04dc20036dbd8313ed055', 'Perfil de prueba', '2024-01-19 22:24:32');
+	(1, 'Obed Alberto Castro Orellana', 'obed.castro@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'inobed', '9c1ad00a16a7c67e2727b471ac969e96', 'superadministrador', '2024-02-06 16:39:54'),
+	(4, 'Miguel Ángel Portillo Lozano', 'miguel.portillo@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'inportillo', '6b44146a52fe0cb872686e7631786802', 'superadministrador', '2024-02-06 16:39:55'),
+	(11, 'Diego Dubán Rivera Martinez', 'diego.rivera@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'induban', 'e823be777ac3d8b1052e62c96c965049', 'superadministrador', '2024-02-06 16:39:56'),
+	(13, 'Juver Nahúm Argueta Ortíz', 'juver.argueta@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assetsvistas/assets/img/img/', 'injuver', 'fc1ebc848e31e0a68e868432225e3c82', 'superadministrador', '2024-02-06 16:39:57'),
+	(34, 'Administrador de prueba', 'prueba@prueba.com', 'Cargo de prueba', 'vistas/assets/img', 'prueba1', '81dc9bdb52d04dc20036dbd8313ed055', 'Perfil de prueba', '2024-02-06 16:39:58');
 
 -- Volcando estructura para tabla prueba.consultores
 CREATE TABLE IF NOT EXISTS `consultores` (
@@ -53,21 +53,30 @@ CREATE TABLE IF NOT EXISTS `consultores` (
   `fechaactualizacionconsultor` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `fecharegistroconsultor` date DEFAULT NULL,
   PRIMARY KEY (`idconsultor`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla prueba.consultores: ~11 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.consultores: ~20 rows (aproximadamente)
 INSERT INTO `consultores` (`idconsultor`, `nombreconsultor`, `duiconsultor`, `cargoconsultor`, `contactoconsultor`, `dispositivo_id`, `sedeconsultor`, `fechaactualizacionconsultor`, `fecharegistroconsultor`) VALUES
 	(10, 'Juan Antonio Segovia', '504938273', 'Delegado', '58493843847', NULL, '1', '2024-01-26 21:14:36', '2024-01-12'),
 	(14, 'Jorge Alberto González Barillas', '98765645-3', 'Auxiliar de bodega miscelanea', '7867-0988', NULL, '3', '2024-01-23 21:28:52', '2024-01-18'),
 	(15, '', '', '', '', NULL, '', '2024-01-18 15:22:59', '2024-01-18'),
 	(19, '', '', '', '', NULL, '', '2024-01-18 15:31:16', '2024-01-18'),
-	(20, 'ANTONIO JOSE PORTILLO', '04150189-1', 'Cartografo', '77777771', NULL, '1', '2024-01-26 21:12:18', '2024-01-19'),
+	(20, 'ANTONIO JOSE PORTILLO', '04150189-1', 'Cartografo', '77777771', NULL, '1', '2024-02-05 21:02:03', '2024-01-19'),
 	(21, 'MANUEL ANTONIO PORTILLO', '04150189-2', 'Delegado', '77777772', NULL, '2', '2024-01-19 21:07:19', '2024-01-19'),
 	(22, 'JOSE JUAN PORTILLO', '04150189-3', 'Supervisor', '77777773', NULL, '3', '2024-01-19 21:07:45', '2024-01-19'),
 	(23, 'FRANCISCO MANUEL PORTILLO', '04150189-4', 'Cartografo', '77777774', NULL, '4', '2024-01-26 21:12:32', '2024-01-19'),
 	(24, 'DAVID FRANCISCO PORTILLO', '04150189-5', 'Delegado', '77777775', NULL, '4', '2024-01-19 21:08:41', '2024-01-19'),
 	(25, 'JUAN LUIS PORTILLO', '04150189-6', 'Supervisor', '77777776', NULL, '5', '2024-01-19 21:09:04', '2024-01-19'),
-	(26, 'Oscar David Rivera Benitez', '09867443-2', 'Censista', '79269223', NULL, '1', '2024-01-26 22:13:13', '2024-01-26');
+	(26, 'Oscar David Rivera Benitez', '09867443-2', 'Censista', '79269223', NULL, '1', '2024-01-26 22:13:13', '2024-01-26'),
+	(27, 'Nuevo consultor lunes', '123412345', 'Cargo del lunes', '50384938483', NULL, '2', '2024-02-05 16:58:33', '2024-02-05'),
+	(28, 'Nuevo consultor lunes', '123412345', 'Cargo del lunes', '50384938483', NULL, '2', '2024-02-05 16:59:49', '2024-02-05'),
+	(29, 'asdfasf', '35635', 'sfasgasdg', '', NULL, '', '2024-02-05 17:01:39', '2024-02-05'),
+	(30, 'asdfasf', '35635', 'sfasgasdg', '', NULL, '', '2024-02-05 17:02:35', '2024-02-05'),
+	(32, 'qetqwetqwet', 'qwetwetwet', 'wetwetwe', 'twetwet', NULL, '1', '2024-02-05 17:44:22', '2024-02-05'),
+	(33, 'rtuyrturtu', '456363456', 'sgsdhdfh', 'fjfgjfgjfgj', NULL, '1', '2024-02-05 17:45:31', '2024-02-05'),
+	(34, 'dfhdshdhsdfhgdfh', 'zsgsagsdg', 'sgsgsdgsd', '50393827364', NULL, '2', '2024-02-05 19:25:22', '2024-02-05'),
+	(45, 'shdfhfgjrejfjfj', '', 'reurururturt', '', NULL, '3', '2024-02-05 20:10:38', '2024-02-05'),
+	(46, 'Otro consultor para probar', '23523525', 'Cargo para probar', '123131231', NULL, '5', '2024-02-06 21:02:01', '2024-02-06');
 
 -- Volcando estructura para tabla prueba.dispositivos
 CREATE TABLE IF NOT EXISTS `dispositivos` (
@@ -93,14 +102,14 @@ CREATE TABLE IF NOT EXISTS `dispositivos` (
   UNIQUE KEY `imeidispositivo` (`imeidispositivo`),
   KEY `FKresponsabledispositivo` (`responsabledispositivo`),
   CONSTRAINT `FKresponsabledispositivo` FOREIGN KEY (`responsabledispositivo`) REFERENCES `consultores` (`idconsultor`) ON DELETE RESTRICT
-) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=153 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla prueba.dispositivos: ~27 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.dispositivos: ~26 rows (aproximadamente)
 INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositivo`, `modelodispositivo`, `imeidispositivo`, `seriedispositivo`, `telefonodispositivo`, `accesorios`, `responsabledispositivo`, `sededispositivo`, `estadodispositivo`, `comentariodispositivo`, `fecharegistro`, `asignadordispositivo`, `receptordispositivo`, `fechamodificacion`, `fechaasignacion`, `fecharecepcion`) VALUES
-	(31, 'Tablet', 'HP', 'Tab S9', '4354677', 'HYYYF5667', '76543677', NULL, NULL, 2, 1, '', '2024-01-02', NULL, NULL, '2024-01-29 17:24:06', NULL, NULL),
+	(31, 'Tablet', 'HP', 'Tab S9', '4354677', 'HYYYF5667', '76543677', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', 21, 2, 2, '', '2024-01-02', 'Obed Alberto Castro Orellana', NULL, '2024-02-05 16:32:19', '2024-02-05 16:32:19', NULL),
 	(32, 'Tablet', 'HP', 'Galaxy A34', '737382920', 'HF799335', '72053930', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, 1, 3, 'Pérdida de lápiz óptico en labor de campo y pantalla rota por caída en alcantarilla.', '2024-01-02', 'Obed Alberto Castro Orellana', 'Obed Alberto Castro Orellana', '2024-01-15 17:17:40', '2024-01-15 17:16:48', '2024-01-15 17:17:40'),
 	(36, 'Telefono', 'Samsung', 'Galaxy A34', '546564Y7', '54654Y6Y6', '5454Y', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, 3, 1, '', '2024-01-02', 'Obed Alberto Castro Orellana', 'Diego Dubán Rivera Martinez', '2024-01-15 20:32:27', '2024-01-09 08:29:39', '2024-01-15 08:32:27'),
-	(37, 'Laptop', 'Lenovo', '640 G9', '876654T4', '36546758G', '22577777', NULL, NULL, 1, 2, '', '2024-01-02', NULL, NULL, '2024-01-29 17:24:38', NULL, NULL),
+	(37, 'Laptop', 'Lenovo', '640 G9', '876654T4', '36546758G', '22577777', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, 1, 2, '', '2024-01-02', NULL, NULL, '2024-02-06 15:30:05', NULL, NULL),
 	(38, 'Telefono', 'Samsung', 'Galaxy A33', '353535353535353', 'asdas3432dgdg', '50375634634', NULL, NULL, 1, 1, '', NULL, NULL, NULL, '2024-01-17 21:48:56', NULL, NULL),
 	(40, 'Telefono', 'Samsung', 'Galaxy A34', '133457585474647', 'SDFW3SSFW35', '50375647364', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, 1, 1, '', NULL, 'Obed Alberto Castro Orellana', 'Diego Dubán Rivera Martinez', '2024-01-15 20:32:16', '2024-01-12 07:55:03', '2024-01-15 08:32:16'),
 	(47, 'Telefono', 'Honor', 'Honor X7', '777777777777777', 'ouuuuuuuuuuuuu', '45645634564', NULL, NULL, 5, 1, '', NULL, NULL, NULL, '2024-01-18 19:57:56', NULL, NULL),
@@ -119,11 +128,12 @@ INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositiv
 	(138, 'Telefono', 'Samsung', 'Galaxy A33', '3333', 'ca', 'aa', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, 1, 1, NULL, '2024-01-18', NULL, NULL, '2024-01-18 19:11:16', NULL, NULL),
 	(140, 'Telefono', 'Honor', 'Honor X7', '121212121212121', '13131313131313', '23142135252', NULL, NULL, 3, 1, '', '2024-01-18', NULL, NULL, '2024-01-29 17:23:55', NULL, NULL),
 	(144, 'Telefono', 'Samsung', 'Galaxy A34', '366463768579064', 'dbdbdhew6363e6', '36366436343', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', 24, 4, 2, '', '2024-01-18', 'Obed Alberto Castro Orellana', NULL, '2024-01-29 17:11:32', '2024-01-29 17:11:32', NULL),
-	(145, 'Telefono', 'Honor', 'Galaxy A34', '34634636346', 'sdhsh364346', NULL, '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', 21, 2, 2, NULL, '2024-01-18', 'Obed Alberto Castro Orellana', NULL, '2024-01-29 17:14:59', '2024-01-29 17:14:59', NULL),
+	(145, 'Telefono', 'Honor', 'Galaxy A34', '34634636346', 'sdhsh364346', NULL, NULL, NULL, 2, 1, '', '2024-01-18', NULL, NULL, '2024-02-06 15:39:22', NULL, NULL),
 	(146, 'Telefono', 'Samsung', 'Galaxy A34', '34636363463', 'sdfgsd3t436', NULL, '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, 2, 1, NULL, '2024-01-18', NULL, NULL, '2024-01-18 19:31:53', NULL, NULL),
 	(148, 'Telefono', 'Honor', 'Galaxy A33', '346363634634634', 'dshsdgh34636346', '43763634634', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', 21, 2, 2, NULL, '2024-01-18', 'Miguel Angel Portillo Lozano', NULL, '2024-01-26 21:19:12', '2024-01-26 09:19:12', NULL),
 	(150, 'Telefono', 'Honor', 'Galaxy A34', '345634574537474', '4GTRU3456RTY435', '35345345', NULL, NULL, 2, 3, 'Fue perseguido por unos perros y se le cayó el celular.', '2024-01-18', NULL, NULL, '2024-01-31 20:19:11', NULL, NULL),
-	(151, 'Tablet', 'Samsung', 'Tab S9', '245235326346236', 'WER3465ERT345', '50375757347', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', 10, 1, 2, NULL, '2024-02-01', 'Obed Alberto Castro Orellana', NULL, '2024-02-01 21:49:39', '2024-02-01 09:49:39', NULL);
+	(151, 'Tablet', 'Samsung', 'Tab S9', '245235326346236', 'WER3465ERT345', '50375757347', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', 10, 1, 2, NULL, '2024-02-01', 'Obed Alberto Castro Orellana', NULL, '2024-02-01 21:49:39', '2024-02-01 09:49:39', NULL),
+	(152, 'Tablet', 'Samsung', 'Tab S9', '123412424242423', 'SDF234SDFSFSF32', '50378847394', NULL, NULL, 3, 1, '', '2024-02-05', NULL, NULL, '2024-02-06 17:01:07', NULL, NULL);
 
 -- Volcando estructura para tabla prueba.marcadispositivo
 CREATE TABLE IF NOT EXISTS `marcadispositivo` (
@@ -176,9 +186,9 @@ CREATE TABLE IF NOT EXISTS `registros` (
   KEY `sede_id` (`sede_id`),
   KEY `dispositivo_id` (`dispositivo_id`),
   CONSTRAINT `FK1restriccionregistros` FOREIGN KEY (`dispositivo_id`) REFERENCES `dispositivos` (`iddispositivo`) ON DELETE RESTRICT
-) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
--- Volcando datos para la tabla prueba.registros: ~42 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.registros: ~40 rows (aproximadamente)
 INSERT INTO `registros` (`id`, `fecha_asignacion`, `nombre_asignador`, `usuario_campo_id`, `sede_id`, `dispositivo_id`, `tipo_dispositivo`, `accesorios_entregados`, `accesorios_recuperados`, `fecha_recepcion`, `nombre_receptor`, `comentario`, `fecha_modificacion`) VALUES
 	(5, '2024-01-09 08:54:33', 'Obed Alberto Castro Orellana', 1, 1, 36, 'Telefono', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '2024-01-15 16:17:34', 'Obed Alberto Castro Orellana', NULL, '2024-01-15 16:17:34'),
 	(6, '2024-01-09 08:54:33', 'Obed Alberto Castro Orellana', 1, 3, 36, 'Telefono', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '2024-01-15 16:17:34', 'Obed Alberto Castro Orellana', NULL, '2024-01-15 16:17:34'),
@@ -218,10 +228,11 @@ INSERT INTO `registros` (`id`, `fecha_asignacion`, `nombre_asignador`, `usuario_
 	(82, '2024-01-29 17:11:19', 'Obed Alberto Castro Orellana', 21, 2, 31, 'Tablet', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '2024-01-29 17:15:33', 'Obed Alberto Castro Orellana', '', '2024-01-30 20:45:45'),
 	(83, '2024-01-29 17:11:32', 'Obed Alberto Castro Orellana', 24, 4, 144, 'Telefono', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, NULL, NULL, NULL, '2024-01-29 17:11:32'),
 	(84, '2024-01-29 17:13:45', 'Obed Alberto Castro Orellana', 14, 3, 140, 'Telefono', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '2024-01-29 17:23:55', 'Obed Alberto Castro Orellana', '', '2024-01-30 21:04:57'),
-	(85, '2024-01-29 17:14:59', 'Obed Alberto Castro Orellana', 21, 2, 145, 'Telefono', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, NULL, NULL, NULL, '2024-01-29 17:14:59'),
+	(85, '2024-01-29 17:14:59', 'Obed Alberto Castro Orellana', 21, 2, 145, 'Telefono', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '{"Cubo":"1","Cable":"1","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '2024-02-06 15:39:22', 'Obed Alberto Castro Orellana', '', '2024-02-06 15:39:22'),
 	(86, '2024-01-29 17:15:47', 'Obed Alberto Castro Orellana', 21, 2, 31, 'Tablet', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '2024-01-29 17:24:06', 'Obed Alberto Castro Orellana', '', '2024-01-30 20:51:46'),
-	(87, NULL, NULL, NULL, 1, 37, 'Laptop', NULL, NULL, NULL, NULL, NULL, '2024-01-29 17:24:38'),
-	(88, '2024-02-01 09:49:39', 'Obed Alberto Castro Orellana', 10, 1, 151, 'Tablet', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, NULL, NULL, NULL, '2024-02-01 21:49:39');
+	(88, '2024-02-01 09:49:39', 'Obed Alberto Castro Orellana', 10, 1, 151, 'Tablet', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, NULL, NULL, NULL, '2024-02-01 21:49:39'),
+	(89, '2024-02-05 16:32:19', 'Obed Alberto Castro Orellana', 21, 2, 31, 'Tablet', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, NULL, NULL, NULL, '2024-02-05 16:32:19'),
+	(91, '2024-02-06 17:00:48', 'Obed Alberto Castro Orellana', 14, 3, 152, 'Tablet', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"1","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', '2024-02-06 17:01:07', 'Obed Alberto Castro Orellana', '', '2024-02-06 17:07:47');
 
 -- Volcando estructura para tabla prueba.sedes
 CREATE TABLE IF NOT EXISTS `sedes` (
@@ -231,7 +242,7 @@ CREATE TABLE IF NOT EXISTS `sedes` (
   PRIMARY KEY (`idsede`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla prueba.sedes: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.sedes: ~4 rows (aproximadamente)
 INSERT INTO `sedes` (`idsede`, `nombresede`, `departamentosede`) VALUES
 	(1, 'ExBandesal', 'San Miguel'),
 	(2, 'ITCA MEGATEC', 'La Unión'),
@@ -246,7 +257,7 @@ CREATE TABLE IF NOT EXISTS `tipodispositivo` (
   PRIMARY KEY (`idtipo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla prueba.tipodispositivo: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.tipodispositivo: ~2 rows (aproximadamente)
 INSERT INTO `tipodispositivo` (`idtipo`, `nombretipo`) VALUES
 	(1, 'Laptop'),
 	(2, 'Telefono'),
@@ -296,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `wikicolaboraciones` (
   CONSTRAINT `FK2wiki` FOREIGN KEY (`idwiki`) REFERENCES `wiki` (`idwiki`)
 ) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla prueba.wikicolaboraciones: ~32 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.wikicolaboraciones: ~26 rows (aproximadamente)
 INSERT INTO `wikicolaboraciones` (`idwikicolaboraciones`, `idcolabora`, `idwiki`, `colaboracion`, `fechacolaboracion`) VALUES
 	(66, 1, 6, 'asasdvasv', '2024-01-25 19:35:01'),
 	(67, 1, 6, 'qweqweqweqweqweqweqweqwe', '2024-01-25 19:35:48'),

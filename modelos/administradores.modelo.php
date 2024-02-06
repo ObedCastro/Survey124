@@ -27,11 +27,14 @@ class ModeloAdministradores{
         return $stmt->fetch();
 
       } else{
-        $sql = "SELECT * FROM $tabla";
+        $sql = "SELECT id, nombre, email, cargo, foto, usuario, password, perfil FROM $tabla";
         $stmt = Conexion::conectar()->prepare($sql);
-        $stmt->execute();
 
-        return $stmt->fetchAll();
+        if($stmt->execute()){
+          return $stmt->fetchAll();
+        } else{
+            return array("Error" => "No ha sido posible obtener la información");
+        }
       }
     }
 
