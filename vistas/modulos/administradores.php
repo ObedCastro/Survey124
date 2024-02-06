@@ -150,4 +150,4 @@
 
 
 
-<script src="vistas/js/gestorAdministradores.js"></script>
+<!-- <script src="vistas/js/gestorAdministradores.js"></script> -->

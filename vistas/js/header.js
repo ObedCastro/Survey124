@@ -70,4 +70,12 @@ $("#formCambioPassword").on("submit", function(e){
     
 })
 
-
+//LIMPIAR CAMPOS DE CAMBIO DE CONTRASEÑA
+const myOffcanvas = document.getElementById('offcanvasScrolling')
+myOffcanvas.addEventListener('hidden.bs.offcanvas', event => {
+  $("#anteriorPassword").val("");
+    $("#nuevaPassword").val("");
+    $("#repetirPassword").val("");
+    $(".mensajeError").text("");
+    $("#accordionPassword .collapse").collapse("hide");
+  })

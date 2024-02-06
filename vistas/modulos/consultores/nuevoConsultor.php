@@ -6,7 +6,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="" method="post" class="needs-validation" novalidate>
+        <form action="" method="post" class="needs-validation" id="formNuevoConsultor" novalidate>
+          <input type="hidden" name="nuevo" value="1">
 
           <div class="mb-3 row">
             <div class="col-md-6">
@@ -52,7 +53,7 @@
                     <?php
                         date_default_timezone_set('America/El_Salvador');
                         $fechahoy = date("Y-m-d");
-                        echo '<input type="text" class="form-control" placeholder="Ingrese el teléfono" value="'.$fechahoy.'" id="fechaRegistroConsultor" name="fechaRegistroConsultor" readonly>';
+                        echo '<input type="text" class="form-control" value="'.$fechahoy.'" id="fechaRegistroConsultor" name="fechaRegistroConsultor" readonly>';
                     ?>
                     <div class="invalid-feedback"></div>
                 </div>
@@ -66,8 +67,8 @@
         </form>
 
         <?php
-          $registrarConsultor = new ControladorConsultores();
-          $registrarConsultor->ctrRegistrarConsultor();
+          /* $registrarConsultor = new ControladorConsultores();
+          $registrarConsultor->ctrRegistrarConsultor(); */
         ?>
 
       </div>
@@ -78,7 +79,7 @@
 
 
 
-<script>
+<!-- <script>
 
  // Example starter JavaScript for disabling form submissions if there are invalid fields
  (function () {
@@ -114,4 +115,4 @@
       })
   })()
 
-</script>
+</script> -->

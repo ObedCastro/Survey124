@@ -51,4 +51,4 @@
     </script>
 
 
-<script src="<?php echo $url; ?>vistas/js/header.js"></script> 
+<!-- <script src="vistas/js/header.js"></script>  -->

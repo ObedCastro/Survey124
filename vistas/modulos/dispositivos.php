@@ -291,11 +291,11 @@
   include "vistas/modulos/dispositivos/recuperar.php";
 ?>
 
-<script src="vistas/js/gestorDispositivos.js"></script>
+<!-- <script src="vistas/js/gestorDispositivos.js"></script> -->
 
 
 
-<script>
+<!-- <script>
 
   $("#modalAsignarDispositivo").on("hidden.bs.modal", function () {
     $(this).find('form')[0].reset();
@@ -336,4 +336,4 @@
       })
   })()
 
-</script>
+</script> -->

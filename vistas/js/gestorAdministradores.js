@@ -1,10 +1,46 @@
  //Traducir datatable
  //$(document).ready(function(){ 
-    var tablaAdmin = $('#datatableAdmin').DataTable({
-        "ajax": "ajax/tablaAdmin.ajax.php",
-        "deferRender": true,
-        "retrieve": true,
-        "processing": true,
+  
+    let tablaAdmin = new DataTable('#datatableAdmin', {
+        ajax: 'ajax/tablaAdmin.ajax.php',
+        columns: [
+          {
+            data: 'nombre',
+            render: function (data) {
+              return '<span class="text-secondary text-xs font-weight-bold">'+data+'</span>';
+            }
+          },
+          {
+            data: 'email',
+            render: function (data) {
+              return '<span class="text-secondary text-xs font-weight-bold">'+data+'</span>';
+            }
+          },
+          {
+            data: 'usuario',
+            render: function (data) {
+              return '<span class="text-secondary text-xs font-weight-bold">'+data+'</span>';
+            }
+          },
+          {
+            data: 'cargo',
+            render: function (data) {
+              return '<span class="text-secondary text-xs font-weight-bold">'+data+'</span>';
+            }
+          },
+          {
+            data: 'id',
+            render: function (data) {
+              return '<ul class="navbar-nav justify-content-end">'+
+                        '<li class="nav-item dropdown pe-2 d-flex align-items-center">'+
+                          '<div class="nav-link text-body p-0">'+
+                          '<a idEditarAdmin_="' + data + '" class="p-1 btn-lg mb-0 text-secondary btnEditarAdmin" data-bs-toggle="modal" data-bs-target="#modalEditarAdmin" style="cursor:pointer;"><i class="fa fa-pencil fs-6 p-1" data-bs-toggle="tooltip" title="Parámetro para Tooltip: ' + data + '"></i></a>'+
+                          '</div>'+
+                        '</li>'+
+                      '</ul>';
+            }
+          },
+        ],
         language: {
             "decimal": "",
             "emptyTable": "No hay información",
@@ -24,7 +60,7 @@
                 "next": "Siguiente",
                 "previous": "Anterior"
             }
-        }
+        },
     });
  
     //REALIZAR NUEVO REGISTRO

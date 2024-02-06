@@ -41,4 +41,4 @@
 ?>
 
 
-<script src="vistas/js/gestorFaltantes.js"></script>
+<!-- <script src="vistas/js/gestorFaltantes.js"></script> -->

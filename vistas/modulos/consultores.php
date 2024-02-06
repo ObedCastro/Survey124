@@ -37,9 +37,6 @@
       </div>
     </div>
 
-
-
-
 <?php
   //MODAL PARA REGISTRAR NUEVO Consultor
   include "vistas/modulos/consultores/nuevoConsultor.php";
@@ -51,4 +48,4 @@
   //include "vistas/modulos/consultores/verDetalleConsultor.php";
 ?>
 
-<script src="vistas/js/gestorConsultores.js"></script>
+<!-- <script src="vistas/js/gestorConsultores.js"></script> -->

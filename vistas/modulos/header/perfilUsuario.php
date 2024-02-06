@@ -59,7 +59,7 @@
  
 
 
-<script>
+<!-- <script>
 
   //LIMPIAR CAMPOS DE CAMBIO DE CONTRASEÑA
   const myOffcanvas = document.getElementById('offcanvasScrolling')
@@ -71,3 +71,4 @@
       $("#accordionPassword .collapse").collapse("hide");
     })
 </script>
+ -->

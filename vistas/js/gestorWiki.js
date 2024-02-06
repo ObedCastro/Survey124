@@ -144,3 +144,41 @@ $("#formNuevaColaboracion").on("submit", function(e){
 })
 
 
+$("#modalAsignarDispositivo").on("hidden.bs.modal", function () {
+    $(this).find('form')[0].reset();
+  });
+
+ // Example starter JavaScript for disabling form submissions if there are invalid fields
+ (function () {
+    'use strict'
+
+      //Resetear formularios de modal, en cuanto el modal se oculte
+      $("#modalDispositivos").on("hidden.bs.modal", function () {
+        $(this).find('form')[0].reset();
+      });
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      const boton = document.querySelector(".btnNuevoRegistro");
+
+      function handleButtonClick(event) {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add('was-validated');
+        }
+
+        boton.addEventListener('click', handleButtonClick);
+
+        function handleModalClose(){
+          form.classList.remove('was-validated');
+        }
+
+        document.getElementById('modalDispositivos').addEventListener('hidden.bs.modal', handleModalClose);
+      })
+  })()

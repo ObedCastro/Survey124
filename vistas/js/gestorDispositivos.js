@@ -31,7 +31,6 @@
             {
                 extend: 'pdfHtml5',
                 className: 'btnDt btn-app export pdf',
-                titleAttr: 'PDF',
                 text: '<i class="fa fa-file-pdf-o" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Exportar a PDF"></i>',
                 download: 'open',
                 orientation: 'landscape',
@@ -202,7 +201,7 @@ $(".tablaDispositivos").on("click", ".btnMostrarDispositivos", function(){
                 $("#checkMousepad").parent().hide();
 
             } else{
-                if(respuesta[0].accesorios != ""){
+                if(respuesta[0].accesorios != "" || respuesta[0] != null){
                     $(".sin-accesorios").text("");
                     const datos = JSON.parse(respuesta[0].accesorios);
                     if(datos.Cubo == "1"){$("#checkCubo").parent().show();}else{$("#checkCubo").parent().hide();}

@@ -203,5 +203,5 @@
   </div>
 </div>
 
-<script src="<?php echo $url; ?>vistas/js/gestorWiki.js"></script>
+<!-- <script src="<?php echo $url; ?>vistas/js/gestorWiki.js"></script> -->
 

@@ -7,36 +7,34 @@
       </div>
       <div class="modal-body">
         
-      <form action="" method="post" class="needs-validation">        
+      <form method="post" class="needs-validation" id="formEditarConsultor" novalidate>      
 
           <div class="mb-3 row">
             <div class="col-md-6">
               <input type="hidden" id="idEditarConsultor" name="idEditarConsultor">
               <label for="editarNombreConsultor" class="form-label">Nombre</label>
-              <input type="text" class="form-control" placeholder="Ingrese nombre" id="editarNombreConsultor" name="editarNombreConsultor" maxlength="50">
-              <div class="valid-feedback"></div>
+              <input type="text" class="form-control" placeholder="Ingrese nombre" id="editarNombreConsultor" name="editarNombreConsultor" maxlength="50" required>
+              <div class="invalid-feedback">El nombre es requerido.</div>
             </div>
             <div class="col-md-6">
               <label for="editarDuiConsultor" class="form-label">DUI</label>
               <input type="text" class="form-control" placeholder="Ingrese DUI" id="editarDuiConsultor" name="editarDuiConsultor">
-              <div class="valid-feedback"></div>
             </div>
           </div>
 
           <div class="mb-3 row">
                 <div class="col-md-6">
                     <label for="editarCargoConsultor" class="form-label">Cargo</label>
-                    <input type="text" class="form-control" placeholder="Ingrese el cargo" id="editarCargoConsultor" name="editarCargoConsultor">
-                    <div class="valid-feedback"></div>
+                    <input type="text" class="form-control" placeholder="Ingrese el cargo" id="editarCargoConsultor" name="editarCargoConsultor" required>
+                    <div class="invalid-feedback"></div>
                 </div>
                 <div class="col-md-3">
                     <label for="editarContactoConsultor" class="form-label">Contacto</label>
                     <input type="text" class="form-control" placeholder="Contacto del consultor" id="editarContactoConsultor" name="editarContactoConsultor">
-                    <div class="valid-feedback"></div>
                 </div>
                 <div class="col-md-3">
                     <label for="editarSedeConsultor" class="form-label">Sede</label>
-                    <select class="form-select" aria-label="Default select example" id="editarSedeConsultor" name="editarSedeConsultor">
+                    <select class="form-select" aria-label="Default select example" id="editarSedeConsultor" name="editarSedeConsultor" required>
                         <option value=""></option>
                         <?php 
                           $sedes = ControladorSedes::ctrMostrarSedes(null, null);
@@ -45,7 +43,7 @@
                           }
                         ?>
                     </select>
-                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"></div>
                 </div>
           </div>            
 
@@ -55,8 +53,8 @@
           </div>
         </form>
         <?php
-          $modificarConsultor = new ControladorConsultores();
-          $modificarConsultor->ctrModificarConsultor();
+          /* $modificarConsultor = new ControladorConsultores();
+          $modificarConsultor->ctrModificarConsultor(); */
         ?>
       </div>
     </div>
