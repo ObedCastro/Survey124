@@ -32,7 +32,7 @@ class AjaxDispositivos{
 
     //REGISTRA UN NUEVO DISPOSITIVO
     public function ajaxRegistrarNuevoDispositivo(){
-        if(isset($_POST["tipoDispositivo"])){
+        if(isset($_POST["tipoDispositivo"]) && !empty($_POST["tipoDispositivo"]) && isset($_POST["marcaDispositivo"]) && !empty($_POST["marcaDispositivo"]) && isset($_POST["modeloDispositivo"]) && !empty($_POST["modeloDispositivo"])){
             if($_POST["tipoDispositivo"] != "Laptop"){
                 $datos = array(
                     "tipo"=>$_POST["tipoDispositivo"],
@@ -67,11 +67,11 @@ class AjaxDispositivos{
                 "Mousepad"=>"0"
             );
 
+
+            $respuesta = ControladorDispositivos::ctrRegistrarDispositivo($datos, $accesorios);
+            echo json_encode($respuesta);  
         }
         
-        $respuesta = ControladorDispositivos::ctrRegistrarDispositivo($datos, $accesorios);
-        echo json_encode($respuesta);  
-        //$respuesta = array("Recibido" => $_POST["nuevo"]);
     }
 
     //MUESTRA LA INFORMACIÓN DEL DISPOSITIVO, ANTES DE MODIFICARLO
