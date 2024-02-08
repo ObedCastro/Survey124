@@ -1,140 +1,140 @@
-//$(document).ready(function(){
-
-    //Traducir datatable
-    var table = $('#datatable').DataTable({
-      "ajax": "ajax/tablaDispositivos.ajax.php",
-      "deferRender": true,
-      "retrieve": true,
-      "processing": true,
-      language: {
-          "decimal": "",
-          "emptyTable": "No hay información",
-          "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-          "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-          "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-          "infoPostFix": "",
-          "thousands": ",",
-          "lengthMenu": "Mostrar _MENU_ Entradas",
-          "loadingRecords": "Cargando...",
-          "processing": "Procesando...",
-          "search": "Buscar:",
-          "zeroRecords": "Sin resultados encontrados",
-          "paginate": {
-              "first": "Primero",
-              "last": "Ultimo",
-              "next": "Siguiente",
-              "previous": "Anterior"
-          }
-      },
-      dom: 'Bfrtip',
-        buttons: [
-            {
-                extend: 'pdfHtml5',
-                className: 'btnDt btn-app export pdf',
-                text: '<i class="fa fa-file-pdf-o" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Exportar a PDF"></i>',
-                download: 'open',
-                orientation: 'landscape',
-                exportOptions: {
-                    columns: [0,1,2,3,4,5,6,7]
-                },
-                title: "Listado de dispositivos",
-                customize: function(doc) {
-                    doc.content[1].margin = [ 100, 0, 100, 0 ] //left, top, right, bottom
-                }
-            },
-            {
-                extend: 'excelHtml5',
-                className: 'btnDt btn-app export excel',
-                text: '<i class="fa fa-file-excel-o" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Exportar a Excel"></i>',
-                autoFilter: true,
-                sheetName: 'Exported data'
-            }
-        ]
-      });
-
-    //__________________________________________________________________________________________
-
-    //Creamos una fila en el head de la tabla y lo clonamos para cada columna
-    $('#datatable thead tr').clone(true).appendTo( '#datatable thead' );
-    $('#datatable thead tr:eq(1) th').each( function (i) {
-        $(this).html( '<input style="width: 100%;" type="text" placeholder="Buscar..." />' );
-        $( 'input', this ).on( 'keyup change', function () {
-            if ( table.column(i).search() !== this.value ) {
-                table
-                    .column(i)
-                    .search( this.value )
-                    .draw();
-            }
-        });
-    });
-
-    // --------------------------------------------------------------------------------------------
-    // VALIDANDO EL TIPO DE DISPOSITIVO Y OCULTAR CAMPOS EN EL FOMRULARIO DE NUEVO DISPOSITIVO
-    $(".btnNuevoDispositivo").on("click", function(){
-        $("#tipoDispositivo").on("change", function(){
-            if($("#tipoDispositivo").val() == "Laptop"){
-                $("#imeiDispositivo").parent().hide();
-                $("#imeiDispositivo").removeAttr("required");
-                $("#telefonoDispositivo").parent().hide();
-                $("#telefonoDispositivo").removeAttr("required");
-            }
-            if($("#tipoDispositivo").val() == "Telefono" || $("#tipoDispositivo").val() == "Tablet"){
-                $("#imeiDispositivo").parent().show();
-                $("#imeiDispositivo").prop("required", true);
-                $("#telefonoDispositivo").parent().show();
-                $("#telefonoDispositivo").prop("required", true);
-            }
-        })
-    })
-    // ---------------------------------------------------------------------------------------------
-
-    //PARA ASIGNAR DISPOSITIVO
-    $("#formularioAsignacion").on("click", ".btnNuevaAsignacion", function(event){
-        event.preventDefault();
-
-        $("#selectConsultores").on("change", function(){
-            $(".invalid-feedback").hide();
-        })
-
-        if($("#selectConsultores").val() == ""){
-            Swal.fire({
-                icon: "warning",
-                title: "Por favor seleccione un consultor",
-                showConfirmButton: true,
-                confirmButtonText: "Cerrar"
-            }).then(function(result){
-                //window.location = "dispositivos";
-            });
-        } else{
-            
-            let datosAsignar = $("#formularioAsignacion").serialize();
-            var url = 'fpdf/Asignar.php?' + datosAsignar;
-    
-            window.open(url, '_blank');
-            $("#modalAsignarDispositivo").hide();
-            location.reload();
-
+//Resetear formularios de modal, en cuanto el modal se oculte
+$("#modalDispositivos").on("hidden.bs.modal", function () {
+    $(this).find('form')[0].reset();
+  });
+ 
+//Traducir datatable
+var table = $('#datatable').DataTable({
+    "ajax": "ajax/tablaDispositivos.ajax.php",
+    "deferRender": true,
+    "retrieve": true,
+    "processing": true,
+    language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+            "first": "Primero",
+            "last": "Ultimo",
+            "next": "Siguiente",
+            "previous": "Anterior"
         }
+    },
+    dom: 'Bfrtip',
+    buttons: [
+        {
+            extend: 'pdfHtml5',
+            className: 'btnDt btn-app export pdf',
+            text: '<i class="fa fa-file-pdf-o" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Exportar a PDF"></i>',
+            download: 'open',
+            orientation: 'landscape',
+            exportOptions: {
+                columns: [0,1,2,3,4,5,6,7]
+            },
+            title: "Listado de dispositivos",
+            customize: function(doc) {
+                doc.content[1].margin = [ 100, 0, 100, 0 ] //left, top, right, bottom
+            }
+        },
+        {
+            extend: 'excelHtml5',
+            className: 'btnDt btn-app export excel',
+            text: '<i class="fa fa-file-excel-o" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Exportar a Excel"></i>',
+            autoFilter: true,
+            sheetName: 'Exported data'
+        }
+    ]
+    });
 
+//__________________________________________________________________________________________
+
+//Creamos una fila en el head de la tabla y lo clonamos para cada columna
+$('#datatable thead tr').clone(true).appendTo( '#datatable thead' );
+$('#datatable thead tr:eq(1) th').each( function (i) {
+    $(this).html( '<input style="width: 100%;" type="text" placeholder="Buscar..." />' );
+    $( 'input', this ).on( 'keyup change', function () {
+        if ( table.column(i).search() !== this.value ) {
+            table
+                .column(i)
+                .search( this.value )
+                .draw();
+        }
+    });
+});
+
+// --------------------------------------------------------------------------------------------
+// VALIDANDO EL TIPO DE DISPOSITIVO Y OCULTAR CAMPOS EN EL FOMRULARIO DE NUEVO DISPOSITIVO
+$(".btnNuevoDispositivo").on("click", function(){
+    $("#tipoDispositivo").on("change", function(){
+        if($("#tipoDispositivo").val() == "Laptop"){
+            $("#imeiDispositivo").parent().hide();
+            $("#imeiDispositivo").removeAttr("required");
+            $("#telefonoDispositivo").parent().hide();
+            $("#telefonoDispositivo").removeAttr("required");
+        }
+        if($("#tipoDispositivo").val() == "Telefono" || $("#tipoDispositivo").val() == "Tablet"){
+            $("#imeiDispositivo").parent().show();
+            $("#imeiDispositivo").prop("required", true);
+            $("#telefonoDispositivo").parent().show();
+            $("#telefonoDispositivo").prop("required", true);
+        }
+    })
+})
+// ---------------------------------------------------------------------------------------------
+
+//PARA ASIGNAR DISPOSITIVO
+$("#formularioAsignacion").on("click", ".btnNuevaAsignacion", function(event){
+    event.preventDefault();
+
+    $("#selectConsultores").on("change", function(){
+        $(".invalid-feedback").hide();
+    })
+
+    if($("#selectConsultores").val() == ""){
+        Swal.fire({
+            icon: "warning",
+            title: "Por favor seleccione un consultor",
+            showConfirmButton: true,
+            confirmButtonText: "Cerrar"
+        }).then(function(result){
+            //window.location = "dispositivos";
+        });
+    } else{
         
+        let datosAsignar = $("#formularioAsignacion").serialize();
+        var url = 'fpdf/Asignar.php?' + datosAsignar;
 
-    });
+        window.open(url, '_blank');
+        $("#modalAsignarDispositivo").hide();
+        location.reload();
 
-    //PARA RECUPERAR DISPOSITIVO
-    $("#formularioRecuperar").on("click", ".btnRecuperar", function(event){
-    //$("#formularioAsignacion" ).on( "submit", function( event ) {
-      event.preventDefault();
-      let datosRecuperar = $("#formularioRecuperar").serialize();
-      var url = 'fpdf/Recuperar.php?' + datosRecuperar;
+    }
 
-      window.open(url, '_blank');
-      $("#modalRecuperarDispositivo").hide();
-      location.reload();
+    
 
-    });
+});
 
-//});
+//PARA RECUPERAR DISPOSITIVO
+$("#formularioRecuperar").on("click", ".btnRecuperar", function(event){
+//$("#formularioAsignacion" ).on( "submit", function( event ) {
+    event.preventDefault();
+    let datosRecuperar = $("#formularioRecuperar").serialize();
+    var url = 'fpdf/Recuperar.php?' + datosRecuperar;
 
+    window.open(url, '_blank');
+    $("#modalRecuperarDispositivo").hide();
+    location.reload();
+
+});
 
 
 //Mostrar información de un solo dispositivo
@@ -261,48 +261,55 @@ $(".tablaDispositivos").on("click", ".btnMostrarDispositivos", function(){
         }
     })
 });
-
+ 
 //Convertir a mayúsculas a medida se va escribiendo
 function mayus(e) {
     e.value = e.value.toUpperCase();
 }
 
 //REGISTRAR NUEVO DISPOSITIVO
-$("#formNuevoDispositivo").on("click", ".btnNuevoRegistro", function(e){
+$("#formNuevoDispositivo").on("submit", function(e){
     e.preventDefault();
 
-    var nuevo = $("#formNuevoDispositivo").serialize();
-    console.log(nuevo);
-    
-    $.ajax({
-        url: "ajax/dispositivos.ajax.php",
-        method: "POST",
-        data: nuevo,
-        dataType: "json",
-        success: function(respuesta){
-            Swal.fire({
-                position: "center",
-                icon: respuesta.icono,
-                title: respuesta.titulo,
-                text: respuesta.mensaje,
-                showConfirmButton: true
-              });
+    if($("#tipoDispositivo").val() != "" && $("#marcaDispositivo").val() != "" && $("#modeloDispositivo").val() != "" && $("#serieDispositivo").val() != "" && $("#sedeDispositivo").val() != ""){
 
-            $("#modalDispositivos").modal('hide');
-            table.ajax.reload();
-        },
-        error: function(res){
-            Swal.fire({
-                position: "center",
-                icon: "error",
-                title: res,
-                showConfirmButton: true
-              });
-
-            $("#modalDispositivos").hide();
-            table.ajax.reload();
+        if(($("#tipoDispositivo").val() != "Laptop" && $("#imeiDispositivo").val().length == 15) || $("#tipoDispositivo").val() == "Laptop"){
+            var nuevo = $("#formNuevoDispositivo").serialize();
+            /* console.log(nuevo); */
+            
+            $.ajax({
+                url: "ajax/dispositivos.ajax.php",
+                method: "POST",
+                data: nuevo,
+                dataType: "json",
+                success: function(respuesta){
+                    Swal.fire({
+                        position: "center",
+                        icon: respuesta.icono,
+                        title: respuesta.titulo,
+                        text: respuesta.mensaje,
+                        showConfirmButton: true
+                      });
+        
+                    $("#modalDispositivos").modal('hide');
+                    table.ajax.reload();
+                },
+                error: function(res){
+                    Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: res,
+                        showConfirmButton: true
+                      });
+        
+                    $("#modalDispositivos").hide();
+                    table.ajax.reload();
+                }
+            })
         }
-    })
+
+    }
+
 
 })
 
@@ -622,6 +629,35 @@ $(".tablaDispositivos").on("click", ".btnEliminarDispositivo", function(){
         }
       });
 
-})
+});
 
 //__________________________________________________________________________________________
+// VALIDACIÓN DE CAMPOS PARA NUEVO REGISTRO
+(function () {
+    'use strict'
+
+      //Resetear formularios de modal, en cuanto el modal se oculte
+      $("#modalDispositivos").on("hidden.bs.modal", function () {
+        $(this).find('form')[0].reset();
+      });
+
+    var forms = document.querySelectorAll('.needs-validation')
+
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      function handleButtonClick(event) {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }
+
+        form.addEventListener('submit', handleButtonClick);
+
+        function handleModalClose(){
+          form.classList.remove('was-validated');
+        }
+
+        document.getElementById('modalDispositivos').addEventListener('hidden.bs.modal', handleModalClose);
+      })
+  })();

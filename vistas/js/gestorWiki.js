@@ -139,6 +139,8 @@ $("#formNuevaColaboracion").on("submit", function(e){
                         +'<img src="'+localhost+'vistas/assets/img/'+respuesta.usuario+'.jpg" class="rounded-circle img-fluid" alt=""/>'
                     +'</div>'
                 +'</div><hr>');
+
+            $("#taColaboracion").val("");
         }
     })
 })

@@ -165,3 +165,35 @@
   $("#modalEditarAdmin").on("hidden.bs.modal", function () {
     $(this).find('form')[0].reset();
   });
+
+
+  //VALIDACIONES PARA NUEVO REGISTRO
+  // VALIDACIÓN DE CAMPOS PARA NUEVO REGISTRO
+(function () {
+  'use strict'
+
+    //Resetear formularios de modal, en cuanto el modal se oculte
+    $("#modalNuevoAdmin").on("hidden.bs.modal", function () {
+      $(this).find('form')[0].reset();
+    });
+
+  var forms = document.querySelectorAll('.needs-validation')
+
+  Array.prototype.slice.call(forms).forEach(function (form) {
+    function handleButtonClick(event) {
+      if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }
+
+      form.addEventListener('submit', handleButtonClick);
+
+      function handleModalClose(){
+        form.classList.remove('was-validated');
+      }
+
+      document.getElementById('modalNuevoAdmin').addEventListener('hidden.bs.modal', handleModalClose);
+    })
+})();

@@ -41,12 +41,12 @@
 
 .page-item:not(:first-child) .page-link:hover{
     color: #fff;
-    background-color: #cb0c9f;
+    background-color: #111e60;
 }
 
 .activePaginacion{
     color: #fff !important;
-    background-color: #cb0c9f;
+    background-color: #111e60;
 }
 
 .cardWiki:hover{

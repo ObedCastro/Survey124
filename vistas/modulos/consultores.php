@@ -5,7 +5,7 @@
             <div class="card-header pb-0 d-flex justify-content-between">
               <h6>Administrar Consultores</h6>
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalConsultores">
+              <button type="button" class="btn btn-outline-primary btnNuevoConsultor" data-bs-toggle="modal" data-bs-target="#modalConsultores">
               <i class="fa fa-plus me-sm-1 cursor-pointer" aria-hidden="true"></i>
                 Nuevo Consultor
               </button>
@@ -44,8 +44,4 @@
   //MODAL PARA MODIFICAR INFORMACIÓN DEL Consultor
   include "vistas/modulos/consultores/modificarConsultor.php";
   
-
-  //include "vistas/modulos/consultores/verDetalleConsultor.php";
 ?>
-
-<!-- <script src="vistas/js/gestorConsultores.js"></script> -->

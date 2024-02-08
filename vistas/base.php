@@ -16,140 +16,114 @@
 
     <link rel="icon" type="image/jpg" href="vistas/assets/img/favicon.ico"/>
 
-    <!-- Fonts and icons -->
-    <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />-->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
-    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <!-- Fuentes e iconos -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 
     <!-- Nucleo Icons -->
     <link href="<?php echo $url; ?>vistas/assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="<?php echo $url; ?>vistas/assets/css/nucleo-svg.css" rel="stylesheet" />
     
+    <!-- Estilos de la plantilla -->
     <link id="pagestyle" href="<?php echo $url; ?>vistas/assets/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
     
-    <!-- CSS DATATABLES -->
-    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.3/css/fixedHeader.dataTables.min.css"> -->
+    <!-- Datatables -->
     <link href="<?php echo $url; ?>vistas/assets/css/datatables/jquery.dataTables.min.css" rel="stylesheet" />
     <link href="<?php echo $url; ?>vistas/assets/css/datatables/fixedHeader.dataTables.min.css" rel="stylesheet" />
     <link href="<?php echo $url; ?>vistas/assets/css/datatables/buttons.bootstrap5.min.css" rel="stylesheet" />
     
-    <!-- CSS ALERTAS -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css"> -->
+    <!-- Alertas -->
     <link href="<?php echo $url; ?>vistas/assets/css/sweetalert2.min.css" rel="stylesheet" />
 
+    <!-- Select con buscador -->
     <link href="<?php echo $url; ?>vistas/assets/css/choices.min.css" rel="stylesheet" />
 
-    <!-- ESTILOS PERSONALIZADOS -->
+    <!-- Estilos personalizados -->
     <link rel="stylesheet" href="<?php echo $url; ?>vistas/css/gestorDispositivos.css">
     <link rel="stylesheet" href="<?php echo $url; ?>vistas/css/gestorWiki.css">
-
-    <!-- CSS DATATABLE BOOTSTRAP 5 -->
-    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css"> -->
-
 
 </head>
 <body class="g-sidenav-show bg-gray-100">
 
-<script>
-  var localhost = "http://localhost/Survey124/";
-  var urlServidor = "https://1036-216-194-101-5.ngrok-free.app/Survey124/";
-</script>
+  <script>
+    var localhost = "http://localhost/Survey124/";
+    var urlServidor = "https://1036-216-194-101-5.ngrok-free.app/Survey124/";
+  </script>
 
-<?php
+  <?php
+
+      if(isset($_SESSION["validarSesion"]) && $_SESSION["validarSesion"] == "ok"){
+
+          include "modulos/aside.php";
+
+          echo '<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y">';
+              include "modulos/header.php";
+
+              $ruta = explode("/", $_GET["ruta"]);
+
+              if(isset($ruta[0])){
+                  if($ruta[0] == "inicio" ||
+                    $ruta[0] == "dispositivos" ||
+                    $ruta[0] == "consultores" ||
+                    $ruta[0] == "administradores" ||
+                    $ruta[0] == "faltantes" ||
+                    $ruta[0] == "wiki" ||
+                    $ruta[0] == "salir"){
+                      include "modulos/".$ruta[0].".php";
+                  } else{
+                      echo "Error 404";
+                  }
+
+              } else if(isset($ruta[1])){
+                include "modulos/".$ruta[0].".php";
+              }
+
+              include "modulos/footer.php";
+          echo '</div>';
+
+      }else{
+          include "modulos/login.php";
+      }
+
+  ?>
 
 
-    if(isset($_SESSION["validarSesion"]) && $_SESSION["validarSesion"] == "ok"){
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  
+  <!-- Bootstrap 5.3.7 + Popper -->
+  <script src="<?php echo $url; ?>vistas/assets/js/core/bootstrap.bundle.min.js"></script>
 
-        include "modulos/aside.php";
+  <!-- Datatables -->
+  <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/dataTables.buttons.min.js"></script>
+  <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/buttons.bootstrap5.min.js"></script>
+  <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/jszip.min.js"></script>
+  <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/pdfmake.min.js"></script>
+  <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/vfs_fonts.js"></script>
+  <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/buttons.html5.min.js"></script>
+  <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/buttons.print.min.js"></script>
+  <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/buttons.colVis.min.js"></script>
+  <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/dataTables.fixedHeader.min.js"></script>
 
-        echo '<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y">';
-            include "modulos/header.php";
-
-            $ruta = explode("/", $_GET["ruta"]);
-
-            if(isset($ruta[0])){
-                if($ruta[0] == "inicio" ||
-                   $ruta[0] == "dispositivos" ||
-                   $ruta[0] == "consultores" ||
-                   $ruta[0] == "administradores" ||
-                   $ruta[0] == "faltantes" ||
-                   $ruta[0] == "wiki" ||
-                   $ruta[0] == "salir"){
-                    include "modulos/".$ruta[0].".php";
-                } else{
-                    echo "Error 404";
-                }
-            } else if(isset($ruta[1])){
-              include "modulos/".$ruta[0].".php";
-            }
-
-            include "modulos/footer.php";
-        echo '</div>';
-
-    }else{
-        include "modulos/login.php";
-    }
-
-?>
-
-
-<!-- JS DATATABLES -->
-
-    <!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
-
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <!-- Scrollbar -->
+  <script src="<?php echo $url; ?>vistas/assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="<?php echo $url; ?>vistas/assets/js/plugins/smooth-scrollbar.min.js"></script>
     
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> -->
-    <script src="<?php echo $url; ?>vistas/assets/js/core/bootstrap.bundle.min.js"></script>
+  <!-- Font Awesome Icons -->
+  <script src="<?php echo $url; ?>vistas/assets/js/fontawesome.js"></script>
 
-    <!-- <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script> -->
-    <!-- <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script> -->
-    <!-- <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script> -->
-    <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script> -->
-    <!-- <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script> -->
-    <!-- <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script> -->
-    <!-- <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.colVis.min.js"></script> -->
-    <!-- <script src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script> -->
-    <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/dataTables.buttons.min.js"></script>
-    <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/buttons.bootstrap5.min.js"></script>
-    <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/jszip.min.js"></script>
-    <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/pdfmake.min.js"></script>
-    <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/vfs_fonts.js"></script>
-    <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/buttons.html5.min.js"></script>
-    <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/buttons.print.min.js"></script>
-    <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/buttons.colVis.min.js"></script>
-    <script src="<?php echo $url; ?>vistas/assets/js/plugins/datatables/dataTables.fixedHeader.min.js"></script>
+  <!-- Gráficas -->
+  <script src="<?php echo $url; ?>vistas/assets/js/plugins/chartjs.min.js"></script>
 
-    <!-- <script src="vistas/assets/js/core/popper.min.js"></script>
-    <script src="vistas/assets/js/core/bootstrap.min.js"></script> -->
-    <script src="<?php echo $url; ?>vistas/assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="<?php echo $url; ?>vistas/assets/js/plugins/smooth-scrollbar.min.js"></script>
-     
-    <!-- Font Awesome Icons -->
-     <!-- <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script> -->
-     <script src="<?php echo $url; ?>vistas/assets/js/fontawesome.js"></script>
+  <!-- Alertas -->
+  <script src="<?php echo $url; ?>vistas/assets/js/plugins/sweetalert2.all.min.js"></script>
 
-    <!-- GRÁFICOS -->
-    <script src="<?php echo $url; ?>vistas/assets/js/plugins/chartjs.min.js"></script>
-
-    <!-- JS ALERTAS -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.all.min.js"></script> -->
-    <script src="<?php echo $url; ?>vistas/assets/js/plugins/sweetalert2.all.min.js"></script>
-
-    <!-- SELECT CON BUSCADOR -->
-    <!--<script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script> -->
-    <script src="<?php echo $url; ?>vistas/assets/js/plugins/choices.min.js"></script>
+  <!-- Select con buscador -->
+  <script src="<?php echo $url; ?>vistas/assets/js/plugins/choices.min.js"></script>
 
 
  <!--  SCRIPTS PERSONALIZADOS -->
-
  <script>
-
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
       var options = {
@@ -157,7 +131,6 @@
       }
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
-
   </script>
 
  <?php

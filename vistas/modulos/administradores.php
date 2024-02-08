@@ -48,36 +48,42 @@
       </div>
       <div class="modal-body">
 
-        <form method="POST" id="formularioNuevoAdmin">
+        <form method="POST" id="formularioNuevoAdmin" class="needs-validation" novalidate>
           <input type="hidden" name="nuevo" value="nuevo">
           <div class="row">
             <div class="mb-3 col-md-6">
               <label for="nombreAdmin" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="nombreAdmin" name="nombreAdmin" required>
+              <input type="text" class="form-control" id="nombreAdmin" name="nombreAdmin" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || event.charCode == 32)" minlength="10" maxlength="50" required>
+              <div class="invalid-feedback">El nombre es requerido</div>
             </div>
             <div class="mb-3 col-md-6">
               <label for="emailAdmin" class="form-label">Email</label>
               <input type="email" class="form-control" id="emailAdmin" name="emailAdmin" required>
+              <div class="invalid-feedback">El email es requerido</div>
             </div>
           </div>
 
           <div class="row">
             <div class="mb-3 col-md-4">
               <label for="usuarioAdmin" class="form-label">Usuario</label>
-              <input type="text" class="form-control" id="usuarioAdmin" name="usuarioAdmin" aria-describedby="emailHelp" required>
+              <input type="text" class="form-control" id="usuarioAdmin" name="usuarioAdmin" onkeypress="return (event.charCode >= 65 && event.charCode <= 90" minlength="3" maxlength="15" aria-describedby="emailHelp" required>
+              <div class="invalid-feedback">Debe colocar el usuario</div>
             </div>
             <div class="mb-3 col-md-4">
               <label for="passwordAdmin" class="form-label">Contraseña</label>
               <input type="password" class="form-control" id="passwordAdmin" name="passwordAdmin" aria-describedby="emailHelp" required>
+              <div class="invalid-feedback">Contraseña obligatoria</div>
             </div>
             <div class="mb-3 col-md-4">
               <label for="perfilAdmin" class="form-label">Perfil</label>
-              <input type="text" class="form-control" id="perfilAdmin" name="perfilAdmin" aria-describedby="emailHelp" required>
+              <input type="text" class="form-control" id="perfilAdmin" name="perfilAdmin" onkeypress="return (event.charCode >= 65 && event.charCode <= 90)" minlength="15" maxlength="25" aria-describedby="emailHelp" required>
+              <div class="invalid-feedback">Defina el perfil para el usuario</div>
             </div>
           </div>
           <div class="mb-3">
             <label for="cargoAdmin" class="form-label">Cargo</label>
             <input type="text" class="form-control" id="cargoAdmin" name="cargoAdmin" required>
+            <div class="invalid-feedback">El cargo es requerido</div>
           </div>
 
           <div class="modal-footer">

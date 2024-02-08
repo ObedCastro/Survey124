@@ -12,51 +12,52 @@
           <div class="mb-3 row">
             <div class="col-md-6">
               <label for="nombreConsultor" class="form-label">Nombre</label>
-              <input type="text" class="form-control" placeholder="Ingrese nombre" id="nombreConsultor" name="nombreConsultor" minlength="10" maxlength="50" required>
+              <input type="text" class="form-control" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || event.charCode == 32)" placeholder="Ingrese nombre" id="nombreConsultor" name="nombreConsultor" minlength="10" maxlength="50" required>
               <div class="invalid-feedback">El nombre es requerido (Entre 10 y 50 caracteres).</div>
             </div>
             <div class="col-md-6">
               <label for="duiConsultor" class="form-label">DUI</label>
-              <input type="text" class="form-control" placeholder="Ingrese DUI" id="duiConsultor" name="duiConsultor">
+              <input type="text" class="form-control" pattern="^[0-9]{9}$" placeholder="Ingrese DUI sin guión" id="duiConsultor" name="duiConsultor" minlength maxlength="9">
+              <div class="invalid-feedback">El formato de DUI, no es válido.</div>
             </div>
           </div>
 
           <div class="mb-3 row">
-                <div class="col-md-6">
-                    <label for="cargoConsultor" class="form-label">Cargo</label>
-                    <input type="text" class="form-control" placeholder="Ingrese el cargo" id="cargoConsultor" name="cargoConsultor" required>
-                    <div class="invalid-feedback">Debe colocar un cargo para el consultor.</div>
-                </div>
-                <div class="col-md-3">
-                    <label for="contactoConsultor" class="form-label">Contacto</label>
-                    <input type="text" class="form-control" placeholder="Contacto del consultor" id="contactoConsultor" name="contactoConsultor" required>
-                    <div class="invalid-feedback">El contacto es requerido.</div>
-                </div>
-                <div class="col-md-3">
-                    <label for="sedeConsultor" class="form-label">Sede</label>
-                    <select class="form-select" aria-label="Default select example" id="sedeConsultor" name="sedeConsultor" required>
-                        <option value=""></option>
-                        <?php 
-                          $sedes = ControladorSedes::ctrMostrarSedes(null, null);
-                          foreach ($sedes as $key => $value) {
-                            echo '<option value="'.$value["idsede"].'">'.$value["nombresede"].' '.$value["departamentosede"].'</option>';
-                          }
-                        ?>
-                    </select>
-                    <div class="invalid-feedback">Seleccione la sede a la que pertenece el consultor.</div>
-                </div>
+            <div class="col-md-6">
+              <label for="cargoConsultor" class="form-label">Cargo</label>
+              <input type="text" class="form-control" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || event.charCode == 32)" placeholder="Ingrese el cargo" id="cargoConsultor" name="cargoConsultor" required>
+              <div class="invalid-feedback">Debe colocar un cargo para el consultor.</div>
+            </div>
+            <div class="col-md-3">
+              <label for="contactoConsultor" class="form-label">Contacto</label>
+              <input type="text" pattern="^[0-9]{8}$" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" placeholder="Ejemplo: 00000000" class="form-control" id="contactoConsultor" name="contactoConsultor" minlength="8" maxlength="8" required>
+              <div class="invalid-feedback">El contacto es requerido.</div>
+            </div>
+            <div class="col-md-3">
+              <label for="sedeConsultor" class="form-label">Sede</label>
+              <select class="form-select" aria-label="Default select example" id="sedeConsultor" name="sedeConsultor" required>
+                <option value=""></option>
+                <?php 
+                  $sedes = ControladorSedes::ctrMostrarSedes(null, null);
+                  foreach ($sedes as $key => $value) {
+                    echo '<option value="'.$value["idsede"].'">'.$value["nombresede"].' '.$value["departamentosede"].'</option>';
+                  }
+                ?>
+              </select>
+              <div class="invalid-feedback">Seleccione la sede a la que pertenece el consultor.</div>
+            </div>
           </div>
 
           <div class="mb-3 row">
-                <div class="col-md-3">
-                    <label for="fechaRegistroConsultor" class="form-label">Fecha</label>
-                    <?php
-                        date_default_timezone_set('America/El_Salvador');
-                        $fechahoy = date("Y-m-d");
-                        echo '<input type="text" class="form-control" value="'.$fechahoy.'" id="fechaRegistroConsultor" name="fechaRegistroConsultor" readonly>';
-                    ?>
-                    <div class="invalid-feedback"></div>
-                </div>
+            <div class="col-md-3">
+              <label for="fechaRegistroConsultor" class="form-label">Fecha</label>
+              <?php
+                date_default_timezone_set('America/El_Salvador');
+                $fechahoy = date("Y-m-d");
+                echo '<input type="text" class="form-control" value="'.$fechahoy.'" id="fechaRegistroConsultor" name="fechaRegistroConsultor" readonly>';
+              ?>
+              <div class="invalid-feedback"></div>
+            </div>
           </div>
 
 
@@ -75,44 +76,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-<!-- <script>
-
- // Example starter JavaScript for disabling form submissions if there are invalid fields
- (function () {
-    'use strict'
-
-      //Resetear formularios de modal, en cuanto el modal se oculte
-      $("#modalConsultores").on("hidden.bs.modal", function () {
-        $(this).find('form')[0].reset();
-      });
-
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll('.needs-validation')
-
-    // Loop over them and prevent submission
-    Array.prototype.slice.call(forms).forEach(function (form) {
-
-      function handleButtonClick(event) {
-        if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-
-          form.classList.add('was-validated');
-        }
-
-        form.addEventListener('submit', handleButtonClick);
-
-        function handleModalClose(){
-          form.classList.remove('was-validated');
-        }
-
-        document.getElementById('modalConsultores').addEventListener('hidden.bs.modal', handleModalClose);
-      })
-  })()
-
-</script> -->

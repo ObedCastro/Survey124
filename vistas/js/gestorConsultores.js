@@ -1,5 +1,5 @@
 
-//Traducir datatable
+//Traducir datatable 
 var tabla = $('#datatableConsultores').DataTable({
     "ajax": "ajax/tablaConsultores.ajax.php",
     "deferRender": true,
