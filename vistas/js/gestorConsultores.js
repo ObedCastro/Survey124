@@ -89,7 +89,7 @@ $("#formEditarConsultor").on("submit", function(e){
     e.preventDefault();
     var datosec = $("#formEditarConsultor").serialize();
 
-    console.log(datosec);
+    /* console.log(datosec); */
 
     $.ajax({
         url: "ajax/consultores.ajax.php",

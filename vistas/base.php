@@ -12,9 +12,10 @@
     <?php
     /* Para mostrar la ruta estática */
       $url = Rutas::mdlRuta();
+      /* $url = "https://db7b-216-194-101-1.ngrok-free.app/Survey124/"; */
     ?>
 
-    <link rel="icon" type="image/jpg" href="vistas/assets/img/favicon.ico"/>
+    <link rel="icon" type="image/jpg" href="<?php echo $url; ?>vistas/assets/img/favicon.ico"/>
 
     <!-- Fuentes e iconos -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
@@ -46,7 +47,7 @@
 
   <script>
     var localhost = "http://localhost/Survey124/";
-    var urlServidor = "https://1036-216-194-101-5.ngrok-free.app/Survey124/";
+    /* var localhost = "https://db7b-216-194-101-1.ngrok-free.app/Survey124/"; */
   </script>
 
   <?php

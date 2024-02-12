@@ -119,9 +119,9 @@
         $("#editarPerfilAdmin").val(respuesta.perfil);
         $("#editarCargoAdmin").val(respuesta.cargo);
       }
-    })
+    });
 
-  })
+  });
 
   //-------------------------------------------------------------------------------------------------
 
@@ -197,3 +197,5 @@
       document.getElementById('modalNuevoAdmin').addEventListener('hidden.bs.modal', handleModalClose);
     })
 })();
+
+//-------------------------------------------------------------------------------------------------------------

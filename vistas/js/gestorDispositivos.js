@@ -140,6 +140,12 @@ $("#formularioRecuperar").on("click", ".btnRecuperar", function(event){
 //Mostrar información de un solo dispositivo
 $(".tablaDispositivos").on("click", ".btnMostrarDispositivos", function(){
 
+    /* Resuelve problema de modal fijo */
+    $('#modalVerDetalleDispositivo').on('shown.bs.modal', function () {
+        $('#modalVerDetalleDispositivo').modal('handleUpdate');
+        $('#modalVerDetalleDispositivo').scrollTop(1);
+    });
+
     //Limpiar el elemnto para mostrar el historial, si es que lo tiene
     $(".timelineHistorial").empty();
 
@@ -259,7 +265,7 @@ $(".tablaDispositivos").on("click", ".btnMostrarDispositivos", function(){
 
 
         }
-    })
+    });
 });
  
 //Convertir a mayúsculas a medida se va escribiendo
@@ -331,21 +337,21 @@ $(".tablaDispositivos").on("click", ".btnEditarDispositivo", function(){
         dataType: "json",
         success: function(respuesta){
             if(respuesta['tipodispositivo'] != "Laptop"){
-                $("#modalEditarDispositivos #imeiDispositivo").parent().show();
-                $("#modalEditarDispositivos #telefonoDispositivo").parent().show();
-                $("#modalEditarDispositivos #imeiDispositivo").val(respuesta['imeidispositivo']);
-                $("#modalEditarDispositivos #telefonoDispositivo").val(respuesta['telefonodispositivo']);
+                $("#modalEditarDispositivos #editarImeiDispositivo").parent().show();
+                $("#modalEditarDispositivos #editarTelefonoDispositivo").parent().show();
+                $("#modalEditarDispositivos #editarImeiDispositivo").val(respuesta['imeidispositivo']);
+                $("#modalEditarDispositivos #editarTelefonoDispositivo").val(respuesta['telefonodispositivo']);
             } else if(respuesta['tipodispositivo'] != "Telefono" || respuesta['tipodispositivo'] != "Tablet"){
-                $("#modalEditarDispositivos #imeiDispositivo").parent().hide();
-                $("#modalEditarDispositivos #telefonoDispositivo").parent().hide();
+                $("#modalEditarDispositivos #editarImeiDispositivo").parent().hide();
+                $("#modalEditarDispositivos #editarTelefonoDispositivo").parent().hide();
             }
 
             $("#modalEditarDispositivos #idEditarDispositivo_").val(respuesta['iddispositivo']);
             $("#modalEditarDispositivos #editarTipoDispositivo").val(respuesta['tipodispositivo']);
-            $("#modalEditarDispositivos #marcaDispositivo").val(respuesta['marcadispositivo']);
-            $("#modalEditarDispositivos #modeloDispositivo").val(respuesta['modelodispositivo']);
-            $("#modalEditarDispositivos #serieDispositivo").val(respuesta['seriedispositivo']);
-            $("#modalEditarDispositivos #sedeDispositivo").val(respuesta['sededispositivo']);
+            $("#modalEditarDispositivos #editarMarcaDispositivo").val(respuesta['marcadispositivo']);
+            $("#modalEditarDispositivos #editarModeloDispositivo").val(respuesta['modelodispositivo']);
+            $("#modalEditarDispositivos #editarSerieDispositivo").val(respuesta['seriedispositivo']);
+            $("#modalEditarDispositivos #editarSedeDispositivo").val(respuesta['sededispositivo']);
             $("#modalEditarDispositivos #comentarioDispositivo").val(respuesta['comentariodispositivo']);
         }
     })
@@ -355,43 +361,46 @@ $(".tablaDispositivos").on("click", ".btnEditarDispositivo", function(){
 $("#formModificarDispositivo").on("submit", function(e){
     e.preventDefault();
 
-    var infoModificar = $("#formModificarDispositivo").serialize();
-    //console.log(infoModificar);
+    if($("#editarSerieDispositivo").val().length > 8){
+        var infoModificar = $("#formModificarDispositivo").serialize();
+        //console.log(infoModificar);
+        
+        $.ajax({
+            url: "ajax/dispositivos.ajax.php",
+            method: "POST",
+            data: infoModificar,
+            dataType: "json",
+            success: function(respuesta){
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: respuesta.mensaje,
+                    showConfirmButton: false,
+                    timer: 1500
+                    });
     
-    $.ajax({
-        url: "ajax/dispositivos.ajax.php",
-        method: "POST",
-        data: infoModificar,
-        dataType: "json",
-        success: function(respuesta){
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: respuesta.mensaje,
-                showConfirmButton: false
-              });
+                    table.ajax.reload();
+                    $("#modalEditarDispositivos").modal("hide");
+            },
+            error: function(res){
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: res.mensaje,
+                    showConfirmButton: false,
+                    timer: 500
+                    });
+    
+                    table.ajax.reload();
+                    $("#modalEditarDispositivos").modal("hide");
+            }
+        });
 
-            $("#modalEditarDispositivos").hide();
-            setTimeout(() => {
-                location.reload();
-            }, 1500)
-        },
-        error: function(res){
-            Swal.fire({
-                position: "center",
-                icon: "error",
-                title: respuesta.mensaje,
-                showConfirmButton: false
-              });
+    }
+    
 
-            $("#modalEditarDispositivos").hide();
-            setTimeout(() => {
-                location.reload();
-            }, 1500)
-        }
-    })
 
-})
+});
 
 
 
@@ -636,10 +645,15 @@ $(".tablaDispositivos").on("click", ".btnEliminarDispositivo", function(){
 (function () {
     'use strict'
 
-      //Resetear formularios de modal, en cuanto el modal se oculte
-      $("#modalDispositivos").on("hidden.bs.modal", function () {
-        $(this).find('form')[0].reset();
-      });
+        //Resetear formularios de modal, en cuanto el modal se oculte
+        $("#modalDispositivos").on("hidden.bs.modal", function () {
+            $(this).find('form')[0].reset();
+        });
+
+        //Limpiar modal cuando se oculte
+        $("#modalAsignarDispositivo").on("hidden.bs.modal", function () {
+            $(this).find('form')[0].reset();
+        });
 
     var forms = document.querySelectorAll('.needs-validation')
 
@@ -661,3 +675,5 @@ $(".tablaDispositivos").on("click", ".btnEliminarDispositivo", function(){
         document.getElementById('modalDispositivos').addEventListener('hidden.bs.modal', handleModalClose);
       })
   })();
+
+//-----------------------------------------------------------------------------------------------------------

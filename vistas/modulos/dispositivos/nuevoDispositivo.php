@@ -6,6 +6,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+      <span class="text-secondary text-xxs">Los campos con <span class="text-danger">*</span> son obligatorios.</span>
         <form action="" method="post" class="needs-validation" id="formNuevoDispositivo" novalidate>
           <input type="hidden" name="nuevo" value="nuevo">
           <div class="mb-3 row">
@@ -55,19 +56,16 @@
             <div class="col-md-3 mostrarInputImei">
               <label for="imeiDispositivo" class="form-label">IMEI</label>
               <input type="text" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" class="form-control" placeholder="Ingrese el IMEI" id="imeiDispositivo" name="imeiDispositivo" minlength="15" maxlength="15">
-              <div class="valid-feedback"></div>
               <div class="invalid-feedback">El IMEI es requerido (15 dígitos)</div>
             </div>
             <div class="col-md-3">
               <label for="serieDispositivo" class="form-label">Serie <span class="text-danger">*</span></label>
-              <input onkeyup="mayus(this);" type="text" class="form-control" placeholder="Ingrese la serie" id="serieDispositivo" name="serieDispositivo" maxlength="15" required>
-              <div class="valid-feedback"></div>
+              <input onkeyup="mayus(this);" type="text" class="form-control" placeholder="Ingrese la serie" id="serieDispositivo" name="serieDispositivo" minlength="8" maxlength="15" required>
               <div class="invalid-feedback">La serie del dispositivo es requerida</div>
             </div>
             <div class="col-md-3">
               <label for="telefonoDispositivo" class="form-label mostrarInputTelefono">Teléfono</label>
-              <input type="text" class="form-control" placeholder="Ingrese el teléfono" id="telefonoDispositivo" name="telefonoDispositivo" minlength="8" maxlength="11" required>
-              <div class="valid-feedback"></div>
+              <input type="text" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" class="form-control" placeholder="Ingrese el teléfono" id="telefonoDispositivo" name="telefonoDispositivo" minlength="8" maxlength="11" required>
               <div class="invalid-feedback">Debe agregar el teléfono del dispositivo (Min 8 dígitos)</div>
             </div>
             <div class="col-md-3">
@@ -81,7 +79,6 @@
                   }
                 ?>
               </select>
-              <div class="valid-feedback"></div>
               <div class="invalid-feedback">Debe seleccionar la sede del dispositivo</div>
             </div>
           </div>

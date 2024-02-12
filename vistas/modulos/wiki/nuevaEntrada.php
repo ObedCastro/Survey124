@@ -1,21 +1,23 @@
 <div class="modal fade" id="modalNuevaEntradaWiki" tabindex="-1" aria-labelledby="modalNuevaEntradaWikiLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalNuevaEntradaWikiLabel">Nueva entrada</h5>
+      <div class="modal-header bg-primary">
+        <h5 class="modal-title text-white" id="modalNuevaEntradaWikiLabel">Nueva entrada</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form method="post" id="formNuevaEntradaWiki">
+        <form method="post" id="formNuevaEntradaWiki" class="needs-validation" novalidate>
             <input type="hidden" name="nuevaEntradaWiki" value="1">
             <div class="mb-3 row">
                 <label class="form-label col-md-12">Título
                     <input type="text" class="form-control" id="iTituloProblema" name="iTituloProblema" required>
+                    <div class="invalid-feedback">Este campo es requreido.</div>
                 </label>
             </div>
             <div class="mb-2 row">
                 <label class="form-label col-md-12">Descripción
                     <textarea class="form-control" placeholder="Dé una descripión sobre el problema" name="taDescripcionProblema" id="taDescripcionProblema" required></textarea>
+                    <div class="invalid-feedback">Por favor describa el problema.</div>
                 </label>
             </div>
 

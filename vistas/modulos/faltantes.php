@@ -39,6 +39,3 @@
 <?php
     include ("vistas/modulos/faltantes/recuperarFaltantes.php");
 ?>
-
-
-<!-- <script src="vistas/js/gestorFaltantes.js"></script> -->

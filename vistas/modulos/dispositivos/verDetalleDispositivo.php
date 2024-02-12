@@ -1,20 +1,17 @@
 <!-- MODAL DE DISPOSITIVOS -->
-<!-- Modal -->
 <div class="modal fade" id="modalVerDetalleDispositivo" data-bs-backdrop="static" tabindex="-1" aria-labelledby="modalVerDetalleDispositivoLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
-      
+      <div class="modal-header bg-primary">
+        <h1 class="modal-title fs-5 text-white" id="modalDispositivosLabel">Información del dispositivo</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
       <div class="modal-body">
         <div class="container">   
-        
           <div class="">
-            <div class="-header pb-0 px-3 d-flex justify-content-between">
-              <h6 class="mb-0">Información del dispositivo</h6>
-                <span type="button" style="color: grey;" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></span>
-            </div>
             <div class="-body pt-4 p-3">
               <ul class="list-group">
-                <div class="row">
+                <div class="row mb-3">
                   <div class="col-md-6">
                     <li class="list-group-item border-0 d-flex p-4 mb-1 bg-gray-100 border-radius-lg">
                       <div class="d-flex flex-column">

@@ -1,31 +1,33 @@
-
+/* la variable "localhost" está definida en el archivo base */
 $("#formNuevaEntradaWiki").on("submit", function(e){
     e.preventDefault();
 
-    var datos = $("#formNuevaEntradaWiki").serialize();
+    if($("#iTituloProblema").val() != "" && $("#taDescripcionProblema").val() != ""){
+        var datos = $("#formNuevaEntradaWiki").serialize();
+    
+        /* console.log(datos); */
+    
+        $.ajax({
+            url: localhost+"ajax/wiki.ajax.php",
+            method: "POST",
+            data: datos,
+            dataType: "json",
+            success: function(respuesta){
+                Swal.fire({
+                    position: "center",
+                    icon: respuesta.icono,
+                    title: respuesta.titulo,
+                    text: respuesta.mensaje,
+                    showConfirmButton: true
+                  });
+    
+                $("#modalNuevaEntradaWiki").modal('hide');
+                location.reload();                
+            }
+        });
+    }
 
-    console.log(datos);
-
-    $.ajax({
-        url: localhost+"ajax/wiki.ajax.php",
-        method: "POST",
-        data: datos,
-        dataType: "json",
-        success: function(respuesta){
-            Swal.fire({
-                position: "center",
-                icon: respuesta.icono,
-                title: respuesta.titulo,
-                text: respuesta.mensaje,
-                showConfirmButton: true
-              });
-
-            $("#modalNuevaEntradaWiki").modal('hide');
-            location.reload();
-            
-        }
-    })
-}) 
+});
 
 
 //PARA MOSTRAR LAS RESPUESTAS
@@ -95,7 +97,6 @@ $(".mostrarRespuestas").on("click", function(){
                 $('#modalRespuestasWiki').on('shown.bs.modal', function () {
                     $('#modalRespuestasWiki').modal('handleUpdate');
                     $('#modalRespuestasWiki').scrollTop(1);
-
                 })                
 
             } else{
@@ -142,29 +143,22 @@ $("#formNuevaColaboracion").on("submit", function(e){
 
             $("#taColaboracion").val("");
         }
-    })
-})
+    });
+});
 
 
-$("#modalAsignarDispositivo").on("hidden.bs.modal", function () {
-    $(this).find('form')[0].reset();
-  });
-
- // Example starter JavaScript for disabling form submissions if there are invalid fields
+ //Validación de campos del formulario
  (function () {
     'use strict'
 
       //Resetear formularios de modal, en cuanto el modal se oculte
-      $("#modalDispositivos").on("hidden.bs.modal", function () {
+      $("#modalNuevaEntradaWiki").on("hidden.bs.modal", function () {
         $(this).find('form')[0].reset();
       });
 
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll('.needs-validation')
+    var forms = document.querySelectorAll('.needs-validation');
 
-    // Loop over them and prevent submission
     Array.prototype.slice.call(forms).forEach(function (form) {
-      const boton = document.querySelector(".btnNuevoRegistro");
 
       function handleButtonClick(event) {
         if (!form.checkValidity()) {
@@ -175,12 +169,12 @@ $("#modalAsignarDispositivo").on("hidden.bs.modal", function () {
           form.classList.add('was-validated');
         }
 
-        boton.addEventListener('click', handleButtonClick);
+        form.addEventListener('submit', handleButtonClick);
 
         function handleModalClose(){
           form.classList.remove('was-validated');
         }
 
-        document.getElementById('modalDispositivos').addEventListener('hidden.bs.modal', handleModalClose);
+        document.getElementById('modalNuevaEntradaWiki').addEventListener('hidden.bs.modal', handleModalClose);
       })
-  })()
+  })();
