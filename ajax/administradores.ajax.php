@@ -7,7 +7,13 @@ class AjaxAdministradores{
 
   public function ajaxNuevoAdmin(){
 
-    if(isset($_POST["nombreAdmin"])){
+    if(isset($_POST["nombreAdmin"]) && !empty($_POST["nombreAdmin"]) && 
+      isset($_POST["emailAdmin"]) && !empty($_POST["emailAdmin"]) && 
+      isset($_POST["usuarioAdmin"]) && !empty($_POST["usuarioAdmin"]) && 
+      isset($_POST["passwordAdmin"]) && !empty($_POST["passwordAdmin"]) && 
+      isset($_POST["perfilAdmin"]) && !empty($_POST["perfilAdmin"]) && 
+      isset($_POST["cargoAdmin"]) && !empty($_POST["cargoAdmin"])){
+
       $password = md5($_POST["passwordAdmin"]);
 
       $datos = array(
@@ -18,10 +24,11 @@ class AjaxAdministradores{
         'password' => $password,
         'perfil' => $_POST["perfilAdmin"]
       );
+
+      $respuesta = ControladorAdministradores::ctrNuevoAdmin($datos);
+      echo json_encode($respuesta);
     }
 
-    $respuesta = ControladorAdministradores::ctrNuevoAdmin($datos);
-    echo json_encode($respuesta);
 
   }
 

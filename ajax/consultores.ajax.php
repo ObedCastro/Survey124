@@ -47,8 +47,8 @@ class AjaxConsultores {
 
     //PARA MODIFICAR LA INFORMACIÓN DEL CONSULTOR
     public function ajaxEditarConsultor(){
-        if(isset($_POST["idEditarConsultor"]) && isset($_POST["editarNombreConsultor"]) && isset($_POST["editarSedeConsultor"])){
-            if(!empty($_POST["idEditarConsultor"]) && !empty($_POST["editarNombreConsultor"]) && !empty($_POST["editarSedeConsultor"])){
+        if(isset($_POST["idEditarConsultor"]) && isset($_POST["editarNombreConsultor"]) && isset($_POST["editarCargoConsultor"]) && isset($_POST["editarSedeConsultor"])){
+            if(!empty($_POST["idEditarConsultor"]) && !empty($_POST["editarNombreConsultor"]) && !empty($_POST["editarCargoConsultor"]) && !empty($_POST["editarSedeConsultor"])){
                 $id = $_POST["idEditarConsultor"];
                 $datos = array(
                     "nombre"=>$_POST["editarNombreConsultor"],

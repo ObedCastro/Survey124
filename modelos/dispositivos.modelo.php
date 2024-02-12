@@ -109,7 +109,7 @@ class ModeloDispositivos{
 
 
 
-    //MODIFICAR PRODUCTO
+    //MODIFICAR DISPOSITIVO
     static public function mdlModificarDispositivo($tabla, $item, $valor, $datos){
         $sql = "UPDATE $tabla SET tipodispositivo = :tipodispositivo, marcadispositivo = :marcadispositivo, modelodispositivo = :modelodispositivo, imeidispositivo = :imeidispositivo, seriedispositivo = :seriedispositivo, telefonodispositivo = :telefonodispositivo, sededispositivo = :sededispositivo, comentariodispositivo = :comentariodispositivo WHERE $item = :$item";
         $stmt = Conexion::conectar()->prepare($sql);

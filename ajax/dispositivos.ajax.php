@@ -90,24 +90,27 @@ class AjaxDispositivos{
         $item = "iddispositivo";
         $valor = $this->idDispositivoModificar;
 
-        if(isset($_POST["editarTipoDispositivo"])){
+        if(isset($_POST["editarTipoDispositivo"]) && !empty($_POST["editarTipoDispositivo"]) && isset($_POST["editarMarcaDispositivo"]) && !empty($_POST["editarMarcaDispositivo"]) && isset($_POST["editarModeloDispositivo"]) && !empty($_POST["editarModeloDispositivo"]) && isset($_POST["editarSerieDispositivo"]) && !empty($_POST["editarSerieDispositivo"]) && isset($_POST["editarSedeDispositivo"]) && !empty($_POST["editarSedeDispositivo"])){
             if($_POST["editarTipoDispositivo"] == "Telefono" || $_POST["editarTipoDispositivo"] == "Tablet" || $_POST["editarTipoDispositivo"] == "Laptop"){
-                //$id = $_POST["idDispositivo"];
+
+                $imei = empty($_POST["editarImeiDispositivo"]) ? null : $_POST["editarImeiDispositivo"];
+                
                 $datos = array(
                     "tipo"=>$_POST["editarTipoDispositivo"],
-                    "marca"=>$_POST["marcaDispositivo"],
-                    "modelo"=>$_POST["modeloDispositivo"],
-                    "imei"=>$_POST["imeiDispositivo"],
-                    "serie"=>$_POST["serieDispositivo"],
-                    "telefono"=>$_POST["telefonoDispositivo"],
-                    "sede"=>$_POST["sedeDispositivo"],
+                    "marca"=>$_POST["editarMarcaDispositivo"],
+                    "modelo"=>$_POST["editarModeloDispositivo"],
+                    "imei"=>$imei,
+                    "serie"=>$_POST["editarSerieDispositivo"],
+                    "telefono"=>$_POST["editarTelefonoDispositivo"],
+                    "sede"=>$_POST["editarSedeDispositivo"],
                     "comentario"=>$_POST["comentarioDispositivo"]
                 );
             }
+
+            $respuesta = ControladorDispositivos::ctrModificarDispositivo($item, $valor, $datos);
+            echo json_encode($respuesta);
         }
 
-        $respuesta = ControladorDispositivos::ctrModificarDispositivo($item, $valor, $datos);
-        echo json_encode($respuesta);
     }
 
     public $idEliminarDispositivo;
