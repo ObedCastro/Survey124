@@ -33,9 +33,9 @@ CREATE TABLE IF NOT EXISTS `administradores` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla prueba.administradores: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.administradores: ~6 rows (aproximadamente)
 INSERT INTO `administradores` (`id`, `nombre`, `email`, `cargo`, `foto`, `usuario`, `password`, `perfil`, `fecha`) VALUES
-	(1, 'Obed Alberto Castro Orellana', 'obed.castro@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'inobed', '21232f297a57a5a743894a0e4a801fc3', 'superadministrador', '2024-02-07 15:15:58'),
+	(1, 'Obed Alberto Castro Orellana', 'obed.castro@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'inobed', '21232f297a57a5a743894a0e4a801fc3', 'superadministrador', '2024-02-13 15:11:21'),
 	(4, 'Miguel Ángel Portillo Lozano', 'miguel.portillo@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'inportillo', '6b44146a52fe0cb872686e7631786802', 'superadministrador', '2024-02-06 16:39:55'),
 	(11, 'Diego Dubán Rivera Martinez', 'diego.rivera@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'induban', 'e823be777ac3d8b1052e62c96c965049', 'superadministrador', '2024-02-06 16:39:56'),
 	(13, 'Juver Nahúm Argueta Ortíz', 'juver.argueta@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assetsvistas/assets/img/img/', 'injuver', 'fc1ebc848e31e0a68e868432225e3c82', 'superadministrador', '2024-02-06 16:39:57'),
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `consultores` (
   PRIMARY KEY (`idconsultor`)
 ) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla prueba.consultores: ~24 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.consultores: ~21 rows (aproximadamente)
 INSERT INTO `consultores` (`idconsultor`, `nombreconsultor`, `duiconsultor`, `cargoconsultor`, `contactoconsultor`, `dispositivo_id`, `sedeconsultor`, `fechaactualizacionconsultor`, `fecharegistroconsultor`) VALUES
 	(10, 'Juan Antonio Segovia', '504938273', 'Delegado', '58493843847', NULL, '1', '2024-01-26 21:14:36', '2024-01-12'),
 	(14, 'Jorge Alberto González Barillas', '98765645-3', 'Auxiliar de bodega miscelanea', '7867-0988', NULL, '3', '2024-01-23 21:28:52', '2024-01-18'),
@@ -73,9 +73,7 @@ INSERT INTO `consultores` (`idconsultor`, `nombreconsultor`, `duiconsultor`, `ca
 	(28, 'Nuevo consultor lunes', '123412345', 'Cargo del lunes', '50384938483', NULL, '2', '2024-02-05 16:59:49', '2024-02-05'),
 	(29, 'asdfasf', '35635', 'sfasgasdg', '', NULL, '', '2024-02-05 17:01:39', '2024-02-05'),
 	(30, 'asdfasf', '35635', 'sfasgasdg', '', NULL, '', '2024-02-05 17:02:35', '2024-02-05'),
-	(32, 'qetqwetqwet', 'qwetwetwet', 'wetwetwe', 'twetwet', NULL, '1', '2024-02-05 17:44:22', '2024-02-05'),
 	(33, 'rtuyrturtu', '456363456', 'sgsdhdfh', 'fjfgjfgjfgj', NULL, '1', '2024-02-05 17:45:31', '2024-02-05'),
-	(34, 'dfhdshdhsdfhgdfh', 'zsgsagsdg', 'sgsgsdgsd', '50393827364', NULL, '2', '2024-02-05 19:25:22', '2024-02-05'),
 	(45, 'shdfhfgjrejfjfj', '', 'reurururturt', '', NULL, '3', '2024-02-05 20:10:38', '2024-02-05'),
 	(46, 'Otro consultor para probar', '23523525', 'Cargo para probar', '123131231', NULL, '5', '2024-02-06 21:02:01', '2024-02-06'),
 	(47, 'Usuario de prueba', '12312312-4', 'Cargo de prueba', '1241-4124', NULL, '2', '2024-02-07 16:57:29', '2024-02-07'),
@@ -84,7 +82,6 @@ INSERT INTO `consultores` (`idconsultor`, `nombreconsultor`, `duiconsultor`, `ca
 	(50, 'Nombre modificado', '', 'Cargo colocado después', '123', NULL, '1', '2024-02-12 17:21:26', '2024-02-07'),
 	(51, 'sdfgdsg', '', 'ereryeyhdh34346fdgh', '235235', NULL, '1', '2024-02-07 17:25:44', '2024-02-07'),
 	(52, 'Nombre', '', 'Consultor', '123', NULL, '1', '2024-02-07 17:31:31', '2024-02-07'),
-	(53, 'asd', '', 'sasa', '123', NULL, '1', '2024-02-07 17:34:56', '2024-02-07'),
 	(54, 'Juan Antonio Perez', '041501895', 'Supervisor', '77777771', NULL, '1', '2024-02-09 21:54:32', '2024-02-09'),
 	(55, 'sfsaf asf sf saf ', '', 'sfwetrw aw awf awf af af ', '23423452', NULL, '3', '2024-02-12 17:10:16', '2024-02-12');
 
@@ -290,9 +287,9 @@ CREATE TABLE IF NOT EXISTS `wiki` (
   PRIMARY KEY (`idwiki`),
   KEY `FK1reporta` (`reportaproblema`),
   CONSTRAINT `FK1reporta` FOREIGN KEY (`reportaproblema`) REFERENCES `administradores` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla prueba.wiki: ~14 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.wiki: ~16 rows (aproximadamente)
 INSERT INTO `wiki` (`idwiki`, `tituloproblema`, `descripcionproblema`, `solucionproblema`, `reportaproblema`, `fechareporte`) VALUES
 	(3, 'Problema en segmento 12140098', 'El segmento se encuentra mal delimitado por que hay manzanas que estan compartidas con segmento 12146678', 'Escalar caso a Dto de Censos para que trasladar a los expertos en sistemas de edicion cartografica arreglen el segmento', 1, '2024-01-23 22:24:39'),
 	(4, 'Problema en mapa 1417 Conchagua', 'No sale la isla de conchaguita', 'Actualizarle el archivo tpkx del 18 de Enero', 11, '2024-01-23 22:29:22'),
@@ -311,7 +308,8 @@ INSERT INTO `wiki` (`idwiki`, `tituloproblema`, `descripcionproblema`, `solucion
 	(17, 'Probando titulo de entrada', 'Descripción para la nueva entrada, revisando si hay algún tipo de error. ', 'Esta es la solución de prueba que se agrega, a modo de ir probando y ver si hay algún error en el momento que la información es almacenada o si se guarda correctamente, para tomar las medidas respectivas, dependiendo del caso. ', 1, '2024-02-07 15:37:18'),
 	(18, 'Actualización de Laptops', '¿Qué actualizaciones se les aplica a las laptops?', '', 4, '2024-02-09 22:05:48'),
 	(22, 'sdgweggasgasgdg', 'wafasgsgsg asgasgsg asg sag sg sag saga sg asg asgsa', '', 1, '2024-02-12 18:56:56'),
-	(23, 'asdfasdf a fs fsa', 'safasg asg sg asgas gs g', 'asdg alsh sah sh fdsahf ñhñsehf safgegfl galufg lasugflas ñfhsa lfgls gfl gsalfug salgf lsugf lgsal fugslau fglsau gfluigsd lfgusdl fglsa gfl sgflu gaslfug saluigf luisgdf lugsa flgusdal fgsla fglusag flusag flugs lfugsal fugasl fugalsgf', 1, '2024-02-12 18:57:43');
+	(23, 'asdfasdf a fs fsa', 'safasg asg sg asgas gs g', 'asdg alsh sah sh fdsahf ñhñsehf safgegfl galufg lasugflas ñfhsa lfgls gfl gsalfug salgf lsugf lgsal fugslau fglsau gfluigsd lfgusdl fglsa gfl sgflu gaslfug saluigf luisgdf lugsa flgusdal fgsla fglusag flusag flugs lfugsal fugasl fugalsgf', 1, '2024-02-12 18:57:43'),
+	(24, 'Probando nueva entrada', 'Descripción del problema', 'Estoy agregando esta solución de prueba, para verificar el correcto funcionamiento de los comentarios, dentro de las publicaciones. \r\n\r\nEntonces, esta es la respuesta propuesta para el problema planteado, por si les llega a aparecer este inconveniente, haya más o menos una alternativa que se pueda probar para solventar.', 1, '2024-02-19 20:06:45');
 
 -- Volcando estructura para tabla prueba.wikicolaboraciones
 CREATE TABLE IF NOT EXISTS `wikicolaboraciones` (
@@ -325,30 +323,12 @@ CREATE TABLE IF NOT EXISTS `wikicolaboraciones` (
   KEY `idwiki` (`idwiki`),
   CONSTRAINT `FK1colabora` FOREIGN KEY (`idcolabora`) REFERENCES `administradores` (`id`),
   CONSTRAINT `FK2wiki` FOREIGN KEY (`idwiki`) REFERENCES `wiki` (`idwiki`)
-) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla prueba.wikicolaboraciones: ~40 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.wikicolaboraciones: ~27 rows (aproximadamente)
 INSERT INTO `wikicolaboraciones` (`idwikicolaboraciones`, `idcolabora`, `idwiki`, `colaboracion`, `fechacolaboracion`) VALUES
 	(66, 1, 6, 'asasdvasv', '2024-01-25 19:35:01'),
 	(67, 1, 6, 'qweqweqweqweqweqweqweqwe', '2024-01-25 19:35:48'),
-	(68, 1, 6, 'ertuerurtu', '2024-01-25 19:36:44'),
-	(69, 1, 6, 'asd', '2024-01-25 19:37:27'),
-	(70, 1, 6, 'fsdfgsdgf', '2024-01-25 19:38:50'),
-	(71, 1, 6, 'Prueba de fuego.', '2024-01-25 19:40:37'),
-	(72, 1, 6, 'Prueba de fuego 2', '2024-01-25 19:41:00'),
-	(73, 1, 6, 'Prueba de fuego 3', '2024-01-25 19:41:22'),
-	(74, 1, 6, 'Prueba bla, bla, bla. ', '2024-01-25 19:42:04'),
-	(75, 1, 6, 'Prueba bla, bla, bla. ', '2024-01-25 19:42:21'),
-	(76, 1, 6, 'Prueba bla, bla, bla. ', '2024-01-25 19:42:23'),
-	(77, 1, 6, 'Prueba bla, bla, bla. ', '2024-01-25 19:42:24'),
-	(78, 1, 6, 'Este Mike. ', '2024-01-25 19:48:00'),
-	(79, 1, 6, 'lndsflnlsdnljdsnljbn', '2024-01-25 19:53:37'),
-	(80, 1, 6, 'lndsflnlsdnljdsnljbn', '2024-01-25 19:53:48'),
-	(81, 1, 6, 'lndsflnlsdnljdsnljbn', '2024-01-25 19:53:51'),
-	(82, 1, 6, 'luqhw uowhu fh wfh ashfe has pf', '2024-01-25 19:56:59'),
-	(83, 1, 6, 'afdasfsfsfssd', '2024-01-25 20:00:09'),
-	(85, 1, 6, 'Agregamos otro.', '2024-01-25 20:14:37'),
-	(90, 1, 6, 'awawawawawawaw', '2024-01-25 21:23:02'),
 	(91, 1, 5, 'Primer comentario.', '2024-01-25 21:25:01'),
 	(92, 1, 6, 'ssss', '2024-01-25 21:55:15'),
 	(93, 1, 6, 'probando', '2024-01-25 21:55:56'),
@@ -374,9 +354,22 @@ INSERT INTO `wikicolaboraciones` (`idwikicolaboraciones`, `idcolabora`, `idwiki`
 	(115, 4, 9, 'aja\r\n', '2024-02-09 22:02:08'),
 	(116, 4, 18, '* Las Actualizaciones de Windows, incluyendo las opcionales.\r\n* Las Actualizaciones de HP.', '2024-02-09 22:08:11'),
 	(117, 11, 18, 'Saludos Miguel, espero estar pronto en Sede San Miguel\r\nen esta oportunidad mi aporte seria que deben de actualizar los controladores del equipo a través de HP Support \r\nBuen dia.. quedo atento', '2024-02-12 17:29:11'),
-	(118, 1, 11, 'sdaff', '2024-02-12 19:06:10'),
-	(119, 1, 11, 'qweqwe', '2024-02-12 19:06:21'),
-	(120, 1, 11, 'qwqeqwrqrwr', '2024-02-12 19:07:13');
+	(177, 1, 3, 'qwqeqeqe', '2024-02-19 20:03:58'),
+	(178, 1, 3, 'eryeyeyery', '2024-02-19 20:04:04'),
+	(179, 1, 3, 'liuhglsdlgjnsdgjnksdgdsgfsdg', '2024-02-19 20:04:15'),
+	(180, 1, 3, 'psdijhpgihsdghdñngsdg', '2024-02-19 20:04:34'),
+	(181, 1, 3, 'ewteryterydsydsrysdry', '2024-02-19 20:04:40'),
+	(182, 1, 3, 'sdrhsdhshdfhdfshdh', '2024-02-19 20:04:44'),
+	(183, 1, 3, 'sdgsdhsdfhsdhfsdhsdfh', '2024-02-19 20:04:49'),
+	(184, 1, 3, 'sdfhsdfhfdjhfghkjgkg', '2024-02-19 20:04:56'),
+	(185, 1, 3, 'dfgjghkdyhdfghfghsdfghgdf', '2024-02-19 20:05:01'),
+	(186, 1, 24, 'Primer aporte para este problema.', '2024-02-19 20:07:11'),
+	(187, 1, 24, 'Segundo aporte para este problema.', '2024-02-19 20:07:25'),
+	(188, 1, 12, 'Este es el primer aporte', '2024-02-19 20:10:18'),
+	(189, 1, 12, 'Segundooooooooooooo', '2024-02-19 20:10:25'),
+	(190, 1, 10, 'asdfasdfasdfdsf', '2024-02-19 20:38:12'),
+	(191, 1, 10, 'asdgasdgasdgdsag', '2024-02-19 20:38:28'),
+	(192, 1, 10, 'astrerydfgh sdh sfdh sdfh sdh', '2024-02-19 20:38:37');
 
 -- Volcando estructura para disparador prueba.actualizar_registros
 SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
