@@ -11,8 +11,8 @@
 
     <?php
     /* Para mostrar la ruta estática */
-      $url = Rutas::mdlRuta();
-      /* $url = "https://db7b-216-194-101-1.ngrok-free.app/Survey124/"; */
+      /* $url = Rutas::mdlRuta();  */
+      $url = "https://b4e6-216-194-101-11.ngrok-free.app/Survey124/";
     ?>
 
     <link rel="icon" type="image/jpg" href="<?php echo $url; ?>vistas/assets/img/favicon.ico"/>
@@ -46,8 +46,8 @@
 <body class="g-sidenav-show bg-gray-100">
 
   <script>
-    var localhost = "http://localhost/Survey124/";
-    /* var localhost = "https://db7b-216-194-101-1.ngrok-free.app/Survey124/"; */
+    /* var localhost = "http://localhost/Survey124/"; */
+    var localhost = "https://b4e6-216-194-101-11.ngrok-free.app/Survey124/";
   </script>
 
   <?php

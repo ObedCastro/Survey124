@@ -35,6 +35,80 @@ $(".mostrarRespuestas").on("click", function(){
 
     var idWiki = $(this).attr("idWiki");
 
+    mostrarContenidoRespuestas(idWiki);
+
+});
+
+//PARA REALIZAR UN APORTE
+$("#formNuevaColaboracion").on("submit", function(e){
+    e.preventDefault();
+    var aporte = $("#formNuevaColaboracion").serialize();
+    //console.log(aporte);
+
+    $.ajax({
+        type: "POST",
+        url: localhost+"ajax/wiki.ajax.php",
+        data: aporte,
+        dataType: 'json',
+        success: function(respuesta){
+
+            var idWiki = $("#idWikiColabora").val();
+
+            mostrarContenidoRespuestas(idWiki);
+
+            /* $(".how-section1").append(
+                '<div class="row text-end">'
+                    +'<div class="col-md-10 px-0 mx-0">'
+                        +'<h5 class="text-primary nombreAdminRespuesta">'+respuesta.colaborador+'</h5>'
+                        +'<h4 class="subheading cargoAdminRespuesta">'+respuesta.cargo+'</h4>'
+                        +'<p class="text-muted text-xs respuesta">'+respuesta.colaboracion+'</p>'
+                    +'</div>'
+                    +'<div class="col-md-1 how-img px-0">'
+                        +'<img src="'+localhost+'vistas/assets/img/'+respuesta.usuario+'.jpg" class="rounded-circle img-fluid" alt=""/>'
+                    +'</div>'
+                +'</div><hr>'); */
+
+            $("#taColaboracion").val("");
+        }
+    });
+});
+
+
+ //Validación de campos del formulario
+ (function () {
+    'use strict'
+
+      //Resetear formularios de modal, en cuanto el modal se oculte
+      $("#modalNuevaEntradaWiki").on("hidden.bs.modal", function () {
+        $(this).find('form')[0].reset();
+      });
+
+    var forms = document.querySelectorAll('.needs-validation');
+
+    Array.prototype.slice.call(forms).forEach(function (form) {
+
+      function handleButtonClick(event) {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add('was-validated');
+        }
+
+        form.addEventListener('submit', handleButtonClick);
+
+        function handleModalClose(){
+          form.classList.remove('was-validated');
+        }
+
+        document.getElementById('modalNuevaEntradaWiki').addEventListener('hidden.bs.modal', handleModalClose);
+      })
+  })();
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+function mostrarContenidoRespuestas(idWiki){
     var data = new FormData();
     data.append("idWiki", idWiki);
     //console.log(idWiki);
@@ -74,30 +148,27 @@ $(".mostrarRespuestas").on("click", function(){
                                 +'<div class="col-md-10 px-0 mx-0">'
                                     +'<h5 class="text-primary nombreAdminRespuesta">'+respuesta[key].nombreadmin+'</h5>'
                                     +'<h4 class="subheading cargoAdminRespuesta">'+respuesta[key].cargoadmin+'</h4>'
-                                    +'<p class="text-muted text-xs respuesta">'+respuesta[key].colaboracion+'</p>'
+                                    +'<p class="text-muted text-xs respuesta mb-0">'+respuesta[key].colaboracion+'</p>'
+                                    +'<p class="text-muted text-xxs"><strong>'+respuesta[key].fechacolaboracion+'</strong></p>'
                                 +'</div>'
-                            +'</div><hr>');
+                            +'</div>');
                     } else{
                         $(".how-section1").append(
                             '<div class="row text-end">'
                                 +'<div class="col-md-10 px-0 mx-0">'
                                     +'<h5 class="text-primary nombreAdminRespuesta">'+respuesta[key].nombreadmin+'</h5>'
                                     +'<h4 class="subheading cargoAdminRespuesta">'+respuesta[key].cargoadmin+'</h4>'
-                                    +'<p class="text-muted text-xs respuesta">'+respuesta[key].colaboracion+'</p>'
+                                    +'<p class="text-muted text-xs respuesta mb-0">'+respuesta[key].colaboracion+'</p>'
+                                    +'<p class="text-muted text-xxs"><strong>'+respuesta[key].fechacolaboracion+'</strong></p>'
                                 +'</div>'
                                 +'<div class="col-md-1 how-img px-0">'
                                     +'<img src="'+localhost+'vistas/assets/img/'+respuesta[key].usuario+'.jpg" class="rounded-circle img-fluid" alt=""/>'
                                 +'</div>'
-                            +'</div><hr>');
+                            +'</div>');
                     }
 
                     
                 }
-
-                $('#modalRespuestasWiki').on('shown.bs.modal', function () {
-                    $('#modalRespuestasWiki').modal('handleUpdate');
-                    $('#modalRespuestasWiki').scrollTop(1);
-                })                
 
             } else{
                 //console.log(respuesta);
@@ -109,72 +180,25 @@ $(".mostrarRespuestas").on("click", function(){
                 if(respuesta.solucionproblema == ""){
                     $(".respuestas .solucionProblema").text("No propuso una respuesta");
                 }
-                return;
+                
             }
-        }
-      });
 
-})
-
-//PARA REALIZAR UN APORTE
-$("#formNuevaColaboracion").on("submit", function(e){
-    e.preventDefault();
-    var aporte = $("#formNuevaColaboracion").serialize();
-    //console.log(aporte);
-
-    $.ajax({
-        type: "POST",
-        url: localhost+"ajax/wiki.ajax.php",
-        data: aporte,
-        dataType: 'json',
-        success: function(respuesta){
-
-            $(".how-section1").append(
-                '<div class="row text-end">'
-                    +'<div class="col-md-10 px-0 mx-0">'
-                        +'<h5 class="text-primary nombreAdminRespuesta">'+respuesta.colaborador+'</h5>'
-                        +'<h4 class="subheading cargoAdminRespuesta">'+respuesta.cargo+'</h4>'
-                        +'<p class="text-muted text-xs respuesta">'+respuesta.colaboracion+'</p>'
-                    +'</div>'
-                    +'<div class="col-md-1 how-img px-0">'
-                        +'<img src="'+localhost+'vistas/assets/img/'+respuesta.usuario+'.jpg" class="rounded-circle img-fluid" alt=""/>'
-                    +'</div>'
-                +'</div><hr>');
-
-            $("#taColaboracion").val("");
+            //Actualizar scroll de modal
+            actualizarScroll();
         }
     });
-});
+}
 
+function actualizarScroll(){
+    $('#modalRespuestasWiki').modal('handleUpdate');
+    $('#modalRespuestasWiki').scrollTop(1);
 
- //Validación de campos del formulario
- (function () {
-    'use strict'
+    $('#modalRespuestasWiki').scroll(function() {
+        var scrollPosition = $(this).scrollTop();
+        /* console.log("Posición del scroll: " + scrollPosition); */
 
-      //Resetear formularios de modal, en cuanto el modal se oculte
-      $("#modalNuevaEntradaWiki").on("hidden.bs.modal", function () {
-        $(this).find('form')[0].reset();
-      });
-
-    var forms = document.querySelectorAll('.needs-validation');
-
-    Array.prototype.slice.call(forms).forEach(function (form) {
-
-      function handleButtonClick(event) {
-        if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-
-          form.classList.add('was-validated');
+        if(scrollPosition < 1){
+            $('#modalRespuestasWiki').scrollTop(1);
         }
-
-        form.addEventListener('submit', handleButtonClick);
-
-        function handleModalClose(){
-          form.classList.remove('was-validated');
-        }
-
-        document.getElementById('modalNuevaEntradaWiki').addEventListener('hidden.bs.modal', handleModalClose);
-      })
-  })();
+    });
+}

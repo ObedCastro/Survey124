@@ -41,15 +41,15 @@
                                 <div class="d-flex flex-row wrap">
                                     <div class=""><img src="'.$url.'vistas/assets/img/'.$reporta["usuario"].'.jpg" alt="user" class="rounded-circle" width="30" /></div>
                                     <div class="pl-4">
-                                        <p class="mb-0 mx-2">'.$nombre[0]." ".$nombre[2].'</p>
-                                        <p class="mt-0 mb-0 mx-2 text-xs">'.$reporta["cargo"].'</p>
+                                        <p class="mb-0 mx-2 text-xs text-primary"><strong>'.$nombre[0]." ".$nombre[2].'</strong></p>
+                                        <p class="mt-0 mb-0 mx-2 text-xxs">'.$reporta["cargo"].'</p>
                                     </div>
                                 </div>
-                                <p class="mt-2 mb-0 mx-2 text-xs">'.substr($wiki["tituloproblema"], 0, 25).'...</p>
+                                <p class="mt-2 mb-0 mx-2 text-xxs">'.substr($wiki["tituloproblema"], 0, 50).'...</p>
                             </div>
                             <div class="card-body border-top">
-                                <p class="text-center text-xs aboutscroll">
-                                    '.substr($wiki["descripcionproblema"], 0, 25).'...<span style="cursor:pointer;" class="text-primary mostrarRespuestas" idWiki="'.$wiki["idwiki"].'" data-bs-toggle="modal" data-bs-target="#modalRespuestasWiki"><strong>Ver más</strong></span style="cursor:pointer;">
+                                <p class="text-center text-xxs aboutscroll">
+                                    '.substr($wiki["descripcionproblema"], 0, 50).'...<span style="cursor:pointer;" class="text-primary mostrarRespuestas" idWiki="'.$wiki["idwiki"].'" data-bs-toggle="modal" data-bs-target="#modalRespuestasWiki"><strong>Ver más</strong></span style="cursor:pointer;">
                                 </p>
                             </div>
                         </div>

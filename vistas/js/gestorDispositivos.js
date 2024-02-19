@@ -262,7 +262,8 @@ $(".tablaDispositivos").on("click", ".btnMostrarDispositivos", function(){
                 $("#mostrarMovimientos").hide();
             }
 
-
+            /* Actualizar el scroll del modal */
+            actualizarScrollDispositivos();
 
         }
     });
@@ -677,3 +678,17 @@ $(".tablaDispositivos").on("click", ".btnEliminarDispositivo", function(){
   })();
 
 //-----------------------------------------------------------------------------------------------------------
+/* Actualizar Scroll */
+function actualizarScrollDispositivos(){
+    $('#modalVerDetalleDispositivo').modal('handleUpdate');
+    $('#modalVerDetalleDispositivo').scrollTop(1);
+
+    $('#modalVerDetalleDispositivo').scroll(function() {
+        var scrollPosition = $(this).scrollTop();
+        /* console.log("Posición del scroll: " + scrollPosition); */
+
+        if(scrollPosition < 1){
+            $('#modalVerDetalleDispositivo').scrollTop(1);
+        }
+    });
+}

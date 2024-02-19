@@ -41,14 +41,3 @@
         <?php include "header/perfilUsuario.php"; ?>
       </div>
     </div>
-
-
-
-    <script>
-      /*$('.dropdown-menu').on('click', function (e) {
-        e.stopPropagation();
-      }); */
-    </script>
-
-
-<!-- <script src="vistas/js/header.js"></script>  -->
