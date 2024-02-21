@@ -1,26 +1,22 @@
 
-    <div class="container-fluid py-2">
+<?php
+  echo '<div class="container-fluid py-2">';
 
-      <?php
-        include "inicio/info-relevante.php";
-      ?>
+    include "inicio/info-relevante.php";
 
-      <div class="row mt-4">
+    echo '<div class="row mt-4">';
+      include "inicio/dispositivos-modelos.php";
+      include "inicio/dispositivos-sedes.php";
+      echo '</div>';
+    
+    echo '<div class="row mt-4">';
+      include "inicio/dispositivos-asignaciones.php";
+    echo '</div>';
 
-        <?php
+    echo '<div class="row my-4">';
+      include "inicio/ultimos-movimientos.php";
+    echo '</div>';
 
-          include "inicio/dispositivos-modelos.php";
-          include "inicio/dispositivos-asignaciones.php";
-        ?>
+  echo '</div>';
 
-      </div>
-      <div class="row my-4">
-
-        <?php
-          include "inicio/ultimos-movimientos.php";
-        ?>
-
-      </div>
-
-    </div>
-
+ 
