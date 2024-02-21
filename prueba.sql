@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `administradores` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla prueba.administradores: ~6 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.administradores: ~5 rows (aproximadamente)
 INSERT INTO `administradores` (`id`, `nombre`, `email`, `cargo`, `foto`, `usuario`, `password`, `perfil`, `fecha`) VALUES
 	(1, 'Obed Alberto Castro Orellana', 'obed.castro@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'inobed', '21232f297a57a5a743894a0e4a801fc3', 'superadministrador', '2024-02-13 15:11:21'),
 	(4, 'Miguel Ángel Portillo Lozano', 'miguel.portillo@bcr.gob.sv', 'Técnico de Soporte Informático', 'vistas/assets/img', 'inportillo', '6b44146a52fe0cb872686e7631786802', 'superadministrador', '2024-02-06 16:39:55'),
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `consultores` (
   PRIMARY KEY (`idconsultor`)
 ) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla prueba.consultores: ~21 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.consultores: ~24 rows (aproximadamente)
 INSERT INTO `consultores` (`idconsultor`, `nombreconsultor`, `duiconsultor`, `cargoconsultor`, `contactoconsultor`, `dispositivo_id`, `sedeconsultor`, `fechaactualizacionconsultor`, `fecharegistroconsultor`) VALUES
 	(10, 'Juan Antonio Segovia', '504938273', 'Delegado', '58493843847', NULL, '1', '2024-01-26 21:14:36', '2024-01-12'),
 	(14, 'Jorge Alberto González Barillas', '98765645-3', 'Auxiliar de bodega miscelanea', '7867-0988', NULL, '3', '2024-01-23 21:28:52', '2024-01-18'),
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `dispositivos` (
   CONSTRAINT `FKresponsabledispositivo` FOREIGN KEY (`responsabledispositivo`) REFERENCES `consultores` (`idconsultor`) ON DELETE RESTRICT
 ) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla prueba.dispositivos: ~28 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.dispositivos: ~31 rows (aproximadamente)
 INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositivo`, `modelodispositivo`, `imeidispositivo`, `seriedispositivo`, `telefonodispositivo`, `accesorios`, `responsabledispositivo`, `sededispositivo`, `estadodispositivo`, `comentariodispositivo`, `fecharegistro`, `asignadordispositivo`, `receptordispositivo`, `fechamodificacion`, `fechaasignacion`, `fecharecepcion`) VALUES
 	(31, 'Tablet', 'HP', 'Tab S9', '4354677', 'HYYYF5667', '76543677', NULL, NULL, 2, 3, '', '2024-01-02', NULL, NULL, '2024-02-07 15:12:04', NULL, NULL),
 	(32, 'Tablet', 'HP', 'Galaxy A34', '737382920', 'HF799335', '72053930', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, 1, 3, 'Pérdida de lápiz óptico en labor de campo y pantalla rota por caída en alcantarilla.', '2024-01-02', 'Obed Alberto Castro Orellana', 'Obed Alberto Castro Orellana', '2024-01-15 17:17:40', '2024-01-15 17:16:48', '2024-01-15 17:17:40'),
@@ -139,7 +139,7 @@ INSERT INTO `dispositivos` (`iddispositivo`, `tipodispositivo`, `marcadispositiv
 	(146, 'Telefono', 'Samsung', 'Galaxy A34', '34636363463', 'sdfgsd3t436', NULL, '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', NULL, 2, 1, NULL, '2024-01-18', NULL, NULL, '2024-01-18 19:31:53', NULL, NULL),
 	(148, 'Telefono', 'Honor', 'Galaxy A33', '346363634634634', 'dshsdgh34636346', '43763634634', NULL, NULL, 2, 4, '', '2024-01-18', NULL, NULL, '2024-02-07 15:12:18', NULL, NULL),
 	(150, 'Telefono', 'Honor', 'Galaxy A34', '345634574537474', '4GTRU3456RTY435', '35345345', NULL, NULL, 2, 3, 'Fue perseguido por unos perros y se le cayó el celular.', '2024-01-18', NULL, NULL, '2024-01-31 20:19:11', NULL, NULL),
-	(151, 'Tablet', 'Samsung', 'Tab S9', '245235326346236', 'WER3465ERT345', '50375757347', NULL, NULL, 1, 1, '', '2024-02-01', NULL, NULL, '2024-02-07 15:11:52', NULL, NULL),
+	(151, 'Tablet', 'Samsung', 'Tab S9', '245235326346236', 'WER3465ERT345', '50375757347', NULL, NULL, 4, 1, '', '2024-02-01', NULL, NULL, '2024-02-21 16:39:42', NULL, NULL),
 	(152, 'Tablet', 'Samsung', 'Tab S9', '123412424242423', 'SDF234SDFSFSF32', '50378847394', NULL, NULL, 3, 1, '', '2024-02-05', NULL, NULL, '2024-02-06 17:01:07', NULL, NULL),
 	(153, 'Telefono', 'Samsung', 'Galaxy A33', '141234525323512', 'WEQW23523EWTWER', '50393485937', '{"Cubo":"1","Cable":"1","Funda":"1","Lapiz":"0","Powerbank":"1","Maletin":"0","Cargador":"0","Mouse":"0","Mousepad":"0"}', 20, 1, 2, '', '2024-02-07', 'Obed Alberto Castro Orellana', NULL, '2024-02-12 20:59:09', '2024-02-12 08:59:09', NULL),
 	(154, 'Laptop', 'Dell', '640 G9', NULL, 'WW2352WETW235', NULL, '{"Cubo":"0","Cable":"0","Funda":"0","Lapiz":"0","Powerbank":"0","Maletin":"1","Cargador":"1","Mouse":"1","Mousepad":"1"}', 14, 3, 2, NULL, '2024-02-08', 'Diego Dubán Rivera Martinez', NULL, '2024-02-09 21:51:21', '2024-02-09 09:51:21', NULL),
@@ -255,7 +255,7 @@ CREATE TABLE IF NOT EXISTS `sedes` (
   PRIMARY KEY (`idsede`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla prueba.sedes: ~4 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.sedes: ~5 rows (aproximadamente)
 INSERT INTO `sedes` (`idsede`, `nombresede`, `departamentosede`) VALUES
 	(1, 'ExBandesal', 'San Miguel'),
 	(2, 'ITCA MEGATEC', 'La Unión'),
@@ -323,9 +323,9 @@ CREATE TABLE IF NOT EXISTS `wikicolaboraciones` (
   KEY `idwiki` (`idwiki`),
   CONSTRAINT `FK1colabora` FOREIGN KEY (`idcolabora`) REFERENCES `administradores` (`id`),
   CONSTRAINT `FK2wiki` FOREIGN KEY (`idwiki`) REFERENCES `wiki` (`idwiki`)
-) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=194 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla prueba.wikicolaboraciones: ~27 rows (aproximadamente)
+-- Volcando datos para la tabla prueba.wikicolaboraciones: ~43 rows (aproximadamente)
 INSERT INTO `wikicolaboraciones` (`idwikicolaboraciones`, `idcolabora`, `idwiki`, `colaboracion`, `fechacolaboracion`) VALUES
 	(66, 1, 6, 'asasdvasv', '2024-01-25 19:35:01'),
 	(67, 1, 6, 'qweqweqweqweqweqweqweqwe', '2024-01-25 19:35:48'),
@@ -369,7 +369,8 @@ INSERT INTO `wikicolaboraciones` (`idwikicolaboraciones`, `idcolabora`, `idwiki`
 	(189, 1, 12, 'Segundooooooooooooo', '2024-02-19 20:10:25'),
 	(190, 1, 10, 'asdfasdfasdfdsf', '2024-02-19 20:38:12'),
 	(191, 1, 10, 'asdgasdgasdgdsag', '2024-02-19 20:38:28'),
-	(192, 1, 10, 'astrerydfgh sdh sfdh sdfh sdh', '2024-02-19 20:38:37');
+	(192, 1, 10, 'astrerydfgh sdh sfdh sdfh sdh', '2024-02-19 20:38:37'),
+	(193, 1, 3, 'Probando este otro comentario.', '2024-02-20 22:01:45');
 
 -- Volcando estructura para disparador prueba.actualizar_registros
 SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';

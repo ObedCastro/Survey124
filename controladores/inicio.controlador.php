@@ -9,6 +9,7 @@ class ControladorInicio{
         return $datos;
     }
 
+    /* Mostrar dispositivos por departamento */
     static public function ctrMostrarDispositivosDepartamento(){
       $tabla = "dispositivos";
       $datos = ModeloInicio::mdlMostrarDispositivosDepartamento($tabla);
@@ -16,6 +17,15 @@ class ControladorInicio{
       return $datos;
     }
 
+    /* Mostrar dispositivos por sede */
+    static public function ctrMostrarDispositivosSede($item, $valor){
+      $tabla = "dispositivos";
+      $datos = ModeloInicio::mdlMostrarDispositivosSede($tabla, $item, $valor);
+
+      return $datos;
+    }
+
+    /* Gráfico de líneas */
     static public function ctrMostrarGraficoLineas(){
       $tabla = "dispositivos";
 
@@ -23,10 +33,19 @@ class ControladorInicio{
       return $respuesta;
     }
 
+    /* Gráfico de barras */
     static public function ctrMostrarGraficoBarras(){
       $tabla = "dispositivos";
 
       $respuesta = ModeloInicio::mdlMostrarGraficoBarras($tabla);
+      return $respuesta;
+    }
+
+    /* Gráfico de donas */
+    static public function ctrMostrarGraficoDonas(){
+      $tabla = "dispositivos";
+
+      $respuesta = ModeloInicio::mdlMostrarGraficoDonas($tabla);
       return $respuesta;
     }
 

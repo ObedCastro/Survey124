@@ -1,7 +1,7 @@
 <?php
 
-/* const RUTA = "http://localhost/Survey124/"; */
-const RUTA = "https://b4e6-216-194-101-11.ngrok-free.app/Survey124/";
+const RUTA = "http://localhost/Survey124/";
+/* const RUTA = "https://a372-216-194-101-9.ngrok-free.app/Survey124/"; */
 
 class ControladorAdministradores{
 

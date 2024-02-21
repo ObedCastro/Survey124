@@ -36,6 +36,17 @@ class ModeloInicio{
       return $stmt->fetchAll();
     }
 
+    //OBTIENE CANTIDAD DE DISPOSITIVOS POR SEDE
+    static public function mdlMostrarDispositivosSede($tabla, $item, $valor){
+      $sql = "SELECT count(d.tipodispositivo) as cantidad, d.tipodispositivo AS tipo, s.nombresede as sede FROM $tabla d INNER JOIN sedes s ON s.idsede = d.sededispositivo WHERE $item = :$item GROUP BY d.tipodispositivo, s.nombresede";
+
+      $stmt = Conexion::conectar()->prepare($sql);
+      $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
+      $stmt->execute();
+
+      return $stmt->fetchAll();
+    }
+
     //OBTIENE LOS VALORES PARA ALIMENTAR EL GRAFICO DE LINEAS
     static public function mdlMostrarGraficoLineas($tabla){
       $sql = "SELECT count(tipodispositivo) AS total, MONTH(fechaasignacion) AS mes FROM $tabla WHERE fechaasignacion >= CURDATE() - INTERVAL 6 MONTH AND estadodispositivo = '2' GROUP BY mes ORDER BY mes";
@@ -51,6 +62,16 @@ class ModeloInicio{
       $stmt = Conexion::conectar()->prepare($sql);
       $stmt->execute();
 
+      return $stmt->fetchAll();
+    }
+
+    //OBTIENE LOS VALORES PARA ALIMENTAR EL GRÁFICO DE DONAS
+    static public function mdlMostrarGraficoDonas($tabla){
+      $sql = "SELECT COUNT(d.sededispositivo) AS cantidad, s.nombresede AS sede FROM $tabla d INNER JOIN sedes s ON s.idsede =  d.sededispositivo GROUP BY d.sededispositivo";
+
+      $stmt = Conexion::conectar()->prepare($sql);
+      $stmt->execute();
+      
       return $stmt->fetchAll();
     }
 
